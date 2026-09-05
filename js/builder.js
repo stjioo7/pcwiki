@@ -989,12 +989,24 @@ function renderBuilderSlots() {
       const types = activeMon.types || ['Normal'];
       const typeBadges = types.map(t => `<span class="type-badge ${t.toLowerCase()}">${TYPE_TRANSLATION[t] || t}</span>`).join(' ');
 
-      // 生成特性下拉选项 (兼容对象与字符串)
-      const rawAbilities = (p.abilities && p.abilities.length > 0) ? p.abilities : [slot.ability];
+      // 生成特性下拉选项 (兼容对象与字符串，优先载入 Mega 专属特性)
+      let rawAbilities = (p.abilities && p.abilities.length > 0) ? [...p.abilities] : [];
+      if (slot.isMega && activeMon.abilities) {
+        activeMon.abilities.forEach(mab => {
+          const mabName = typeof mab === 'string' ? mab : mab.name;
+          if (!rawAbilities.some(a => (typeof a === 'string' ? a : a.name) === mabName)) {
+            rawAbilities.unshift({ name: mabName, usageText: 'Mega专属' });
+          }
+        });
+      }
+      if (rawAbilities.length === 0) rawAbilities = [slot.ability];
+
+      const currentAbility = slot.ability || (slot.isMega && activeMon.abilities && activeMon.abilities[0] ? (typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name) : (typeof rawAbilities[0] === 'string' ? rawAbilities[0] : rawAbilities[0].name));
+
       const abilityOptions = rawAbilities.map(ab => {
         const abName = typeof ab === 'string' ? ab : (ab.name || '通常特性');
-        const abUsage = (typeof ab === 'object' && ab.usage) ? ` (${ab.usage}%)` : '';
-        return `<option value="${abName}" ${abName === slot.ability ? 'selected' : ''}>${abName}${abUsage}</option>`;
+        const abUsage = (typeof ab === 'object' && (ab.usage || ab.usageText)) ? ` (${ab.usage ? ab.usage + '%' : ab.usageText})` : '';
+        return `<option value="${abName}" ${abName === currentAbility ? 'selected' : ''}>${abName}${abUsage}</option>`;
       }).join('');
 
       // 生成性格下拉选项
@@ -1025,7 +1037,7 @@ function renderBuilderSlots() {
 
       // Mega 切换按钮 (若该宝可梦支持 Mega)
       let megaToggleHtml = '';
-      if (p.megaForms || p.megaBranches) {
+      if ((p.mega && p.mega.supported) || p.megaForms || p.megaBranches) {
         megaToggleHtml = `
           <button class="slot-mega-toggle-btn ${slot.isMega ? 'active' : ''}" onclick="toggleSlotMega(${idx})">
             ⚡ Mega
@@ -1043,7 +1055,7 @@ function renderBuilderSlots() {
         </div>
 
         <div class="slot-profile">
-          <img class="slot-avatar" src="${spriteUrl}" alt="${activeMon.name}" onclick="openPokemonPicker(${idx})">
+          <img class="slot-avatar" src="${spriteUrl}" alt="${activeMon.name}" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id || 1}.png';" onclick="openPokemonPicker(${idx})">
           <div class="slot-identity">
             <h4 class="slot-name" onclick="openPokemonPicker(${idx})">${activeMon.name}</h4>
             <span class="slot-name-en">${p.nameEn || ''}</span>
@@ -1366,10 +1378,30 @@ function renderAuditDashboard() {
 // ==========================================================================
 
 function updateSlotField(slotIndex, field, value) {
-  if (builderState.slots[slotIndex]) {
-    builderState.slots[slotIndex][field] = value;
-    renderAuditDashboard();
+  const slot = builderState.slots[slotIndex];
+  if (!slot) return;
+
+  slot[field] = value;
+
+  if (field === 'item') {
+    const isMega = value.includes('进化石');
+    slot.isMega = isMega;
+    if (isMega) {
+      if (value.includes('Y') || value.includes('Ｙ')) {
+        slot.megaBranch = 'Y';
+      } else if (value.includes('X') || value.includes('Ｘ')) {
+        slot.megaBranch = 'X';
+      } else if (value.includes('Z') || value.includes('Ｚ')) {
+        slot.megaBranch = 'Z';
+      }
+      const activeMon = getActiveCombatant(slot.pokemon, slot.isMega, slot.megaBranch);
+      if (activeMon && activeMon.abilities && activeMon.abilities[0]) {
+        slot.ability = typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name;
+      }
+    }
+    renderBuilderSlots();
   }
+  renderAuditDashboard();
 }
 
 function updateSlotMove(slotIndex, moveIndex, moveName) {
@@ -1380,11 +1412,32 @@ function updateSlotMove(slotIndex, moveIndex, moveName) {
 }
 
 function toggleSlotMega(slotIndex) {
-  if (builderState.slots[slotIndex]) {
-    builderState.slots[slotIndex].isMega = !builderState.slots[slotIndex].isMega;
-    renderBuilderSlots();
-    renderAuditDashboard();
+  const slot = builderState.slots[slotIndex];
+  if (!slot || !slot.pokemon) return;
+
+  slot.isMega = !slot.isMega;
+  const activeMon = getActiveCombatant(slot.pokemon, slot.isMega, slot.megaBranch);
+  
+  if (slot.isMega) {
+    if (activeMon && activeMon.abilities && activeMon.abilities[0]) {
+      slot.ability = typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name;
+    }
+    const pMega = slot.pokemon.mega;
+    if (pMega && pMega.forms) {
+      const form = pMega.forms.find(f => f.formKey === slot.megaBranch) || pMega.forms[0];
+      if (form && form.megaStone) slot.item = form.megaStone;
+    }
+  } else {
+    if (slot.pokemon.abilities && slot.pokemon.abilities[0]) {
+      slot.ability = typeof slot.pokemon.abilities[0] === 'string' ? slot.pokemon.abilities[0] : slot.pokemon.abilities[0].name;
+    }
+    if (slot.item && slot.item.includes('进化石')) {
+      slot.item = '气势披带';
+    }
   }
+
+  renderBuilderSlots();
+  renderAuditDashboard();
 }
 
 function removeSlot(slotIndex) {
