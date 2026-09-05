@@ -689,7 +689,6 @@ function renderBuilderView() {
   if (typeof document === 'undefined') return;
   renderBuilderWizard();
   renderBuilderSlots();
-  renderSmartSuggestions();
   renderAuditDashboard();
 }
 
@@ -698,11 +697,55 @@ function renderBuilderWizard() {
   const container = document.getElementById('builderWizardSection');
   if (!container) return;
 
-  const quickPills = ['烈咬陆鲨', '仆斩将军', '赛富豪', '厄诡椪', '古玉鱼', '振翼发', '吃吼霸', '多龙巴鲁托', '武道熊师', '炽焰咆哮虎'];
-  const quickPillsHtml = quickPills.map(p => `
+  const allMons = (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
+  const fmt = builderState.format;
+
+  // 1. 获取当前队伍卡位中已有宝可梦物种 (按顺序排重)
+  const currentSlotMons = [];
+  const seenSlotMons = new Set();
+  builderState.slots.forEach(s => {
+    if (s && s.pokemon && s.pokemon.name && !seenSlotMons.has(s.pokemon.name)) {
+      seenSlotMons.add(s.pokemon.name);
+      currentSlotMons.push(s.pokemon.name);
+    }
+  });
+
+  let teamPillsHtml = '';
+  if (currentSlotMons.length > 0) {
+    const pills = currentSlotMons.map(p => `
+      <span class="quick-pill team-source ${wizardState.anchor === p ? 'active' : ''}" onclick="selectWizardAnchor('${p}')" title="从当前卡位物种选为核心">
+        👥 ${p}
+      </span>
+    `).join('');
+    teamPillsHtml = `
+      <div style="margin-top:0.35rem; display:flex; flex-wrap:wrap; gap:0.35rem; align-items:center;">
+        <span style="font-size:0.72rem; color:#ffd54f; font-weight:600;">已填卡位:</span>
+        ${pills}
+      </div>
+    `;
+  }
+
+  // 2. 当前赛制环境天梯热门宝可梦推荐胶囊 (Top 8)
+  const topMetaMons = [...allMons]
+    .filter(p => getPokemonMetaRank(p, fmt) < 999)
+    .sort((a, b) => getPokemonMetaRank(a, fmt) - getPokemonMetaRank(b, fmt))
+    .slice(0, 8)
+    .map(p => p.name);
+
+  const fallbackMeta = ['烈咬陆鲨', '仆斩将军', '赛富豪', '厄诡椪', '古玉鱼', '振翼发', '吃吼霸', '多龙巴鲁托'];
+  const pillsList = topMetaMons.length > 0 ? topMetaMons : fallbackMeta;
+
+  const metaPillsHtml = pillsList.map(p => `
     <span class="quick-pill ${wizardState.anchor === p ? 'active' : ''}" onclick="selectWizardAnchor('${p}')">${p}</span>
   `).join('');
 
+  // 3. 全量 235 宝可梦本地数据自动匹配 datalist
+  const datalistOptionsHtml = allMons.map(p => {
+    const types = (p.types || ['Normal']).map(t => TYPE_TRANSLATION[t] || t).join('/');
+    return `<option value="${p.name}">${p.name} · ${types} (${p.nameEn || ''})</option>`;
+  }).join('');
+
+  // 4. 战术机制标签 (使用 button type=button 彻底杜绝 label 双击取消 bug)
   const tacticOptions = [
     { id: 'tailwind', label: '🌪️ 顺风提速' },
     { id: 'trick_room', label: '⏳ 戏法空间' },
@@ -716,10 +759,9 @@ function renderBuilderWizard() {
   const tacticChipsHtml = tacticOptions.map(t => {
     const active = wizardState.tactics.includes(t.id);
     return `
-      <label class="tactic-chip ${active ? 'active' : ''}" onclick="toggleWizardTactic('${t.id}')">
-        <input type="checkbox" ${active ? 'checked' : ''}>
-        <span>${t.label}</span>
-      </label>
+      <button type="button" class="tactic-chip ${active ? 'active' : ''}" onclick="toggleWizardTactic('${t.id}')">
+        <span>${active ? '✓ ' : ''}${t.label}</span>
+      </button>
     `;
   }).join('');
 
@@ -752,17 +794,24 @@ function renderBuilderWizard() {
           <span class="wizard-header-badge">UEP 确定性 5 步门控</span>
         </div>
         <div class="wizard-header-actions">
-          <span class="tip" style="font-size:0.75rem; color:#90a4ae;">输入核心战力与风格，AI 自动生成 6 只队伍并完成 Top-30 伤害对抗测试</span>
+          <span class="tip" style="font-size:0.75rem; color:#90a4ae;">自动匹配本地 235 只宝可梦全量数据，一键生成 6 只队伍并完成 Top-30 对抗压力测试</span>
         </div>
       </div>
 
       <div class="wizard-form-grid">
-        <!-- 核心宝可梦 Anchor -->
+        <!-- 核心宝可梦 Anchor (支持输入自动匹配本地数据 + 卡位直选 + 热门直选) -->
         <div class="wizard-field">
-          <label class="wizard-label">🎯 战术核心物种 (Anchor)</label>
-          <input type="text" id="wizardAnchorInput" class="wizard-input" value="${wizardState.anchor}" placeholder="输入或点击下方快速填入..." oninput="updateWizardAnchor(this.value)">
+          <label class="wizard-label">🎯 战术核心物种 (Anchor · 自动匹配已有数据)</label>
+          <input type="text" id="wizardAnchorInput" class="wizard-input" list="wizardAnchorDatalist" value="${wizardState.anchor}" placeholder="输入或模糊检索宝可梦 (如: 烈咬陆鲨, 仆斩将军)..." oninput="updateWizardAnchor(this.value)" autocomplete="off">
+          <datalist id="wizardAnchorDatalist">
+            ${datalistOptionsHtml}
+          </datalist>
+          
+          ${teamPillsHtml}
+
           <div class="quick-pills-row">
-            ${quickPillsHtml}
+            <span style="font-size:0.72rem; color:#80deea; font-weight:600; align-self:center;">环境热门:</span>
+            ${metaPillsHtml}
           </div>
         </div>
 
@@ -770,15 +819,15 @@ function renderBuilderWizard() {
         <div class="wizard-field">
           <label class="wizard-label">🛡️ 队伍构筑风格 (Posture)</label>
           <div class="posture-buttons">
-            <button class="posture-btn ${wizardState.posture === 'offense' ? 'active' : ''}" onclick="setWizardPosture('offense')">⚔️ 强攻队 (Offense)</button>
-            <button class="posture-btn ${wizardState.posture === 'balance' ? 'active' : ''}" onclick="setWizardPosture('balance')">⚖️ 平衡队 (Balance)</button>
-            <button class="posture-btn ${wizardState.posture === 'defense' ? 'active' : ''}" onclick="setWizardPosture('defense')">🛡️ 受控队 (Bulky/Stall)</button>
+            <button type="button" class="posture-btn ${wizardState.posture === 'offense' ? 'active' : ''}" onclick="setWizardPosture('offense')">⚔️ 强攻队 (Offense)</button>
+            <button type="button" class="posture-btn ${wizardState.posture === 'balance' ? 'active' : ''}" onclick="setWizardPosture('balance')">⚖️ 平衡队 (Balance)</button>
+            <button type="button" class="posture-btn ${wizardState.posture === 'defense' ? 'active' : ''}" onclick="setWizardPosture('defense')">🛡️ 受控队 (Bulky/Stall)</button>
           </div>
         </div>
 
-        <!-- 战术标签 Tactics -->
+        <!-- 战术标签 Tactics (点击即切换) -->
         <div class="wizard-field" style="grid-column: 1 / -1;">
-          <label class="wizard-label">🏷️ 战术机制与控场标签 (Tactical Mechanisms)</label>
+          <label class="wizard-label">🏷️ 战术机制与控场标签 (Tactical Mechanisms · 可多选切换)</label>
           <div class="tactics-chips-grid">
             ${tacticChipsHtml}
           </div>
@@ -786,7 +835,7 @@ function renderBuilderWizard() {
       </div>
 
       <div class="wizard-footer-actions">
-        <button class="btn-wizard-run" id="btnRunWizard" onclick="startBuilderWizardJob()" ${wizardState.isRunning ? 'disabled' : ''}>
+        <button type="button" class="btn-wizard-run" id="btnRunWizard" onclick="startBuilderWizardJob()" ${wizardState.isRunning ? 'disabled' : ''}>
           ${wizardState.isRunning ? '<span class="spinner-inline">⏳</span> 5步门控生成中...' : '🚀 AI 一键组队向导 (5步门控生成)'}
         </button>
       </div>
