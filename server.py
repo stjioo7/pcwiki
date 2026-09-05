@@ -261,6 +261,7 @@ from fastapi.responses import StreamingResponse
 from fastapi import HTTPException, Request
 from app.core.config import get_active_provider_config, load_config
 from app.ai.react_agent import stream_react_diagnose
+from app.ai.builder_pipeline import stream_builder_job
 
 @app.get("/api/ai/status")
 def get_ai_status():
@@ -280,6 +281,43 @@ def get_ai_status():
             "status": "unconfigured",
             "error": str(e)
         }
+
+@app.post("/api/builder/generate")
+async def builder_generate_endpoint(request: Request):
+    """
+    【从零 AI 智能组队向导 (Builder Wizard)】
+    运行 5 步 UEP 确定性门控流水线 (intake -> grounding -> assemble -> validate -> slate -> audit)
+    以 SSE 流式输出门控进度并交付 6 只结构化队伍与压力测试报告
+    """
+    try:
+        get_active_provider_config(force_reload=True)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="请求体必须为合法 JSON 格式数据")
+
+    async def sse_event_generator():
+        try:
+            async for sse_json_event in stream_builder_job(payload):
+                yield f"data: {sse_json_event}\n\n"
+            yield "data: [DONE]\n\n"
+        except Exception as err:
+            err_payload = json.dumps({"type": "error", "error": str(err)}, ensure_ascii=False)
+            yield f"data: {err_payload}\n\n"
+            yield "data: [DONE]\n\n"
+
+    return StreamingResponse(
+        sse_event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no"
+        }
+    )
 
 @app.post("/api/ai/diagnose")
 async def diagnose_team_endpoint(request: Request):

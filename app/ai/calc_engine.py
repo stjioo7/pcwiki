@@ -240,7 +240,8 @@ def calculate_damage_gen9(
     base_dmg = math.floor(math.floor((2 * level / 5 + 2) * effective_power * (raw_atk / raw_def)) / 50) + 2
 
     # 4. 双打全体分散攻击削减 (0.75x)
-    if format_type == "double" and (move_name in SPREAD_MOVES or any(sm in move_name for sm in ["地震", "热风", "魔法闪耀", "浊流", "巨声", "淘金潮"])):
+    m_name_str = str(move_name)
+    if format_type == "double" and (m_name_str in SPREAD_MOVES or any(sm in m_name_str for sm in ["地震", "热风", "魔法闪耀", "浊流", "巨声", "淘金潮"])):
         base_dmg = math.floor(base_dmg * 0.75)
 
     # 5. 天气修正

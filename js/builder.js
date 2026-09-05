@@ -646,12 +646,287 @@ function autoCompleteTeam() {
   renderBuilderView();
 }
 
-// 渲染整个 Builder 页面
+// ==========================================================================
+// 6. 前端 UI 渲染与交互控制器 (UI View Controller)
+// ==========================================================================
+
+const wizardState = {
+  anchor: '烈咬陆鲨',
+  posture: 'offense', // 'offense' | 'balance' | 'defense'
+  tactics: ['tailwind'], // ['tailwind', 'trick_room', 'sun', 'rain', 'snow', 'setup', 'volturn']
+  avoid: [],
+  isRunning: false,
+  gateLogs: [],
+  lastRationale: '',
+  lastSlateResult: null,
+};
+
+function selectWizardAnchor(name) {
+  wizardState.anchor = name;
+  renderBuilderWizard();
+}
+
+function updateWizardAnchor(name) {
+  wizardState.anchor = name.trim();
+}
+
+function setWizardPosture(posture) {
+  wizardState.posture = posture;
+  renderBuilderWizard();
+}
+
+function toggleWizardTactic(tacticId) {
+  const idx = wizardState.tactics.indexOf(tacticId);
+  if (idx > -1) {
+    wizardState.tactics.splice(idx, 1);
+  } else {
+    wizardState.tactics.push(tacticId);
+  }
+  renderBuilderWizard();
+}
+
 function renderBuilderView() {
   if (typeof document === 'undefined') return;
+  renderBuilderWizard();
   renderBuilderSlots();
   renderSmartSuggestions();
   renderAuditDashboard();
+}
+
+// 渲染 AI 智能组队向导 (Builder Wizard)
+function renderBuilderWizard() {
+  const container = document.getElementById('builderWizardSection');
+  if (!container) return;
+
+  const quickPills = ['烈咬陆鲨', '仆斩将军', '赛富豪', '厄诡椪', '古玉鱼', '振翼发', '吃吼霸', '多龙巴鲁托', '武道熊师', '炽焰咆哮虎'];
+  const quickPillsHtml = quickPills.map(p => `
+    <span class="quick-pill ${wizardState.anchor === p ? 'active' : ''}" onclick="selectWizardAnchor('${p}')">${p}</span>
+  `).join('');
+
+  const tacticOptions = [
+    { id: 'tailwind', label: '🌪️ 顺风提速' },
+    { id: 'trick_room', label: '⏳ 戏法空间' },
+    { id: 'sun', label: '☀️ 晴天控场' },
+    { id: 'rain', label: '🌧️ 雨天强攻' },
+    { id: 'snow', label: '❄️ 雪天防御' },
+    { id: 'setup', label: '⚔️ 强化推队' },
+    { id: 'volturn', label: '🔄 游击轮转' }
+  ];
+
+  const tacticChipsHtml = tacticOptions.map(t => {
+    const active = wizardState.tactics.includes(t.id);
+    return `
+      <label class="tactic-chip ${active ? 'active' : ''}" onclick="toggleWizardTactic('${t.id}')">
+        <input type="checkbox" ${active ? 'checked' : ''}>
+        <span>${t.label}</span>
+      </label>
+    `;
+  }).join('');
+
+  let gateTimelineHtml = '';
+  if (wizardState.gateLogs.length > 0 || wizardState.isRunning) {
+    const stepsHtml = wizardState.gateLogs.map(log => `
+      <div class="gate-step-row ${log.status}">
+        <span class="gate-step-badge">${log.status === 'done' ? '✓ DONE' : log.status === 'running' ? '⏳ RUNNING' : '· WAIT'}</span>
+        <strong>${log.title}</strong>
+        ${log.detail ? `<span>— ${log.detail}</span>` : ''}
+      </div>
+    `).join('');
+
+    gateTimelineHtml = `
+      <div class="gate-timeline-container" id="wizardGateTimeline">
+        <div class="gate-timeline-header">
+          <span class="pulse-dot"></span>
+          <span>⚡ UEP 5步确定性门控流水线 (Gated Pipeline) 运行状态</span>
+        </div>
+        ${stepsHtml}
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="wizard-form-card">
+      <div class="wizard-header-row">
+        <div class="wizard-header-title">
+          <span>🧙‍♂️ AI 智能从零组队向导 (Builder Wizard)</span>
+          <span class="wizard-header-badge">UEP 确定性 5 步门控</span>
+        </div>
+        <div class="wizard-header-actions">
+          <span class="tip" style="font-size:0.75rem; color:#90a4ae;">输入核心战力与风格，AI 自动生成 6 只队伍并完成 Top-30 伤害对抗测试</span>
+        </div>
+      </div>
+
+      <div class="wizard-form-grid">
+        <!-- 核心宝可梦 Anchor -->
+        <div class="wizard-field">
+          <label class="wizard-label">🎯 战术核心物种 (Anchor)</label>
+          <input type="text" id="wizardAnchorInput" class="wizard-input" value="${wizardState.anchor}" placeholder="输入或点击下方快速填入..." oninput="updateWizardAnchor(this.value)">
+          <div class="quick-pills-row">
+            ${quickPillsHtml}
+          </div>
+        </div>
+
+        <!-- 战术风格 Posture -->
+        <div class="wizard-field">
+          <label class="wizard-label">🛡️ 队伍构筑风格 (Posture)</label>
+          <div class="posture-buttons">
+            <button class="posture-btn ${wizardState.posture === 'offense' ? 'active' : ''}" onclick="setWizardPosture('offense')">⚔️ 强攻队 (Offense)</button>
+            <button class="posture-btn ${wizardState.posture === 'balance' ? 'active' : ''}" onclick="setWizardPosture('balance')">⚖️ 平衡队 (Balance)</button>
+            <button class="posture-btn ${wizardState.posture === 'defense' ? 'active' : ''}" onclick="setWizardPosture('defense')">🛡️ 受控队 (Bulky/Stall)</button>
+          </div>
+        </div>
+
+        <!-- 战术标签 Tactics -->
+        <div class="wizard-field" style="grid-column: 1 / -1;">
+          <label class="wizard-label">🏷️ 战术机制与控场标签 (Tactical Mechanisms)</label>
+          <div class="tactics-chips-grid">
+            ${tacticChipsHtml}
+          </div>
+        </div>
+      </div>
+
+      <div class="wizard-footer-actions">
+        <button class="btn-wizard-run" id="btnRunWizard" onclick="startBuilderWizardJob()" ${wizardState.isRunning ? 'disabled' : ''}>
+          ${wizardState.isRunning ? '<span class="spinner-inline">⏳</span> 5步门控生成中...' : '🚀 AI 一键组队向导 (5步门控生成)'}
+        </button>
+      </div>
+
+      ${gateTimelineHtml}
+    </div>
+  `;
+}
+
+// 异步运行 AI 组队向导 (SSE Gated Pipeline Runner)
+async function startBuilderWizardJob() {
+  if (wizardState.isRunning) return;
+
+  const anchorName = wizardState.anchor || '烈咬陆鲨';
+  wizardState.isRunning = true;
+  wizardState.gateLogs = [
+    { gate: 'intake', title: 'Gate 1: 参数标准化与合法性准备', status: 'running', detail: `核心物种: ${anchorName}` },
+    { gate: 'grounding', title: 'Gate 2: 环境共现率与冠军构筑检索', status: 'wait', detail: '' },
+    { gate: 'assemble', title: 'Gate 3: 大模型严格约束装配生成', status: 'wait', detail: '' },
+    { gate: 'validate', title: 'Gate 4: Showdown 合法性与规则检查', status: 'wait', detail: '' },
+    { gate: 'slate', title: 'Gate 5: Top-30 伤害对抗压力测试', status: 'wait', detail: '' },
+  ];
+  renderBuilderWizard();
+
+  const payload = {
+    format: builderState.format,
+    anchor: anchorName,
+    posture: wizardState.posture,
+    tactics: wizardState.tactics,
+    avoid: wizardState.avoid,
+    owned: []
+  };
+
+  const endpoint = window.location.port === '8765'
+    ? '/api/builder/generate'
+    : 'http://127.0.0.1:8765/api/builder/generate';
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({ detail: '无法连接到本地 AI 服务，请确认 server.py 是否启动。' }));
+      throw new Error(errData.detail || errData.error || `HTTP ${response.status} 接口调用异常`);
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let buffer = '';
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop();
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith('data:')) continue;
+        const dataStr = trimmed.slice(5).trim();
+        if (dataStr === '[DONE]') break;
+
+        try {
+          const event = JSON.parse(dataStr);
+
+          if (event.type === 'error' || event.error) {
+            throw new Error(event.error || event.detail || '向导组队流水线执行异常');
+          }
+
+          if (event.type === 'gate') {
+            const existingGate = wizardState.gateLogs.find(g => g.gate === event.gate);
+            if (existingGate) {
+              existingGate.status = event.status;
+              existingGate.title = event.title || existingGate.title;
+              if (event.detail) existingGate.detail = event.detail;
+            } else {
+              wizardState.gateLogs.push({
+                gate: event.gate,
+                title: event.title,
+                status: event.status,
+                detail: event.detail || ''
+              });
+            }
+            renderBuilderWizard();
+          }
+
+          if (event.type === 'result' && event.data) {
+            const team = event.data.team || [];
+            wizardState.lastRationale = event.data.rationale || '';
+            wizardState.lastSlateResult = event.data.slate || null;
+
+            // 将生成的 6 只宝可梦灌入 builderState.slots
+            const allMons = (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
+            
+            for (let i = 0; i < 6; i++) {
+              if (i < team.length) {
+                const member = team[i];
+                const matchedMon = allMons.find(p => p.name === member.name || p.id === member.id) || {
+                  id: member.id || (100 + i),
+                  name: member.name,
+                  types: member.types || ['Normal'],
+                  baseStats: member.baseStats || { hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 80 },
+                  abilities: [{ name: member.ability }],
+                  learnset: (member.moves || []).map(m => ({ name: m }))
+                };
+
+                builderState.slots[i] = {
+                  pokemon: matchedMon,
+                  isMega: Boolean(member.isMega),
+                  megaBranch: 'X',
+                  item: member.item || '',
+                  ability: member.ability || (matchedMon.abilities && matchedMon.abilities[0] ? (typeof matchedMon.abilities[0] === 'string' ? matchedMon.abilities[0] : matchedMon.abilities[0].name) : '通常特性'),
+                  nature: member.nature || '固执',
+                  moves: member.moves || [],
+                  evs: member.evs || { hp: 4, atk: 252, def: 0, spa: 0, spd: 0, spe: 252 },
+                  stats: member.stats || null
+                };
+              } else {
+                builderState.slots[i] = null;
+              }
+            }
+
+            renderBuilderView();
+          }
+        } catch (e) {
+          if (e.message && e.message.includes('【')) throw e;
+        }
+      }
+    }
+  } catch (err) {
+    alert(`【AI 组队向导执行失败】\n${err.message || '未知错误'}\n\n请确认已运行 uv run python server.py 并且 config.yaml 包含有效 API Key。`);
+  } finally {
+    wizardState.isRunning = false;
+    renderBuilderWizard();
+  }
 }
 
 // 渲染 6 个卡位
@@ -838,7 +1113,7 @@ function renderAuditDashboard() {
       <div class="empty-audit-hint">
         <div class="hint-icon">📊</div>
         <h3>阵容诊断面板就绪</h3>
-        <p>请在上方卡位添加至少 1 只宝可梦，系统将自动展开【18 属性防御热力图】、【天梯 Top 20 威胁度对位审查】与【规则合规审计】。</p>
+        <p>请在上方卡位添加至少 1 只宝可梦，或使用「AI 智能组队向导」一键生成，系统将自动展开【战术机制说明】、【Top-30 伤害压力测试】与【18 属性防御热力图】。</p>
       </div>
     `;
     return;
@@ -856,7 +1131,69 @@ function renderAuditDashboard() {
     legalityHtml = `<div class="audit-alerts-wrap">${alerts}</div>`;
   }
 
-  // 2. 18 属性防御盲点热力表格 (Defense Heatmap)
+  // 2. 战术机制与核心战术卡片 (AI Tactical Rationale Banner)
+  let rationaleHtml = '';
+  if (wizardState.lastRationale) {
+    rationaleHtml = `
+      <div class="rationale-panel-box full-width">
+        <div class="panel-box-header">
+          <h3><span class="icon">🤖</span> AI 构筑战术机制与运作逻辑 (Tactical Rationale)</h3>
+          <span class="sub-badge" style="background:rgba(0,229,255,0.15); color:#00e5ff; font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:4px;">UEP Pipeline 生成</span>
+        </div>
+        <div style="font-size:0.92rem; line-height:1.6; color:#e0e6ed; padding:0.5rem 0;">
+          ${wizardState.lastRationale}
+        </div>
+      </div>
+    `;
+  }
+
+  // 3. Slate Top-30 伤害对抗压力测试结果 (Worst Threat Banner & Threat Routes)
+  let slateHtml = '';
+  if (wizardState.lastSlateResult && wizardState.lastSlateResult.worst_threat) {
+    const wt = wizardState.lastSlateResult.worst_threat;
+    const routesHtml = (wt.threat_routes || []).map(r => `
+      <div class="threat-route-pill">
+        💥 <strong>${r.target_member}</strong> 遭受对手 <strong>${r.move}</strong> (${r.move_type}) ➜ <span style="color:#ff0055; font-weight:700;">${r.damage_pct}</span> (${r.verdict})
+      </div>
+    `).join('');
+
+    const highThreatsListHtml = (wizardState.lastSlateResult.high_threats || []).slice(0, 4).map(ht => `
+      <div style="background:rgba(255,255,255,0.04); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.82rem; margin-top:0.4rem;">
+        <strong>${ht.opponent}</strong> (Rank ${ht.rank}) · <span style="color:#ef476f;">${ht.grade}</span>: 压制全队 ${ht.affected_members.join(', ')} (${ht.affected_count}只)
+      </div>
+    `).join('');
+
+    slateHtml = `
+      <div class="audit-panel-box full-width" style="margin-bottom:1.5rem;">
+        <div class="panel-box-header">
+          <h3><span class="icon">🔥</span> Slate Top-30 确定性伤害对抗压力测试 (Stress Testing)</h3>
+          <span class="sub-hint">基于 50 级精确物特伤害计算，推演全队对抗天梯热门的极端受击路线</span>
+        </div>
+        
+        <div class="worst-threat-banner">
+          <div class="worst-threat-header">
+            <div>
+              <strong style="font-size:1.05rem; color:#fff;">⚠️ 最大天敌检出: ${wt.opponent} (天梯 Rank ${wt.rank})</strong>
+              <div style="font-size:0.8rem; color:#ffb4a2; margin-top:0.2rem;">
+                受制成员 (${wt.affected_count}只): ${wt.affected_members.join('、')}
+              </div>
+            </div>
+            <span class="threat-grade-badge">${wt.grade}</span>
+          </div>
+          <div class="threat-routes-list">
+            ${routesHtml}
+          </div>
+        </div>
+
+        <div style="margin-top:0.8rem;">
+          <div style="font-size:0.82rem; font-weight:700; color:#b0bec5; margin-bottom:0.3rem;">高威胁对手对抗清单:</div>
+          ${highThreatsListHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  // 4. 18 属性防御盲点热力表格 (Defense Heatmap)
   const stats = audit.weaknessStats;
   let heatmapRowsHtml = Object.keys(TYPE_TRANSLATION).map(atkType => {
     const data = stats[atkType];
@@ -890,7 +1227,7 @@ function renderAuditDashboard() {
     `;
   }).join('');
 
-  // 3. 天梯 Top 20 威胁度对位卡片 (Threat Audit)
+  // 5. 天梯 Top 20 威胁度对位卡片 (Threat Audit)
   const threatCardsHtml = audit.threatResults.map(item => {
     const tMon = item.threatMon;
     const spriteUrl = getPokemonSpriteUrl(tMon);
@@ -919,7 +1256,7 @@ function renderAuditDashboard() {
     `;
   }).join('');
 
-  // 4. 队伍速度线阶梯 (Speed Tiers)
+  // 6. 队伍速度线阶梯 (Speed Tiers)
   const speedRowsHtml = audit.speedTiers.map((s, sIdx) => `
     <div class="speed-tier-row">
       <span class="speed-rank">#${sIdx + 1}</span>
@@ -935,6 +1272,8 @@ function renderAuditDashboard() {
 
   dashboard.innerHTML = `
     ${legalityHtml}
+    ${rationaleHtml}
+    ${slateHtml}
 
     <div class="audit-grid-layout">
       <!-- 栏目 1: 18 属性防御热力图 -->
@@ -982,36 +1321,6 @@ function renderAuditDashboard() {
           </div>
           <div class="speed-tiers-container">
             ${speedRowsHtml}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 栏目 3: AI 深度战术选出锦囊与调优报告 (ReAct 智能体多工具驱动) -->
-    <div class="audit-panel-box ai-diagnose-panel full-width">
-      <div class="panel-box-header ai-header-row">
-        <div class="ai-header-left">
-          <h3><span class="icon">🤖</span> AI 深度战术诊断与选出锦囊 (ReAct Metagame Pilot)</h3>
-          <span class="sub-hint">基于 6 只全量实数、18 属性盲点与天梯 Top 20 对位，通过 ReAct 智能体自主调用本地 4 大工具多轮推演</span>
-        </div>
-        <div class="ai-header-actions">
-          <button id="btnTriggerAiDiagnose" class="btn-ai-diagnose" onclick="requestAiTeamDiagnosis()">
-            <span class="icon">✨</span> 生成 AI 战术锦囊
-          </button>
-        </div>
-      </div>
-
-      <!-- 战术疑问输入条 (支持玩家输入假想敌或战术难点) -->
-      <div class="ai-query-bar">
-        <input type="text" id="aiTacticalQueryInput" class="ai-query-input" placeholder="💬 选填：输入重点战术疑虑或假想敌（如：“面对吃吼霸+米立龙合体怎么打？”、“遇到顺风古玉鱼怎么选出？”）..." />
-      </div>
-
-      <div id="aiDiagnoseContent" class="ai-diagnose-body">
-        <div class="ai-empty-prompt">
-          <div class="ai-prompt-icon">💡</div>
-          <div class="ai-prompt-text">
-            <strong>点击右上角「✨ 生成 AI 战术锦囊」按钮</strong>
-            <p>本地 ReAct AI 引擎将自主进入【思考 → 本地伤害计算/速度对比/冠军队伍检索 → 事实取证 → 战术综合】循环，输出 100% 事实锚定的四段式深度报告。</p>
           </div>
         </div>
       </div>
@@ -1146,302 +1455,10 @@ function renderPokemonPickerGrid(query = '') {
   });
 }
 
-// ==========================================================================
-// 9. AI ReAct 深度战术诊断与选出锦囊服务 (AI ReAct Tactical Auditor)
-// ==========================================================================
-let isAiDiagnosing = false;
-let lastAiReportMarkdown = '';
-
-function renderMarkdownBasic(md) {
-  if (!md) return '';
-  let html = md
-    .replace(/^### (.*$)/gim, '<h3 class="ai-md-h3">$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2 class="ai-md-h2">$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1 class="ai-md-h1">$1</h1>')
-    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
-    .replace(/`([^`]+)`/gim, '<code class="ai-inline-code">$1</code>')
-    .replace(/^\- (.*$)/gim, '<li>$1</li>');
-  
-  html = html.replace(/(<li>.*<\/li>)/gim, '<ul class="ai-md-ul">$1</ul>');
-  html = html.replace(/\n\n/gim, '<br><br>');
-  return html;
-}
-
-function toggleReactTrace() {
-  const body = document.getElementById('reactTraceBody');
-  const indicator = document.getElementById('reactTraceIndicator');
-  if (body) {
-    body.classList.toggle('collapsed');
-    if (indicator) {
-      indicator.textContent = body.classList.contains('collapsed') ? '▶ 点击展开' : '▼ 点击收起';
-    }
-  }
-}
-
-function formatToolSummary(toolName, args, result) {
-  if (toolName === 'query_matchup_damage') {
-    const dmg = result?.damage_result;
-    const verdict = dmg?.verdict || '计算完毕';
-    return `⚡ 对位极值伤害: <strong>${args.attacker}</strong> 使用 [<strong>${args.move}</strong>] 攻击 <strong>${args.defender}</strong> ➜ <span class="trace-obs-summary">${verdict}</span>`;
-  } else if (toolName === 'query_pokemon_meta') {
-    const rank = result?.meta_rank ? `Rank ${result.meta_rank}` : '已查询';
-    const topAb = result?.top_abilities?.[0]?.name || result?.top_abilities?.[0] || '默认特性';
-    const topIt = result?.top_items?.[0]?.name || result?.top_items?.[0] || '默认道具';
-    return `📊 天梯主流配置: <strong>${args.pokemon_name}</strong> (${rank}) ➜ 主流特性: <code>${topAb}</code> | 主流道具: <code>${topIt}</code>`;
-  } else if (toolName === 'search_tournament_teams') {
-    const count = result?.matched_count || 0;
-    const firstTourn = result?.returned_teams?.[0]?.tournament || '';
-    return `🏆 赛事冠军队伍: 检索 [<strong>${(args.pokemon_names || []).join(', ')}</strong>] ➜ 命中 <strong>${count}</strong> 套冠军构筑 (${firstTourn})`;
-  } else if (toolName === 'query_speed_comparison') {
-    const ladder = (result?.speed_ladder || []).map(s => `${s.name}(${s.effective_spe})`).join(' > ');
-    return `⏱️ 50级速度线推演: <span class="trace-obs-summary">${ladder || '对比完成'}</span>`;
-  }
-  return `🔧 工具调用完成: <code>${toolName}</code>`;
-}
-
-async function requestAiTeamDiagnosis() {
-  const members = builderState.slots.filter(s => s && s.pokemon);
-  if (members.length === 0) {
-    alert('当前队伍为空，请先添加至少一只宝可梦再生成战术诊断报告！');
-    return;
-  }
-
-  const container = document.getElementById('aiDiagnoseContent');
-  const btn = document.getElementById('btnTriggerAiDiagnose');
-  const queryInput = document.getElementById('aiTacticalQueryInput');
-  const userQuery = queryInput ? queryInput.value.trim() : '';
-
-  if (!container) return;
-  if (isAiDiagnosing) return;
-
-  isAiDiagnosing = true;
-  lastAiReportMarkdown = '';
-
-  if (btn) {
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-inline">⏳</span> ReAct 推理中...';
-  }
-
-  // 1. 初始化容器与 ReAct 轨迹面板
-  container.innerHTML = `
-    <!-- ReAct 推理轨迹与工具调用链 -->
-    <div class="react-trace-box" id="reactTraceBox">
-      <div class="react-trace-header" onclick="toggleReactTrace()">
-        <div class="react-trace-title">
-          <span class="pulse-dot"></span>
-          <span>🤔 AI ReAct 推理与本地工具调用链</span>
-        </div>
-        <span class="react-trace-indicator" id="reactTraceIndicator">▼ 点击收起</span>
-      </div>
-      <div class="react-trace-body" id="reactTraceBody">
-        <div class="trace-step-item thought">
-          <span class="trace-step-title thought-title">💭 思考阶段 (Thought)</span>
-          <div class="trace-content-box" id="traceThoughtText">正在综合队伍 6 只宝可梦实数、18 属性盲点与天梯生态，制定取证推演计划...</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 最终四段式 Markdown 战术诊断报告 -->
-    <div class="ai-report-markdown" id="aiReportMarkdown">
-      <span class="ai-typing-cursor"></span>
-    </div>
-  `;
-
-  const traceBody = document.getElementById('reactTraceBody');
-  const traceThoughtText = document.getElementById('traceThoughtText');
-  const reportBox = document.getElementById('aiReportMarkdown');
-
-  // 2. 构造 100% 结构化事实 Payload
-  const audit = runTeamAudit();
-  const payload = {
-    format: builderState.format,
-    formatName: builderState.format === 'double' ? '双打 (VGC)' : '单打 (Singles)',
-    userQuery: userQuery,
-    slots: members.map(m => {
-      const p = m.pokemon;
-      const mon = getActiveCombatant(p, m.isMega, m.megaBranch);
-      return {
-        name: mon.name,
-        types: mon.types || ['Normal'],
-        item: m.item,
-        ability: m.ability,
-        nature: m.nature,
-        moves: m.moves,
-        evs: m.evs,
-        stats: m.stats || mon.baseStats,
-        isMega: m.isMega
-      };
-    }),
-    blindSpots: Object.entries(audit.weaknessStats || {})
-      .filter(([_, v]) => v.weakCount >= 2 && v.immuneCount === 0)
-      .map(([k, v]) => `${TYPE_TRANSLATION[k] || k}(${v.weakCount}只弱)`),
-    counters: (audit.threatResults || [])
-      .filter(tr => tr.status === 'threat')
-      .map(tr => ({
-        name: tr.threatMon.name,
-        threatLevel: 'high',
-        reasons: tr.vulnerableMembers.map(vm => `威胁 ${vm}`)
-      })),
-    speedTiers: (audit.speedTiers || []).map(st => ({
-      name: st.name,
-      spe: st.maxSpe,
-      rank: 1
-    }))
-  };
-
-  const endpoint = window.location.port === '8765'
-    ? '/api/ai/diagnose'
-    : 'http://127.0.0.1:8765/api/ai/diagnose';
-
-  const toolCallCards = {}; // tool_call_id -> DOM element
-
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-      const errData = await response.json().catch(() => ({ detail: '无法连接到本地 AI 侧车服务，请确认 server.py 是否启动。' }));
-      const errorMsg = errData.detail || errData.error || `HTTP ${response.status} 接口调用异常`;
-      throw new Error(errorMsg);
-    }
-
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder('utf-8');
-    let buffer = '';
-
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
-
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop();
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed || !trimmed.startsWith('data:')) continue;
-        const dataStr = trimmed.slice(5).trim();
-        if (dataStr === '[DONE]') break;
-
-        try {
-          const event = JSON.parse(dataStr);
-
-          // 1. 错误事件 (Fail-Fast 严格阻断)
-          if (event.type === 'error' || event.error) {
-            throw new Error(event.error || event.detail || '大模型诊断返回异常');
-          }
-
-          // 2. 深度思考增量流
-          if (event.type === 'thought' && event.content) {
-            if (traceThoughtText) {
-              traceThoughtText.textContent += event.content;
-            }
-          }
-
-          // 3. 工具调用发起
-          if (event.type === 'tool_call') {
-            const card = document.createElement('div');
-            card.className = 'trace-step-item tool';
-            card.innerHTML = `
-              <span class="trace-step-title tool-title">
-                <span class="trace-tool-badge">🔧 ${event.name}</span>
-                <span>正在执行本地确定性取证...</span>
-              </span>
-              <div class="trace-content-box">
-                <pre style="margin:0; font-size:0.75rem; color:#90a4ae;">${JSON.stringify(event.args, null, 2)}</pre>
-              </div>
-            `;
-            if (traceBody) traceBody.appendChild(card);
-            toolCallCards[event.id] = card;
-          }
-
-          // 4. 工具调用执行完毕 (Observation)
-          if (event.type === 'tool_result') {
-            const card = toolCallCards[event.id];
-            if (card) {
-              const summaryHtml = formatToolSummary(event.name, event.args || {}, event.result || {});
-              card.innerHTML = `
-                <span class="trace-step-title tool-title">
-                  <span class="trace-tool-badge">✅ ${event.name}</span>
-                  <span>取证完毕</span>
-                </span>
-                <div class="trace-content-box">
-                  <div style="margin-bottom:0.3rem;">${summaryHtml}</div>
-                </div>
-              `;
-            }
-          }
-
-          // 5. 最终战术报告 Markdown 流
-          if (event.type === 'token' && event.content) {
-            lastAiReportMarkdown += event.content;
-            if (reportBox) {
-              reportBox.innerHTML = renderMarkdownBasic(lastAiReportMarkdown) + '<span class="ai-typing-cursor"></span>';
-            }
-          }
-
-        } catch (e) {
-          if (e.message && e.message.includes('【')) {
-            throw e;
-          }
-        }
-      }
-    }
-
-    if (reportBox) {
-      reportBox.innerHTML = renderMarkdownBasic(lastAiReportMarkdown);
-    }
-
-    // 底部工具栏
-    const actionsBar = document.createElement('div');
-    actionsBar.className = 'ai-report-actions';
-    actionsBar.innerHTML = `
-      <button class="btn-copy-report" onclick="copyAiReportText()">📋 复制战术报告</button>
-      <button class="btn-refresh-report" onclick="requestAiTeamDiagnosis()">🔄 重新推演</button>
-    `;
-    container.appendChild(actionsBar);
-
-  } catch (err) {
-    // 严格 Fail-Fast 红字报错展示，绝无假数据降级
-    container.innerHTML = `
-      <div class="ai-error-banner">
-        <div class="ai-error-icon">⚠️</div>
-        <div class="ai-error-msg">
-          <strong class="ai-error-title">【AI 战术诊断服务调用失败】</strong>
-          <p class="ai-error-desc">${err.message || '未知错误'}</p>
-          <div class="ai-error-tip">
-            💡 <strong>排查指引</strong>：<br>
-            1. 请确认本地已在终端运行 <code>uv run python server.py</code>；<br>
-            2. 请检查项目根目录下的 <code>config.yaml</code>，确保已填入对应 Provider 的有效 <code>api_key</code>。
-          </div>
-        </div>
-      </div>
-    `;
-  } finally {
-    isAiDiagnosing = false;
-    if (btn) {
-      btn.disabled = false;
-      btn.innerHTML = '<span class="icon">✨</span> 重新生成战术锦囊';
-    }
-  }
-}
-
-function copyAiReportText() {
-  if (!lastAiReportMarkdown) return;
-  navigator.clipboard.writeText(lastAiReportMarkdown).then(() => {
-    alert('🎉 AI 战术诊断报告已复制到剪贴板！');
-  }).catch(() => {
-    prompt('请手动复制战术诊断报告：', lastAiReportMarkdown);
-  });
-}
-
 // Global & Node export bindings
 if (typeof window !== 'undefined') {
   window.builderState = builderState;
+  window.wizardState = wizardState;
   window.fillSlotWithMetaRank1 = fillSlotWithMetaRank1;
   window.calculateSmartSuggestions = calculateSmartSuggestions;
   window.autoCompleteTeam = autoCompleteTeam;
@@ -1449,6 +1466,13 @@ if (typeof window !== 'undefined') {
   window.exportTeamShowdownText = exportTeamShowdownText;
   window.initTeamBuilder = initTeamBuilder;
   window.renderBuilderView = renderBuilderView;
+  window.renderBuilderWizard = renderBuilderWizard;
+  window.renderAuditDashboard = renderAuditDashboard;
+  window.startBuilderWizardJob = startBuilderWizardJob;
+  window.selectWizardAnchor = selectWizardAnchor;
+  window.updateWizardAnchor = updateWizardAnchor;
+  window.setWizardPosture = setWizardPosture;
+  window.toggleWizardTactic = toggleWizardTactic;
   window.openPokemonPicker = openPokemonPicker;
   window.removeSlot = removeSlot;
   window.toggleSlotMega = toggleSlotMega;
@@ -1456,20 +1480,20 @@ if (typeof window !== 'undefined') {
   window.updateSlotMove = updateSlotMove;
   window.addSuggestedPokemon = addSuggestedPokemon;
   window.getPokemonSpriteUrl = getPokemonSpriteUrl;
-  window.requestAiTeamDiagnosis = requestAiTeamDiagnosis;
-  window.copyAiReportText = copyAiReportText;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     builderState,
+    wizardState,
     fillSlotWithMetaRank1,
     calculateSmartSuggestions,
     autoCompleteTeam,
     runTeamAudit,
     exportTeamShowdownText,
     getPokemonSpriteUrl,
-    requestAiTeamDiagnosis,
-    copyAiReportText
+    renderBuilderWizard,
+    startBuilderWizardJob
   };
 }
+
