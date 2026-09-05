@@ -156,17 +156,26 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
             continue
         p_meta = p_obj.get("meta", {}).get(fmt) or p_obj.get("metaUsage", {}).get(fmt) or {}
         
-        # 提取前 2 特性、前 2 道具、前 6 招式、前 1 努力值
+        # 提取特性（带真实使用率）
         raw_ab = p_meta.get("abilities") or p_obj.get("abilities", [])
-        abilities = [ab.get("name") if isinstance(ab, dict) else str(ab) for ab in raw_ab[:2]]
+        abilities = []
+        for ab in raw_ab[:2]:
+            ab_name = ab.get("name") if isinstance(ab, dict) else str(ab)
+            ab_usage = ab.get("usage") if isinstance(ab, dict) and "usage" in ab else None
+            abilities.append(f"{ab_name} ({ab_usage}%)" if ab_usage is not None else ab_name)
         
+        # 提取道具（带真实使用率）
         raw_it = p_meta.get("items", [])
-        items = [it.get("name") if isinstance(it, dict) else str(it) for it in raw_it[:3]]
+        items = []
+        for it in raw_it[:4]:
+            it_name = it.get("name") if isinstance(it, dict) else str(it)
+            it_usage = it.get("usage") if isinstance(it, dict) and "usage" in it else None
+            items.append(f"{it_name} ({it_usage}%)" if it_usage is not None else it_name)
         
         raw_mv = p_meta.get("topMoves") or p_meta.get("moves") or [m.get("name") for m in p_obj.get("learnset", [])[:6]]
         moves = [mv.get("name") if isinstance(mv, dict) else str(mv) for mv in raw_mv[:6]]
         
-        grounded_candidates.append({
+        cand_entry = {
             "name": p_obj.get("name"),
             "types": p_obj.get("types", ["Normal"]),
             "rank": p_meta.get("rank", 999),
@@ -174,7 +183,15 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
             "top_items": items or ["气势披带" if fmt == "double" else "吃剩的东西"],
             "top_moves": moves[:6],
             "top_nature": p_meta.get("natures", ["固执"])[0] if p_meta.get("natures") else "固执"
-        })
+        }
+
+        # 若支持超级进化，附带标注
+        mega_info = p_obj.get("mega", {})
+        if mega_info and mega_info.get("supported"):
+            cand_entry["can_mega"] = True
+            cand_entry["exclusive_mega_stone"] = mega_info.get("megaStone") or (mega_info.get("forms", [{}])[0].get("megaStone"))
+
+        grounded_candidates.append(cand_entry)
 
     return {
         "anchor": anchor_name,
@@ -187,18 +204,21 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
 # 3. Gate 3: assemble (大模型约束装配生成严格 JSON 队伍与战术思路)
 # ==========================================================================
 BUILDER_ASSEMBLE_SYSTEM_PROMPT = """你是一位精通宝可梦官方排位（VGC 双打 / Singles 单打）的顶尖冠军教练。
-你的任务是：根据提供的【候选物种池】与【玩家战术要求】，装配一套具备高度协同性、属性联防与攻防转线能力的【标准 6 只宝可梦队伍】。
+你的任务是：根据提供的【候选物种池】（含真实天梯使用率权重）与【玩家战术要求】，装配一套具备高度协同性、属性联防与攻防转线能力的【标准 6 只宝可梦队伍】。
 
 【极其重要的约束规则】
 1. 队伍必须恰好包含 6 只宝可梦，且必须包含用户指定的 Anchor 核心；
 2. 6 只宝可梦必须全部从给定的【候选物种池】中挑选，严禁挑选池子以外的宝可梦；
 3. 遵循官方排位 Item Clause：6 只宝可梦携带的道具严禁重复；
-4. 每只宝可梦必须配置 4 个合法招式、1 个特性、1 个道具、1 个性格；
-5. 你必须且仅输出严格的 JSON 字符串，绝不能添加任何 markdown 标记外的解释废话。
+4. 【使用率与道具分配原则】：
+   - 候选池中带有使用率百分比（如：“暴鲤龙进化石 (60%)”）。道具与特性必须优先按照天梯真实高使用率分配，不要随意放弃 50%+ 的核心道具；
+   - 当前赛制支持超级进化 (Mega Evolution)。单场对战单队至多携带 1 个 Mega 进化石（若选中的宝可梦携带了专属进化石，该宝可梦将作为 Mega 核心选出）；
+5. 每只宝可梦必须配置 4 个合法招式、1 个特性、1 个道具、1 个性格；
+6. 你必须且仅输出严格的 JSON 字符串，绝不能添加任何 markdown 标记外的解释废话。
 
 【输出 JSON Schema】
 {
-  "rationale": "50字以内的战术运转机制概述（如：以烈咬陆鲨为极速地震爆破核心，搭配风妖精顺风控速与炽焰咆哮虎威吓轮转）",
+  "rationale": "50字以内的战术运转机制概述（如：以烈咬陆鲨为极速地震爆破核心，暴鲤龙携带进化石作为Mega破格重炮，搭配风妖精顺风控速）",
   "team": [
     {
       "species": "宝可梦中文名",
@@ -276,9 +296,28 @@ async def gate_assemble(intake_res: Dict[str, Any], grounding_res: Dict[str, Any
 
 
 # ==========================================================================
-# 4. Gate 4: validate_and_sanitize (确定性合法性校验与自动修剪)
+# 4. Gate 4: validate_and_sanitize (确定性合法性校验、Mega状态对齐与自动修剪)
 # ==========================================================================
 FALLBACK_ITEMS = ["气势披带", "突击背心", "生命宝珠", "讲究头带", "讲究眼镜", "讲究围巾", "吃剩的东西", "密探斗篷", "文柚果", "木子果"]
+
+def is_mega_stone_for_mon(p_obj: Dict[str, Any], item_name: str) -> Optional[Dict[str, Any]]:
+    """检查道具是否为该宝可梦的专属 Mega 进化石，并返回对应的 Mega Form 信息"""
+    if not p_obj or not item_name:
+        return None
+    mega_info = p_obj.get("mega", {})
+    if not mega_info or not mega_info.get("supported"):
+        return None
+    
+    forms = mega_info.get("forms", [])
+    if not forms and "megaStone" in mega_info:
+        forms = [mega_info]
+    
+    for f in forms:
+        stone = f.get("megaStone", "")
+        # 兼容不同命名形式（如 "暴鲤龙进化石" 或 "喷火龙进化石 Y"）
+        if stone and (stone in item_name or item_name in stone or ("进化石" in item_name and p_obj.get("name", "") in item_name)):
+            return f
+    return None
 
 def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[str, Any]) -> List[Dict[str, Any]]:
     raw_team = assemble_res.get("team", [])
@@ -287,6 +326,7 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
     sanitized_team = []
     used_items = set()
     used_species = set()
+    mega_count = 0
 
     for idx, mon_data in enumerate(raw_team):
         sp_name = mon_data.get("species", "")
@@ -301,22 +341,65 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
         p_name = p_obj["name"]
         used_species.add(p_name)
         
-        # 1. 道具排重 (Item Clause)
-        item = mon_data.get("item", "").strip()
-        if not item or item in used_items:
+        # 1. 清理并解析道具 (去除百分比等噪音)
+        raw_item = mon_data.get("item", "").strip()
+        if "(" in raw_item:
+            raw_item = raw_item.split("(")[0].strip()
+        if "（" in raw_item:
+            raw_item = raw_item.split("（")[0].strip()
+
+        # 2. Mega 进化石检查与 Mega Clause (全队限 1 个 Mega 石)
+        mega_form = is_mega_stone_for_mon(p_obj, raw_item)
+        is_mega = False
+        mega_branch = "X"
+        
+        if mega_form:
+            if mega_count >= 1:
+                # 已有其他成员携带了 Mega 石，当前成员退回常规道具
+                for fb in FALLBACK_ITEMS:
+                    if fb not in used_items:
+                        raw_item = fb
+                        break
+                mega_form = None
+            else:
+                mega_count += 1
+                is_mega = True
+                mega_branch = mega_form.get("formKey") or ("Y" if "Y" in raw_item or "Ｙ" in raw_item else "X")
+        
+        # 道具排重 (Item Clause)
+        if not raw_item or raw_item in used_items:
             for fb in FALLBACK_ITEMS:
                 if fb not in used_items:
-                    item = fb
+                    raw_item = fb
                     break
-        used_items.add(item)
+        used_items.add(raw_item)
 
-        # 2. 特性校验
-        ability = mon_data.get("ability", "").strip()
-        valid_abs = [a.get("name") if isinstance(a, dict) else str(a) for a in p_obj.get("abilities", [])]
-        if ability not in valid_abs and valid_abs:
-            ability = valid_abs[0]
+        # 3. 特性与属性对齐：若携带 Mega 进化石，自动对齐 Mega 形态特性与属性、种族值
+        if is_mega and mega_form:
+            ability = mega_form.get("ability") or (p_obj.get("abilities", [{}])[0].get("name") if p_obj.get("abilities") else "专属Mega特性")
+            types = mega_form.get("types") or p_obj.get("types", ["Normal"])
+            base_stats = mega_form.get("baseStats") or p_obj.get("baseStats", {"hp": 80, "atk": 80, "def": 80, "spa": 80, "spd": 80, "spe": 80})
+            display_name = mega_form.get("megaName") or f"超级{p_name}"
+        else:
+            raw_ab = mon_data.get("ability", "").strip()
+            if "(" in raw_ab:
+                raw_ab = raw_ab.split("(")[0].strip()
+            if "（" in raw_ab:
+                raw_ab = raw_ab.split("（")[0].strip()
+            
+            valid_abs = [a.get("name") if isinstance(a, dict) else str(a) for a in p_obj.get("abilities", [])]
+            if raw_ab in valid_abs:
+                ability = raw_ab
+            elif valid_abs:
+                ability = valid_abs[0]
+            else:
+                ability = raw_ab or "通常特性"
+            
+            types = p_obj.get("types", ["Normal"])
+            base_stats = p_obj.get("baseStats", {"hp": 80, "atk": 80, "def": 80, "spa": 80, "spd": 80, "spe": 80})
+            display_name = p_name
 
-        # 3. 招式池校验 (必须在 learnset 或常见招式中)
+        # 4. 招式池校验 (必须在 learnset 或常见招式中)
         valid_moves = [m.get("name") for m in p_obj.get("learnset", [])]
         moves = []
         for m in mon_data.get("moves", []):
@@ -328,16 +411,14 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
             for vm in valid_moves:
                 if len(moves) >= 4:
                     break
-                if vm not in moves and vm != "守住" if fmt == "single" else True:
+                if vm not in moves and (vm != "守住" if fmt == "single" else True):
                     moves.append(vm)
         while len(moves) < 4:
             moves.append("守住" if fmt == "double" else "替身")
 
-        # 4. 性格与默认努力值
+        # 5. 性格与努力值 (根据 Mega 后的攻特分布自动分配)
         nature = mon_data.get("nature", "固执")
-        base_stats = p_obj.get("baseStats", {"hp": 80, "atk": 80, "def": 80, "spa": 80, "spd": 80, "spe": 80})
         is_phys = base_stats.get("atk", 80) >= base_stats.get("spa", 80)
-        
         default_evs = {"hp": 4, "atk": 252, "def": 0, "spa": 0, "spd": 0, "spe": 252} if is_phys else {"hp": 4, "atk": 0, "def": 0, "spa": 252, "spd": 0, "spe": 252}
         stats_50 = calculate_full_stats_50(base_stats, default_evs, nature)
 
@@ -345,15 +426,18 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
             "slot": idx,
             "id": p_obj.get("id", 1),
             "name": p_name,
-            "types": p_obj.get("types", ["Normal"]),
-            "item": item,
+            "displayName": display_name,
+            "types": types,
+            "item": raw_item,
             "ability": ability,
             "nature": nature,
             "moves": moves[:4],
             "evs": default_evs,
             "stats": stats_50,
             "role": mon_data.get("role", "核心战力"),
-            "baseStats": base_stats
+            "baseStats": base_stats,
+            "isMega": is_mega,
+            "megaBranch": mega_branch
         })
 
     return sanitized_team[:6]
@@ -389,7 +473,7 @@ def gate_slate(team: List[Dict[str, Any]], format_type: str = "double") -> Dict[
         threat_routes = []
 
         for member in team:
-            m_name = member["name"]
+            m_name = member.get("displayName") or member["name"]
             m_types = member["types"]
             m_stats = member["stats"]
 

@@ -928,10 +928,13 @@ async function startBuilderWizardJob() {
                   learnset: (member.moves || []).map(m => ({ name: m }))
                 };
 
+                const isMega = Boolean(member.isMega || (member.item && member.item.includes('进化石')));
+                const megaBranch = member.megaBranch || (member.item && (member.item.includes('Ｙ') || member.item.includes('Y')) ? 'Y' : 'X');
+
                 builderState.slots[i] = {
                   pokemon: matchedMon,
-                  isMega: Boolean(member.isMega),
-                  megaBranch: 'X',
+                  isMega: isMega,
+                  megaBranch: megaBranch,
                   item: member.item || '',
                   ability: member.ability || (matchedMon.abilities && matchedMon.abilities[0] ? (typeof matchedMon.abilities[0] === 'string' ? matchedMon.abilities[0] : matchedMon.abilities[0].name) : '通常特性'),
                   nature: member.nature || '固执',
