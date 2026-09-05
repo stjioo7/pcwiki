@@ -35,6 +35,10 @@
           <span class="tab-icon">🏆</span> 热门排位队伍 (Meta Teams)
           <span class="tab-badge pulse">大赛完赛</span>
         </button>
+        <button class="main-tab-btn" id="tabBuilderBtn" data-target="builderView">
+          <span class="tab-icon">🧠</span> 智能配队诊断 (Team Builder)
+          <span class="tab-badge pulse">协同推荐</span>
+        </button>
         <button class="main-tab-btn" id="tabWikiBtn" data-target="wikiView">
           <span class="tab-icon">📖</span> 竞技图鉴百科 (Wiki Database)
         </button>
@@ -373,6 +377,63 @@
         </div>
       </section>
     </section>
+
+    <!-- ====================================================================== -->
+    <!-- 视图 4：智能配队与阵容诊断 (Team Builder & Metagame Auditor) -->
+    <!-- ====================================================================== -->
+    <section id="builderView" class="main-view" style="display: none;">
+      <!-- 配队操作工具条 -->
+      <section class="toolbar-section builder-toolbar">
+        <div class="filter-controls">
+          <div class="extra-filters">
+            <!-- 赛制选择 -->
+            <div class="format-mode-toggle" id="builderFormatToggleGroup">
+              <button class="mode-btn active" data-builder-format="double">⚔️ 双打 (Doubles)</button>
+              <button class="mode-btn" data-builder-format="single">🎯 单打 (Singles)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="builder-actions-group">
+          <button class="btn-builder-action btn-auto-fill" id="builderAutoCompleteBtn" title="根据当前核心宝可梦自动补齐剩余卡位">
+            ⚡ 一键智能补全
+          </button>
+          <button class="btn-builder-action btn-export" id="builderExportBtn" title="复制 Showdown 格式文本">
+            📋 导出队伍配置
+          </button>
+          <button class="btn-builder-action btn-clear" id="builderClearBtn" title="清空全部 6 个卡位">
+            🗑️ 清空阵容
+          </button>
+        </div>
+      </section>
+
+      <!-- 6 卡位网格 -->
+      <section class="builder-slots-section">
+        <div class="section-meta">
+          <h2>当前队伍阵容 (6 Slots)</h2>
+          <span class="tip">点击卡位可自选或微调道具/特性/性格/招式 · 自动预填官方天梯 Rank 1 主流配置</span>
+        </div>
+        <div class="builder-slots-grid" id="builderSlotsGrid">
+          <!-- 动态渲染 6 个卡槽 -->
+        </div>
+      </section>
+
+      <!-- 智能推荐搭档池 -->
+      <section class="builder-suggestions-section" id="builderSuggestionsPanel">
+        <div class="section-meta">
+          <h2>💡 智能推荐搭档 (Smart Suggestions)</h2>
+          <span class="tip">基于天梯真实搭档共现率 (Partner Matrix) + 属性联防补盲 + 战术职能计算</span>
+        </div>
+        <div class="suggestions-list" id="suggestionsList">
+          <!-- 动态渲染推荐卡片 -->
+        </div>
+      </section>
+
+      <!-- 全维度阵容诊断与审计仪表盘 -->
+      <section class="builder-audit-section" id="builderAuditDashboard">
+        <!-- 动态注入诊断结果 -->
+      </section>
+    </section>
   </main>
 
   <!-- 宝可梦详情与 VP 模拟器浮层 (Modal) -->
@@ -385,6 +446,23 @@
     </div>
   </div>
 
+  <!-- 宝可梦点选模态框 (Picker Modal) -->
+  <div class="modal-backdrop" id="builderPickerModal">
+    <div class="modal-card picker-modal-card">
+      <div class="picker-modal-header">
+        <div class="picker-search-box">
+          <svg class="search-icon" viewBox="0 0 24 24"><path d="M21.71 20.29l-5.4-5.4A7.9 7.9 0 0018 10a8 8 0 10-8 8 7.9 7.9 0 004.89-1.69l5.4 5.4a1 1 0 001.42 0 1 1 0 000-1.42zM10 16a6 6 0 116-6 6 6 0 01-6 6z"/></svg>
+          <input type="text" id="builderPickerSearchInput" placeholder="快速搜索宝可梦 (如: 仆斩将军, 烈咬陆鲨, 赛富豪)...">
+        </div>
+        <button class="modal-close-btn" id="builderPickerCloseBtn">&times;</button>
+      </div>
+      <div class="picker-modal-body">
+        <div class="picker-grid" id="builderPickerGrid">
+          <!-- 动态注入待选宝可梦 -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-container">
@@ -399,6 +477,7 @@
   <script src="js/wiki.js"></script>
   <script src="js/teams.js"></script>
   <script src="js/copilot.js"></script>
+  <script src="js/builder.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

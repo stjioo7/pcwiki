@@ -47,17 +47,19 @@ function initTypeFilterBadges() {
 
 // 绑定交互事件
 function bindControls() {
-  // 顶部主导航 Tab 切换 (热门排位队伍 vs 竞技图鉴百科 vs 实时对战副驾)
+  // 顶部主导航 Tab 切换 (热门排位队伍 vs 智能配队诊断 vs 竞技图鉴百科 vs 实时对战副驾)
   const tabTeamsBtn = document.getElementById('tabTeamsBtn');
+  const tabBuilderBtn = document.getElementById('tabBuilderBtn');
   const tabWikiBtn = document.getElementById('tabWikiBtn');
   const tabCopilotBtn = document.getElementById('tabCopilotBtn');
   const teamsView = document.getElementById('teamsView');
+  const builderView = document.getElementById('builderView');
   const wikiView = document.getElementById('wikiView');
   const copilotView = document.getElementById('copilotView');
 
   const switchTab = (activeBtn, activeView) => {
-    [tabTeamsBtn, tabWikiBtn, tabCopilotBtn].forEach(b => { if (b) b.classList.remove('active'); });
-    [teamsView, wikiView, copilotView].forEach(v => {
+    [tabTeamsBtn, tabBuilderBtn, tabWikiBtn, tabCopilotBtn].forEach(b => { if (b) b.classList.remove('active'); });
+    [teamsView, builderView, wikiView, copilotView].forEach(v => {
       if (v) {
         v.classList.remove('active');
         v.style.display = 'none';
@@ -74,6 +76,15 @@ function bindControls() {
   if (tabTeamsBtn && teamsView) {
     tabTeamsBtn.addEventListener('click', () => {
       switchTab(tabTeamsBtn, teamsView);
+    });
+  }
+
+  if (tabBuilderBtn && builderView) {
+    tabBuilderBtn.addEventListener('click', () => {
+      switchTab(tabBuilderBtn, builderView);
+      if (typeof renderBuilderView === 'function') {
+        renderBuilderView();
+      }
     });
   }
 

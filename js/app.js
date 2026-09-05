@@ -33,7 +33,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     initTeams();
   }
 
-  // 7. 异步检测本地 RapidOCR 后端服务状态并提示
+  // 7. 初始化智能配队与全维度诊断引擎
+  if (typeof initTeamBuilder === 'function') {
+    initTeamBuilder();
+  }
+
+  // 8. 异步检测本地 RapidOCR 后端服务状态并提示
   if (typeof checkOcrBackendStatus === 'function') {
     checkOcrBackendStatus();
   }
