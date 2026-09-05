@@ -47,32 +47,48 @@ function initTypeFilterBadges() {
 
 // 绑定交互事件
 function bindControls() {
-  // 顶部主导航 Tab 切换 (实时副驾 vs 竞技图鉴百科)
-  const tabCopilotBtn = document.getElementById('tabCopilotBtn');
+  // 顶部主导航 Tab 切换 (热门排位队伍 vs 竞技图鉴百科 vs 实时对战副驾)
+  const tabTeamsBtn = document.getElementById('tabTeamsBtn');
   const tabWikiBtn = document.getElementById('tabWikiBtn');
-  const copilotView = document.getElementById('copilotView');
+  const tabCopilotBtn = document.getElementById('tabCopilotBtn');
+  const teamsView = document.getElementById('teamsView');
   const wikiView = document.getElementById('wikiView');
+  const copilotView = document.getElementById('copilotView');
 
-  if (tabCopilotBtn && tabWikiBtn && copilotView && wikiView) {
-    tabCopilotBtn.addEventListener('click', () => {
-      tabCopilotBtn.classList.add('active');
-      tabWikiBtn.classList.remove('active');
-      copilotView.classList.add('active');
-      copilotView.style.display = 'block';
-      wikiView.classList.remove('active');
-      wikiView.style.display = 'none';
+  const switchTab = (activeBtn, activeView) => {
+    [tabTeamsBtn, tabWikiBtn, tabCopilotBtn].forEach(b => { if (b) b.classList.remove('active'); });
+    [teamsView, wikiView, copilotView].forEach(v => {
+      if (v) {
+        v.classList.remove('active');
+        v.style.display = 'none';
+      }
     });
 
+    if (activeBtn) activeBtn.classList.add('active');
+    if (activeView) {
+      activeView.classList.add('active');
+      activeView.style.display = 'block';
+    }
+  };
+
+  if (tabTeamsBtn && teamsView) {
+    tabTeamsBtn.addEventListener('click', () => {
+      switchTab(tabTeamsBtn, teamsView);
+    });
+  }
+
+  if (tabWikiBtn && wikiView) {
     tabWikiBtn.addEventListener('click', () => {
-      tabWikiBtn.classList.add('active');
-      tabCopilotBtn.classList.remove('active');
-      wikiView.classList.add('active');
-      wikiView.style.display = 'block';
-      copilotView.classList.remove('active');
-      copilotView.style.display = 'none';
+      switchTab(tabWikiBtn, wikiView);
       if (currentRenderedCount === 0 && filteredPokemonList.length > 0) {
         renderNextChunk();
       }
+    });
+  }
+
+  if (tabCopilotBtn && copilotView) {
+    tabCopilotBtn.addEventListener('click', () => {
+      switchTab(tabCopilotBtn, copilotView);
     });
   }
 

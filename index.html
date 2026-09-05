@@ -32,12 +32,15 @@
     <!-- 顶部主导航 Tab -->
     <nav class="main-tabs-nav">
       <div class="nav-container">
-        <button class="main-tab-btn active" id="tabCopilotBtn" data-target="copilotView">
-          <span class="tab-icon">⚡</span> 实时对战副驾 (Battle Copilot)
-          <span class="tab-badge pulse">实战推荐</span>
+        <button class="main-tab-btn active" id="tabTeamsBtn" data-target="teamsView">
+          <span class="tab-icon">🏆</span> 热门排位队伍 (Meta Teams)
+          <span class="tab-badge pulse">大赛完赛</span>
         </button>
         <button class="main-tab-btn" id="tabWikiBtn" data-target="wikiView">
           <span class="tab-icon">📖</span> 竞技图鉴百科 (Wiki Database)
+        </button>
+        <button class="main-tab-btn" id="tabCopilotBtn" data-target="copilotView">
+          <span class="tab-icon">⚡</span> 实时对战副驾 (Battle Copilot)
         </button>
       </div>
     </nav>
@@ -45,9 +48,56 @@
 
   <main class="main-content">
     <!-- ====================================================================== -->
-    <!-- 视图 1：实时对战副驾 (Battle Copilot View) -->
+    <!-- 视图 1：热门排位队伍 (Meta Teams View) -->
     <!-- ====================================================================== -->
-    <section id="copilotView" class="main-view active">
+    <section id="teamsView" class="main-view active">
+      <!-- 队伍筛选工具条 -->
+      <section class="toolbar-section">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24"><path d="M21.71 20.29l-5.4-5.4A7.9 7.9 0 0018 10a8 8 0 10-8 8 7.9 7.9 0 004.89-1.69l5.4 5.4a1 1 0 001.42 0 1 1 0 000-1.42zM10 16a6 6 0 116-6 6 6 0 01-6 6z"/></svg>
+          <input type="text" id="teamSearchInput" placeholder="搜索宝可梦、选手昵称或锦标赛名称 (如: 耿鬼, 烈咬陆鲨, patomilenar)...">
+        </div>
+
+        <div class="filter-controls">
+          <div class="extra-filters">
+            <!-- 赛制筛选 (全部 / 双打 / 单打) -->
+            <div class="format-mode-toggle" id="teamFormatToggleGroup">
+              <button class="mode-btn active" data-team-format="all">全部赛制</button>
+              <button class="mode-btn" data-team-format="double">⚔️ 双打 (Doubles)</button>
+              <button class="mode-btn" data-team-format="single">🎯 单打 (Singles)</button>
+            </div>
+
+            <!-- 名次筛选 -->
+            <div class="sort-select-wrapper">
+              <label for="teamPlacingSelect">名次：</label>
+              <select id="teamPlacingSelect">
+                <option value="all" selected>🏅 全部名次 (1st ~ 8th)</option>
+                <option value="1">🥇 仅冠军队伍 (1st Place)</option>
+                <option value="2">🥈 亚军及以上 (Top 2)</option>
+                <option value="4">🥉 4强及以上 (Top 4)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 队伍列表网格 -->
+      <section class="teams-container-section">
+        <div class="section-meta">
+          <h2>实战完赛队伍 (<span id="teamMatchCount">0</span> 支)</h2>
+          <span class="tip">数据同步自 Limitless VGC / Champions 官方完赛锦标赛</span>
+        </div>
+        
+        <div class="teams-list" id="teamsList">
+          <!-- 动态渲染队伍卡片 -->
+        </div>
+      </section>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- 视图 2：实时对战副驾 (Battle Copilot View) -->
+    <!-- ====================================================================== -->
+    <section id="copilotView" class="main-view" style="display: none;">
       <div class="copilot-workbench">
         <!-- 左栏：截图投放、解析与特征预览 -->
         <div class="copilot-col copilot-left">
@@ -398,9 +448,11 @@
   </footer>
 
   <script src="data/champions_data.js"></script>
+  <script src="data/champions_teams.js"></script>
   <script src="js/constants.js"></script>
   <script src="js/calc.js"></script>
   <script src="js/wiki.js"></script>
+  <script src="js/teams.js"></script>
   <script src="js/copilot.js"></script>
   <script src="js/app.js"></script>
 </body>

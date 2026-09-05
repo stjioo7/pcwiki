@@ -28,7 +28,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadDatabase();
   }
 
-  // 6. 异步检测本地 RapidOCR 后端服务状态并提示
+  // 6. 初始化热门排位实战队伍
+  if (typeof initTeams === 'function') {
+    initTeams();
+  }
+
+  // 7. 异步检测本地 RapidOCR 后端服务状态并提示
   if (typeof checkOcrBackendStatus === 'function') {
     checkOcrBackendStatus();
   }
