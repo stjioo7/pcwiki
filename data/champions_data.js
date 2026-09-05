@@ -1751,6 +1751,484 @@ window.CHAMPIONS_DATA = {
       }
     },
     {
+      "id": 902,
+      "formId": 0,
+      "rawId": 902000,
+      "slug": "basculegion",
+      "name": "幽尾玄鱼",
+      "enName": "Basculegion",
+      "types": [
+        "Water",
+        "Ghost"
+      ],
+      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+      "baseStats": {
+        "hp": 120,
+        "atk": 112,
+        "def": 65,
+        "spa": 80,
+        "spd": 75,
+        "spe": 78
+      },
+      "abilities": [
+        {
+          "id": 0,
+          "name": "适应力",
+          "desc": "与自己同属性的招式威力 不会是1.5倍，而是会变为2倍。",
+          "usage": 96.0,
+          "usageText": "96.0%"
+        },
+        {
+          "id": 0,
+          "name": "悠游自如",
+          "desc": "下雨状态时，速度会变为2倍。",
+          "usage": 2.0,
+          "usageText": "2.0%"
+        },
+        {
+          "id": 0,
+          "name": "破格",
+          "desc": "能不受对手的特性影响使出招式。 也存在例外的特性。",
+          "usage": 1.0,
+          "usageText": "1.0%"
+        }
+      ],
+      "learnset": [
+        {
+          "id": 854,
+          "name": "扫墓",
+          "power": 50,
+          "accuracy": 100,
+          "type": "Ghost",
+          "category": "物理",
+          "priority": 0,
+          "usage": 99.0,
+          "tag": "99.0%"
+        },
+        {
+          "id": 834,
+          "name": "波动冲",
+          "power": 120,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 0,
+          "usage": 95.0,
+          "tag": "95.0%"
+        },
+        {
+          "id": 453,
+          "name": "水流喷射",
+          "power": 40,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 1,
+          "usage": 90.0,
+          "tag": "90.0%"
+        },
+        {
+          "id": 812,
+          "name": "快速折返",
+          "power": 60,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 0,
+          "usage": 68.0,
+          "tag": "68.0%"
+        },
+        {
+          "id": 97,
+          "name": "高速移动",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Psychic",
+          "category": "变化",
+          "priority": 0,
+          "usage": 15.0,
+          "tag": "15.0%"
+        },
+        {
+          "id": 423,
+          "name": "冰冻牙",
+          "power": 65,
+          "accuracy": 95,
+          "type": "Ice",
+          "category": "物理",
+          "priority": 0,
+          "usage": 4.0,
+          "tag": "4.0%"
+        },
+        {
+          "id": 706,
+          "name": "精神之牙",
+          "power": 85,
+          "accuracy": 100,
+          "type": "Psychic",
+          "category": "物理",
+          "priority": 0,
+          "usage": 4.0,
+          "tag": "4.0%"
+        },
+        {
+          "id": 457,
+          "name": "双刃头锤",
+          "power": 150,
+          "accuracy": 80,
+          "type": "Rock",
+          "category": "物理",
+          "priority": 0,
+          "usage": 3.0,
+          "tag": "3.0%"
+        },
+        {
+          "id": 182,
+          "name": "守住",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Normal",
+          "category": "变化",
+          "priority": 4,
+          "usage": 2.0,
+          "tag": "2.0%"
+        },
+        {
+          "id": 710,
+          "name": "水流裂破",
+          "power": 85,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 0,
+          "usage": 2.0,
+          "tag": "2.0%"
+        }
+      ],
+      "isMega": false,
+      "formKey": "",
+      "tags": [
+        "Rank #4",
+        "M-5双打"
+      ],
+      "mega": {
+        "supported": false
+      },
+      "metaUsage": {
+        "rank": 4,
+        "items": [
+          {
+            "name": "讲究围巾",
+            "usage": 51.0
+          },
+          {
+            "name": "神秘水滴",
+            "usage": 19.0
+          },
+          {
+            "name": "生命宝珠",
+            "usage": 17.0
+          },
+          {
+            "name": "气势披带",
+            "usage": 8.0
+          },
+          {
+            "name": "诅咒之符",
+            "usage": 1.0
+          },
+          {
+            "name": "文柚果",
+            "usage": 0.5
+          },
+          {
+            "name": "先制之爪",
+            "usage": 0.4
+          },
+          {
+            "name": "力量头带",
+            "usage": 0.2
+          },
+          {
+            "name": "木子果",
+            "usage": 0.2
+          },
+          {
+            "name": "吃剩的东西",
+            "usage": 0.1
+          }
+        ],
+        "natures": [
+          {
+            "name": "固执",
+            "usage": 50.0
+          },
+          {
+            "name": "爽朗",
+            "usage": 46.0
+          },
+          {
+            "name": "勇敢",
+            "usage": 0.7
+          },
+          {
+            "name": "天真",
+            "usage": 0.5
+          },
+          {
+            "name": "顽皮",
+            "usage": 0.4
+          },
+          {
+            "name": "急躁",
+            "usage": 0.4
+          },
+          {
+            "name": "怕寂寞",
+            "usage": 0.4
+          },
+          {
+            "name": "淘气",
+            "usage": 0.2
+          },
+          {
+            "name": "胆小",
+            "usage": 0.1
+          },
+          {
+            "name": "慎重",
+            "usage": 0.1
+          }
+        ],
+        "partners": [
+          {
+            "name": "烈咬陆鲨",
+            "rank": 1
+          },
+          {
+            "name": "铝钢桥龙",
+            "rank": 2
+          },
+          {
+            "name": "河马兽",
+            "rank": 3
+          },
+          {
+            "name": "谜拟Ｑ",
+            "rank": 4
+          },
+          {
+            "name": "西狮海壬",
+            "rank": 5
+          },
+          {
+            "name": "快龙",
+            "rank": 6
+          },
+          {
+            "name": "魔幻假面喵",
+            "rank": 7
+          },
+          {
+            "name": "仆斩将军",
+            "rank": 8
+          },
+          {
+            "name": "巨金怪",
+            "rank": 9
+          },
+          {
+            "name": "雷丘",
+            "rank": 10
+          }
+        ],
+        "evSpreads": [
+          {
+            "rank": 1,
+            "hp": 2,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 42.7
+          },
+          {
+            "rank": 2,
+            "hp": 0,
+            "atk": 32,
+            "def": 2,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 12.4
+          },
+          {
+            "rank": 3,
+            "hp": 0,
+            "atk": 32,
+            "def": 13,
+            "spa": 0,
+            "spd": 0,
+            "spe": 21,
+            "usage": 6.4
+          },
+          {
+            "rank": 4,
+            "hp": 0,
+            "atk": 32,
+            "def": 1,
+            "spa": 0,
+            "spd": 1,
+            "spe": 32,
+            "usage": 4.3
+          },
+          {
+            "rank": 5,
+            "hp": 0,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 2,
+            "spe": 32,
+            "usage": 3.2
+          },
+          {
+            "rank": 6,
+            "hp": 6,
+            "atk": 32,
+            "def": 13,
+            "spa": 0,
+            "spd": 4,
+            "spe": 11,
+            "usage": 2.7
+          },
+          {
+            "rank": 7,
+            "hp": 2,
+            "atk": 32,
+            "def": 32,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0,
+            "usage": 2.7
+          },
+          {
+            "rank": 8,
+            "hp": 4,
+            "atk": 32,
+            "def": 24,
+            "spa": 0,
+            "spd": 0,
+            "spe": 6,
+            "usage": 2.6
+          },
+          {
+            "rank": 9,
+            "hp": 0,
+            "atk": 32,
+            "def": 19,
+            "spa": 0,
+            "spd": 0,
+            "spe": 15,
+            "usage": 2.2
+          },
+          {
+            "rank": 10,
+            "hp": 0,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 1.8
+          }
+        ],
+        "topMoves": [
+          {
+            "name": "扫墓",
+            "usage": 99.0,
+            "type": "Ghost",
+            "category": "物理",
+            "power": 50,
+            "accuracy": 100
+          },
+          {
+            "name": "波动冲",
+            "usage": 95.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 120,
+            "accuracy": 100
+          },
+          {
+            "name": "水流喷射",
+            "usage": 90.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 40,
+            "accuracy": 100
+          },
+          {
+            "name": "快速折返",
+            "usage": 68.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 60,
+            "accuracy": 100
+          },
+          {
+            "name": "高速移动",
+            "usage": 15.0,
+            "type": "Psychic",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "冰冻牙",
+            "usage": 4.0,
+            "type": "Ice",
+            "category": "物理",
+            "power": 65,
+            "accuracy": 95
+          },
+          {
+            "name": "精神之牙",
+            "usage": 4.0,
+            "type": "Psychic",
+            "category": "物理",
+            "power": 85,
+            "accuracy": 100
+          },
+          {
+            "name": "双刃头锤",
+            "usage": 3.0,
+            "type": "Rock",
+            "category": "物理",
+            "power": 150,
+            "accuracy": 80
+          },
+          {
+            "name": "守住",
+            "usage": 2.0,
+            "type": "Normal",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "水流裂破",
+            "usage": 2.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 85,
+            "accuracy": 100
+          }
+        ]
+      }
+    },
+    {
       "id": 547,
       "formId": 0,
       "rawId": 547000,
@@ -5693,484 +6171,6 @@ window.CHAMPIONS_DATA = {
       }
     },
     {
-      "id": 902,
-      "formId": 0,
-      "rawId": 902000,
-      "slug": "basculegion",
-      "name": "幽尾玄鱼",
-      "enName": "Basculegion",
-      "types": [
-        "Water",
-        "Ghost"
-      ],
-      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
-      "baseStats": {
-        "hp": 120,
-        "atk": 112,
-        "def": 65,
-        "spa": 80,
-        "spd": 75,
-        "spe": 78
-      },
-      "abilities": [
-        {
-          "id": 0,
-          "name": "适应力",
-          "desc": "与自己同属性的招式威力 不会是1.5倍，而是会变为2倍。",
-          "usage": 96.0,
-          "usageText": "96.0%"
-        },
-        {
-          "id": 0,
-          "name": "悠游自如",
-          "desc": "下雨状态时，速度会变为2倍。",
-          "usage": 2.0,
-          "usageText": "2.0%"
-        },
-        {
-          "id": 0,
-          "name": "破格",
-          "desc": "能不受对手的特性影响使出招式。 也存在例外的特性。",
-          "usage": 1.0,
-          "usageText": "1.0%"
-        }
-      ],
-      "learnset": [
-        {
-          "id": 854,
-          "name": "扫墓",
-          "power": 50,
-          "accuracy": 100,
-          "type": "Ghost",
-          "category": "物理",
-          "priority": 0,
-          "usage": 99.0,
-          "tag": "99.0%"
-        },
-        {
-          "id": 834,
-          "name": "波动冲",
-          "power": 120,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 0,
-          "usage": 95.0,
-          "tag": "95.0%"
-        },
-        {
-          "id": 453,
-          "name": "水流喷射",
-          "power": 40,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 1,
-          "usage": 90.0,
-          "tag": "90.0%"
-        },
-        {
-          "id": 812,
-          "name": "快速折返",
-          "power": 60,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 0,
-          "usage": 68.0,
-          "tag": "68.0%"
-        },
-        {
-          "id": 97,
-          "name": "高速移动",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Psychic",
-          "category": "变化",
-          "priority": 0,
-          "usage": 15.0,
-          "tag": "15.0%"
-        },
-        {
-          "id": 423,
-          "name": "冰冻牙",
-          "power": 65,
-          "accuracy": 95,
-          "type": "Ice",
-          "category": "物理",
-          "priority": 0,
-          "usage": 4.0,
-          "tag": "4.0%"
-        },
-        {
-          "id": 706,
-          "name": "精神之牙",
-          "power": 85,
-          "accuracy": 100,
-          "type": "Psychic",
-          "category": "物理",
-          "priority": 0,
-          "usage": 4.0,
-          "tag": "4.0%"
-        },
-        {
-          "id": 457,
-          "name": "双刃头锤",
-          "power": 150,
-          "accuracy": 80,
-          "type": "Rock",
-          "category": "物理",
-          "priority": 0,
-          "usage": 3.0,
-          "tag": "3.0%"
-        },
-        {
-          "id": 182,
-          "name": "守住",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Normal",
-          "category": "变化",
-          "priority": 4,
-          "usage": 2.0,
-          "tag": "2.0%"
-        },
-        {
-          "id": 710,
-          "name": "水流裂破",
-          "power": 85,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 0,
-          "usage": 2.0,
-          "tag": "2.0%"
-        }
-      ],
-      "isMega": false,
-      "formKey": "",
-      "tags": [
-        "Rank #12",
-        "M-5双打"
-      ],
-      "mega": {
-        "supported": false
-      },
-      "metaUsage": {
-        "rank": 12,
-        "items": [
-          {
-            "name": "讲究围巾",
-            "usage": 51.0
-          },
-          {
-            "name": "神秘水滴",
-            "usage": 19.0
-          },
-          {
-            "name": "生命宝珠",
-            "usage": 17.0
-          },
-          {
-            "name": "气势披带",
-            "usage": 8.0
-          },
-          {
-            "name": "诅咒之符",
-            "usage": 1.0
-          },
-          {
-            "name": "文柚果",
-            "usage": 0.5
-          },
-          {
-            "name": "先制之爪",
-            "usage": 0.4
-          },
-          {
-            "name": "力量头带",
-            "usage": 0.2
-          },
-          {
-            "name": "木子果",
-            "usage": 0.2
-          },
-          {
-            "name": "吃剩的东西",
-            "usage": 0.1
-          }
-        ],
-        "natures": [
-          {
-            "name": "固执",
-            "usage": 50.0
-          },
-          {
-            "name": "爽朗",
-            "usage": 46.0
-          },
-          {
-            "name": "勇敢",
-            "usage": 0.7
-          },
-          {
-            "name": "天真",
-            "usage": 0.5
-          },
-          {
-            "name": "顽皮",
-            "usage": 0.4
-          },
-          {
-            "name": "急躁",
-            "usage": 0.4
-          },
-          {
-            "name": "怕寂寞",
-            "usage": 0.4
-          },
-          {
-            "name": "淘气",
-            "usage": 0.2
-          },
-          {
-            "name": "胆小",
-            "usage": 0.1
-          },
-          {
-            "name": "慎重",
-            "usage": 0.1
-          }
-        ],
-        "partners": [
-          {
-            "name": "烈咬陆鲨",
-            "rank": 1
-          },
-          {
-            "name": "铝钢桥龙",
-            "rank": 2
-          },
-          {
-            "name": "河马兽",
-            "rank": 3
-          },
-          {
-            "name": "谜拟Ｑ",
-            "rank": 4
-          },
-          {
-            "name": "西狮海壬",
-            "rank": 5
-          },
-          {
-            "name": "快龙",
-            "rank": 6
-          },
-          {
-            "name": "魔幻假面喵",
-            "rank": 7
-          },
-          {
-            "name": "仆斩将军",
-            "rank": 8
-          },
-          {
-            "name": "巨金怪",
-            "rank": 9
-          },
-          {
-            "name": "雷丘",
-            "rank": 10
-          }
-        ],
-        "evSpreads": [
-          {
-            "rank": 1,
-            "hp": 2,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 42.7
-          },
-          {
-            "rank": 2,
-            "hp": 0,
-            "atk": 32,
-            "def": 2,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 12.4
-          },
-          {
-            "rank": 3,
-            "hp": 0,
-            "atk": 32,
-            "def": 13,
-            "spa": 0,
-            "spd": 0,
-            "spe": 21,
-            "usage": 6.4
-          },
-          {
-            "rank": 4,
-            "hp": 0,
-            "atk": 32,
-            "def": 1,
-            "spa": 0,
-            "spd": 1,
-            "spe": 32,
-            "usage": 4.3
-          },
-          {
-            "rank": 5,
-            "hp": 0,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 2,
-            "spe": 32,
-            "usage": 3.2
-          },
-          {
-            "rank": 6,
-            "hp": 6,
-            "atk": 32,
-            "def": 13,
-            "spa": 0,
-            "spd": 4,
-            "spe": 11,
-            "usage": 2.7
-          },
-          {
-            "rank": 7,
-            "hp": 2,
-            "atk": 32,
-            "def": 32,
-            "spa": 0,
-            "spd": 0,
-            "spe": 0,
-            "usage": 2.7
-          },
-          {
-            "rank": 8,
-            "hp": 4,
-            "atk": 32,
-            "def": 24,
-            "spa": 0,
-            "spd": 0,
-            "spe": 6,
-            "usage": 2.6
-          },
-          {
-            "rank": 9,
-            "hp": 0,
-            "atk": 32,
-            "def": 19,
-            "spa": 0,
-            "spd": 0,
-            "spe": 15,
-            "usage": 2.2
-          },
-          {
-            "rank": 10,
-            "hp": 0,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 1.8
-          }
-        ],
-        "topMoves": [
-          {
-            "name": "扫墓",
-            "usage": 99.0,
-            "type": "Ghost",
-            "category": "物理",
-            "power": 50,
-            "accuracy": 100
-          },
-          {
-            "name": "波动冲",
-            "usage": 95.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 120,
-            "accuracy": 100
-          },
-          {
-            "name": "水流喷射",
-            "usage": 90.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 40,
-            "accuracy": 100
-          },
-          {
-            "name": "快速折返",
-            "usage": 68.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 60,
-            "accuracy": 100
-          },
-          {
-            "name": "高速移动",
-            "usage": 15.0,
-            "type": "Psychic",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "冰冻牙",
-            "usage": 4.0,
-            "type": "Ice",
-            "category": "物理",
-            "power": 65,
-            "accuracy": 95
-          },
-          {
-            "name": "精神之牙",
-            "usage": 4.0,
-            "type": "Psychic",
-            "category": "物理",
-            "power": 85,
-            "accuracy": 100
-          },
-          {
-            "name": "双刃头锤",
-            "usage": 3.0,
-            "type": "Rock",
-            "category": "物理",
-            "power": 150,
-            "accuracy": 80
-          },
-          {
-            "name": "守住",
-            "usage": 2.0,
-            "type": "Normal",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "水流裂破",
-            "usage": 2.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 85,
-            "accuracy": 100
-          }
-        ]
-      }
-    },
-    {
       "id": 1018,
       "formId": 0,
       "rawId": 1018000,
@@ -9147,6 +9147,470 @@ window.CHAMPIONS_DATA = {
       }
     },
     {
+      "id": 681,
+      "formId": 0,
+      "rawId": 681000,
+      "slug": "aegislash",
+      "name": "坚盾剑怪",
+      "enName": "Aegislash",
+      "types": [
+        "Steel",
+        "Ghost"
+      ],
+      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/681.png",
+      "baseStats": {
+        "hp": 60,
+        "atk": 50,
+        "def": 140,
+        "spa": 50,
+        "spd": 140,
+        "spe": 60
+      },
+      "abilities": [
+        {
+          "id": 0,
+          "name": "战斗切换",
+          "desc": "使出攻击时，会变为刀剑形态， 使出招式“王者盾牌”时， 会变为盾牌形态。",
+          "usage": 100.0,
+          "usageText": "100.0%"
+        }
+      ],
+      "learnset": [
+        {
+          "id": 425,
+          "name": "影子偷袭",
+          "power": 40,
+          "accuracy": 100,
+          "type": "Ghost",
+          "category": "物理",
+          "priority": 1,
+          "usage": 95.0,
+          "tag": "95.0%"
+        },
+        {
+          "id": 588,
+          "name": "王者盾牌",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Steel",
+          "category": "变化",
+          "priority": 4,
+          "usage": 73.0,
+          "tag": "73.0%"
+        },
+        {
+          "id": 809,
+          "name": "灵骚",
+          "power": 110,
+          "accuracy": 90,
+          "type": "Ghost",
+          "category": "物理",
+          "priority": 0,
+          "usage": 67.0,
+          "tag": "67.0%"
+        },
+        {
+          "id": 533,
+          "name": "圣剑",
+          "power": 90,
+          "accuracy": 100,
+          "type": "Fighting",
+          "category": "物理",
+          "priority": 0,
+          "usage": 43.0,
+          "tag": "43.0%"
+        },
+        {
+          "id": 14,
+          "name": "剑舞",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Normal",
+          "category": "变化",
+          "priority": 0,
+          "usage": 37.0,
+          "tag": "37.0%"
+        },
+        {
+          "id": 247,
+          "name": "暗影球",
+          "power": 80,
+          "accuracy": 100,
+          "type": "Ghost",
+          "category": "特殊",
+          "priority": 0,
+          "usage": 25.0,
+          "tag": "25.0%"
+        },
+        {
+          "id": 370,
+          "name": "近身战",
+          "power": 120,
+          "accuracy": 100,
+          "type": "Fighting",
+          "category": "物理",
+          "priority": 0,
+          "usage": 20.0,
+          "tag": "20.0%"
+        },
+        {
+          "id": 442,
+          "name": "铁头",
+          "power": 80,
+          "accuracy": 100,
+          "type": "Steel",
+          "category": "物理",
+          "priority": 0,
+          "usage": 16.0,
+          "tag": "16.0%"
+        },
+        {
+          "id": 430,
+          "name": "加农光炮",
+          "power": 80,
+          "accuracy": 100,
+          "type": "Steel",
+          "category": "特殊",
+          "priority": 0,
+          "usage": 8.0,
+          "tag": "8.0%"
+        },
+        {
+          "id": 796,
+          "name": "铁蹄光线",
+          "power": 140,
+          "accuracy": 95,
+          "type": "Steel",
+          "category": "特殊",
+          "priority": 0,
+          "usage": 5.0,
+          "tag": "5.0%"
+        }
+      ],
+      "isMega": false,
+      "formKey": "",
+      "tags": [
+        "Rank #19",
+        "M-5双打"
+      ],
+      "mega": {
+        "supported": false
+      },
+      "metaUsage": {
+        "rank": 19,
+        "items": [
+          {
+            "name": "吃剩的东西",
+            "usage": 36.0
+          },
+          {
+            "name": "诅咒之符",
+            "usage": 23.0
+          },
+          {
+            "name": "生命宝珠",
+            "usage": 21.0
+          },
+          {
+            "name": "气势披带",
+            "usage": 11.0
+          },
+          {
+            "name": "文柚果",
+            "usage": 2.0
+          },
+          {
+            "name": "木子果",
+            "usage": 1.0
+          },
+          {
+            "name": "达人带",
+            "usage": 0.4
+          },
+          {
+            "name": "腰木果",
+            "usage": 0.3
+          },
+          {
+            "name": "先制之爪",
+            "usage": 0.2
+          },
+          {
+            "name": "力量头带",
+            "usage": 0.2
+          }
+        ],
+        "natures": [
+          {
+            "name": "固执",
+            "usage": 57.0
+          },
+          {
+            "name": "冷静",
+            "usage": 18.0
+          },
+          {
+            "name": "勇敢",
+            "usage": 13.0
+          },
+          {
+            "name": "内敛",
+            "usage": 3.0
+          },
+          {
+            "name": "自大",
+            "usage": 2.0
+          },
+          {
+            "name": "淘气",
+            "usage": 1.0
+          },
+          {
+            "name": "慎重",
+            "usage": 1.0
+          },
+          {
+            "name": "悠闲",
+            "usage": 1.0
+          },
+          {
+            "name": "爽朗",
+            "usage": 0.8
+          },
+          {
+            "name": "顽皮",
+            "usage": 0.3
+          }
+        ],
+        "partners": [
+          {
+            "name": "烈咬陆鲨",
+            "rank": 1
+          },
+          {
+            "name": "河马兽",
+            "rank": 2
+          },
+          {
+            "name": "魔幻假面喵",
+            "rank": 3
+          },
+          {
+            "name": "西狮海壬",
+            "rank": 4
+          },
+          {
+            "name": "快龙",
+            "rank": 5
+          },
+          {
+            "name": "暴鲤龙",
+            "rank": 6
+          },
+          {
+            "name": "三首恶龙",
+            "rank": 7
+          },
+          {
+            "name": "妖火红狐",
+            "rank": 8
+          },
+          {
+            "name": "喷火龙",
+            "rank": 9
+          },
+          {
+            "name": "晶光花",
+            "rank": 10
+          }
+        ],
+        "evSpreads": [
+          {
+            "rank": 1,
+            "hp": 32,
+            "atk": 32,
+            "def": 1,
+            "spa": 0,
+            "spd": 1,
+            "spe": 0,
+            "usage": 16.8
+          },
+          {
+            "rank": 2,
+            "hp": 2,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 9.4
+          },
+          {
+            "rank": 3,
+            "hp": 32,
+            "atk": 32,
+            "def": 2,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0,
+            "usage": 7.3
+          },
+          {
+            "rank": 4,
+            "hp": 32,
+            "atk": 0,
+            "def": 1,
+            "spa": 32,
+            "spd": 1,
+            "spe": 0,
+            "usage": 5.8
+          },
+          {
+            "rank": 5,
+            "hp": 32,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 2,
+            "usage": 5.1
+          },
+          {
+            "rank": 6,
+            "hp": 32,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 2,
+            "spe": 0,
+            "usage": 4.4
+          },
+          {
+            "rank": 7,
+            "hp": 32,
+            "atk": 2,
+            "def": 0,
+            "spa": 32,
+            "spd": 0,
+            "spe": 0,
+            "usage": 4.3
+          },
+          {
+            "rank": 8,
+            "hp": 24,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 10,
+            "usage": 2.0
+          },
+          {
+            "rank": 9,
+            "hp": 32,
+            "atk": 0,
+            "def": 0,
+            "spa": 32,
+            "spd": 2,
+            "spe": 0,
+            "usage": 1.7
+          },
+          {
+            "rank": 10,
+            "hp": 32,
+            "atk": 26,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 8,
+            "usage": 1.7
+          }
+        ],
+        "topMoves": [
+          {
+            "name": "影子偷袭",
+            "usage": 95.0,
+            "type": "Ghost",
+            "category": "物理",
+            "power": 40,
+            "accuracy": 100
+          },
+          {
+            "name": "王者盾牌",
+            "usage": 73.0,
+            "type": "Steel",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "灵骚",
+            "usage": 67.0,
+            "type": "Ghost",
+            "category": "物理",
+            "power": 110,
+            "accuracy": 90
+          },
+          {
+            "name": "圣剑",
+            "usage": 43.0,
+            "type": "Fighting",
+            "category": "物理",
+            "power": 90,
+            "accuracy": 100
+          },
+          {
+            "name": "剑舞",
+            "usage": 37.0,
+            "type": "Normal",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "暗影球",
+            "usage": 25.0,
+            "type": "Ghost",
+            "category": "特殊",
+            "power": 80,
+            "accuracy": 100
+          },
+          {
+            "name": "近身战",
+            "usage": 20.0,
+            "type": "Fighting",
+            "category": "物理",
+            "power": 120,
+            "accuracy": 100
+          },
+          {
+            "name": "铁头",
+            "usage": 16.0,
+            "type": "Steel",
+            "category": "物理",
+            "power": 80,
+            "accuracy": 100
+          },
+          {
+            "name": "加农光炮",
+            "usage": 8.0,
+            "type": "Steel",
+            "category": "特殊",
+            "power": 80,
+            "accuracy": 100
+          },
+          {
+            "name": "铁蹄光线",
+            "usage": 5.0,
+            "type": "Steel",
+            "category": "特殊",
+            "power": 140,
+            "accuracy": 95
+          }
+        ]
+      }
+    },
+    {
       "id": 260,
       "formId": 0,
       "rawId": 260000,
@@ -11142,470 +11606,6 @@ window.CHAMPIONS_DATA = {
             "category": "特殊",
             "power": 90,
             "accuracy": 100
-          }
-        ]
-      }
-    },
-    {
-      "id": 681,
-      "formId": 0,
-      "rawId": 681000,
-      "slug": "aegislash",
-      "name": "坚盾剑怪",
-      "enName": "Aegislash",
-      "types": [
-        "Steel",
-        "Ghost"
-      ],
-      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/681.png",
-      "baseStats": {
-        "hp": 60,
-        "atk": 50,
-        "def": 140,
-        "spa": 50,
-        "spd": 140,
-        "spe": 60
-      },
-      "abilities": [
-        {
-          "id": 0,
-          "name": "战斗切换",
-          "desc": "使出攻击时，会变为刀剑形态， 使出招式“王者盾牌”时， 会变为盾牌形态。",
-          "usage": 100.0,
-          "usageText": "100.0%"
-        }
-      ],
-      "learnset": [
-        {
-          "id": 425,
-          "name": "影子偷袭",
-          "power": 40,
-          "accuracy": 100,
-          "type": "Ghost",
-          "category": "物理",
-          "priority": 1,
-          "usage": 95.0,
-          "tag": "95.0%"
-        },
-        {
-          "id": 588,
-          "name": "王者盾牌",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Steel",
-          "category": "变化",
-          "priority": 4,
-          "usage": 73.0,
-          "tag": "73.0%"
-        },
-        {
-          "id": 809,
-          "name": "灵骚",
-          "power": 110,
-          "accuracy": 90,
-          "type": "Ghost",
-          "category": "物理",
-          "priority": 0,
-          "usage": 67.0,
-          "tag": "67.0%"
-        },
-        {
-          "id": 533,
-          "name": "圣剑",
-          "power": 90,
-          "accuracy": 100,
-          "type": "Fighting",
-          "category": "物理",
-          "priority": 0,
-          "usage": 43.0,
-          "tag": "43.0%"
-        },
-        {
-          "id": 14,
-          "name": "剑舞",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Normal",
-          "category": "变化",
-          "priority": 0,
-          "usage": 37.0,
-          "tag": "37.0%"
-        },
-        {
-          "id": 247,
-          "name": "暗影球",
-          "power": 80,
-          "accuracy": 100,
-          "type": "Ghost",
-          "category": "特殊",
-          "priority": 0,
-          "usage": 25.0,
-          "tag": "25.0%"
-        },
-        {
-          "id": 370,
-          "name": "近身战",
-          "power": 120,
-          "accuracy": 100,
-          "type": "Fighting",
-          "category": "物理",
-          "priority": 0,
-          "usage": 20.0,
-          "tag": "20.0%"
-        },
-        {
-          "id": 442,
-          "name": "铁头",
-          "power": 80,
-          "accuracy": 100,
-          "type": "Steel",
-          "category": "物理",
-          "priority": 0,
-          "usage": 16.0,
-          "tag": "16.0%"
-        },
-        {
-          "id": 430,
-          "name": "加农光炮",
-          "power": 80,
-          "accuracy": 100,
-          "type": "Steel",
-          "category": "特殊",
-          "priority": 0,
-          "usage": 8.0,
-          "tag": "8.0%"
-        },
-        {
-          "id": 796,
-          "name": "铁蹄光线",
-          "power": 140,
-          "accuracy": 95,
-          "type": "Steel",
-          "category": "特殊",
-          "priority": 0,
-          "usage": 5.0,
-          "tag": "5.0%"
-        }
-      ],
-      "isMega": false,
-      "formKey": "",
-      "tags": [
-        "Rank #24",
-        "M-5双打"
-      ],
-      "mega": {
-        "supported": false
-      },
-      "metaUsage": {
-        "rank": 24,
-        "items": [
-          {
-            "name": "吃剩的东西",
-            "usage": 36.0
-          },
-          {
-            "name": "诅咒之符",
-            "usage": 23.0
-          },
-          {
-            "name": "生命宝珠",
-            "usage": 21.0
-          },
-          {
-            "name": "气势披带",
-            "usage": 11.0
-          },
-          {
-            "name": "文柚果",
-            "usage": 2.0
-          },
-          {
-            "name": "木子果",
-            "usage": 1.0
-          },
-          {
-            "name": "达人带",
-            "usage": 0.4
-          },
-          {
-            "name": "腰木果",
-            "usage": 0.3
-          },
-          {
-            "name": "先制之爪",
-            "usage": 0.2
-          },
-          {
-            "name": "力量头带",
-            "usage": 0.2
-          }
-        ],
-        "natures": [
-          {
-            "name": "固执",
-            "usage": 57.0
-          },
-          {
-            "name": "冷静",
-            "usage": 18.0
-          },
-          {
-            "name": "勇敢",
-            "usage": 13.0
-          },
-          {
-            "name": "内敛",
-            "usage": 3.0
-          },
-          {
-            "name": "自大",
-            "usage": 2.0
-          },
-          {
-            "name": "淘气",
-            "usage": 1.0
-          },
-          {
-            "name": "慎重",
-            "usage": 1.0
-          },
-          {
-            "name": "悠闲",
-            "usage": 1.0
-          },
-          {
-            "name": "爽朗",
-            "usage": 0.8
-          },
-          {
-            "name": "顽皮",
-            "usage": 0.3
-          }
-        ],
-        "partners": [
-          {
-            "name": "烈咬陆鲨",
-            "rank": 1
-          },
-          {
-            "name": "河马兽",
-            "rank": 2
-          },
-          {
-            "name": "魔幻假面喵",
-            "rank": 3
-          },
-          {
-            "name": "西狮海壬",
-            "rank": 4
-          },
-          {
-            "name": "快龙",
-            "rank": 5
-          },
-          {
-            "name": "暴鲤龙",
-            "rank": 6
-          },
-          {
-            "name": "三首恶龙",
-            "rank": 7
-          },
-          {
-            "name": "妖火红狐",
-            "rank": 8
-          },
-          {
-            "name": "喷火龙",
-            "rank": 9
-          },
-          {
-            "name": "晶光花",
-            "rank": 10
-          }
-        ],
-        "evSpreads": [
-          {
-            "rank": 1,
-            "hp": 32,
-            "atk": 32,
-            "def": 1,
-            "spa": 0,
-            "spd": 1,
-            "spe": 0,
-            "usage": 16.8
-          },
-          {
-            "rank": 2,
-            "hp": 2,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 9.4
-          },
-          {
-            "rank": 3,
-            "hp": 32,
-            "atk": 32,
-            "def": 2,
-            "spa": 0,
-            "spd": 0,
-            "spe": 0,
-            "usage": 7.3
-          },
-          {
-            "rank": 4,
-            "hp": 32,
-            "atk": 0,
-            "def": 1,
-            "spa": 32,
-            "spd": 1,
-            "spe": 0,
-            "usage": 5.8
-          },
-          {
-            "rank": 5,
-            "hp": 32,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 2,
-            "usage": 5.1
-          },
-          {
-            "rank": 6,
-            "hp": 32,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 2,
-            "spe": 0,
-            "usage": 4.4
-          },
-          {
-            "rank": 7,
-            "hp": 32,
-            "atk": 2,
-            "def": 0,
-            "spa": 32,
-            "spd": 0,
-            "spe": 0,
-            "usage": 4.3
-          },
-          {
-            "rank": 8,
-            "hp": 24,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 10,
-            "usage": 2.0
-          },
-          {
-            "rank": 9,
-            "hp": 32,
-            "atk": 0,
-            "def": 0,
-            "spa": 32,
-            "spd": 2,
-            "spe": 0,
-            "usage": 1.7
-          },
-          {
-            "rank": 10,
-            "hp": 32,
-            "atk": 26,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 8,
-            "usage": 1.7
-          }
-        ],
-        "topMoves": [
-          {
-            "name": "影子偷袭",
-            "usage": 95.0,
-            "type": "Ghost",
-            "category": "物理",
-            "power": 40,
-            "accuracy": 100
-          },
-          {
-            "name": "王者盾牌",
-            "usage": 73.0,
-            "type": "Steel",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "灵骚",
-            "usage": 67.0,
-            "type": "Ghost",
-            "category": "物理",
-            "power": 110,
-            "accuracy": 90
-          },
-          {
-            "name": "圣剑",
-            "usage": 43.0,
-            "type": "Fighting",
-            "category": "物理",
-            "power": 90,
-            "accuracy": 100
-          },
-          {
-            "name": "剑舞",
-            "usage": 37.0,
-            "type": "Normal",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "暗影球",
-            "usage": 25.0,
-            "type": "Ghost",
-            "category": "特殊",
-            "power": 80,
-            "accuracy": 100
-          },
-          {
-            "name": "近身战",
-            "usage": 20.0,
-            "type": "Fighting",
-            "category": "物理",
-            "power": 120,
-            "accuracy": 100
-          },
-          {
-            "name": "铁头",
-            "usage": 16.0,
-            "type": "Steel",
-            "category": "物理",
-            "power": 80,
-            "accuracy": 100
-          },
-          {
-            "name": "加农光炮",
-            "usage": 8.0,
-            "type": "Steel",
-            "category": "特殊",
-            "power": 80,
-            "accuracy": 100
-          },
-          {
-            "name": "铁蹄光线",
-            "usage": 5.0,
-            "type": "Steel",
-            "category": "特殊",
-            "power": 140,
-            "accuracy": 95
           }
         ]
       }
@@ -18562,484 +18562,6 @@ window.CHAMPIONS_DATA = {
             "category": "物理",
             "power": 85,
             "accuracy": 100
-          }
-        ]
-      }
-    },
-    {
-      "id": 748,
-      "formId": 0,
-      "rawId": 748000,
-      "slug": "toxapex",
-      "name": "超坏星",
-      "enName": "Toxapex",
-      "types": [
-        "Poison",
-        "Water"
-      ],
-      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/748.png",
-      "baseStats": {
-        "hp": 50,
-        "atk": 63,
-        "def": 152,
-        "spa": 53,
-        "spd": 142,
-        "spe": 35
-      },
-      "abilities": [
-        {
-          "id": 0,
-          "name": "再生力",
-          "desc": "回到同行队伍后，会回复最大HP的1/3。",
-          "usage": 96.0,
-          "usageText": "96.0%"
-        },
-        {
-          "id": 0,
-          "name": "不仁不义",
-          "desc": "攻击陷入中毒、剧毒状态的对手时， 必定会击中要害。",
-          "usage": 3.0,
-          "usageText": "3.0%"
-        },
-        {
-          "id": 0,
-          "name": "柔软",
-          "desc": "不会陷入麻痹状态。",
-          "usage": 0.8,
-          "usageText": "0.8%"
-        }
-      ],
-      "learnset": [
-        {
-          "id": 105,
-          "name": "自我再生",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Normal",
-          "category": "变化",
-          "priority": 0,
-          "usage": 96.0,
-          "tag": "96.0%"
-        },
-        {
-          "id": 92,
-          "name": "剧毒",
-          "power": 0,
-          "accuracy": 90,
-          "type": "Poison",
-          "category": "变化",
-          "priority": 0,
-          "usage": 93.0,
-          "tag": "93.0%"
-        },
-        {
-          "id": 114,
-          "name": "黑雾",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Ice",
-          "category": "变化",
-          "priority": 0,
-          "usage": 60.0,
-          "tag": "60.0%"
-        },
-        {
-          "id": 611,
-          "name": "纠缠不休",
-          "power": 20,
-          "accuracy": 100,
-          "type": "Bug",
-          "category": "特殊",
-          "priority": 0,
-          "usage": 47.0,
-          "tag": "47.0%"
-        },
-        {
-          "id": 661,
-          "name": "碉堡",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Poison",
-          "category": "变化",
-          "priority": 4,
-          "usage": 42.0,
-          "tag": "42.0%"
-        },
-        {
-          "id": 710,
-          "name": "水流裂破",
-          "power": 85,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 0,
-          "usage": 25.0,
-          "tag": "25.0%"
-        },
-        {
-          "id": 390,
-          "name": "毒菱",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Poison",
-          "category": "变化",
-          "priority": 0,
-          "usage": 12.0,
-          "tag": "12.0%"
-        },
-        {
-          "id": 886,
-          "name": "泼冷水",
-          "power": 50,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "特殊",
-          "priority": 0,
-          "usage": 3.0,
-          "tag": "3.0%"
-        },
-        {
-          "id": 371,
-          "name": "以牙还牙",
-          "power": 50,
-          "accuracy": 100,
-          "type": "Dark",
-          "category": "物理",
-          "priority": 0,
-          "usage": 2.0,
-          "tag": "2.0%"
-        },
-        {
-          "id": 182,
-          "name": "守住",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Normal",
-          "category": "变化",
-          "priority": 4,
-          "usage": 1.0,
-          "tag": "1.0%"
-        }
-      ],
-      "isMega": false,
-      "formKey": "",
-      "tags": [
-        "Rank #37",
-        "M-5双打"
-      ],
-      "mega": {
-        "supported": false
-      },
-      "metaUsage": {
-        "rank": 37,
-        "items": [
-          {
-            "name": "吃剩的东西",
-            "usage": 67.0
-          },
-          {
-            "name": "文柚果",
-            "usage": 19.0
-          },
-          {
-            "name": "心灵香草",
-            "usage": 4.0
-          },
-          {
-            "name": "腰木果",
-            "usage": 3.0
-          },
-          {
-            "name": "光粉",
-            "usage": 1.0
-          },
-          {
-            "name": "木子果",
-            "usage": 0.5
-          },
-          {
-            "name": "先制之爪",
-            "usage": 0.5
-          },
-          {
-            "name": "生命宝珠",
-            "usage": 0.4
-          },
-          {
-            "name": "美丽空壳",
-            "usage": 0.4
-          },
-          {
-            "name": "气势披带",
-            "usage": 0.2
-          }
-        ],
-        "natures": [
-          {
-            "name": "慎重",
-            "usage": 33.0
-          },
-          {
-            "name": "大胆",
-            "usage": 25.0
-          },
-          {
-            "name": "温和",
-            "usage": 16.0
-          },
-          {
-            "name": "淘气",
-            "usage": 12.0
-          },
-          {
-            "name": "自大",
-            "usage": 5.0
-          },
-          {
-            "name": "悠闲",
-            "usage": 4.0
-          },
-          {
-            "name": "内敛",
-            "usage": 0.9
-          },
-          {
-            "name": "固执",
-            "usage": 0.4
-          },
-          {
-            "name": "冷静",
-            "usage": 0.2
-          },
-          {
-            "name": "勇敢",
-            "usage": 0.2
-          }
-        ],
-        "partners": [
-          {
-            "name": "烈咬陆鲨",
-            "rank": 1
-          },
-          {
-            "name": "妖火红狐",
-            "rank": 2
-          },
-          {
-            "name": "钢铠鸦",
-            "rank": 3
-          },
-          {
-            "name": "大剑鬼",
-            "rank": 4
-          },
-          {
-            "name": "魔幻假面喵",
-            "rank": 5
-          },
-          {
-            "name": "花叶蒂",
-            "rank": 6
-          },
-          {
-            "name": "月亮伊布",
-            "rank": 7
-          },
-          {
-            "name": "谜拟Ｑ",
-            "rank": 8
-          },
-          {
-            "name": "河马兽",
-            "rank": 9
-          },
-          {
-            "name": "快龙",
-            "rank": 10
-          }
-        ],
-        "evSpreads": [
-          {
-            "rank": 1,
-            "hp": 32,
-            "atk": 0,
-            "def": 14,
-            "spa": 0,
-            "spd": 20,
-            "spe": 0,
-            "usage": 25.3
-          },
-          {
-            "rank": 2,
-            "hp": 32,
-            "atk": 0,
-            "def": 2,
-            "spa": 0,
-            "spd": 32,
-            "spe": 0,
-            "usage": 18.6
-          },
-          {
-            "rank": 3,
-            "hp": 32,
-            "atk": 0,
-            "def": 32,
-            "spa": 0,
-            "spd": 2,
-            "spe": 0,
-            "usage": 17.8
-          },
-          {
-            "rank": 4,
-            "hp": 32,
-            "atk": 0,
-            "def": 28,
-            "spa": 0,
-            "spd": 6,
-            "spe": 0,
-            "usage": 3.8
-          },
-          {
-            "rank": 5,
-            "hp": 2,
-            "atk": 0,
-            "def": 32,
-            "spa": 0,
-            "spd": 32,
-            "spe": 0,
-            "usage": 3.3
-          },
-          {
-            "rank": 6,
-            "hp": 32,
-            "atk": 0,
-            "def": 18,
-            "spa": 0,
-            "spd": 16,
-            "spe": 0,
-            "usage": 2.7
-          },
-          {
-            "rank": 7,
-            "hp": 32,
-            "atk": 0,
-            "def": 6,
-            "spa": 0,
-            "spd": 28,
-            "spe": 0,
-            "usage": 2.3
-          },
-          {
-            "rank": 8,
-            "hp": 32,
-            "atk": 0,
-            "def": 16,
-            "spa": 0,
-            "spd": 18,
-            "spe": 0,
-            "usage": 1.9
-          },
-          {
-            "rank": 9,
-            "hp": 32,
-            "atk": 0,
-            "def": 31,
-            "spa": 0,
-            "spd": 3,
-            "spe": 0,
-            "usage": 1.7
-          },
-          {
-            "rank": 10,
-            "hp": 32,
-            "atk": 0,
-            "def": 20,
-            "spa": 0,
-            "spd": 14,
-            "spe": 0,
-            "usage": 1.3
-          }
-        ],
-        "topMoves": [
-          {
-            "name": "自我再生",
-            "usage": 96.0,
-            "type": "Normal",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "剧毒",
-            "usage": 93.0,
-            "type": "Poison",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 90
-          },
-          {
-            "name": "黑雾",
-            "usage": 60.0,
-            "type": "Ice",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "纠缠不休",
-            "usage": 47.0,
-            "type": "Bug",
-            "category": "特殊",
-            "power": 20,
-            "accuracy": 100
-          },
-          {
-            "name": "碉堡",
-            "usage": 42.0,
-            "type": "Poison",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "水流裂破",
-            "usage": 25.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 85,
-            "accuracy": 100
-          },
-          {
-            "name": "毒菱",
-            "usage": 12.0,
-            "type": "Poison",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "泼冷水",
-            "usage": 3.0,
-            "type": "Water",
-            "category": "特殊",
-            "power": 50,
-            "accuracy": 100
-          },
-          {
-            "name": "以牙还牙",
-            "usage": 2.0,
-            "type": "Dark",
-            "category": "物理",
-            "power": 50,
-            "accuracy": 100
-          },
-          {
-            "name": "守住",
-            "usage": 1.0,
-            "type": "Normal",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
           }
         ]
       }
@@ -26368,6 +25890,484 @@ window.CHAMPIONS_DATA = {
             "category": "物理",
             "power": 70,
             "accuracy": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": 748,
+      "formId": 0,
+      "rawId": 748000,
+      "slug": "toxapex",
+      "name": "超坏星",
+      "enName": "Toxapex",
+      "types": [
+        "Poison",
+        "Water"
+      ],
+      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/748.png",
+      "baseStats": {
+        "hp": 50,
+        "atk": 63,
+        "def": 152,
+        "spa": 53,
+        "spd": 142,
+        "spe": 35
+      },
+      "abilities": [
+        {
+          "id": 0,
+          "name": "再生力",
+          "desc": "回到同行队伍后，会回复最大HP的1/3。",
+          "usage": 96.0,
+          "usageText": "96.0%"
+        },
+        {
+          "id": 0,
+          "name": "不仁不义",
+          "desc": "攻击陷入中毒、剧毒状态的对手时， 必定会击中要害。",
+          "usage": 3.0,
+          "usageText": "3.0%"
+        },
+        {
+          "id": 0,
+          "name": "柔软",
+          "desc": "不会陷入麻痹状态。",
+          "usage": 0.8,
+          "usageText": "0.8%"
+        }
+      ],
+      "learnset": [
+        {
+          "id": 105,
+          "name": "自我再生",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Normal",
+          "category": "变化",
+          "priority": 0,
+          "usage": 96.0,
+          "tag": "96.0%"
+        },
+        {
+          "id": 92,
+          "name": "剧毒",
+          "power": 0,
+          "accuracy": 90,
+          "type": "Poison",
+          "category": "变化",
+          "priority": 0,
+          "usage": 93.0,
+          "tag": "93.0%"
+        },
+        {
+          "id": 114,
+          "name": "黑雾",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Ice",
+          "category": "变化",
+          "priority": 0,
+          "usage": 60.0,
+          "tag": "60.0%"
+        },
+        {
+          "id": 611,
+          "name": "纠缠不休",
+          "power": 20,
+          "accuracy": 100,
+          "type": "Bug",
+          "category": "特殊",
+          "priority": 0,
+          "usage": 47.0,
+          "tag": "47.0%"
+        },
+        {
+          "id": 661,
+          "name": "碉堡",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Poison",
+          "category": "变化",
+          "priority": 4,
+          "usage": 42.0,
+          "tag": "42.0%"
+        },
+        {
+          "id": 710,
+          "name": "水流裂破",
+          "power": 85,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 0,
+          "usage": 25.0,
+          "tag": "25.0%"
+        },
+        {
+          "id": 390,
+          "name": "毒菱",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Poison",
+          "category": "变化",
+          "priority": 0,
+          "usage": 12.0,
+          "tag": "12.0%"
+        },
+        {
+          "id": 886,
+          "name": "泼冷水",
+          "power": 50,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "特殊",
+          "priority": 0,
+          "usage": 3.0,
+          "tag": "3.0%"
+        },
+        {
+          "id": 371,
+          "name": "以牙还牙",
+          "power": 50,
+          "accuracy": 100,
+          "type": "Dark",
+          "category": "物理",
+          "priority": 0,
+          "usage": 2.0,
+          "tag": "2.0%"
+        },
+        {
+          "id": 182,
+          "name": "守住",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Normal",
+          "category": "变化",
+          "priority": 4,
+          "usage": 1.0,
+          "tag": "1.0%"
+        }
+      ],
+      "isMega": false,
+      "formKey": "",
+      "tags": [
+        "Rank #53",
+        "M-5双打"
+      ],
+      "mega": {
+        "supported": false
+      },
+      "metaUsage": {
+        "rank": 53,
+        "items": [
+          {
+            "name": "吃剩的东西",
+            "usage": 67.0
+          },
+          {
+            "name": "文柚果",
+            "usage": 19.0
+          },
+          {
+            "name": "心灵香草",
+            "usage": 4.0
+          },
+          {
+            "name": "腰木果",
+            "usage": 3.0
+          },
+          {
+            "name": "光粉",
+            "usage": 1.0
+          },
+          {
+            "name": "木子果",
+            "usage": 0.5
+          },
+          {
+            "name": "先制之爪",
+            "usage": 0.5
+          },
+          {
+            "name": "生命宝珠",
+            "usage": 0.4
+          },
+          {
+            "name": "美丽空壳",
+            "usage": 0.4
+          },
+          {
+            "name": "气势披带",
+            "usage": 0.2
+          }
+        ],
+        "natures": [
+          {
+            "name": "慎重",
+            "usage": 33.0
+          },
+          {
+            "name": "大胆",
+            "usage": 25.0
+          },
+          {
+            "name": "温和",
+            "usage": 16.0
+          },
+          {
+            "name": "淘气",
+            "usage": 12.0
+          },
+          {
+            "name": "自大",
+            "usage": 5.0
+          },
+          {
+            "name": "悠闲",
+            "usage": 4.0
+          },
+          {
+            "name": "内敛",
+            "usage": 0.9
+          },
+          {
+            "name": "固执",
+            "usage": 0.4
+          },
+          {
+            "name": "冷静",
+            "usage": 0.2
+          },
+          {
+            "name": "勇敢",
+            "usage": 0.2
+          }
+        ],
+        "partners": [
+          {
+            "name": "烈咬陆鲨",
+            "rank": 1
+          },
+          {
+            "name": "妖火红狐",
+            "rank": 2
+          },
+          {
+            "name": "钢铠鸦",
+            "rank": 3
+          },
+          {
+            "name": "大剑鬼",
+            "rank": 4
+          },
+          {
+            "name": "魔幻假面喵",
+            "rank": 5
+          },
+          {
+            "name": "花叶蒂",
+            "rank": 6
+          },
+          {
+            "name": "月亮伊布",
+            "rank": 7
+          },
+          {
+            "name": "谜拟Ｑ",
+            "rank": 8
+          },
+          {
+            "name": "河马兽",
+            "rank": 9
+          },
+          {
+            "name": "快龙",
+            "rank": 10
+          }
+        ],
+        "evSpreads": [
+          {
+            "rank": 1,
+            "hp": 32,
+            "atk": 0,
+            "def": 14,
+            "spa": 0,
+            "spd": 20,
+            "spe": 0,
+            "usage": 25.3
+          },
+          {
+            "rank": 2,
+            "hp": 32,
+            "atk": 0,
+            "def": 2,
+            "spa": 0,
+            "spd": 32,
+            "spe": 0,
+            "usage": 18.6
+          },
+          {
+            "rank": 3,
+            "hp": 32,
+            "atk": 0,
+            "def": 32,
+            "spa": 0,
+            "spd": 2,
+            "spe": 0,
+            "usage": 17.8
+          },
+          {
+            "rank": 4,
+            "hp": 32,
+            "atk": 0,
+            "def": 28,
+            "spa": 0,
+            "spd": 6,
+            "spe": 0,
+            "usage": 3.8
+          },
+          {
+            "rank": 5,
+            "hp": 2,
+            "atk": 0,
+            "def": 32,
+            "spa": 0,
+            "spd": 32,
+            "spe": 0,
+            "usage": 3.3
+          },
+          {
+            "rank": 6,
+            "hp": 32,
+            "atk": 0,
+            "def": 18,
+            "spa": 0,
+            "spd": 16,
+            "spe": 0,
+            "usage": 2.7
+          },
+          {
+            "rank": 7,
+            "hp": 32,
+            "atk": 0,
+            "def": 6,
+            "spa": 0,
+            "spd": 28,
+            "spe": 0,
+            "usage": 2.3
+          },
+          {
+            "rank": 8,
+            "hp": 32,
+            "atk": 0,
+            "def": 16,
+            "spa": 0,
+            "spd": 18,
+            "spe": 0,
+            "usage": 1.9
+          },
+          {
+            "rank": 9,
+            "hp": 32,
+            "atk": 0,
+            "def": 31,
+            "spa": 0,
+            "spd": 3,
+            "spe": 0,
+            "usage": 1.7
+          },
+          {
+            "rank": 10,
+            "hp": 32,
+            "atk": 0,
+            "def": 20,
+            "spa": 0,
+            "spd": 14,
+            "spe": 0,
+            "usage": 1.3
+          }
+        ],
+        "topMoves": [
+          {
+            "name": "自我再生",
+            "usage": 96.0,
+            "type": "Normal",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "剧毒",
+            "usage": 93.0,
+            "type": "Poison",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 90
+          },
+          {
+            "name": "黑雾",
+            "usage": 60.0,
+            "type": "Ice",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "纠缠不休",
+            "usage": 47.0,
+            "type": "Bug",
+            "category": "特殊",
+            "power": 20,
+            "accuracy": 100
+          },
+          {
+            "name": "碉堡",
+            "usage": 42.0,
+            "type": "Poison",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "水流裂破",
+            "usage": 25.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 85,
+            "accuracy": 100
+          },
+          {
+            "name": "毒菱",
+            "usage": 12.0,
+            "type": "Poison",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "泼冷水",
+            "usage": 3.0,
+            "type": "Water",
+            "category": "特殊",
+            "power": 50,
+            "accuracy": 100
+          },
+          {
+            "name": "以牙还牙",
+            "usage": 2.0,
+            "type": "Dark",
+            "category": "物理",
+            "power": 50,
+            "accuracy": 100
+          },
+          {
+            "name": "守住",
+            "usage": 1.0,
+            "type": "Normal",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
           }
         ]
       }
@@ -64591,6 +64591,477 @@ window.CHAMPIONS_DATA = {
       }
     },
     {
+      "id": 442,
+      "formId": 0,
+      "rawId": 442000,
+      "slug": "spiritomb",
+      "name": "花岩怪",
+      "enName": "Spiritomb",
+      "types": [
+        "Ghost",
+        "Dark"
+      ],
+      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/442.png",
+      "baseStats": {
+        "hp": 50,
+        "atk": 92,
+        "def": 108,
+        "spa": 92,
+        "spd": 108,
+        "spe": 35
+      },
+      "abilities": [
+        {
+          "id": 0,
+          "name": "穿透",
+          "desc": "能无视对手的光墙、反射壁、 极光幕、神秘守护、替身使用招式。",
+          "usage": 76.0,
+          "usageText": "76.0%"
+        },
+        {
+          "id": 0,
+          "name": "压迫感",
+          "desc": "让对手对自己使用的招式的PP额外减少1。",
+          "usage": 23.0,
+          "usageText": "23.0%"
+        }
+      ],
+      "learnset": [
+        {
+          "id": 261,
+          "name": "磷火",
+          "power": 0,
+          "accuracy": 85,
+          "type": "Fire",
+          "category": "变化",
+          "priority": 0,
+          "usage": 55.0,
+          "tag": "55.0%"
+        },
+        {
+          "id": 492,
+          "name": "移花接木",
+          "power": 95,
+          "accuracy": 100,
+          "type": "Dark",
+          "category": "物理",
+          "priority": 0,
+          "usage": 53.0,
+          "tag": "53.0%"
+        },
+        {
+          "id": 433,
+          "name": "戏法空间",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Psychic",
+          "category": "变化",
+          "priority": -7,
+          "usage": 47.0,
+          "tag": "47.0%"
+        },
+        {
+          "id": 174,
+          "name": "咒术",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Ghost",
+          "category": "变化",
+          "priority": 0,
+          "usage": 32.0,
+          "tag": "32.0%"
+        },
+        {
+          "id": 220,
+          "name": "分担痛楚",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Normal",
+          "category": "变化",
+          "priority": 0,
+          "usage": 30.0,
+          "tag": "30.0%"
+        },
+        {
+          "id": 194,
+          "name": "同命",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Ghost",
+          "category": "变化",
+          "priority": 0,
+          "usage": 29.0,
+          "tag": "29.0%"
+        },
+        {
+          "id": 262,
+          "name": "临别礼物",
+          "power": 0,
+          "accuracy": 100,
+          "type": "Dark",
+          "category": "变化",
+          "priority": 0,
+          "usage": 21.0,
+          "tag": "21.0%"
+        },
+        {
+          "id": 389,
+          "name": "突袭",
+          "power": 70,
+          "accuracy": 100,
+          "type": "Dark",
+          "category": "物理",
+          "priority": 1,
+          "usage": 19.0,
+          "tag": "19.0%"
+        },
+        {
+          "id": 809,
+          "name": "灵骚",
+          "power": 110,
+          "accuracy": 90,
+          "type": "Ghost",
+          "category": "物理",
+          "priority": 0,
+          "usage": 15.0,
+          "tag": "15.0%"
+        },
+        {
+          "id": 92,
+          "name": "剧毒",
+          "power": 0,
+          "accuracy": 90,
+          "type": "Poison",
+          "category": "变化",
+          "priority": 0,
+          "usage": 13.0,
+          "tag": "13.0%"
+        }
+      ],
+      "isMega": false,
+      "formKey": "",
+      "tags": [
+        "Rank #132",
+        "M-5双打"
+      ],
+      "mega": {
+        "supported": false
+      },
+      "metaUsage": {
+        "rank": 132,
+        "items": [
+          {
+            "name": "文柚果",
+            "usage": 27.0
+          },
+          {
+            "name": "吃剩的东西",
+            "usage": 21.0
+          },
+          {
+            "name": "洛玫果",
+            "usage": 11.0
+          },
+          {
+            "name": "心灵香草",
+            "usage": 10.0
+          },
+          {
+            "name": "气势披带",
+            "usage": 5.0
+          },
+          {
+            "name": "先制之爪",
+            "usage": 4.0
+          },
+          {
+            "name": "对焦镜",
+            "usage": 2.0
+          },
+          {
+            "name": "木子果",
+            "usage": 2.0
+          },
+          {
+            "name": "黑色眼镜",
+            "usage": 2.0
+          },
+          {
+            "name": "生命宝珠",
+            "usage": 2.0
+          }
+        ],
+        "natures": [
+          {
+            "name": "悠闲",
+            "usage": 32.0
+          },
+          {
+            "name": "自大",
+            "usage": 13.0
+          },
+          {
+            "name": "大胆",
+            "usage": 10.0
+          },
+          {
+            "name": "淘气",
+            "usage": 9.0
+          },
+          {
+            "name": "慎重",
+            "usage": 7.0
+          },
+          {
+            "name": "温和",
+            "usage": 7.0
+          },
+          {
+            "name": "固执",
+            "usage": 7.0
+          },
+          {
+            "name": "勇敢",
+            "usage": 4.0
+          },
+          {
+            "name": "冷静",
+            "usage": 2.0
+          },
+          {
+            "name": "内敛",
+            "usage": 1.0
+          }
+        ],
+        "partners": [
+          {
+            "name": "烈咬陆鲨",
+            "rank": 1
+          },
+          {
+            "name": "路卡利欧",
+            "rank": 2
+          },
+          {
+            "name": "美纳斯",
+            "rank": 3
+          },
+          {
+            "name": "大嘴娃",
+            "rank": 4
+          },
+          {
+            "name": "罗丝雷朵",
+            "rank": 5
+          },
+          {
+            "name": "魔幻假面喵",
+            "rank": 6
+          },
+          {
+            "name": "姆克鹰",
+            "rank": 7
+          },
+          {
+            "name": "喷火龙",
+            "rank": 8
+          },
+          {
+            "name": "幽尾玄鱼",
+            "rank": 9
+          },
+          {
+            "name": "谜拟Ｑ",
+            "rank": 10
+          }
+        ],
+        "evSpreads": [
+          {
+            "rank": 1,
+            "hp": 32,
+            "atk": 0,
+            "def": 32,
+            "spa": 0,
+            "spd": 2,
+            "spe": 0,
+            "usage": 22.7
+          },
+          {
+            "rank": 2,
+            "hp": 32,
+            "atk": 0,
+            "def": 2,
+            "spa": 0,
+            "spd": 32,
+            "spe": 0,
+            "usage": 9.7
+          },
+          {
+            "rank": 3,
+            "hp": 2,
+            "atk": 0,
+            "def": 32,
+            "spa": 0,
+            "spd": 32,
+            "spe": 0,
+            "usage": 6.7
+          },
+          {
+            "rank": 4,
+            "hp": 32,
+            "atk": 0,
+            "def": 12,
+            "spa": 0,
+            "spd": 22,
+            "spe": 0,
+            "usage": 5.2
+          },
+          {
+            "rank": 5,
+            "hp": 32,
+            "atk": 0,
+            "def": 22,
+            "spa": 0,
+            "spd": 12,
+            "spe": 0,
+            "usage": 3.2
+          },
+          {
+            "rank": 6,
+            "hp": 31,
+            "atk": 0,
+            "def": 11,
+            "spa": 0,
+            "spd": 24,
+            "spe": 0,
+            "usage": 2.6
+          },
+          {
+            "rank": 7,
+            "hp": 32,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 2,
+            "spe": 0,
+            "usage": 2.1
+          },
+          {
+            "rank": 8,
+            "hp": 32,
+            "atk": 32,
+            "def": 1,
+            "spa": 0,
+            "spd": 1,
+            "spe": 0,
+            "usage": 2.0
+          },
+          {
+            "rank": 9,
+            "hp": 0,
+            "atk": 32,
+            "def": 32,
+            "spa": 0,
+            "spd": 2,
+            "spe": 0,
+            "usage": 1.9
+          },
+          {
+            "rank": 10,
+            "hp": 32,
+            "atk": 0,
+            "def": 32,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0,
+            "usage": 1.7
+          }
+        ],
+        "topMoves": [
+          {
+            "name": "磷火",
+            "usage": 55.0,
+            "type": "Fire",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 85
+          },
+          {
+            "name": "移花接木",
+            "usage": 53.0,
+            "type": "Dark",
+            "category": "物理",
+            "power": 95,
+            "accuracy": 100
+          },
+          {
+            "name": "戏法空间",
+            "usage": 47.0,
+            "type": "Psychic",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "咒术",
+            "usage": 32.0,
+            "type": "Ghost",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "分担痛楚",
+            "usage": 30.0,
+            "type": "Normal",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "同命",
+            "usage": 29.0,
+            "type": "Ghost",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "临别礼物",
+            "usage": 21.0,
+            "type": "Dark",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 100
+          },
+          {
+            "name": "突袭",
+            "usage": 19.0,
+            "type": "Dark",
+            "category": "物理",
+            "power": 70,
+            "accuracy": 100
+          },
+          {
+            "name": "灵骚",
+            "usage": 15.0,
+            "type": "Ghost",
+            "category": "物理",
+            "power": 110,
+            "accuracy": 90
+          },
+          {
+            "name": "剧毒",
+            "usage": 13.0,
+            "type": "Poison",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 90
+          }
+        ]
+      }
+    },
+    {
       "id": 132,
       "formId": 0,
       "rawId": 132000,
@@ -73159,477 +73630,6 @@ window.CHAMPIONS_DATA = {
             "category": "特殊",
             "power": 80,
             "accuracy": 101
-          }
-        ]
-      }
-    },
-    {
-      "id": 442,
-      "formId": 0,
-      "rawId": 442000,
-      "slug": "spiritomb",
-      "name": "花岩怪",
-      "enName": "Spiritomb",
-      "types": [
-        "Ghost",
-        "Dark"
-      ],
-      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/442.png",
-      "baseStats": {
-        "hp": 50,
-        "atk": 92,
-        "def": 108,
-        "spa": 92,
-        "spd": 108,
-        "spe": 35
-      },
-      "abilities": [
-        {
-          "id": 0,
-          "name": "穿透",
-          "desc": "能无视对手的光墙、反射壁、 极光幕、神秘守护、替身使用招式。",
-          "usage": 76.0,
-          "usageText": "76.0%"
-        },
-        {
-          "id": 0,
-          "name": "压迫感",
-          "desc": "让对手对自己使用的招式的PP额外减少1。",
-          "usage": 23.0,
-          "usageText": "23.0%"
-        }
-      ],
-      "learnset": [
-        {
-          "id": 261,
-          "name": "磷火",
-          "power": 0,
-          "accuracy": 85,
-          "type": "Fire",
-          "category": "变化",
-          "priority": 0,
-          "usage": 55.0,
-          "tag": "55.0%"
-        },
-        {
-          "id": 492,
-          "name": "移花接木",
-          "power": 95,
-          "accuracy": 100,
-          "type": "Dark",
-          "category": "物理",
-          "priority": 0,
-          "usage": 53.0,
-          "tag": "53.0%"
-        },
-        {
-          "id": 433,
-          "name": "戏法空间",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Psychic",
-          "category": "变化",
-          "priority": -7,
-          "usage": 47.0,
-          "tag": "47.0%"
-        },
-        {
-          "id": 174,
-          "name": "咒术",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Ghost",
-          "category": "变化",
-          "priority": 0,
-          "usage": 32.0,
-          "tag": "32.0%"
-        },
-        {
-          "id": 220,
-          "name": "分担痛楚",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Normal",
-          "category": "变化",
-          "priority": 0,
-          "usage": 30.0,
-          "tag": "30.0%"
-        },
-        {
-          "id": 194,
-          "name": "同命",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Ghost",
-          "category": "变化",
-          "priority": 0,
-          "usage": 29.0,
-          "tag": "29.0%"
-        },
-        {
-          "id": 262,
-          "name": "临别礼物",
-          "power": 0,
-          "accuracy": 100,
-          "type": "Dark",
-          "category": "变化",
-          "priority": 0,
-          "usage": 21.0,
-          "tag": "21.0%"
-        },
-        {
-          "id": 389,
-          "name": "突袭",
-          "power": 70,
-          "accuracy": 100,
-          "type": "Dark",
-          "category": "物理",
-          "priority": 1,
-          "usage": 19.0,
-          "tag": "19.0%"
-        },
-        {
-          "id": 809,
-          "name": "灵骚",
-          "power": 110,
-          "accuracy": 90,
-          "type": "Ghost",
-          "category": "物理",
-          "priority": 0,
-          "usage": 15.0,
-          "tag": "15.0%"
-        },
-        {
-          "id": 92,
-          "name": "剧毒",
-          "power": 0,
-          "accuracy": 90,
-          "type": "Poison",
-          "category": "变化",
-          "priority": 0,
-          "usage": 13.0,
-          "tag": "13.0%"
-        }
-      ],
-      "isMega": false,
-      "formKey": "",
-      "tags": [
-        "Rank #150",
-        "M-5双打"
-      ],
-      "mega": {
-        "supported": false
-      },
-      "metaUsage": {
-        "rank": 150,
-        "items": [
-          {
-            "name": "文柚果",
-            "usage": 27.0
-          },
-          {
-            "name": "吃剩的东西",
-            "usage": 21.0
-          },
-          {
-            "name": "洛玫果",
-            "usage": 11.0
-          },
-          {
-            "name": "心灵香草",
-            "usage": 10.0
-          },
-          {
-            "name": "气势披带",
-            "usage": 5.0
-          },
-          {
-            "name": "先制之爪",
-            "usage": 4.0
-          },
-          {
-            "name": "对焦镜",
-            "usage": 2.0
-          },
-          {
-            "name": "木子果",
-            "usage": 2.0
-          },
-          {
-            "name": "黑色眼镜",
-            "usage": 2.0
-          },
-          {
-            "name": "生命宝珠",
-            "usage": 2.0
-          }
-        ],
-        "natures": [
-          {
-            "name": "悠闲",
-            "usage": 32.0
-          },
-          {
-            "name": "自大",
-            "usage": 13.0
-          },
-          {
-            "name": "大胆",
-            "usage": 10.0
-          },
-          {
-            "name": "淘气",
-            "usage": 9.0
-          },
-          {
-            "name": "慎重",
-            "usage": 7.0
-          },
-          {
-            "name": "温和",
-            "usage": 7.0
-          },
-          {
-            "name": "固执",
-            "usage": 7.0
-          },
-          {
-            "name": "勇敢",
-            "usage": 4.0
-          },
-          {
-            "name": "冷静",
-            "usage": 2.0
-          },
-          {
-            "name": "内敛",
-            "usage": 1.0
-          }
-        ],
-        "partners": [
-          {
-            "name": "烈咬陆鲨",
-            "rank": 1
-          },
-          {
-            "name": "路卡利欧",
-            "rank": 2
-          },
-          {
-            "name": "美纳斯",
-            "rank": 3
-          },
-          {
-            "name": "大嘴娃",
-            "rank": 4
-          },
-          {
-            "name": "罗丝雷朵",
-            "rank": 5
-          },
-          {
-            "name": "魔幻假面喵",
-            "rank": 6
-          },
-          {
-            "name": "姆克鹰",
-            "rank": 7
-          },
-          {
-            "name": "喷火龙",
-            "rank": 8
-          },
-          {
-            "name": "幽尾玄鱼",
-            "rank": 9
-          },
-          {
-            "name": "谜拟Ｑ",
-            "rank": 10
-          }
-        ],
-        "evSpreads": [
-          {
-            "rank": 1,
-            "hp": 32,
-            "atk": 0,
-            "def": 32,
-            "spa": 0,
-            "spd": 2,
-            "spe": 0,
-            "usage": 22.7
-          },
-          {
-            "rank": 2,
-            "hp": 32,
-            "atk": 0,
-            "def": 2,
-            "spa": 0,
-            "spd": 32,
-            "spe": 0,
-            "usage": 9.7
-          },
-          {
-            "rank": 3,
-            "hp": 2,
-            "atk": 0,
-            "def": 32,
-            "spa": 0,
-            "spd": 32,
-            "spe": 0,
-            "usage": 6.7
-          },
-          {
-            "rank": 4,
-            "hp": 32,
-            "atk": 0,
-            "def": 12,
-            "spa": 0,
-            "spd": 22,
-            "spe": 0,
-            "usage": 5.2
-          },
-          {
-            "rank": 5,
-            "hp": 32,
-            "atk": 0,
-            "def": 22,
-            "spa": 0,
-            "spd": 12,
-            "spe": 0,
-            "usage": 3.2
-          },
-          {
-            "rank": 6,
-            "hp": 31,
-            "atk": 0,
-            "def": 11,
-            "spa": 0,
-            "spd": 24,
-            "spe": 0,
-            "usage": 2.6
-          },
-          {
-            "rank": 7,
-            "hp": 32,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 2,
-            "spe": 0,
-            "usage": 2.1
-          },
-          {
-            "rank": 8,
-            "hp": 32,
-            "atk": 32,
-            "def": 1,
-            "spa": 0,
-            "spd": 1,
-            "spe": 0,
-            "usage": 2.0
-          },
-          {
-            "rank": 9,
-            "hp": 0,
-            "atk": 32,
-            "def": 32,
-            "spa": 0,
-            "spd": 2,
-            "spe": 0,
-            "usage": 1.9
-          },
-          {
-            "rank": 10,
-            "hp": 32,
-            "atk": 0,
-            "def": 32,
-            "spa": 0,
-            "spd": 0,
-            "spe": 0,
-            "usage": 1.7
-          }
-        ],
-        "topMoves": [
-          {
-            "name": "磷火",
-            "usage": 55.0,
-            "type": "Fire",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 85
-          },
-          {
-            "name": "移花接木",
-            "usage": 53.0,
-            "type": "Dark",
-            "category": "物理",
-            "power": 95,
-            "accuracy": 100
-          },
-          {
-            "name": "戏法空间",
-            "usage": 47.0,
-            "type": "Psychic",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "咒术",
-            "usage": 32.0,
-            "type": "Ghost",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "分担痛楚",
-            "usage": 30.0,
-            "type": "Normal",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "同命",
-            "usage": 29.0,
-            "type": "Ghost",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "临别礼物",
-            "usage": 21.0,
-            "type": "Dark",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 100
-          },
-          {
-            "name": "突袭",
-            "usage": 19.0,
-            "type": "Dark",
-            "category": "物理",
-            "power": 70,
-            "accuracy": 100
-          },
-          {
-            "name": "灵骚",
-            "usage": 15.0,
-            "type": "Ghost",
-            "category": "物理",
-            "power": 110,
-            "accuracy": 90
-          },
-          {
-            "name": "剧毒",
-            "usage": 13.0,
-            "type": "Poison",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 90
           }
         ]
       }
@@ -89348,14 +89348,14 @@ window.CHAMPIONS_DATA = {
       "isMega": false,
       "formKey": "",
       "tags": [
-        "Rank #182",
+        "Rank #183",
         "M-5双打"
       ],
       "mega": {
         "supported": false
       },
       "metaUsage": {
-        "rank": 182,
+        "rank": 183,
         "items": [
           {
             "name": "气势披带",
@@ -97473,483 +97473,6 @@ window.CHAMPIONS_DATA = {
       }
     },
     {
-      "id": 614,
-      "formId": 0,
-      "rawId": 614000,
-      "slug": "beartic",
-      "name": "冻原熊",
-      "enName": "Beartic",
-      "types": [
-        "Ice"
-      ],
-      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/614.png",
-      "baseStats": {
-        "hp": 95,
-        "atk": 130,
-        "def": 80,
-        "spa": 70,
-        "spd": 80,
-        "spe": 50
-      },
-      "abilities": [
-        {
-          "id": 0,
-          "name": "拨雪",
-          "desc": "下雪状态时，速度会变为2倍。",
-          "usage": 57.0,
-          "usageText": "57.0%"
-        },
-        {
-          "id": 0,
-          "name": "悠游自如",
-          "desc": "下雨状态时，速度会变为2倍。",
-          "usage": 37.0,
-          "usageText": "37.0%"
-        },
-        {
-          "id": 0,
-          "name": "雪隐",
-          "desc": "下雪状态时， 闪避率会变为1.25倍。",
-          "usage": 5.0,
-          "usageText": "5.0%"
-        }
-      ],
-      "learnset": [
-        {
-          "id": 556,
-          "name": "冰柱坠击",
-          "power": 85,
-          "accuracy": 90,
-          "type": "Ice",
-          "category": "物理",
-          "priority": 0,
-          "usage": 73.0,
-          "tag": "73.0%"
-        },
-        {
-          "id": 89,
-          "name": "地震",
-          "power": 100,
-          "accuracy": 100,
-          "type": "Ground",
-          "category": "物理",
-          "priority": 0,
-          "usage": 67.0,
-          "tag": "67.0%"
-        },
-        {
-          "id": 370,
-          "name": "近身战",
-          "power": 120,
-          "accuracy": 100,
-          "type": "Fighting",
-          "category": "物理",
-          "priority": 0,
-          "usage": 58.0,
-          "tag": "58.0%"
-        },
-        {
-          "id": 453,
-          "name": "水流喷射",
-          "power": 40,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 1,
-          "usage": 32.0,
-          "tag": "32.0%"
-        },
-        {
-          "id": 14,
-          "name": "剑舞",
-          "power": 0,
-          "accuracy": 101,
-          "type": "Normal",
-          "category": "变化",
-          "priority": 0,
-          "usage": 24.0,
-          "tag": "24.0%"
-        },
-        {
-          "id": 710,
-          "name": "水流裂破",
-          "power": 85,
-          "accuracy": 100,
-          "type": "Water",
-          "category": "物理",
-          "priority": 0,
-          "usage": 22.0,
-          "tag": "22.0%"
-        },
-        {
-          "id": 333,
-          "name": "冰锥",
-          "power": 25,
-          "accuracy": 100,
-          "type": "Ice",
-          "category": "物理",
-          "priority": 0,
-          "usage": 15.0,
-          "tag": "15.0%"
-        },
-        {
-          "id": 157,
-          "name": "岩崩",
-          "power": 75,
-          "accuracy": 90,
-          "type": "Rock",
-          "category": "物理",
-          "priority": 0,
-          "usage": 11.0,
-          "tag": "11.0%"
-        },
-        {
-          "id": 583,
-          "name": "嬉闹",
-          "power": 90,
-          "accuracy": 90,
-          "type": "Fairy",
-          "category": "物理",
-          "priority": 0,
-          "usage": 8.0,
-          "tag": "8.0%"
-        },
-        {
-          "id": 8,
-          "name": "冰冻拳",
-          "power": 75,
-          "accuracy": 100,
-          "type": "Ice",
-          "category": "物理",
-          "priority": 0,
-          "usage": 7.0,
-          "tag": "7.0%"
-        }
-      ],
-      "isMega": false,
-      "formKey": "",
-      "tags": [
-        "Rank #199",
-        "M-5双打"
-      ],
-      "mega": {
-        "supported": false
-      },
-      "metaUsage": {
-        "rank": 199,
-        "items": [
-          {
-            "name": "生命宝珠",
-            "usage": 45.0
-          },
-          {
-            "name": "气势披带",
-            "usage": 13.0
-          },
-          {
-            "name": "讲究围巾",
-            "usage": 6.0
-          },
-          {
-            "name": "文柚果",
-            "usage": 5.0
-          },
-          {
-            "name": "达人带",
-            "usage": 5.0
-          },
-          {
-            "name": "木子果",
-            "usage": 3.0
-          },
-          {
-            "name": "力量头带",
-            "usage": 2.0
-          },
-          {
-            "name": "不融冰",
-            "usage": 2.0
-          },
-          {
-            "name": "吃剩的东西",
-            "usage": 2.0
-          },
-          {
-            "name": "先制之爪",
-            "usage": 1.0
-          }
-        ],
-        "natures": [
-          {
-            "name": "固执",
-            "usage": 57.0
-          },
-          {
-            "name": "爽朗",
-            "usage": 34.0
-          },
-          {
-            "name": "勇敢",
-            "usage": 1.0
-          },
-          {
-            "name": "顽皮",
-            "usage": 1.0
-          },
-          {
-            "name": "慎重",
-            "usage": 1.0
-          },
-          {
-            "name": "怕寂寞",
-            "usage": 1.0
-          },
-          {
-            "name": "淘气",
-            "usage": 0.7
-          },
-          {
-            "name": "天真",
-            "usage": 0.5
-          },
-          {
-            "name": "自大",
-            "usage": 0.2
-          },
-          {
-            "name": "胆小",
-            "usage": 0.2
-          }
-        ],
-        "partners": [
-          {
-            "name": "大嘴鸥",
-            "rank": 1
-          },
-          {
-            "name": "铝钢桥龙",
-            "rank": 2
-          },
-          {
-            "name": "巨沼怪",
-            "rank": 3
-          },
-          {
-            "name": "九尾",
-            "rank": 4
-          },
-          {
-            "name": "雪妖女",
-            "rank": 5
-          },
-          {
-            "name": "烈咬陆鲨",
-            "rank": 6
-          },
-          {
-            "name": "呆呆王",
-            "rank": 7
-          },
-          {
-            "name": "喷火龙",
-            "rank": 8
-          },
-          {
-            "name": "幽尾玄鱼",
-            "rank": 9
-          },
-          {
-            "name": "双倍多多冰",
-            "rank": 10
-          }
-        ],
-        "evSpreads": [
-          {
-            "rank": 1,
-            "hp": 2,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 41.8
-          },
-          {
-            "rank": 2,
-            "hp": 1,
-            "atk": 32,
-            "def": 1,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 10.1
-          },
-          {
-            "rank": 3,
-            "hp": 0,
-            "atk": 32,
-            "def": 2,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 7.2
-          },
-          {
-            "rank": 4,
-            "hp": 0,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 2,
-            "spe": 32,
-            "usage": 5.7
-          },
-          {
-            "rank": 5,
-            "hp": 0,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 0,
-            "spe": 32,
-            "usage": 3.1
-          },
-          {
-            "rank": 6,
-            "hp": 0,
-            "atk": 32,
-            "def": 1,
-            "spa": 0,
-            "spd": 1,
-            "spe": 32,
-            "usage": 2.5
-          },
-          {
-            "rank": 7,
-            "hp": 32,
-            "atk": 32,
-            "def": 2,
-            "spa": 0,
-            "spd": 0,
-            "spe": 0,
-            "usage": 2.0
-          },
-          {
-            "rank": 8,
-            "hp": 1,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 1,
-            "spe": 32,
-            "usage": 2.0
-          },
-          {
-            "rank": 9,
-            "hp": 32,
-            "atk": 32,
-            "def": 0,
-            "spa": 0,
-            "spd": 2,
-            "spe": 0,
-            "usage": 1.9
-          },
-          {
-            "rank": 10,
-            "hp": 2,
-            "atk": 32,
-            "def": 32,
-            "spa": 0,
-            "spd": 0,
-            "spe": 0,
-            "usage": 1.8
-          }
-        ],
-        "topMoves": [
-          {
-            "name": "冰柱坠击",
-            "usage": 73.0,
-            "type": "Ice",
-            "category": "物理",
-            "power": 85,
-            "accuracy": 90
-          },
-          {
-            "name": "地震",
-            "usage": 67.0,
-            "type": "Ground",
-            "category": "物理",
-            "power": 100,
-            "accuracy": 100
-          },
-          {
-            "name": "近身战",
-            "usage": 58.0,
-            "type": "Fighting",
-            "category": "物理",
-            "power": 120,
-            "accuracy": 100
-          },
-          {
-            "name": "水流喷射",
-            "usage": 32.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 40,
-            "accuracy": 100
-          },
-          {
-            "name": "剑舞",
-            "usage": 24.0,
-            "type": "Normal",
-            "category": "变化",
-            "power": 0,
-            "accuracy": 101
-          },
-          {
-            "name": "水流裂破",
-            "usage": 22.0,
-            "type": "Water",
-            "category": "物理",
-            "power": 85,
-            "accuracy": 100
-          },
-          {
-            "name": "冰锥",
-            "usage": 15.0,
-            "type": "Ice",
-            "category": "物理",
-            "power": 25,
-            "accuracy": 100
-          },
-          {
-            "name": "岩崩",
-            "usage": 11.0,
-            "type": "Rock",
-            "category": "物理",
-            "power": 75,
-            "accuracy": 90
-          },
-          {
-            "name": "嬉闹",
-            "usage": 8.0,
-            "type": "Fairy",
-            "category": "物理",
-            "power": 90,
-            "accuracy": 90
-          },
-          {
-            "name": "冰冻拳",
-            "usage": 7.0,
-            "type": "Ice",
-            "category": "物理",
-            "power": 75,
-            "accuracy": 100
-          }
-        ]
-      }
-    },
-    {
       "id": 26,
       "formId": 0,
       "rawId": 26000,
@@ -100313,6 +99836,483 @@ window.CHAMPIONS_DATA = {
             "category": "变化",
             "power": 0,
             "accuracy": 101
+          }
+        ]
+      }
+    },
+    {
+      "id": 614,
+      "formId": 0,
+      "rawId": 614000,
+      "slug": "beartic",
+      "name": "冻原熊",
+      "enName": "Beartic",
+      "types": [
+        "Ice"
+      ],
+      "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/614.png",
+      "baseStats": {
+        "hp": 95,
+        "atk": 130,
+        "def": 80,
+        "spa": 70,
+        "spd": 80,
+        "spe": 50
+      },
+      "abilities": [
+        {
+          "id": 0,
+          "name": "拨雪",
+          "desc": "下雪状态时，速度会变为2倍。",
+          "usage": 57.0,
+          "usageText": "57.0%"
+        },
+        {
+          "id": 0,
+          "name": "悠游自如",
+          "desc": "下雨状态时，速度会变为2倍。",
+          "usage": 37.0,
+          "usageText": "37.0%"
+        },
+        {
+          "id": 0,
+          "name": "雪隐",
+          "desc": "下雪状态时， 闪避率会变为1.25倍。",
+          "usage": 5.0,
+          "usageText": "5.0%"
+        }
+      ],
+      "learnset": [
+        {
+          "id": 556,
+          "name": "冰柱坠击",
+          "power": 85,
+          "accuracy": 90,
+          "type": "Ice",
+          "category": "物理",
+          "priority": 0,
+          "usage": 73.0,
+          "tag": "73.0%"
+        },
+        {
+          "id": 89,
+          "name": "地震",
+          "power": 100,
+          "accuracy": 100,
+          "type": "Ground",
+          "category": "物理",
+          "priority": 0,
+          "usage": 67.0,
+          "tag": "67.0%"
+        },
+        {
+          "id": 370,
+          "name": "近身战",
+          "power": 120,
+          "accuracy": 100,
+          "type": "Fighting",
+          "category": "物理",
+          "priority": 0,
+          "usage": 58.0,
+          "tag": "58.0%"
+        },
+        {
+          "id": 453,
+          "name": "水流喷射",
+          "power": 40,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 1,
+          "usage": 32.0,
+          "tag": "32.0%"
+        },
+        {
+          "id": 14,
+          "name": "剑舞",
+          "power": 0,
+          "accuracy": 101,
+          "type": "Normal",
+          "category": "变化",
+          "priority": 0,
+          "usage": 24.0,
+          "tag": "24.0%"
+        },
+        {
+          "id": 710,
+          "name": "水流裂破",
+          "power": 85,
+          "accuracy": 100,
+          "type": "Water",
+          "category": "物理",
+          "priority": 0,
+          "usage": 22.0,
+          "tag": "22.0%"
+        },
+        {
+          "id": 333,
+          "name": "冰锥",
+          "power": 25,
+          "accuracy": 100,
+          "type": "Ice",
+          "category": "物理",
+          "priority": 0,
+          "usage": 15.0,
+          "tag": "15.0%"
+        },
+        {
+          "id": 157,
+          "name": "岩崩",
+          "power": 75,
+          "accuracy": 90,
+          "type": "Rock",
+          "category": "物理",
+          "priority": 0,
+          "usage": 11.0,
+          "tag": "11.0%"
+        },
+        {
+          "id": 583,
+          "name": "嬉闹",
+          "power": 90,
+          "accuracy": 90,
+          "type": "Fairy",
+          "category": "物理",
+          "priority": 0,
+          "usage": 8.0,
+          "tag": "8.0%"
+        },
+        {
+          "id": 8,
+          "name": "冰冻拳",
+          "power": 75,
+          "accuracy": 100,
+          "type": "Ice",
+          "category": "物理",
+          "priority": 0,
+          "usage": 7.0,
+          "tag": "7.0%"
+        }
+      ],
+      "isMega": false,
+      "formKey": "",
+      "tags": [
+        "Rank #205",
+        "M-5双打"
+      ],
+      "mega": {
+        "supported": false
+      },
+      "metaUsage": {
+        "rank": 205,
+        "items": [
+          {
+            "name": "生命宝珠",
+            "usage": 45.0
+          },
+          {
+            "name": "气势披带",
+            "usage": 13.0
+          },
+          {
+            "name": "讲究围巾",
+            "usage": 6.0
+          },
+          {
+            "name": "文柚果",
+            "usage": 5.0
+          },
+          {
+            "name": "达人带",
+            "usage": 5.0
+          },
+          {
+            "name": "木子果",
+            "usage": 3.0
+          },
+          {
+            "name": "力量头带",
+            "usage": 2.0
+          },
+          {
+            "name": "不融冰",
+            "usage": 2.0
+          },
+          {
+            "name": "吃剩的东西",
+            "usage": 2.0
+          },
+          {
+            "name": "先制之爪",
+            "usage": 1.0
+          }
+        ],
+        "natures": [
+          {
+            "name": "固执",
+            "usage": 57.0
+          },
+          {
+            "name": "爽朗",
+            "usage": 34.0
+          },
+          {
+            "name": "勇敢",
+            "usage": 1.0
+          },
+          {
+            "name": "顽皮",
+            "usage": 1.0
+          },
+          {
+            "name": "慎重",
+            "usage": 1.0
+          },
+          {
+            "name": "怕寂寞",
+            "usage": 1.0
+          },
+          {
+            "name": "淘气",
+            "usage": 0.7
+          },
+          {
+            "name": "天真",
+            "usage": 0.5
+          },
+          {
+            "name": "自大",
+            "usage": 0.2
+          },
+          {
+            "name": "胆小",
+            "usage": 0.2
+          }
+        ],
+        "partners": [
+          {
+            "name": "大嘴鸥",
+            "rank": 1
+          },
+          {
+            "name": "铝钢桥龙",
+            "rank": 2
+          },
+          {
+            "name": "巨沼怪",
+            "rank": 3
+          },
+          {
+            "name": "九尾",
+            "rank": 4
+          },
+          {
+            "name": "雪妖女",
+            "rank": 5
+          },
+          {
+            "name": "烈咬陆鲨",
+            "rank": 6
+          },
+          {
+            "name": "呆呆王",
+            "rank": 7
+          },
+          {
+            "name": "喷火龙",
+            "rank": 8
+          },
+          {
+            "name": "幽尾玄鱼",
+            "rank": 9
+          },
+          {
+            "name": "双倍多多冰",
+            "rank": 10
+          }
+        ],
+        "evSpreads": [
+          {
+            "rank": 1,
+            "hp": 2,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 41.8
+          },
+          {
+            "rank": 2,
+            "hp": 1,
+            "atk": 32,
+            "def": 1,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 10.1
+          },
+          {
+            "rank": 3,
+            "hp": 0,
+            "atk": 32,
+            "def": 2,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 7.2
+          },
+          {
+            "rank": 4,
+            "hp": 0,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 2,
+            "spe": 32,
+            "usage": 5.7
+          },
+          {
+            "rank": 5,
+            "hp": 0,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 0,
+            "spe": 32,
+            "usage": 3.1
+          },
+          {
+            "rank": 6,
+            "hp": 0,
+            "atk": 32,
+            "def": 1,
+            "spa": 0,
+            "spd": 1,
+            "spe": 32,
+            "usage": 2.5
+          },
+          {
+            "rank": 7,
+            "hp": 32,
+            "atk": 32,
+            "def": 2,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0,
+            "usage": 2.0
+          },
+          {
+            "rank": 8,
+            "hp": 1,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 1,
+            "spe": 32,
+            "usage": 2.0
+          },
+          {
+            "rank": 9,
+            "hp": 32,
+            "atk": 32,
+            "def": 0,
+            "spa": 0,
+            "spd": 2,
+            "spe": 0,
+            "usage": 1.9
+          },
+          {
+            "rank": 10,
+            "hp": 2,
+            "atk": 32,
+            "def": 32,
+            "spa": 0,
+            "spd": 0,
+            "spe": 0,
+            "usage": 1.8
+          }
+        ],
+        "topMoves": [
+          {
+            "name": "冰柱坠击",
+            "usage": 73.0,
+            "type": "Ice",
+            "category": "物理",
+            "power": 85,
+            "accuracy": 90
+          },
+          {
+            "name": "地震",
+            "usage": 67.0,
+            "type": "Ground",
+            "category": "物理",
+            "power": 100,
+            "accuracy": 100
+          },
+          {
+            "name": "近身战",
+            "usage": 58.0,
+            "type": "Fighting",
+            "category": "物理",
+            "power": 120,
+            "accuracy": 100
+          },
+          {
+            "name": "水流喷射",
+            "usage": 32.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 40,
+            "accuracy": 100
+          },
+          {
+            "name": "剑舞",
+            "usage": 24.0,
+            "type": "Normal",
+            "category": "变化",
+            "power": 0,
+            "accuracy": 101
+          },
+          {
+            "name": "水流裂破",
+            "usage": 22.0,
+            "type": "Water",
+            "category": "物理",
+            "power": 85,
+            "accuracy": 100
+          },
+          {
+            "name": "冰锥",
+            "usage": 15.0,
+            "type": "Ice",
+            "category": "物理",
+            "power": 25,
+            "accuracy": 100
+          },
+          {
+            "name": "岩崩",
+            "usage": 11.0,
+            "type": "Rock",
+            "category": "物理",
+            "power": 75,
+            "accuracy": 90
+          },
+          {
+            "name": "嬉闹",
+            "usage": 8.0,
+            "type": "Fairy",
+            "category": "物理",
+            "power": 90,
+            "accuracy": 90
+          },
+          {
+            "name": "冰冻拳",
+            "usage": 7.0,
+            "type": "Ice",
+            "category": "物理",
+            "power": 75,
+            "accuracy": 100
           }
         ]
       }
