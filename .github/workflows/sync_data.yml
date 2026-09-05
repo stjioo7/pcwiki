@@ -1,4 +1,4 @@
-name: Automated Battle Data Sync (PokéCham DB)
+name: Automated Battle Data & Meta Teams Sync
 
 on:
   schedule:
@@ -57,8 +57,8 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ cache/
-          git commit -m "chore(data): auto-sync season ${{ steps.run_sync.outputs.season }} live battle data [skip ci]"
+          git add data/
+          git commit -m "chore(data): auto-sync season ${{ steps.run_sync.outputs.season }} live battle data & meta teams [skip ci]"
           git push
 
       - name: 打印运行报告

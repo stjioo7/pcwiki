@@ -24,6 +24,8 @@ if str(BASE_DIR) not in sys.path:
 from scripts.sync_engine import check_for_updates, SYNC_META_FILE, ensure_meta_dir
 from scripts.sync_pokechamdb import sync_season
 from scripts.export_to_wiki import run_export
+from scripts.fetch_meta_teams import fetch_latest_teams
+import subprocess
 
 
 def detect_active_season():
@@ -34,10 +36,8 @@ def detect_active_season():
         with urllib.request.urlopen(req, timeout=12) as resp:
             html = resp.read().decode("utf-8", errors="ignore")
 
-        # 匹配 season=M-5 或当前默认选中的赛季
         m = re.findall(r'season=([A-Za-z0-9_\-]+)', html)
         if m:
-            # 统计出现频率最高的赛季代码，或取第一个
             from collections import Counter
             counts = Counter(m)
             top_season = counts.most_common(1)[0][0]
@@ -67,32 +67,27 @@ def main():
     print(f" 目标赛季: {active_season} | 赛制: {fmt} | 强制重刷: {force}")
     print("==================================================")
 
-    # 1. 运行探针检查
+    # 1. 运行探针检查单体宝可梦排位数据
     probe = check_for_updates(season=active_season, fmt=fmt)
     print(f"[CI 探针] 远端时间戳: {probe.get('remote_timestamp')}")
     print(f"[CI 探针] 本地时间戳: {probe.get('local_timestamp')}")
     print(f"[CI 探针] 检测判定: {'需要更新' if probe.get('has_update') else '已是最新'}")
 
-    has_update = probe.get("has_update") or force
+    has_rank_update = probe.get("has_update") or force
 
     # 如果有新数据或强制更新
-    if has_update:
-        print("[CI] 正在执行全量抓取与编译管线...")
-        # 运行抓取 (在 CI 环境中使用原生 Chromium)
+    if has_rank_update:
+        print("[CI] 正在执行单体排位抓取与编译管线 (PokéCham DB)...")
         sync_season(
             season=active_season,
             fmt=fmt,
             lang="zh-Hans",
             headless=True,
-            channel=None,  # 自动回退至标准 Chromium
+            channel=None,
             resume=not force,
             base_dir=str(BASE_DIR)
         )
-
-        # 编译生成 champions_data.json / .js
         run_export(base_dir=BASE_DIR)
-
-        # 更新元数据
         ensure_meta_dir()
         meta = {
             "season": active_season,
@@ -104,13 +99,31 @@ def main():
         }
         SYNC_META_FILE.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 
-        set_github_output("data_updated", "true")
-        set_github_output("season", active_season)
+    # 2. 抓取 Limitless 官方最新完赛真实队伍 (单打 + 双打)
+    print("\n[CI] 正在执行热门比赛队伍抓取管线 (Limitless VGC/X1)...")
+    try:
+        teams = fetch_latest_teams(max_tournaments=8, max_teams_per_tourn=4)
+        print(f"[CI] 比赛队伍抓取完成，共载入 {len(teams)} 支队伍")
+    except Exception as e:
+        print(f"[CI] 队伍抓取出现异常 (非致命): {e}")
+
+    # 3. 检查 data/ 目录是否有实际文件变动
+    git_check = subprocess.run(
+        ["git", "status", "--porcelain", "data/"],
+        capture_output=True,
+        text=True
+    )
+    has_git_changes = bool(git_check.stdout.strip())
+    print(f"[CI Git Status] data/ 变动检测: {'有变动' if has_git_changes else '无变动'}")
+
+    data_updated = has_rank_update or has_git_changes
+    set_github_output("data_updated", "true" if data_updated else "false")
+    set_github_output("season", active_season)
+
+    if data_updated:
         print("[CI] ✅ 数据同步与编译全部完成！已标记 data_updated=true")
     else:
-        set_github_output("data_updated", "false")
-        set_github_output("season", active_season)
-        print("[CI] ⚡ 数据已是最新，无需重新抓取。标记 data_updated=false")
+        print("[CI] ⚡ 所有数据均已是最新，标记 data_updated=false")
 
     return 0
 
