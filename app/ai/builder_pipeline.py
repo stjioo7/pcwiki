@@ -156,18 +156,18 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
             continue
         p_meta = p_obj.get("meta", {}).get(fmt) or p_obj.get("metaUsage", {}).get(fmt) or {}
         
-        # 提取特性（带真实使用率）
+        # 提取该物种特性分布（完整保留真实使用率）
         raw_ab = p_meta.get("abilities") or p_obj.get("abilities", [])
         abilities = []
-        for ab in raw_ab[:2]:
+        for ab in raw_ab:
             ab_name = ab.get("name") if isinstance(ab, dict) else str(ab)
             ab_usage = ab.get("usage") if isinstance(ab, dict) and "usage" in ab else None
             abilities.append(f"{ab_name} ({ab_usage}%)" if ab_usage is not None else ab_name)
         
-        # 提取道具（带真实使用率）
+        # 提取该物种在天梯排位中的全部携带道具分布情况（完整列出，带真实使用率）
         raw_it = p_meta.get("items", [])
         items = []
-        for it in raw_it[:4]:
+        for it in raw_it:
             it_name = it.get("name") if isinstance(it, dict) else str(it)
             it_usage = it.get("usage") if isinstance(it, dict) and "usage" in it else None
             items.append(f"{it_name} ({it_usage}%)" if it_usage is not None else it_name)
@@ -214,8 +214,10 @@ BUILDER_ASSEMBLE_SYSTEM_PROMPT = """你是一位精通宝可梦官方排位（VG
 1. 队伍必须恰好包含 6 只宝可梦，且必须包含用户指定的 Anchor 核心；
 2. 6 只宝可梦必须全部从给定的【候选物种池】中挑选，严禁挑选池子以外的宝可梦；
 3. 遵循官方排位 Item Clause：6 只宝可梦携带的道具严禁重复；
-4. 【使用率与道具分配原则】：
-   - 候选池中带有使用率百分比（如：“暴鲤龙进化石 (60%)”）。道具与特性必须优先按照天梯真实高使用率分配，不要随意放弃 50%+ 的核心道具；
+4. 【使用率与道具严格匹配原则】：
+   - 候选池中为每只宝可梦提供了该物种在当前排位已实装的【全部携带道具分布情况】（含使用率百分比，如：“雷丘进化石Ｙ (86.0%)”、“气势披带 (3.0%)”等）；
+   - 【严格限制】：你为每只宝可梦分配的道具，必须且只能从该宝可梦给出的【top_items 携带道具分布列表】中挑选；严禁脱离该物种给出的道具列表自行编造或挑选未上线的道具；
+   - 道具分配必须遵循真实使用率权重，优先选择高使用率的核心道具/Mega进化石；
    - 当前赛制支持超级进化 (Mega Evolution)。单场对战单队至多携带 1 个 Mega 进化石（若选中的宝可梦携带了专属进化石，该宝可梦将作为 Mega 核心选出）；
 5. 每只宝可梦必须配置 4 个合法招式、1 个特性、1 个道具、1 个性格；
 6. 你必须且仅输出严格的 JSON 字符串，绝不能添加任何 markdown 标记外的解释废话。
@@ -302,7 +304,12 @@ async def gate_assemble(intake_res: Dict[str, Any], grounding_res: Dict[str, Any
 # ==========================================================================
 # 4. Gate 4: validate_and_sanitize (确定性合法性校验、Mega状态对齐与自动修剪)
 # ==========================================================================
-FALLBACK_ITEMS = ["气势披带", "突击背心", "生命宝珠", "讲究头带", "讲究眼镜", "讲究围巾", "吃剩的东西", "密探斗篷", "文柚果", "木子果"]
+FALLBACK_ITEMS = [
+    "气势披带", "生命宝珠", "讲究围巾", "吃剩的东西", "文柚果", "木子果",
+    "达人带", "白色香草", "心灵香草", "王者之证", "光之黏土", "磁铁",
+    "木炭", "柔软沙子", "硬石头", "神秘水滴", "奇迹种子", "不融冰",
+    "黑带", "锐利鸟嘴", "毒针", "妖精之羽", "银粉", "龙之牙", "金属膜", "丝绸围巾"
+]
 
 def is_mega_stone_for_mon(p_obj: Dict[str, Any], item_name: str, fmt: str = "double") -> Optional[Dict[str, Any]]:
     """检查道具是否为该宝可梦的专属 Mega 进化石，并精准返回对应的 Mega Form (支持 X/Y/Z 分支与使用率优先解析)"""
@@ -388,11 +395,20 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
         
         if mega_form:
             if mega_count >= 1:
-                # 已有其他成员携带了 Mega 石，当前成员退回常规道具
-                for fb in FALLBACK_ITEMS:
-                    if fb not in used_items:
-                        raw_item = fb
+                # 已有其他成员携带了 Mega 石，当前成员退回自身携带道具列表中未被占用的常规道具
+                mon_meta_items = p_obj.get("meta", {}).get(fmt, {}).get("items", [])
+                found_meta_item = False
+                for mi in mon_meta_items:
+                    mi_name = (mi.get("name") if isinstance(mi, dict) else str(mi)).split("(")[0].split("（")[0].strip()
+                    if mi_name and mi_name not in used_items and not mi_name.endswith("进化石"):
+                        raw_item = mi_name
+                        found_meta_item = True
                         break
+                if not found_meta_item:
+                    for fb in FALLBACK_ITEMS:
+                        if fb not in used_items:
+                            raw_item = fb
+                            break
                 mega_form = None
             else:
                 mega_count += 1
@@ -401,12 +417,21 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
                 # 规范化道具名称为该形态的标准名称
                 raw_item = mega_form.get("megaStone") or raw_item
         
-        # 道具排重 (Item Clause)
+        # 道具排重与有效性修正 (Item Clause: 优先从该宝可梦自身的携带道具分布中挑选)
         if not raw_item or raw_item in used_items:
-            for fb in FALLBACK_ITEMS:
-                if fb not in used_items:
-                    raw_item = fb
+            mon_meta_items = p_obj.get("meta", {}).get(fmt, {}).get("items", [])
+            found_meta_item = False
+            for mi in mon_meta_items:
+                mi_name = (mi.get("name") if isinstance(mi, dict) else str(mi)).split("(")[0].split("（")[0].strip()
+                if mi_name and mi_name not in used_items and not mi_name.endswith("进化石"):
+                    raw_item = mi_name
+                    found_meta_item = True
                     break
+            if not found_meta_item:
+                for fb in FALLBACK_ITEMS:
+                    if fb not in used_items:
+                        raw_item = fb
+                        break
         used_items.add(raw_item)
 
         # 3. 特性与属性对齐：若携带 Mega 进化石，自动对齐 Mega 形态特性与属性、种族值
