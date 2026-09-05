@@ -3835,6 +3835,248 @@ body {
   margin-top: 0.15rem;
 }
 
+/* ==========================================================================
+   AI 深度战术诊断与选出锦囊 (AI Tactical Auditor)
+   ========================================================================== */
+.ai-diagnose-panel {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, rgba(20, 24, 40, 0.95), rgba(12, 16, 28, 0.98));
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 229, 255, 0.2);
+}
+
+.ai-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-ai-diagnose {
+  background: linear-gradient(135deg, #00e5ff 0%, #7000ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+}
+
+.btn-ai-diagnose:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+  filter: brightness(1.15);
+}
+
+.btn-ai-diagnose:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.ai-diagnose-body {
+  padding: 1rem 0 0.5rem;
+}
+
+.ai-empty-prompt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0, 229, 255, 0.05);
+  border: 1px dashed rgba(0, 229, 255, 0.25);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+}
+
+.ai-prompt-icon {
+  font-size: 2rem;
+}
+
+.ai-prompt-text strong {
+  color: #00e5ff;
+  font-size: 0.95rem;
+}
+
+.ai-prompt-text p {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+/* AI 加载状态 */
+.ai-loading-box {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(112, 0, 255, 0.08);
+  border: 1px solid rgba(112, 0, 255, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.ai-pulse-dot {
+  width: 18px;
+  height: 18px;
+  background: #00e5ff;
+  border-radius: 50%;
+  animation: pulse-ring 1.5s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(0, 229, 255, 0); }
+  100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+.ai-loading-text strong {
+  display: block;
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.ai-loading-text span {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* 严格报错横幅 */
+.ai-error-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 23, 68, 0.12);
+  border: 1px solid rgba(255, 23, 68, 0.5);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+}
+
+.ai-error-icon {
+  font-size: 1.8rem;
+}
+
+.ai-error-title {
+  color: #ff1744;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.ai-error-desc {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.ai-error-tip {
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid #ff1744;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.6;
+}
+
+.ai-error-tip code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #00e5ff;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* AI 诊断报告 Markdown 排版 */
+.ai-report-markdown {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #e0e0e0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.ai-md-h3 {
+  color: #00e5ff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+.ai-md-h3:first-child {
+  margin-top: 0;
+}
+
+.ai-md-ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.ai-md-ul li {
+  margin-bottom: 0.4rem;
+}
+
+.ai-inline-code {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00e5ff;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85em;
+}
+
+.ai-typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #00e5ff;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink-cursor 0.8s infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.ai-report-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.btn-copy-report, .btn-refresh-report {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-copy-report:hover, .btn-refresh-report:hover {
+  background: rgba(0, 229, 255, 0.2);
+  border-color: #00e5ff;
+  color: #00e5ff;
+}
+
 
 
 

@@ -254,13 +254,78 @@ async def recognize_screenshot(file: UploadFile = File(...)):
         "moves": active_moves
     }
 
+# ==========================================================================
+# 4. 大模型战术诊断服务 (AI Tactical Auditor)
+# ==========================================================================
+from fastapi.responses import StreamingResponse
+from fastapi import HTTPException, Request
+from app.core.config import get_active_provider_config, load_config
+from app.ai.provider import stream_diagnose_team
+
+@app.get("/api/ai/status")
+def get_ai_status():
+    """检查当前激活的 AI Provider 配置与密钥有效性"""
+    try:
+        provider_name, p_cfg = get_active_provider_config(force_reload=True)
+        return {
+            "success": True,
+            "status": "ready",
+            "active_provider": provider_name,
+            "model": p_cfg.model,
+            "base_url": p_cfg.base_url
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "status": "unconfigured",
+            "error": str(e)
+        }
+
+@app.post("/api/ai/diagnose")
+async def diagnose_team_endpoint(request: Request):
+    """
+    接收队伍实数与确定性审计数据，以 SSE 流式实时输出四段式深度战术报告
+    严格校验，遇到未配置或异常直接抛出，无静默降级
+    """
+    try:
+        # 严格校验 Provider 配置
+        get_active_provider_config(force_reload=True)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="请求体必须为合法 JSON 格式数据")
+
+    async def sse_event_generator():
+        try:
+            async for token in stream_diagnose_team(payload):
+                # 遵循标准 SSE 格式
+                yield f"data: {json.dumps({'content': token}, ensure_ascii=False)}\n\n"
+            yield "data: [DONE]\n\n"
+        except Exception as err:
+            err_payload = json.dumps({"error": str(err)}, ensure_ascii=False)
+            yield f"data: {err_payload}\n\n"
+            yield "data: [DONE]\n\n"
+
+    return StreamingResponse(
+        sse_event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no"
+        }
+    )
+
 # 挂载静态资源服务，使得 http://127.0.0.1:8765/ 可直接完整访问前端
 static_dir = os.path.dirname(os.path.abspath(__file__))
 app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
 
 if __name__ == "__main__":
     print("==================================================")
-    print(" 🚀 POKÉMON CHAMPIONS RAPIDOCR ENGINE (PORT: 8765)")
-    print(" 视觉识别: 在线 | 静态宿主: http://127.0.0.1:8765")
+    print(" 🚀 POKÉMON CHAMPIONS AI & OCR ENGINE (PORT: 8765)")
+    print(" 视觉识别: 在线 | AI战术诊断: 就绪 | 宿主: http://127.0.0.1:8765")
     print("==================================================")
     uvicorn.run(app, host="127.0.0.1", port=8765, log_level="info")

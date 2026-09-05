@@ -980,6 +980,31 @@ function renderAuditDashboard() {
         </div>
       </div>
     </div>
+
+    <!-- 栏目 3: AI 深度战术选出锦囊与调优报告 (增量解耦扩展) -->
+    <div class="audit-panel-box ai-diagnose-panel full-width">
+      <div class="panel-box-header ai-header-row">
+        <div class="ai-header-left">
+          <h3><span class="icon">🤖</span> AI 深度战术诊断与选出锦囊 (Metagame Pilot)</h3>
+          <span class="sub-hint">基于 6 只全量实数、18 属性盲点与天梯 Top 20 对位展开四段式深度战术推演</span>
+        </div>
+        <div class="ai-header-actions">
+          <button id="btnTriggerAiDiagnose" class="btn-ai-diagnose" onclick="requestAiTeamDiagnosis()">
+            <span class="icon">✨</span> 生成 AI 战术锦囊
+          </button>
+        </div>
+      </div>
+
+      <div id="aiDiagnoseContent" class="ai-diagnose-body">
+        <div class="ai-empty-prompt">
+          <div class="ai-prompt-icon">💡</div>
+          <div class="ai-prompt-text">
+            <strong>点击右上角「✨ 生成 AI 战术锦囊」按钮</strong>
+            <p>本地 Python AI 引擎将严格基于当前事实数据，输出【战术轴定位】、【首发/后排选出指南】、【Top 威胁博弈策略】与【盲点精准微调建议】。</p>
+          </div>
+        </div>
+      </div>
+    </div>
   `;
 }
 
@@ -1110,6 +1135,197 @@ function renderPokemonPickerGrid(query = '') {
   });
 }
 
+// ==========================================================================
+// 8. AI 深度战术诊断与选出锦囊服务 (AI Tactical Auditor)
+// ==========================================================================
+let isAiDiagnosing = false;
+let lastAiReportMarkdown = '';
+
+function renderMarkdownBasic(md) {
+  if (!md) return '';
+  let html = md
+    .replace(/^### (.*$)/gim, '<h3 class="ai-md-h3">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="ai-md-h2">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 class="ai-md-h1">$1</h1>')
+    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+    .replace(/`([^`]+)`/gim, '<code class="ai-inline-code">$1</code>')
+    .replace(/^\- (.*$)/gim, '<li>$1</li>');
+  
+  html = html.replace(/(<li>.*<\/li>)/gim, '<ul class="ai-md-ul">$1</ul>');
+  html = html.replace(/\n\n/gim, '<br><br>');
+  return html;
+}
+
+async function requestAiTeamDiagnosis() {
+  const members = builderState.slots.filter(s => s && s.pokemon);
+  if (members.length === 0) {
+    alert('当前队伍为空，请先添加至少一只宝可梦再生成战术诊断报告！');
+    return;
+  }
+
+  const container = document.getElementById('aiDiagnoseContent');
+  const btn = document.getElementById('btnTriggerAiDiagnose');
+  if (!container) return;
+
+  if (isAiDiagnosing) return;
+  isAiDiagnosing = true;
+  lastAiReportMarkdown = '';
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-inline">⏳</span> 战术分析中...';
+  }
+
+  container.innerHTML = `
+    <div class="ai-loading-box">
+      <div class="ai-pulse-dot"></div>
+      <div class="ai-loading-text">
+        <strong>⚡ 正在调用本地 Python AI 战术引擎展开深度对位推演...</strong>
+        <span>分析队伍核心战术轴、面对天梯主流体系选出方案与防守弱点微调...</span>
+      </div>
+    </div>
+  `;
+
+  // 构造 100% 结构化事实 Payload
+  const audit = runTeamAudit();
+  const payload = {
+    format: builderState.format,
+    formatName: builderState.format === 'double' ? '双打 (VGC)' : '单打 (Singles)',
+    team: members.map(m => {
+      const p = m.pokemon;
+      const mon = getActiveCombatant(p, m.isMega, m.megaBranch);
+      return {
+        name: mon.name,
+        types: mon.types || ['Normal'],
+        item: m.item,
+        ability: m.ability,
+        nature: m.nature,
+        moves: m.moves,
+        evs: m.evs,
+        baseStats: mon.baseStats
+      };
+    }),
+    defenseAudit: audit.weaknessStats,
+    metagameThreatsAudit: (audit.threatResults || []).map(tr => ({
+      rank: tr.rank,
+      threat: tr.threatMon.name,
+      status: tr.status,
+      counters: tr.counters,
+      vulnerableMembers: tr.vulnerableMembers
+    })),
+    speedTiers: (audit.speedTiers || []).map(st => ({
+      name: st.name,
+      maxSpe: st.maxSpe,
+      neutralSpe: st.neutralSpe,
+      tailwindSpe: st.tailwindSpe
+    }))
+  };
+
+  const endpoint = window.location.port === '8765'
+    ? '/api/ai/diagnose'
+    : 'http://127.0.0.1:8765/api/ai/diagnose';
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({ detail: '无法连接到本地 AI 侧车服务，请确认 server.py 是否启动。' }));
+      const errorMsg = errData.detail || errData.error || `HTTP ${response.status} 接口调用异常`;
+      throw new Error(errorMsg);
+    }
+
+    container.innerHTML = '<div class="ai-report-markdown" id="aiReportMarkdown"></div>';
+    const reportBox = document.getElementById('aiReportMarkdown');
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let buffer = '';
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop();
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith('data:')) continue;
+        const dataStr = trimmed.slice(5).trim();
+        if (dataStr === '[DONE]') break;
+
+        try {
+          const parsed = JSON.parse(dataStr);
+          if (parsed.error) {
+            throw new Error(parsed.error);
+          }
+          if (parsed.content) {
+            lastAiReportMarkdown += parsed.content;
+            if (reportBox) {
+              reportBox.innerHTML = renderMarkdownBasic(lastAiReportMarkdown) + '<span class="ai-typing-cursor"></span>';
+            }
+          }
+        } catch (e) {
+          if (e.message && e.message.includes('【')) {
+            throw e;
+          }
+        }
+      }
+    }
+
+    if (reportBox) {
+      reportBox.innerHTML = renderMarkdownBasic(lastAiReportMarkdown);
+    }
+
+    // 底部工具栏
+    const actionsBar = document.createElement('div');
+    actionsBar.className = 'ai-report-actions';
+    actionsBar.innerHTML = `
+      <button class="btn-copy-report" onclick="copyAiReportText()">📋 复制战术报告</button>
+      <button class="btn-refresh-report" onclick="requestAiTeamDiagnosis()">🔄 重新诊断</button>
+    `;
+    container.appendChild(actionsBar);
+
+  } catch (err) {
+    // 严格 Fail-Fast 红字报错展示，绝无假数据降级
+    container.innerHTML = `
+      <div class="ai-error-banner">
+        <div class="ai-error-icon">⚠️</div>
+        <div class="ai-error-msg">
+          <strong class="ai-error-title">【AI 战术诊断服务调用失败】</strong>
+          <p class="ai-error-desc">${err.message || '未知错误'}</p>
+          <div class="ai-error-tip">
+            💡 <strong>排查指引</strong>：<br>
+            1. 请确认本地已在终端运行 <code>uv run python server.py</code>；<br>
+            2. 请检查项目根目录下的 <code>config.yaml</code>，确保已填入对应 Provider 的有效 <code>api_key</code>。
+          </div>
+        </div>
+      </div>
+    `;
+  } finally {
+    isAiDiagnosing = false;
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = '<span class="icon">✨</span> 重新生成战术锦囊';
+    }
+  }
+}
+
+function copyAiReportText() {
+  if (!lastAiReportMarkdown) return;
+  navigator.clipboard.writeText(lastAiReportMarkdown).then(() => {
+    alert('🎉 AI 战术诊断报告已复制到剪贴板！');
+  }).catch(() => {
+    prompt('请手动复制战术诊断报告：', lastAiReportMarkdown);
+  });
+}
+
 // Global & Node export bindings
 if (typeof window !== 'undefined') {
   window.builderState = builderState;
@@ -1127,6 +1343,8 @@ if (typeof window !== 'undefined') {
   window.updateSlotMove = updateSlotMove;
   window.addSuggestedPokemon = addSuggestedPokemon;
   window.getPokemonSpriteUrl = getPokemonSpriteUrl;
+  window.requestAiTeamDiagnosis = requestAiTeamDiagnosis;
+  window.copyAiReportText = copyAiReportText;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -1137,6 +1355,8 @@ if (typeof module !== 'undefined' && module.exports) {
     autoCompleteTeam,
     runTeamAudit,
     exportTeamShowdownText,
-    getPokemonSpriteUrl
+    getPokemonSpriteUrl,
+    requestAiTeamDiagnosis,
+    copyAiReportText
   };
 }

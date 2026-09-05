@@ -1,0 +1,33 @@
+# Pokémon Champions AI Provider 配置文件示例
+ai:
+  active_provider: "deepseek"   # 当前激活的 provider: "deepseek" | "openai" | "ollama" | "custom"
+  timeout_seconds: 60          # AI 请求超时时间（秒）
+
+providers:
+  deepseek:
+    base_url: "https://api.deepseek.com/v1"
+    api_key: "your-deepseek-api-key"
+    model: "deepseek-chat"
+    temperature: 0.3
+    max_tokens: 3000
+
+  openai:
+    base_url: "https://api.openai.com/v1"
+    api_key: "your-openai-api-key"
+    model: "gpt-4o-mini"
+    temperature: 0.3
+    max_tokens: 3000
+
+  ollama:
+    base_url: "http://localhost:11434/v1"
+    api_key: "ollama"
+    model: "qwen2.5:7b"
+    temperature: 0.3
+    max_tokens: 3000
+
+  custom:
+    base_url: "https://your-custom-llm-endpoint.com/v1"
+    api_key: "your-api-key"
+    model: "your-model-name"
+    temperature: 0.3
+    max_tokens: 3000

@@ -16,3 +16,6 @@ Thumbs.db
 scratch/
 cache/
 *.checkpoint.json
+
+# Local secrets & API configs
+config.yaml
