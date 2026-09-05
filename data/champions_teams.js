@@ -277,7 +277,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:23"
+    "fetchedAt": "2026-09-05 09:52:08"
   },
   {
     "id": "limitless-6a8c5b09-shadowjeff",
@@ -556,7 +556,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:23"
+    "fetchedAt": "2026-09-05 09:52:08"
   },
   {
     "id": "limitless-6a8c5b09-drzuloaga7",
@@ -835,7 +835,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:24"
+    "fetchedAt": "2026-09-05 09:52:09"
   },
   {
     "id": "limitless-6a8c5b09-lazyluke",
@@ -1114,7 +1114,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:24"
+    "fetchedAt": "2026-09-05 09:52:10"
   },
   {
     "id": "limitless-6a8c94f9-daikyh",
@@ -1393,7 +1393,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:25"
+    "fetchedAt": "2026-09-05 09:52:11"
   },
   {
     "id": "limitless-6a8c94f9-brazbr",
@@ -1670,7 +1670,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:26"
+    "fetchedAt": "2026-09-05 09:52:11"
   },
   {
     "id": "limitless-6a8c94f9-shaggy96",
@@ -1949,7 +1949,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:26"
+    "fetchedAt": "2026-09-05 09:52:12"
   },
   {
     "id": "limitless-6a8c94f9-gustavonmoreno",
@@ -2228,7 +2228,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:27"
+    "fetchedAt": "2026-09-05 09:52:13"
   },
   {
     "id": "limitless-6a925918-hush",
@@ -2507,7 +2507,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:27"
+    "fetchedAt": "2026-09-05 09:52:14"
   },
   {
     "id": "limitless-6a925918-zachk052510",
@@ -2786,7 +2786,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:28"
+    "fetchedAt": "2026-09-05 09:52:15"
   },
   {
     "id": "limitless-6a925918-flamingraccoon",
@@ -3064,7 +3064,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:28"
+    "fetchedAt": "2026-09-05 09:52:15"
   },
   {
     "id": "limitless-6a925918-asamuni",
@@ -3344,7 +3344,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:29"
+    "fetchedAt": "2026-09-05 09:52:16"
   },
   {
     "id": "limitless-6a970a85-mystabloom",
@@ -3623,7 +3623,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:30"
+    "fetchedAt": "2026-09-05 09:52:17"
   },
   {
     "id": "limitless-6a970a85-om3gavgc",
@@ -3902,7 +3902,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:30"
+    "fetchedAt": "2026-09-05 09:52:18"
   },
   {
     "id": "limitless-6a970a85-brianjensvgc",
@@ -4181,7 +4181,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:31"
+    "fetchedAt": "2026-09-05 09:52:18"
   },
   {
     "id": "limitless-6a970a85-shuckleonlyfan",
@@ -4460,7 +4460,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:31"
+    "fetchedAt": "2026-09-05 09:52:19"
   },
   {
     "id": "limitless-6a908524-soraxjm",
@@ -4737,7 +4737,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:32"
+    "fetchedAt": "2026-09-05 09:52:20"
   },
   {
     "id": "limitless-6a908524-rubygl",
@@ -5014,7 +5014,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:32"
+    "fetchedAt": "2026-09-05 09:52:21"
   },
   {
     "id": "limitless-6a908524-lenvgc",
@@ -5293,7 +5293,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:33"
+    "fetchedAt": "2026-09-05 09:52:21"
   },
   {
     "id": "limitless-6a908524-gouillou",
@@ -5572,7 +5572,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:33"
+    "fetchedAt": "2026-09-05 09:52:22"
   },
   {
     "id": "limitless-6a809647-ebbesand",
@@ -5851,7 +5851,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:34"
+    "fetchedAt": "2026-09-05 09:52:23"
   },
   {
     "id": "limitless-6a809647-gurrasnurra5",
@@ -6130,7 +6130,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:35"
+    "fetchedAt": "2026-09-05 09:52:24"
   },
   {
     "id": "limitless-6a809647-scovillainvgcbr",
@@ -6409,7 +6409,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:35"
+    "fetchedAt": "2026-09-05 09:52:24"
   },
   {
     "id": "limitless-6a809647-forblaze",
@@ -6689,7 +6689,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:36"
+    "fetchedAt": "2026-09-05 09:52:25"
   },
   {
     "id": "limitless-6a982129-giac28",
@@ -6968,7 +6968,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:36"
+    "fetchedAt": "2026-09-05 09:52:26"
   },
   {
     "id": "limitless-6a982129-pandapazzo",
@@ -7248,7 +7248,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:37"
+    "fetchedAt": "2026-09-05 09:52:26"
   },
   {
     "id": "limitless-6a982129-20gian04",
@@ -7527,7 +7527,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:37"
+    "fetchedAt": "2026-09-05 09:52:27"
   },
   {
     "id": "limitless-6a982129-red5",
@@ -7804,7 +7804,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:38"
+    "fetchedAt": "2026-09-05 09:52:28"
   },
   {
     "id": "limitless-6a990766-kotori",
@@ -8083,7 +8083,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:38"
+    "fetchedAt": "2026-09-05 09:52:29"
   },
   {
     "id": "limitless-6a990766-nikoneeto",
@@ -8362,7 +8362,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:39"
+    "fetchedAt": "2026-09-05 09:52:29"
   },
   {
     "id": "limitless-6a990766-chris17c",
@@ -8641,7 +8641,7 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:39"
+    "fetchedAt": "2026-09-05 09:52:30"
   },
   {
     "id": "limitless-6a990766-eckzillaz",
@@ -8920,6 +8920,6 @@ window.CHAMPIONS_TEAMS = [
         ]
       }
     ],
-    "fetchedAt": "2026-09-05 09:38:40"
+    "fetchedAt": "2026-09-05 09:52:31"
   }
 ];
