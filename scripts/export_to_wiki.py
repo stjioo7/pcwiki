@@ -204,12 +204,48 @@ def load_waza_catalog():
     return waza_map
 
 
+def format_meta_usage(record, waza_map, default_type, abilities_desc):
+    if not record:
+        return None
+    abilities_list = []
+    for ab in record.get("abilities", []):
+        ab_name = ab.get("name", "")
+        usage = ab.get("usage", 0.0)
+        desc = abilities_desc.get(ab_name, "对战中触发的官方特性效果。")
+        abilities_list.append({
+            "name": ab_name,
+            "desc": desc,
+            "usage": usage,
+            "usageText": f"{usage}%"
+        })
+    return {
+        "rank": record.get("rank"),
+        "items": record.get("items", []),
+        "abilities": abilities_list,
+        "natures": record.get("natures", []),
+        "partners": record.get("partners", []),
+        "evSpreads": record.get("ev_spreads", []),
+        "topMoves": [
+            {
+                "name": m.get("name", ""),
+                "usage": m.get("usage", 0.0),
+                "type": waza_map.get(m.get("name", ""), {}).get("type", default_type),
+                "category": waza_map.get(m.get("name", ""), {}).get("category", "物理"),
+                "power": waza_map.get(m.get("name", ""), {}).get("power", "--"),
+                "accuracy": waza_map.get(m.get("name", ""), {}).get("accuracy", 100)
+            }
+            for m in record.get("moves", [])[:12]
+        ]
+    }
+
+
 def run_export(base_dir=None):
     if base_dir is None:
         base_dir = Path(__file__).resolve().parent.parent
     else:
         base_dir = Path(base_dir)
     meta_src = base_dir / "data" / "meta" / "pokechamdb_M-5_double_forms.json"
+    single_src = base_dir / "data" / "meta" / "pokechamdb_M-5_single_forms.json"
     old_json = base_dir / "data" / "champions_data.json"
     old_js = base_dir / "data" / "champions_data.js"
 
@@ -234,9 +270,20 @@ def run_export(base_dir=None):
         except Exception:
             pass
 
-    # 读取 M-5 新数据
+    # 读取 M-5 新数据 (双打为主基底，单打深度聚合)
     m5_records = json.loads(meta_src.read_text(encoding="utf-8"))
-    print(f"成功读取 M-5 原始记录: {len(m5_records)} 条")
+    print(f"成功读取 M-5 双打原始记录: {len(m5_records)} 条")
+
+    single_by_slug = {}
+    if single_src.exists():
+        try:
+            s_recs = json.loads(single_src.read_text(encoding="utf-8"))
+            for sr in s_recs:
+                if sr.get("form") == "通常":
+                    single_by_slug[sr["slug"]] = sr
+            print(f"成功读取 M-5 单打原始记录: {len(single_by_slug)} 只")
+        except Exception as e:
+            print(f"Warning loading single meta data: {e}")
 
     waza_map = load_waza_catalog()
     print(f"已装载官方招式数值字典: {len(waza_map)} 个")
@@ -376,8 +423,18 @@ def run_export(base_dir=None):
                 "forms": mega_forms_list
             }
 
+        # 格式化单打与双打专属大数据
+        def_t = types_en[0] if types_en else "Normal"
+        double_usage = format_meta_usage(base_record, waza_map, def_t, abilities_desc)
+        single_rec = single_by_slug.get(slug)
+        single_usage = format_meta_usage(single_rec, waza_map, def_t, abilities_desc)
+
         # 标签
-        tags = [f"Rank #{base_record.get('rank', 999)}", "M-5双打"]
+        tags = []
+        if double_usage and double_usage.get("rank"):
+            tags.append(f"双打 #{double_usage['rank']}")
+        if single_usage and single_usage.get("rank"):
+            tags.append(f"单打 #{single_usage['rank']}")
         if has_mega:
             tags.append("Mega进化")
 
@@ -397,28 +454,15 @@ def run_export(base_dir=None):
             "formKey": "",
             "tags": tags,
             "mega": mega_data,
-            "metaUsage": {
-                "rank": base_record.get("rank"),
-                "items": base_record.get("items", []),
-                "natures": base_record.get("natures", []),
-                "partners": base_record.get("partners", []),
-                "evSpreads": base_record.get("ev_spreads", []),
-                "topMoves": [
-                    {
-                        "name": m.get("name", ""),
-                        "usage": m.get("usage", 0.0),
-                        "type": waza_map.get(m.get("name", ""), {}).get("type", types_en[0] if types_en else "Normal"),
-                        "category": waza_map.get(m.get("name", ""), {}).get("category", "物理"),
-                        "power": waza_map.get(m.get("name", ""), {}).get("power", "--"),
-                        "accuracy": waza_map.get(m.get("name", ""), {}).get("accuracy", 100)
-                    }
-                    for m in base_record.get("moves", [])[:12]
-                ]
-            }
+            "meta": {
+                "double": double_usage,
+                "single": single_usage
+            },
+            "metaUsage": double_usage
         }
         pokemon_list.append(pokemon_obj)
 
-    # 按照天梯 rank 升序排列 (rank 1 排在最前)
+    # 默认按照双打天梯 rank 升序排列
     pokemon_list.sort(key=lambda x: (x.get("metaUsage", {}).get("rank") or 9999, x.get("id", 0)))
 
     # 组装输出
@@ -426,9 +470,10 @@ def run_export(base_dir=None):
         "meta": {
             "version": "2.0.0-M5-Live",
             "season": "M-5",
-            "format": "double",
+            "formats": ["double", "single"],
             "total": len(pokemon_list),
             "totalForms": len(m5_records),
+            "totalSingles": len(single_by_slug),
             "generatedAt": "2026-09-05"
         },
         "typeChart": type_chart,

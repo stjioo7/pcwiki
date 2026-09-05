@@ -8,6 +8,17 @@ let currentRenderedCount = 0;
 let currentPage = 1;
 let scrollObserver = null;
 let activeFormIndex = 0;
+let currentFormat = localStorage.getItem('pc_format') || 'double';
+
+function setFormat(fmt) {
+  currentFormat = fmt;
+  localStorage.setItem('pc_format', fmt);
+  const fmtDblBtn = document.getElementById('formatDoubleBtn');
+  const fmtSglBtn = document.getElementById('formatSingleBtn');
+  if (fmtDblBtn) fmtDblBtn.classList.toggle('active', fmt === 'double');
+  if (fmtSglBtn) fmtSglBtn.classList.toggle('active', fmt === 'single');
+  applyFilters();
+}
 
 function initTypeFilterBadges() {
   const container = document.getElementById('typeFilters');
@@ -71,6 +82,16 @@ function bindControls() {
   document.getElementById('searchInput').addEventListener('input', applyFilters);
   document.getElementById('megaOnlyFilter').addEventListener('change', applyFilters);
   document.getElementById('sortSelect').addEventListener('change', applyFilters);
+
+  // 赛制切换按钮 (双打 / 单打)
+  const fmtDblBtn = document.getElementById('formatDoubleBtn');
+  const fmtSglBtn = document.getElementById('formatSingleBtn');
+  if (fmtDblBtn && fmtSglBtn) {
+    fmtDblBtn.classList.toggle('active', currentFormat === 'double');
+    fmtSglBtn.classList.toggle('active', currentFormat === 'single');
+    fmtDblBtn.addEventListener('click', () => setFormat('double'));
+    fmtSglBtn.addEventListener('click', () => setFormat('single'));
+  }
 
   // 模式切换
   const scrollBtn = document.getElementById('modeScrollBtn');
@@ -736,8 +757,17 @@ function applyFilters() {
   // 排序
   filtered.sort((a, b) => {
     if (sortMode === 'rank_asc') {
-      const rankA = (a.metaUsage && a.metaUsage.rank) ? a.metaUsage.rank : 999999;
-      const rankB = (b.metaUsage && b.metaUsage.rank) ? b.metaUsage.rank : 999999;
+      const getRank = (p) => {
+        if (p.meta && p.meta[currentFormat] && p.meta[currentFormat].rank) {
+          return p.meta[currentFormat].rank;
+        }
+        if (currentFormat === 'double' && p.metaUsage && p.metaUsage.rank) {
+          return p.metaUsage.rank;
+        }
+        return 999999;
+      };
+      const rankA = getRank(a);
+      const rankB = getRank(b);
       if (rankA !== rankB) return rankA - rankB;
       return a.id - b.id;
     }
@@ -828,8 +858,10 @@ function createPokemonCardElement(p) {
 
   const abilityPreview = p.abilities && p.abilities[0] ? p.abilities[0].name : '';
   const moveCount = (p.learnset && p.learnset.length) || 0;
-  const rankBadgeHtml = (p.metaUsage && p.metaUsage.rank)
-    ? `<span class="card-rank-badge">🔥 Rank #${p.metaUsage.rank}</span>`
+  const currentMeta = (p.meta && p.meta[currentFormat]) ? p.meta[currentFormat] : (currentFormat === 'double' ? p.metaUsage : null);
+  const currentRank = currentMeta ? currentMeta.rank : null;
+  const rankBadgeHtml = currentRank
+    ? `<span class="card-rank-badge">🔥 ${currentFormat === 'single' ? '单打' : '双打'} Rank #${currentRank}</span>`
     : '';
 
   card.innerHTML = `
@@ -883,8 +915,9 @@ function openDetailModal(p) {
   isShowAllLearnset = false;
   
   // 默认根据官方天梯上位实战数据预选性格与努力值加点
-  if (p.metaUsage && p.metaUsage.evSpreads && p.metaUsage.evSpreads.length > 0) {
-    const topEv = p.metaUsage.evSpreads[0];
+  const activeMeta = (p.meta && p.meta[currentFormat]) ? p.meta[currentFormat] : (currentFormat === 'double' ? p.metaUsage : null);
+  if (activeMeta && activeMeta.evSpreads && activeMeta.evSpreads.length > 0) {
+    const topEv = activeMeta.evSpreads[0];
     currentVpAllocation = {
       hp: topEv.hp || 0,
       atk: topEv.atk || 0,
@@ -899,8 +932,8 @@ function openDetailModal(p) {
     currentVpAllocation = { hp: 0, atk: 32, def: 0, spa: 0, spd: 0, spe: 32 };
   }
 
-  if (p.metaUsage && p.metaUsage.natures && p.metaUsage.natures.length > 0) {
-    const topNat = p.metaUsage.natures[0].name;
+  if (activeMeta && activeMeta.natures && activeMeta.natures.length > 0) {
+    const topNat = activeMeta.natures[0].name;
     const foundNat = NATURES.find(n => n.name.startsWith(topNat) || n.name.includes(topNat));
     if (foundNat) selectedNature = foundNat;
   }
@@ -943,7 +976,8 @@ function renderModalContent() {
   ).join(' ');
 
   const matchups = calculateTypeMatchups(currentTypes);
-  const meta = p.metaUsage || null;
+  const formatKey = currentFormat || 'double';
+  const meta = (p.meta && p.meta[formatKey]) ? p.meta[formatKey] : (formatKey === 'double' ? p.metaUsage : null);
   const rank = meta ? meta.rank : null;
 
   const modalBody = document.getElementById('modalBody');
@@ -957,7 +991,7 @@ function renderModalContent() {
         <h2>
           ${currentDisplayName}
           <span style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">#${String(p.id).padStart(3, '0')}</span>
-          ${rank ? `<span class="modal-rank-badge">🔥 官方排位使用率 Rank #${rank}</span>` : ''}
+          ${rank ? `<span class="modal-rank-badge">🔥 ${formatKey === 'single' ? '单打' : '双打'} Rank #${rank}</span>` : ''}
         </h2>
         <p style="color: var(--text-muted); margin-bottom: 0.5rem;">${p.enName}</p>
         <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
@@ -1044,9 +1078,13 @@ function renderModalContent() {
       <div class="metagame-header">
         <div class="metagame-title-group">
           <h3>🔥 官方天梯排位实战大数据</h3>
-          ${rank ? `<span class="meta-rank-tag">排位使用率 Rank #${rank}</span>` : '<span class="meta-rank-tag meta-unranked">暂无天梯上位排名</span>'}
+          ${rank ? `<span class="meta-rank-tag">${formatKey === 'single' ? '单打' : '双打'} Rank #${rank}</span>` : '<span class="meta-rank-tag meta-unranked">暂无天梯上位排名</span>'}
+          <div class="modal-format-tabs">
+            <button class="modal-fmt-btn ${formatKey === 'double' ? 'active' : ''}" id="modalTabDoubleBtn">⚔️ 双打数据</button>
+            <button class="modal-fmt-btn ${formatKey === 'single' ? 'active' : ''}" id="modalTabSingleBtn">🎯 单打数据</button>
+          </div>
         </div>
-        <span class="metagame-subtitle">数据源于官方排位赛上位对局样本统计（单打/双打标准对战环境）</span>
+        <span class="metagame-subtitle">数据源于官方排位赛上位对局样本统计（当前查看：${formatKey === 'single' ? '单打' : '双打'}赛制）</span>
       </div>
 
       <div class="metagame-cards-grid">
@@ -1054,30 +1092,45 @@ function renderModalContent() {
         <div class="metagame-card">
           <div class="meta-card-header">
             <h4>✦ 特性效果与排位选用</h4>
-            <span class="meta-card-sub">含官方战斗效果说明</span>
+            <span class="meta-card-sub">含官方战斗效果说明与使用率</span>
           </div>
           <div class="meta-card-body">
             <div class="meta-abilities-list">
-              ${currentAbilityList.map(a => {
-                const usageNum = typeof a.usage === 'number' ? a.usage : (a.usageText ? parseFloat(a.usageText) : null);
-                return `
-                  <div class="meta-ability-box">
-                    <div class="meta-ability-top">
-                      <div class="meta-ability-title">
-                        <strong>✦ ${typeof a === 'string' ? a : a.name}</strong>
-                        ${a.tag ? `<span class="meta-ability-badge">${a.tag}</span>` : ''}
+              ${(() => {
+                const metaAbMap = {};
+                if (meta && meta.abilities) {
+                  meta.abilities.forEach(ab => {
+                    metaAbMap[ab.name] = ab;
+                  });
+                }
+                return currentAbilityList.map(a => {
+                  const aName = typeof a === 'string' ? a : a.name;
+                  const matchedMetaAb = metaAbMap[aName];
+                  const usageNum = matchedMetaAb && typeof matchedMetaAb.usage === 'number'
+                    ? matchedMetaAb.usage
+                    : (typeof a.usage === 'number' ? a.usage : (a.usageText ? parseFloat(a.usageText) : null));
+                  const descText = (matchedMetaAb && matchedMetaAb.desc)
+                    ? matchedMetaAb.desc
+                    : (typeof a === 'string' ? '游戏内实装特性' : (a.desc || '官方原版战斗触发特性效果。'));
+                  return `
+                    <div class="meta-ability-box">
+                      <div class="meta-ability-top">
+                        <div class="meta-ability-title">
+                          <strong>✦ ${aName}</strong>
+                          ${a.tag ? `<span class="meta-ability-badge">${a.tag}</span>` : ''}
+                        </div>
+                        ${usageNum !== null ? `<span class="meta-pct-badge">${usageNum.toFixed(1)}%</span>` : ''}
                       </div>
-                      ${usageNum !== null ? `<span class="meta-pct-badge">${usageNum.toFixed(1)}%</span>` : ''}
+                      ${usageNum !== null ? `
+                        <div class="meta-progress-track">
+                          <div class="meta-progress-fill ability-fill" style="width: ${Math.min(100, usageNum)}%;"></div>
+                        </div>
+                      ` : ''}
+                      <p class="meta-ability-desc">${descText}</p>
                     </div>
-                    ${usageNum !== null ? `
-                      <div class="meta-progress-track">
-                        <div class="meta-progress-fill ability-fill" style="width: ${Math.min(100, usageNum)}%;"></div>
-                      </div>
-                    ` : ''}
-                    <p class="meta-ability-desc">${typeof a === 'string' ? '游戏内实装特性' : (a.desc || '官方原版战斗触发特性效果。')}</p>
-                  </div>
-                `;
-              }).join('')}
+                  `;
+                }).join('');
+              })()}
             </div>
           </div>
         </div>
@@ -1299,6 +1352,22 @@ function renderVpSliderRow(key, label, baseVal, currentVal) {
 }
 
 function bindModalDynamicEvents(currentStats) {
+  // 0. 弹窗内单双打赛制切换
+  const mTabDbl = document.getElementById('modalTabDoubleBtn');
+  const mTabSgl = document.getElementById('modalTabSingleBtn');
+  if (mTabDbl) {
+    mTabDbl.onclick = () => {
+      setFormat('double');
+      renderModalContent();
+    };
+  }
+  if (mTabSgl) {
+    mTabSgl.onclick = () => {
+      setFormat('single');
+      renderModalContent();
+    };
+  }
+
   // 1. Mega 形态 / 多分支切换按钮组
   document.querySelectorAll('.mega-branch-btn').forEach(btn => {
     btn.onclick = (e) => {

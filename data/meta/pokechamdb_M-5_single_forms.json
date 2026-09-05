@@ -1,0 +1,2114 @@
+[
+  {
+    "record_id": "garchomp__通常",
+    "slug": "garchomp",
+    "form": "通常",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/garchomp?season=M-5&format=single",
+    "rank": 1,
+    "no": 445,
+    "name": "烈咬陆鲨",
+    "types": [
+      "龙",
+      "地面"
+    ],
+    "base_stats": {
+      "HP": 108,
+      "攻击": 130,
+      "防御": 95,
+      "特攻": 80,
+      "特防": 85,
+      "速度": 102,
+      "合计": 600
+    },
+    "moves": [
+      {
+        "name": "地震",
+        "usage": 99.0
+      },
+      {
+        "name": "隐形岩",
+        "usage": 50.0
+      },
+      {
+        "name": "鳞射",
+        "usage": 46.0
+      },
+      {
+        "name": "剑舞",
+        "usage": 31.0
+      },
+      {
+        "name": "龙尾",
+        "usage": 30.0
+      },
+      {
+        "name": "逆鳞",
+        "usage": 30.0
+      },
+      {
+        "name": "岩石封锁",
+        "usage": 29.0
+      },
+      {
+        "name": "毒击",
+        "usage": 16.0
+      },
+      {
+        "name": "岩崩",
+        "usage": 13.0
+      },
+      {
+        "name": "火焰牙",
+        "usage": 10.0
+      }
+    ],
+    "items": [
+      {
+        "name": "气势披带",
+        "usage": 41.0
+      },
+      {
+        "name": "讲究围巾",
+        "usage": 19.0
+      },
+      {
+        "name": "文柚果",
+        "usage": 14.0
+      },
+      {
+        "name": "木子果",
+        "usage": 7.0
+      },
+      {
+        "name": "生命宝珠",
+        "usage": 4.0
+      },
+      {
+        "name": "零余果",
+        "usage": 4.0
+      },
+      {
+        "name": "达人带",
+        "usage": 2.0
+      },
+      {
+        "name": "烈咬陆鲨进化石",
+        "usage": 2.0
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 0.7
+      },
+      {
+        "name": "番荔果",
+        "usage": 0.6
+      }
+    ],
+    "abilities": [
+      {
+        "name": "粗糙皮肤",
+        "usage": 99.0
+      },
+      {
+        "name": "沙隐",
+        "usage": 0.9
+      }
+    ],
+    "natures": [
+      {
+        "name": "爽朗",
+        "usage": 52.0
+      },
+      {
+        "name": "固执",
+        "usage": 30.0
+      },
+      {
+        "name": "淘气",
+        "usage": 14.0
+      },
+      {
+        "name": "慎重",
+        "usage": 1.0
+      },
+      {
+        "name": "天真",
+        "usage": 0.4
+      },
+      {
+        "name": "顽皮",
+        "usage": 0.3
+      },
+      {
+        "name": "急躁",
+        "usage": 0.2
+      },
+      {
+        "name": "大胆",
+        "usage": 0.2
+      },
+      {
+        "name": "内敛",
+        "usage": 0.2
+      },
+      {
+        "name": "怕寂寞",
+        "usage": 0.2
+      }
+    ],
+    "partners": [
+      {
+        "name": "西狮海壬",
+        "rank": 1
+      },
+      {
+        "name": "魔幻假面喵",
+        "rank": 2
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 3
+      },
+      {
+        "name": "谜拟Ｑ",
+        "rank": 4
+      },
+      {
+        "name": "铝钢桥龙",
+        "rank": 5
+      },
+      {
+        "name": "暴鲤龙",
+        "rank": 6
+      },
+      {
+        "name": "钢铠鸦",
+        "rank": 7
+      },
+      {
+        "name": "喷火龙",
+        "rank": 8
+      },
+      {
+        "name": "巨金怪",
+        "rank": 9
+      },
+      {
+        "name": "巨钳螳螂",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 2,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 50.1
+      },
+      {
+        "rank": 2,
+        "hp": 0,
+        "atk": 32,
+        "def": 2,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 9.4
+      },
+      {
+        "rank": 3,
+        "hp": 0,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 1,
+        "spe": 32,
+        "usage": 4.8
+      },
+      {
+        "rank": 4,
+        "hp": 32,
+        "atk": 0,
+        "def": 16,
+        "spa": 0,
+        "spd": 17,
+        "spe": 1,
+        "usage": 3.1
+      },
+      {
+        "rank": 5,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 2,
+        "spe": 32,
+        "usage": 2.6
+      },
+      {
+        "rank": 6,
+        "hp": 0,
+        "atk": 31,
+        "def": 3,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 2.4
+      },
+      {
+        "rank": 7,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 0,
+        "spe": 2,
+        "usage": 1.9
+      },
+      {
+        "rank": 8,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 2,
+        "spe": 0,
+        "usage": 1.5
+      },
+      {
+        "rank": 9,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 1.3
+      },
+      {
+        "rank": 10,
+        "hp": 32,
+        "atk": 0,
+        "def": 25,
+        "spa": 0,
+        "spd": 0,
+        "spe": 9,
+        "usage": 0.9
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "record_id": "garchomp__超级",
+    "slug": "garchomp",
+    "form": "超级",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/garchomp?season=M-5&format=single",
+    "rank": 1,
+    "no": 445,
+    "name": "超级烈咬陆鲨",
+    "types": [
+      "龙",
+      "地面"
+    ],
+    "base_stats": {
+      "HP": 108,
+      "攻击": 170,
+      "防御": 115,
+      "特攻": 120,
+      "特防": 95,
+      "速度": 92,
+      "合计": 700
+    },
+    "moves": [
+      {
+        "name": "地震",
+        "usage": 99.0
+      },
+      {
+        "name": "隐形岩",
+        "usage": 50.0
+      },
+      {
+        "name": "鳞射",
+        "usage": 46.0
+      },
+      {
+        "name": "剑舞",
+        "usage": 31.0
+      },
+      {
+        "name": "龙尾",
+        "usage": 30.0
+      },
+      {
+        "name": "逆鳞",
+        "usage": 30.0
+      },
+      {
+        "name": "岩石封锁",
+        "usage": 29.0
+      },
+      {
+        "name": "毒击",
+        "usage": 16.0
+      },
+      {
+        "name": "岩崩",
+        "usage": 13.0
+      },
+      {
+        "name": "火焰牙",
+        "usage": 10.0
+      }
+    ],
+    "items": [
+      {
+        "name": "气势披带",
+        "usage": 41.0
+      },
+      {
+        "name": "讲究围巾",
+        "usage": 19.0
+      },
+      {
+        "name": "文柚果",
+        "usage": 14.0
+      },
+      {
+        "name": "木子果",
+        "usage": 7.0
+      },
+      {
+        "name": "生命宝珠",
+        "usage": 4.0
+      },
+      {
+        "name": "零余果",
+        "usage": 4.0
+      },
+      {
+        "name": "达人带",
+        "usage": 2.0
+      },
+      {
+        "name": "烈咬陆鲨进化石",
+        "usage": 2.0
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 0.7
+      },
+      {
+        "name": "番荔果",
+        "usage": 0.6
+      }
+    ],
+    "abilities": [
+      {
+        "name": "沙之力",
+        "usage": 100.0
+      }
+    ],
+    "natures": [
+      {
+        "name": "爽朗",
+        "usage": 52.0
+      },
+      {
+        "name": "固执",
+        "usage": 30.0
+      },
+      {
+        "name": "淘气",
+        "usage": 14.0
+      },
+      {
+        "name": "慎重",
+        "usage": 1.0
+      },
+      {
+        "name": "天真",
+        "usage": 0.4
+      },
+      {
+        "name": "顽皮",
+        "usage": 0.3
+      },
+      {
+        "name": "急躁",
+        "usage": 0.2
+      },
+      {
+        "name": "大胆",
+        "usage": 0.2
+      },
+      {
+        "name": "内敛",
+        "usage": 0.2
+      },
+      {
+        "name": "怕寂寞",
+        "usage": 0.2
+      }
+    ],
+    "partners": [
+      {
+        "name": "西狮海壬",
+        "rank": 1
+      },
+      {
+        "name": "魔幻假面喵",
+        "rank": 2
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 3
+      },
+      {
+        "name": "谜拟Ｑ",
+        "rank": 4
+      },
+      {
+        "name": "铝钢桥龙",
+        "rank": 5
+      },
+      {
+        "name": "暴鲤龙",
+        "rank": 6
+      },
+      {
+        "name": "钢铠鸦",
+        "rank": 7
+      },
+      {
+        "name": "喷火龙",
+        "rank": 8
+      },
+      {
+        "name": "巨金怪",
+        "rank": 9
+      },
+      {
+        "name": "巨钳螳螂",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 2,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 50.1
+      },
+      {
+        "rank": 2,
+        "hp": 0,
+        "atk": 32,
+        "def": 2,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 9.4
+      },
+      {
+        "rank": 3,
+        "hp": 0,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 1,
+        "spe": 32,
+        "usage": 4.8
+      },
+      {
+        "rank": 4,
+        "hp": 32,
+        "atk": 0,
+        "def": 16,
+        "spa": 0,
+        "spd": 17,
+        "spe": 1,
+        "usage": 3.1
+      },
+      {
+        "rank": 5,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 2,
+        "spe": 32,
+        "usage": 2.6
+      },
+      {
+        "rank": 6,
+        "hp": 0,
+        "atk": 31,
+        "def": 3,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 2.4
+      },
+      {
+        "rank": 7,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 0,
+        "spe": 2,
+        "usage": 1.9
+      },
+      {
+        "rank": 8,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 2,
+        "spe": 0,
+        "usage": 1.5
+      },
+      {
+        "rank": 9,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 1.3
+      },
+      {
+        "rank": 10,
+        "hp": 32,
+        "atk": 0,
+        "def": 25,
+        "spa": 0,
+        "spd": 0,
+        "spe": 9,
+        "usage": 0.9
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "record_id": "garchomp__超级_Z",
+    "slug": "garchomp",
+    "form": "超级 Z",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/garchomp?season=M-5&format=single",
+    "rank": 1,
+    "no": 445,
+    "name": "超级烈咬陆鲨Z",
+    "types": [
+      "龙"
+    ],
+    "base_stats": {
+      "HP": 108,
+      "攻击": 130,
+      "防御": 85,
+      "特攻": 141,
+      "特防": 85,
+      "速度": 151,
+      "合计": 700
+    },
+    "moves": [
+      {
+        "name": "地震",
+        "usage": 99.0
+      },
+      {
+        "name": "隐形岩",
+        "usage": 50.0
+      },
+      {
+        "name": "鳞射",
+        "usage": 46.0
+      },
+      {
+        "name": "剑舞",
+        "usage": 31.0
+      },
+      {
+        "name": "龙尾",
+        "usage": 30.0
+      },
+      {
+        "name": "逆鳞",
+        "usage": 30.0
+      },
+      {
+        "name": "岩石封锁",
+        "usage": 29.0
+      },
+      {
+        "name": "毒击",
+        "usage": 16.0
+      },
+      {
+        "name": "岩崩",
+        "usage": 13.0
+      },
+      {
+        "name": "火焰牙",
+        "usage": 10.0
+      }
+    ],
+    "items": [
+      {
+        "name": "气势披带",
+        "usage": 41.0
+      },
+      {
+        "name": "讲究围巾",
+        "usage": 19.0
+      },
+      {
+        "name": "文柚果",
+        "usage": 14.0
+      },
+      {
+        "name": "木子果",
+        "usage": 7.0
+      },
+      {
+        "name": "生命宝珠",
+        "usage": 4.0
+      },
+      {
+        "name": "零余果",
+        "usage": 4.0
+      },
+      {
+        "name": "达人带",
+        "usage": 2.0
+      },
+      {
+        "name": "烈咬陆鲨进化石",
+        "usage": 2.0
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 0.7
+      },
+      {
+        "name": "番荔果",
+        "usage": 0.6
+      }
+    ],
+    "abilities": [
+      {
+        "name": "沙之力",
+        "usage": 100.0
+      }
+    ],
+    "natures": [
+      {
+        "name": "爽朗",
+        "usage": 52.0
+      },
+      {
+        "name": "固执",
+        "usage": 30.0
+      },
+      {
+        "name": "淘气",
+        "usage": 14.0
+      },
+      {
+        "name": "慎重",
+        "usage": 1.0
+      },
+      {
+        "name": "天真",
+        "usage": 0.4
+      },
+      {
+        "name": "顽皮",
+        "usage": 0.3
+      },
+      {
+        "name": "急躁",
+        "usage": 0.2
+      },
+      {
+        "name": "大胆",
+        "usage": 0.2
+      },
+      {
+        "name": "内敛",
+        "usage": 0.2
+      },
+      {
+        "name": "怕寂寞",
+        "usage": 0.2
+      }
+    ],
+    "partners": [
+      {
+        "name": "西狮海壬",
+        "rank": 1
+      },
+      {
+        "name": "魔幻假面喵",
+        "rank": 2
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 3
+      },
+      {
+        "name": "谜拟Ｑ",
+        "rank": 4
+      },
+      {
+        "name": "铝钢桥龙",
+        "rank": 5
+      },
+      {
+        "name": "暴鲤龙",
+        "rank": 6
+      },
+      {
+        "name": "钢铠鸦",
+        "rank": 7
+      },
+      {
+        "name": "喷火龙",
+        "rank": 8
+      },
+      {
+        "name": "巨金怪",
+        "rank": 9
+      },
+      {
+        "name": "巨钳螳螂",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 2,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 50.1
+      },
+      {
+        "rank": 2,
+        "hp": 0,
+        "atk": 32,
+        "def": 2,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 9.4
+      },
+      {
+        "rank": 3,
+        "hp": 0,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 1,
+        "spe": 32,
+        "usage": 4.8
+      },
+      {
+        "rank": 4,
+        "hp": 32,
+        "atk": 0,
+        "def": 16,
+        "spa": 0,
+        "spd": 17,
+        "spe": 1,
+        "usage": 3.1
+      },
+      {
+        "rank": 5,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 2,
+        "spe": 32,
+        "usage": 2.6
+      },
+      {
+        "rank": 6,
+        "hp": 0,
+        "atk": 31,
+        "def": 3,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 2.4
+      },
+      {
+        "rank": 7,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 0,
+        "spe": 2,
+        "usage": 1.9
+      },
+      {
+        "rank": 8,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 2,
+        "spe": 0,
+        "usage": 1.5
+      },
+      {
+        "rank": 9,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 1.3
+      },
+      {
+        "rank": 10,
+        "hp": 32,
+        "atk": 0,
+        "def": 25,
+        "spa": 0,
+        "spd": 0,
+        "spe": 9,
+        "usage": 0.9
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "record_id": "primarina__通常",
+    "slug": "primarina",
+    "form": "通常",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/primarina?season=M-5&format=single",
+    "rank": 2,
+    "no": 730,
+    "name": "西狮海壬",
+    "types": [
+      "水",
+      "妖精"
+    ],
+    "base_stats": {
+      "HP": 80,
+      "攻击": 74,
+      "防御": 74,
+      "特攻": 126,
+      "特防": 116,
+      "速度": 60,
+      "合计": 530
+    },
+    "moves": [
+      {
+        "name": "月亮之力",
+        "usage": 97.0
+      },
+      {
+        "name": "泡影的咏叹调",
+        "usage": 91.0
+      },
+      {
+        "name": "水流喷射",
+        "usage": 71.0
+      },
+      {
+        "name": "再来一次",
+        "usage": 45.0
+      },
+      {
+        "name": "冥想",
+        "usage": 35.0
+      },
+      {
+        "name": "快速折返",
+        "usage": 14.0
+      },
+      {
+        "name": "睡觉",
+        "usage": 9.0
+      },
+      {
+        "name": "冲浪",
+        "usage": 5.0
+      },
+      {
+        "name": "冰冻光束",
+        "usage": 5.0
+      },
+      {
+        "name": "薄雾场地",
+        "usage": 3.0
+      }
+    ],
+    "items": [
+      {
+        "name": "文柚果",
+        "usage": 45.0
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 21.0
+      },
+      {
+        "name": "零余果",
+        "usage": 9.0
+      },
+      {
+        "name": "神秘水滴",
+        "usage": 8.0
+      },
+      {
+        "name": "木子果",
+        "usage": 7.0
+      },
+      {
+        "name": "气势披带",
+        "usage": 2.0
+      },
+      {
+        "name": "妖精之羽",
+        "usage": 1.0
+      },
+      {
+        "name": "生命宝珠",
+        "usage": 1.0
+      },
+      {
+        "name": "先制之爪",
+        "usage": 0.6
+      },
+      {
+        "name": "讲究围巾",
+        "usage": 0.4
+      }
+    ],
+    "abilities": [
+      {
+        "name": "激流",
+        "usage": 94.0
+      },
+      {
+        "name": "湿润之声",
+        "usage": 5.0
+      }
+    ],
+    "natures": [
+      {
+        "name": "内敛",
+        "usage": 71.0
+      },
+      {
+        "name": "冷静",
+        "usage": 12.0
+      },
+      {
+        "name": "大胆",
+        "usage": 8.0
+      },
+      {
+        "name": "温和",
+        "usage": 3.0
+      },
+      {
+        "name": "悠闲",
+        "usage": 1.0
+      },
+      {
+        "name": "胆小",
+        "usage": 1.0
+      },
+      {
+        "name": "慢吞吞",
+        "usage": 0.9
+      },
+      {
+        "name": "自大",
+        "usage": 0.6
+      },
+      {
+        "name": "马虎",
+        "usage": 0.1
+      },
+      {
+        "name": "温顺",
+        "usage": 0.1
+      }
+    ],
+    "partners": [
+      {
+        "name": "烈咬陆鲨",
+        "rank": 1
+      },
+      {
+        "name": "巨金怪",
+        "rank": 2
+      },
+      {
+        "name": "魔幻假面喵",
+        "rank": 3
+      },
+      {
+        "name": "河马兽",
+        "rank": 4
+      },
+      {
+        "name": "铝钢桥龙",
+        "rank": 5
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 6
+      },
+      {
+        "name": "三首恶龙",
+        "rank": 7
+      },
+      {
+        "name": "谜拟Ｑ",
+        "rank": 8
+      },
+      {
+        "name": "喷火龙",
+        "rank": 9
+      },
+      {
+        "name": "快龙",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 32,
+        "atk": 0,
+        "def": 0,
+        "spa": 32,
+        "spd": 0,
+        "spe": 2,
+        "usage": 8.2
+      },
+      {
+        "rank": 2,
+        "hp": 32,
+        "atk": 0,
+        "def": 4,
+        "spa": 14,
+        "spd": 12,
+        "spe": 4,
+        "usage": 4.5
+      },
+      {
+        "rank": 3,
+        "hp": 32,
+        "atk": 0,
+        "def": 20,
+        "spa": 14,
+        "spd": 0,
+        "spe": 0,
+        "usage": 4.3
+      },
+      {
+        "rank": 4,
+        "hp": 32,
+        "atk": 0,
+        "def": 10,
+        "spa": 1,
+        "spd": 0,
+        "spe": 23,
+        "usage": 3.7
+      },
+      {
+        "rank": 5,
+        "hp": 32,
+        "atk": 0,
+        "def": 2,
+        "spa": 32,
+        "spd": 0,
+        "spe": 0,
+        "usage": 3.5
+      },
+      {
+        "rank": 6,
+        "hp": 32,
+        "atk": 0,
+        "def": 0,
+        "spa": 32,
+        "spd": 2,
+        "spe": 0,
+        "usage": 2.7
+      },
+      {
+        "rank": 7,
+        "hp": 32,
+        "atk": 0,
+        "def": 0,
+        "spa": 11,
+        "spd": 0,
+        "spe": 23,
+        "usage": 2.5
+      },
+      {
+        "rank": 8,
+        "hp": 32,
+        "atk": 0,
+        "def": 30,
+        "spa": 4,
+        "spd": 0,
+        "spe": 0,
+        "usage": 2.5
+      },
+      {
+        "rank": 9,
+        "hp": 32,
+        "atk": 0,
+        "def": 20,
+        "spa": 0,
+        "spd": 0,
+        "spe": 14,
+        "usage": 2.3
+      },
+      {
+        "rank": 10,
+        "hp": 32,
+        "atk": 0,
+        "def": 24,
+        "spa": 8,
+        "spd": 2,
+        "spe": 0,
+        "usage": 2.1
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "record_id": "meowscarada__通常",
+    "slug": "meowscarada",
+    "form": "通常",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/meowscarada?season=M-5&format=single",
+    "rank": 3,
+    "no": 908,
+    "name": "魔幻假面喵",
+    "types": [
+      "草",
+      "恶"
+    ],
+    "base_stats": {
+      "HP": 76,
+      "攻击": 110,
+      "防御": 70,
+      "特攻": 81,
+      "特防": 70,
+      "速度": 123,
+      "合计": 530
+    },
+    "moves": [
+      {
+        "name": "千变万花",
+        "usage": 95.0
+      },
+      {
+        "name": "三旋击",
+        "usage": 85.0
+      },
+      {
+        "name": "拍落",
+        "usage": 62.0
+      },
+      {
+        "name": "急速折返",
+        "usage": 54.0
+      },
+      {
+        "name": "突袭",
+        "usage": 32.0
+      },
+      {
+        "name": "雷电拳",
+        "usage": 13.0
+      },
+      {
+        "name": "毒菱",
+        "usage": 12.0
+      },
+      {
+        "name": "嬉闹",
+        "usage": 6.0
+      },
+      {
+        "name": "深渊突刺",
+        "usage": 6.0
+      },
+      {
+        "name": "力量宝石",
+        "usage": 4.0
+      }
+    ],
+    "items": [
+      {
+        "name": "讲究围巾",
+        "usage": 48.0
+      },
+      {
+        "name": "气势披带",
+        "usage": 29.0
+      },
+      {
+        "name": "生命宝珠",
+        "usage": 12.0
+      },
+      {
+        "name": "达人带",
+        "usage": 4.0
+      },
+      {
+        "name": "广角镜",
+        "usage": 0.7
+      },
+      {
+        "name": "木子果",
+        "usage": 0.7
+      },
+      {
+        "name": "文柚果",
+        "usage": 0.6
+      },
+      {
+        "name": "先制之爪",
+        "usage": 0.6
+      },
+      {
+        "name": "力量头带",
+        "usage": 0.4
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 0.3
+      }
+    ],
+    "abilities": [
+      {
+        "name": "变幻自如",
+        "usage": 82.0
+      },
+      {
+        "name": "茂盛",
+        "usage": 17.0
+      }
+    ],
+    "natures": [
+      {
+        "name": "爽朗",
+        "usage": 57.0
+      },
+      {
+        "name": "固执",
+        "usage": 35.0
+      },
+      {
+        "name": "天真",
+        "usage": 2.0
+      },
+      {
+        "name": "马虎",
+        "usage": 1.0
+      },
+      {
+        "name": "急躁",
+        "usage": 1.0
+      },
+      {
+        "name": "顽皮",
+        "usage": 0.9
+      },
+      {
+        "name": "胆小",
+        "usage": 0.6
+      },
+      {
+        "name": "怕寂寞",
+        "usage": 0.6
+      },
+      {
+        "name": "内敛",
+        "usage": 0.4
+      },
+      {
+        "name": "慢吞吞",
+        "usage": 0.1
+      }
+    ],
+    "partners": [
+      {
+        "name": "烈咬陆鲨",
+        "rank": 1
+      },
+      {
+        "name": "西狮海壬",
+        "rank": 2
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 3
+      },
+      {
+        "name": "河马兽",
+        "rank": 4
+      },
+      {
+        "name": "快龙",
+        "rank": 5
+      },
+      {
+        "name": "铝钢桥龙",
+        "rank": 6
+      },
+      {
+        "name": "喷火龙",
+        "rank": 7
+      },
+      {
+        "name": "巨金怪",
+        "rank": 8
+      },
+      {
+        "name": "谜拟Ｑ",
+        "rank": 9
+      },
+      {
+        "name": "雷丘",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 2,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 56.8
+      },
+      {
+        "rank": 2,
+        "hp": 0,
+        "atk": 32,
+        "def": 2,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 15.5
+      },
+      {
+        "rank": 3,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 2,
+        "spe": 32,
+        "usage": 4.1
+      },
+      {
+        "rank": 4,
+        "hp": 0,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 1,
+        "spe": 32,
+        "usage": 3.3
+      },
+      {
+        "rank": 5,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 1.9
+      },
+      {
+        "rank": 6,
+        "hp": 0,
+        "atk": 2,
+        "def": 0,
+        "spa": 32,
+        "spd": 0,
+        "spe": 32,
+        "usage": 1.4
+      },
+      {
+        "rank": 7,
+        "hp": 4,
+        "atk": 30,
+        "def": 20,
+        "spa": 0,
+        "spd": 0,
+        "spe": 12,
+        "usage": 1.2
+      },
+      {
+        "rank": 8,
+        "hp": 6,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 0,
+        "spe": 27,
+        "usage": 1.0
+      },
+      {
+        "rank": 9,
+        "hp": 1,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 0.7
+      },
+      {
+        "rank": 10,
+        "hp": 8,
+        "atk": 30,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 28,
+        "usage": 0.6
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "record_id": "archaludon__通常",
+    "slug": "archaludon",
+    "form": "通常",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/archaludon?season=M-5&format=single",
+    "rank": 4,
+    "no": 1018,
+    "name": "铝钢桥龙",
+    "types": [
+      "钢",
+      "龙"
+    ],
+    "base_stats": {
+      "HP": 90,
+      "攻击": 105,
+      "防御": 130,
+      "特攻": 125,
+      "特防": 65,
+      "速度": 85,
+      "合计": 600
+    },
+    "moves": [
+      {
+        "name": "加农光炮",
+        "usage": 74.0
+      },
+      {
+        "name": "流星群",
+        "usage": 67.0
+      },
+      {
+        "name": "十万伏特",
+        "usage": 56.0
+      },
+      {
+        "name": "隐形岩",
+        "usage": 41.0
+      },
+      {
+        "name": "波导弹",
+        "usage": 20.0
+      },
+      {
+        "name": "龙尾",
+        "usage": 18.0
+      },
+      {
+        "name": "吼叫",
+        "usage": 16.0
+      },
+      {
+        "name": "恶之波动",
+        "usage": 16.0
+      },
+      {
+        "name": "镜面反射",
+        "usage": 15.0
+      },
+      {
+        "name": "电光束",
+        "usage": 14.0
+      }
+    ],
+    "items": [
+      {
+        "name": "文柚果",
+        "usage": 34.0
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 21.0
+      },
+      {
+        "name": "白色香草",
+        "usage": 16.0
+      },
+      {
+        "name": "讲究围巾",
+        "usage": 12.0
+      },
+      {
+        "name": "焦点镜",
+        "usage": 5.0
+      },
+      {
+        "name": "零余果",
+        "usage": 2.0
+      },
+      {
+        "name": "腰木果",
+        "usage": 1.0
+      },
+      {
+        "name": "龙之牙",
+        "usage": 1.0
+      },
+      {
+        "name": "木子果",
+        "usage": 0.8
+      },
+      {
+        "name": "达人带",
+        "usage": 0.6
+      }
+    ],
+    "abilities": [
+      {
+        "name": "持久力",
+        "usage": 74.0
+      },
+      {
+        "name": "结实",
+        "usage": 25.0
+      },
+      {
+        "name": "坚毅",
+        "usage": 0.1
+      }
+    ],
+    "natures": [
+      {
+        "name": "内敛",
+        "usage": 40.0
+      },
+      {
+        "name": "大胆",
+        "usage": 17.0
+      },
+      {
+        "name": "温和",
+        "usage": 15.0
+      },
+      {
+        "name": "胆小",
+        "usage": 15.0
+      },
+      {
+        "name": "淘气",
+        "usage": 3.0
+      },
+      {
+        "name": "慎重",
+        "usage": 2.0
+      },
+      {
+        "name": "悠闲",
+        "usage": 1.0
+      },
+      {
+        "name": "自大",
+        "usage": 1.0
+      },
+      {
+        "name": "冷静",
+        "usage": 0.8
+      },
+      {
+        "name": "马虎",
+        "usage": 0.5
+      }
+    ],
+    "partners": [
+      {
+        "name": "烈咬陆鲨",
+        "rank": 1
+      },
+      {
+        "name": "谜拟Ｑ",
+        "rank": 2
+      },
+      {
+        "name": "西狮海壬",
+        "rank": 3
+      },
+      {
+        "name": "魔幻假面喵",
+        "rank": 4
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 5
+      },
+      {
+        "name": "暴鲤龙",
+        "rank": 6
+      },
+      {
+        "name": "幽尾玄鱼",
+        "rank": 7
+      },
+      {
+        "name": "河马兽",
+        "rank": 8
+      },
+      {
+        "name": "喷火龙",
+        "rank": 9
+      },
+      {
+        "name": "巨金怪",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 2,
+        "atk": 0,
+        "def": 0,
+        "spa": 32,
+        "spd": 0,
+        "spe": 32,
+        "usage": 21.0
+      },
+      {
+        "rank": 2,
+        "hp": 32,
+        "atk": 0,
+        "def": 2,
+        "spa": 0,
+        "spd": 32,
+        "spe": 0,
+        "usage": 8.2
+      },
+      {
+        "rank": 3,
+        "hp": 32,
+        "atk": 0,
+        "def": 0,
+        "spa": 0,
+        "spd": 32,
+        "spe": 2,
+        "usage": 4.1
+      },
+      {
+        "rank": 4,
+        "hp": 32,
+        "atk": 0,
+        "def": 32,
+        "spa": 0,
+        "spd": 2,
+        "spe": 0,
+        "usage": 2.8
+      },
+      {
+        "rank": 5,
+        "hp": 32,
+        "atk": 0,
+        "def": 0,
+        "spa": 32,
+        "spd": 0,
+        "spe": 2,
+        "usage": 2.6
+      },
+      {
+        "rank": 6,
+        "hp": 6,
+        "atk": 0,
+        "def": 0,
+        "spa": 31,
+        "spd": 0,
+        "spe": 29,
+        "usage": 2.6
+      },
+      {
+        "rank": 7,
+        "hp": 32,
+        "atk": 0,
+        "def": 2,
+        "spa": 32,
+        "spd": 0,
+        "spe": 0,
+        "usage": 2.2
+      },
+      {
+        "rank": 8,
+        "hp": 0,
+        "atk": 0,
+        "def": 2,
+        "spa": 32,
+        "spd": 0,
+        "spe": 32,
+        "usage": 2.1
+      },
+      {
+        "rank": 9,
+        "hp": 32,
+        "atk": 0,
+        "def": 0,
+        "spa": 32,
+        "spd": 2,
+        "spe": 0,
+        "usage": 2.1
+      },
+      {
+        "rank": 10,
+        "hp": 0,
+        "atk": 0,
+        "def": 1,
+        "spa": 32,
+        "spd": 1,
+        "spe": 32,
+        "usage": 1.9
+      }
+    ],
+    "warnings": []
+  },
+  {
+    "record_id": "mimikyu__通常",
+    "slug": "mimikyu",
+    "form": "通常",
+    "url": "https://pokechamdb.com/zh-Hans/pokemon/mimikyu?season=M-5&format=single",
+    "rank": 5,
+    "no": 778,
+    "name": "谜拟Ｑ",
+    "types": [
+      "幽灵",
+      "妖精"
+    ],
+    "base_stats": {
+      "HP": 55,
+      "攻击": 90,
+      "防御": 80,
+      "特攻": 50,
+      "特防": 105,
+      "速度": 96,
+      "合计": 476
+    },
+    "moves": [
+      {
+        "name": "嬉闹",
+        "usage": 96.0
+      },
+      {
+        "name": "影子偷袭",
+        "usage": 95.0
+      },
+      {
+        "name": "剑舞",
+        "usage": 80.0
+      },
+      {
+        "name": "暗影爪",
+        "usage": 54.0
+      },
+      {
+        "name": "咒术",
+        "usage": 18.0
+      },
+      {
+        "name": "木槌",
+        "usage": 17.0
+      },
+      {
+        "name": "吸取拳",
+        "usage": 12.0
+      },
+      {
+        "name": "戏法空间",
+        "usage": 4.0
+      },
+      {
+        "name": "守住",
+        "usage": 3.0
+      },
+      {
+        "name": "磷火",
+        "usage": 3.0
+      }
+    ],
+    "items": [
+      {
+        "name": "生命宝珠",
+        "usage": 81.0
+      },
+      {
+        "name": "焦点镜",
+        "usage": 4.0
+      },
+      {
+        "name": "诅咒之符",
+        "usage": 4.0
+      },
+      {
+        "name": "木子果",
+        "usage": 2.0
+      },
+      {
+        "name": "讲究围巾",
+        "usage": 1.0
+      },
+      {
+        "name": "文柚果",
+        "usage": 1.0
+      },
+      {
+        "name": "吃剩的东西",
+        "usage": 0.8
+      },
+      {
+        "name": "广角镜",
+        "usage": 0.7
+      },
+      {
+        "name": "光粉",
+        "usage": 0.7
+      },
+      {
+        "name": "妖精之羽",
+        "usage": 0.6
+      }
+    ],
+    "abilities": [
+      {
+        "name": "画皮",
+        "usage": 100.0
+      }
+    ],
+    "natures": [
+      {
+        "name": "固执",
+        "usage": 76.0
+      },
+      {
+        "name": "爽朗",
+        "usage": 18.0
+      },
+      {
+        "name": "勇敢",
+        "usage": 1.0
+      },
+      {
+        "name": "淘气",
+        "usage": 0.8
+      },
+      {
+        "name": "顽皮",
+        "usage": 0.4
+      },
+      {
+        "name": "怕寂寞",
+        "usage": 0.4
+      },
+      {
+        "name": "胆小",
+        "usage": 0.4
+      },
+      {
+        "name": "天真",
+        "usage": 0.4
+      },
+      {
+        "name": "悠闲",
+        "usage": 0.4
+      },
+      {
+        "name": "慎重",
+        "usage": 0.3
+      }
+    ],
+    "partners": [
+      {
+        "name": "烈咬陆鲨",
+        "rank": 1
+      },
+      {
+        "name": "铝钢桥龙",
+        "rank": 2
+      },
+      {
+        "name": "喷火龙",
+        "rank": 3
+      },
+      {
+        "name": "西狮海壬",
+        "rank": 4
+      },
+      {
+        "name": "暴鲤龙",
+        "rank": 5
+      },
+      {
+        "name": "河马兽",
+        "rank": 6
+      },
+      {
+        "name": "魔幻假面喵",
+        "rank": 7
+      },
+      {
+        "name": "妖火红狐",
+        "rank": 8
+      },
+      {
+        "name": "巨金怪",
+        "rank": 9
+      },
+      {
+        "name": "甲贺忍蛙",
+        "rank": 10
+      }
+    ],
+    "ev_spreads": [
+      {
+        "rank": 1,
+        "hp": 1,
+        "atk": 32,
+        "def": 1,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 27.6
+      },
+      {
+        "rank": 2,
+        "hp": 2,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 22.3
+      },
+      {
+        "rank": 3,
+        "hp": 0,
+        "atk": 32,
+        "def": 2,
+        "spa": 0,
+        "spd": 0,
+        "spe": 32,
+        "usage": 5.0
+      },
+      {
+        "rank": 4,
+        "hp": 0,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 2,
+        "spe": 32,
+        "usage": 2.7
+      },
+      {
+        "rank": 5,
+        "hp": 28,
+        "atk": 32,
+        "def": 3,
+        "spa": 0,
+        "spd": 0,
+        "spe": 3,
+        "usage": 2.5
+      },
+      {
+        "rank": 6,
+        "hp": 32,
+        "atk": 32,
+        "def": 2,
+        "spa": 0,
+        "spd": 0,
+        "spe": 0,
+        "usage": 2.4
+      },
+      {
+        "rank": 7,
+        "hp": 29,
+        "atk": 32,
+        "def": 5,
+        "spa": 0,
+        "spd": 0,
+        "spe": 0,
+        "usage": 2.1
+      },
+      {
+        "rank": 8,
+        "hp": 1,
+        "atk": 32,
+        "def": 0,
+        "spa": 0,
+        "spd": 1,
+        "spe": 32,
+        "usage": 1.9
+      },
+      {
+        "rank": 9,
+        "hp": 29,
+        "atk": 32,
+        "def": 4,
+        "spa": 0,
+        "spd": 0,
+        "spe": 1,
+        "usage": 1.6
+      },
+      {
+        "rank": 10,
+        "hp": 5,
+        "atk": 32,
+        "def": 26,
+        "spa": 0,
+        "spd": 0,
+        "spe": 3,
+        "usage": 1.4
+      }
+    ],
+    "warnings": []
+  }
+]

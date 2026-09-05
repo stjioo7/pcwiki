@@ -77,10 +77,20 @@ def main():
 
     # 如果有新数据或强制更新
     if has_rank_update:
-        print("[CI] 正在执行单体排位抓取与编译管线 (PokéCham DB)...")
+        print("[CI] 正在执行双打排位抓取管线 (PokéCham DB)...")
         sync_season(
             season=active_season,
-            fmt=fmt,
+            fmt="double",
+            lang="zh-Hans",
+            headless=True,
+            channel=None,
+            resume=not force,
+            base_dir=str(BASE_DIR)
+        )
+        print("[CI] 正在执行单打排位抓取管线 (PokéCham DB)...")
+        sync_season(
+            season=active_season,
+            fmt="single",
             lang="zh-Hans",
             headless=True,
             channel=None,
