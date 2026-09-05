@@ -4546,6 +4546,133 @@ body {
   margin-top: 0.3rem;
 }
 
+/* ==========================================================================
+   Pokemon 18 属性专属色彩与发光胶囊体系 (Type Badges & Pills)
+   ========================================================================== */
+.type-badge, .type-pill, .mini-type, .type-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.76rem;
+  line-height: 1;
+  padding: 0.22rem 0.55rem;
+  border-radius: 4px;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.type-badge.mini, .type-pill.mini, .mini-type {
+  font-size: 0.7rem;
+  padding: 0.12rem 0.42rem;
+  border-radius: 3px;
+}
+
+/* 18 属性专属背景色与渐变 */
+.type-normal, .type-Normal, .type-一般, .normal, .Normal {
+  background: linear-gradient(135deg, #9fa19f 0%, #7e807e 100%) !important;
+  border-color: rgba(159, 161, 159, 0.6) !important;
+}
+.type-fire, .type-Fire, .type-火, .fire, .Fire {
+  background: linear-gradient(135deg, #ff4422 0%, #d82b0e 100%) !important;
+  border-color: rgba(255, 68, 34, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(255, 68, 34, 0.4) !important;
+}
+.type-water, .type-Water, .type-水, .water, .Water {
+  background: linear-gradient(135deg, #2980ef 0%, #1565c0 100%) !important;
+  border-color: rgba(41, 128, 239, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(41, 128, 239, 0.4) !important;
+}
+.type-grass, .type-Grass, .type-草, .grass, .Grass {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%) !important;
+  border-color: rgba(76, 175, 80, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4) !important;
+}
+.type-electric, .type-Electric, .type-电, .electric, .Electric {
+  background: linear-gradient(135deg, #ffc107 0%, #f57f17 100%) !important;
+  color: #1a1a1a !important;
+  text-shadow: none !important;
+  font-weight: 800 !important;
+  border-color: rgba(255, 193, 7, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4) !important;
+}
+.type-ice, .type-Ice, .type-冰, .ice, .Ice {
+  background: linear-gradient(135deg, #00d2d3 0%, #01a3a4 100%) !important;
+  border-color: rgba(0, 210, 211, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(0, 210, 211, 0.4) !important;
+}
+.type-fighting, .type-Fighting, .type-格斗, .fighting, .Fighting {
+  background: linear-gradient(135deg, #c0392b 0%, #962d22 100%) !important;
+  border-color: rgba(192, 57, 43, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4) !important;
+}
+.type-poison, .type-Poison, .type-毒, .poison, .Poison {
+  background: linear-gradient(135deg, #9b59b6 0%, #6c3483 100%) !important;
+  border-color: rgba(155, 89, 182, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(155, 89, 182, 0.4) !important;
+}
+.type-ground, .type-Ground, .type-地面, .ground, .Ground {
+  background: linear-gradient(135deg, #b5651d 0%, #8d4910 100%) !important;
+  border-color: rgba(181, 101, 29, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(181, 101, 29, 0.4) !important;
+}
+.type-flying, .type-Flying, .type-飞行, .flying, .Flying {
+  background: linear-gradient(135deg, #4b7bec 0%, #3867d6 100%) !important;
+  border-color: rgba(75, 123, 236, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(75, 123, 236, 0.4) !important;
+}
+.type-psychic, .type-Psychic, .type-超能力, .psychic, .Psychic {
+  background: linear-gradient(135deg, #fc5c65 0%, #eb3b5a 100%) !important;
+  border-color: rgba(252, 92, 101, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(252, 92, 101, 0.4) !important;
+}
+.type-bug, .type-Bug, .type-虫, .bug, .Bug {
+  background: linear-gradient(135deg, #8cb321 0%, #6b8817 100%) !important;
+  border-color: rgba(140, 179, 33, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(140, 179, 33, 0.4) !important;
+}
+.type-rock, .type-Rock, .type-岩石, .rock, .Rock {
+  background: linear-gradient(135deg, #a38c21 0%, #7d6b15 100%) !important;
+  border-color: rgba(163, 140, 33, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(163, 140, 33, 0.4) !important;
+}
+.type-ghost, .type-Ghost, .type-幽灵, .ghost, .Ghost {
+  background: linear-gradient(135deg, #6a4c93 0%, #4b3568 100%) !important;
+  border-color: rgba(106, 76, 147, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(106, 76, 147, 0.4) !important;
+}
+.type-dragon, .type-Dragon, .type-龙, .dragon, .Dragon {
+  background: linear-gradient(135deg, #5758bb 0%, #3a3b8e 100%) !important;
+  border-color: rgba(87, 88, 187, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(87, 88, 187, 0.4) !important;
+}
+.type-steel, .type-Steel, .type-钢, .steel, .Steel {
+  background: linear-gradient(135deg, #60a1b8 0%, #43788a 100%) !important;
+  border-color: rgba(96, 161, 184, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(96, 161, 184, 0.4) !important;
+}
+.type-dark, .type-Dark, .type-恶, .dark, .Dark {
+  background: linear-gradient(135deg, #4f3f3d 0%, #2f2524 100%) !important;
+  border-color: rgba(100, 80, 77, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+.type-fairy, .type-Fairy, .type-妖精, .fairy, .Fairy {
+  background: linear-gradient(135deg, #ff7675 0%, #e84393 100%) !important;
+  border-color: rgba(255, 118, 117, 0.7) !important;
+  box-shadow: 0 2px 8px rgba(232, 67, 147, 0.4) !important;
+}
+.type-stellar, .type-Stellar, .type-星晶, .stellar, .Stellar {
+  background: linear-gradient(135deg, #00e5ff 0%, #7928ca 50%, #ff007f 100%) !important;
+  border-color: rgba(0, 229, 255, 0.7) !important;
+  box-shadow: 0 2px 10px rgba(0, 229, 255, 0.45) !important;
+}
+
 
 
 

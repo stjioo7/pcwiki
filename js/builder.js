@@ -1202,7 +1202,7 @@ function renderAuditDashboard() {
     const wt = wizardState.lastSlateResult.worst_threat;
     const routesHtml = (wt.threat_routes || []).map(r => `
       <div class="threat-route-pill">
-        💥 <strong>${r.target_member}</strong> 遭受对手 <strong>${r.move}</strong> (${r.move_type}) ➜ <span style="color:#ff0055; font-weight:700;">${r.damage_pct}</span> (${r.verdict})
+        💥 <strong>${r.target_member}</strong> 遭受对手 <strong>${r.move}</strong> (<span class="type-badge type-${r.move_type} mini">${r.move_type}</span>) ➜ <span style="color:#ff0055; font-weight:700;">${r.damage_pct}</span> (${r.verdict})
       </div>
     `).join('');
 
@@ -1487,10 +1487,11 @@ function renderPokemonPickerGrid(query = '') {
 
     const item = document.createElement('div');
     item.className = 'picker-mon-item';
+    const typeBadgesHtml = types.map(t => `<span class="type-badge ${t.toLowerCase()} mini">${TYPE_TRANSLATION[t] || t}</span>`).join(' ');
     item.innerHTML = `
       <img src="${spriteUrl}" alt="${mon.name}">
       <div class="picker-mon-name">${mon.name}</div>
-      <div class="picker-mon-meta">${rankDisplay} · ${types.map(t => TYPE_TRANSLATION[t] || t).join('/')}</div>
+      <div class="picker-mon-meta">${rankDisplay} · ${typeBadgesHtml}</div>
     `;
     item.addEventListener('click', () => {
       if (builderState.activeSlotIndex !== null) {
