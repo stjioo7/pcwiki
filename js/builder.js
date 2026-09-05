@@ -44,9 +44,12 @@ function fillSlotWithMetaRank1(pokemon, fmt = 'double') {
     : (fmt === 'double' ? '气势披带' : '吃剩的东西');
 
   // 2. 特性：选取当前赛制天梯最高使用率特性，兜底第一个特性
-  const topAbility = (usage.abilities && usage.abilities.length > 0)
-    ? (typeof usage.abilities[0] === 'string' ? usage.abilities[0] : usage.abilities[0].name)
-    : (pokemon.abilities && pokemon.abilities[0]) || '通常特性';
+  let topAbility = '通常特性';
+  if (usage.abilities && usage.abilities.length > 0) {
+    topAbility = typeof usage.abilities[0] === 'string' ? usage.abilities[0] : (usage.abilities[0].name || '通常特性');
+  } else if (pokemon.abilities && pokemon.abilities.length > 0) {
+    topAbility = typeof pokemon.abilities[0] === 'string' ? pokemon.abilities[0] : (pokemon.abilities[0].name || '通常特性');
+  }
 
   // 3. 性格：选取当前赛制天梯最高使用率性格，兜底固执/爽朗
   const topNature = (usage.natures && usage.natures.length > 0)
@@ -678,10 +681,13 @@ function renderBuilderSlots() {
       const types = activeMon.types || ['Normal'];
       const typeBadges = types.map(t => `<span class="type-badge ${t.toLowerCase()}">${TYPE_TRANSLATION[t] || t}</span>`).join(' ');
 
-      // 生成特性下拉选项
-      const abilityOptions = (p.abilities || [slot.ability]).map(ab => 
-        `<option value="${ab}" ${ab === slot.ability ? 'selected' : ''}>${ab}</option>`
-      ).join('');
+      // 生成特性下拉选项 (兼容对象与字符串)
+      const rawAbilities = (p.abilities && p.abilities.length > 0) ? p.abilities : [slot.ability];
+      const abilityOptions = rawAbilities.map(ab => {
+        const abName = typeof ab === 'string' ? ab : (ab.name || '通常特性');
+        const abUsage = (typeof ab === 'object' && ab.usage) ? ` (${ab.usage}%)` : '';
+        return `<option value="${abName}" ${abName === slot.ability ? 'selected' : ''}>${abName}${abUsage}</option>`;
+      }).join('');
 
       // 生成性格下拉选项
       const natureOptions = NATURES.map(n => {
