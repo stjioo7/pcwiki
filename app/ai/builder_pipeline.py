@@ -218,7 +218,7 @@ BUILDER_ASSEMBLE_SYSTEM_PROMPT = """你是一位精通宝可梦官方排位（VG
    - 候选池中为每只宝可梦提供了该物种在当前排位已实装的【全部携带道具分布情况】（含使用率百分比，如：“雷丘进化石Ｙ (86.0%)”、“气势披带 (3.0%)”等）；
    - 【严格限制】：你为每只宝可梦分配的道具，必须且只能从该宝可梦给出的【top_items 携带道具分布列表】中挑选；严禁脱离该物种给出的道具列表自行编造或挑选未上线的道具；
    - 道具分配必须遵循真实使用率权重，优先选择高使用率的核心道具/Mega进化石；
-   - 当前赛制支持超级进化 (Mega Evolution)。单场对战单队至多携带 1 个 Mega 进化石（若选中的宝可梦携带了专属进化石，该宝可梦将作为 Mega 核心选出）；
+   - 【Mega进化石携带规则】：本赛制为 6 选 3 单打 / 6 选 4 双打，队伍 6 只成员名单中【不限制 Mega 进化石的数量】（如队伍中可同时携带暴鲤龙进化石与雷丘进化石作为双 Mega 选出轴，遵循道具不重复即可）；
 5. 每只宝可梦必须配置 4 个合法招式、1 个特性、1 个道具、1 个性格；
 6. 你必须且仅输出严格的 JSON 字符串，绝不能添加任何 markdown 标记外的解释废话。
 
@@ -366,7 +366,6 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
     sanitized_team = []
     used_items = set()
     used_species = set()
-    mega_count = 0
 
     for idx, mon_data in enumerate(raw_team):
         sp_name = mon_data.get("species", "")
@@ -388,34 +387,16 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
         if "（" in raw_item:
             raw_item = raw_item.split("（")[0].strip()
 
-        # 2. Mega 进化石检查与 Mega Clause (全队限 1 个 Mega 石)
+        # 2. Mega 进化石检查与分支对齐 (63单打/64双打 队伍名单中不限制 Mega 石数量，每只携带专属进化石的宝可梦均可激活 Mega 状态)
         mega_form = is_mega_stone_for_mon(p_obj, raw_item, fmt=fmt)
         is_mega = False
         mega_branch = "X"
         
         if mega_form:
-            if mega_count >= 1:
-                # 已有其他成员携带了 Mega 石，当前成员退回自身携带道具列表中未被占用的常规道具
-                mon_meta_items = p_obj.get("meta", {}).get(fmt, {}).get("items", [])
-                found_meta_item = False
-                for mi in mon_meta_items:
-                    mi_name = (mi.get("name") if isinstance(mi, dict) else str(mi)).split("(")[0].split("（")[0].strip()
-                    if mi_name and mi_name not in used_items and not mi_name.endswith("进化石"):
-                        raw_item = mi_name
-                        found_meta_item = True
-                        break
-                if not found_meta_item:
-                    for fb in FALLBACK_ITEMS:
-                        if fb not in used_items:
-                            raw_item = fb
-                            break
-                mega_form = None
-            else:
-                mega_count += 1
-                is_mega = True
-                mega_branch = mega_form.get("formKey") or "X"
-                # 规范化道具名称为该形态的标准名称
-                raw_item = mega_form.get("megaStone") or raw_item
+            is_mega = True
+            mega_branch = mega_form.get("formKey") or "X"
+            # 规范化道具名称为该形态的标准名称
+            raw_item = mega_form.get("megaStone") or raw_item
         
         # 道具排重与有效性修正 (Item Clause: 优先从该宝可梦自身的携带道具分布中挑选)
         if not raw_item or raw_item in used_items:
