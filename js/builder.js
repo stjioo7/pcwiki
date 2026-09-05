@@ -1179,14 +1179,20 @@ function renderAuditDashboard() {
   // 2. 战术机制与核心战术卡片 (AI Tactical Rationale Banner)
   let rationaleHtml = '';
   if (wizardState.lastRationale) {
+    const formattedRationale = wizardState.lastRationale
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>')
+      .replace(/【(.*?)】/g, '<div style="color:#00e5ff; font-weight:700; font-size:0.95rem; margin-top:0.6rem; margin-bottom:0.2rem;">【$1】</div>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ffb703;">$1</strong>');
+
     rationaleHtml = `
       <div class="rationale-panel-box full-width">
         <div class="panel-box-header">
           <h3><span class="icon">🤖</span> AI 构筑战术机制与运作逻辑 (Tactical Rationale)</h3>
           <span class="sub-badge" style="background:rgba(0,229,255,0.15); color:#00e5ff; font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:4px;">UEP Pipeline 生成</span>
         </div>
-        <div style="font-size:0.92rem; line-height:1.6; color:#e0e6ed; padding:0.5rem 0;">
-          ${wizardState.lastRationale}
+        <div style="font-size:0.92rem; line-height:1.75; color:#d6e2ec; padding:0.5rem 0;">
+          ${formattedRationale}
         </div>
       </div>
     `;
