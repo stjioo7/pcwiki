@@ -987,12 +987,12 @@ function renderAuditDashboard() {
       </div>
     </div>
 
-    <!-- 栏目 3: AI 深度战术选出锦囊与调优报告 (增量解耦扩展) -->
+    <!-- 栏目 3: AI 深度战术选出锦囊与调优报告 (ReAct 智能体多工具驱动) -->
     <div class="audit-panel-box ai-diagnose-panel full-width">
       <div class="panel-box-header ai-header-row">
         <div class="ai-header-left">
-          <h3><span class="icon">🤖</span> AI 深度战术诊断与选出锦囊 (Metagame Pilot)</h3>
-          <span class="sub-hint">基于 6 只全量实数、18 属性盲点与天梯 Top 20 对位展开四段式深度战术推演</span>
+          <h3><span class="icon">🤖</span> AI 深度战术诊断与选出锦囊 (ReAct Metagame Pilot)</h3>
+          <span class="sub-hint">基于 6 只全量实数、18 属性盲点与天梯 Top 20 对位，通过 ReAct 智能体自主调用本地 4 大工具多轮推演</span>
         </div>
         <div class="ai-header-actions">
           <button id="btnTriggerAiDiagnose" class="btn-ai-diagnose" onclick="requestAiTeamDiagnosis()">
@@ -1001,12 +1001,17 @@ function renderAuditDashboard() {
         </div>
       </div>
 
+      <!-- 战术疑问输入条 (支持玩家输入假想敌或战术难点) -->
+      <div class="ai-query-bar">
+        <input type="text" id="aiTacticalQueryInput" class="ai-query-input" placeholder="💬 选填：输入重点战术疑虑或假想敌（如：“面对吃吼霸+米立龙合体怎么打？”、“遇到顺风古玉鱼怎么选出？”）..." />
+      </div>
+
       <div id="aiDiagnoseContent" class="ai-diagnose-body">
         <div class="ai-empty-prompt">
           <div class="ai-prompt-icon">💡</div>
           <div class="ai-prompt-text">
             <strong>点击右上角「✨ 生成 AI 战术锦囊」按钮</strong>
-            <p>本地 Python AI 引擎将严格基于当前事实数据，输出【战术轴定位】、【首发/后排选出指南】、【Top 威胁博弈策略】与【盲点精准微调建议】。</p>
+            <p>本地 ReAct AI 引擎将自主进入【思考 → 本地伤害计算/速度对比/冠军队伍检索 → 事实取证 → 战术综合】循环，输出 100% 事实锚定的四段式深度报告。</p>
           </div>
         </div>
       </div>
@@ -1142,7 +1147,7 @@ function renderPokemonPickerGrid(query = '') {
 }
 
 // ==========================================================================
-// 8. AI 深度战术诊断与选出锦囊服务 (AI Tactical Auditor)
+// 9. AI ReAct 深度战术诊断与选出锦囊服务 (AI ReAct Tactical Auditor)
 // ==========================================================================
 let isAiDiagnosing = false;
 let lastAiReportMarkdown = '';
@@ -1163,6 +1168,38 @@ function renderMarkdownBasic(md) {
   return html;
 }
 
+function toggleReactTrace() {
+  const body = document.getElementById('reactTraceBody');
+  const indicator = document.getElementById('reactTraceIndicator');
+  if (body) {
+    body.classList.toggle('collapsed');
+    if (indicator) {
+      indicator.textContent = body.classList.contains('collapsed') ? '▶ 点击展开' : '▼ 点击收起';
+    }
+  }
+}
+
+function formatToolSummary(toolName, args, result) {
+  if (toolName === 'query_matchup_damage') {
+    const dmg = result?.damage_result;
+    const verdict = dmg?.verdict || '计算完毕';
+    return `⚡ 对位极值伤害: <strong>${args.attacker}</strong> 使用 [<strong>${args.move}</strong>] 攻击 <strong>${args.defender}</strong> ➜ <span class="trace-obs-summary">${verdict}</span>`;
+  } else if (toolName === 'query_pokemon_meta') {
+    const rank = result?.meta_rank ? `Rank ${result.meta_rank}` : '已查询';
+    const topAb = result?.top_abilities?.[0]?.name || result?.top_abilities?.[0] || '默认特性';
+    const topIt = result?.top_items?.[0]?.name || result?.top_items?.[0] || '默认道具';
+    return `📊 天梯主流配置: <strong>${args.pokemon_name}</strong> (${rank}) ➜ 主流特性: <code>${topAb}</code> | 主流道具: <code>${topIt}</code>`;
+  } else if (toolName === 'search_tournament_teams') {
+    const count = result?.matched_count || 0;
+    const firstTourn = result?.returned_teams?.[0]?.tournament || '';
+    return `🏆 赛事冠军队伍: 检索 [<strong>${(args.pokemon_names || []).join(', ')}</strong>] ➜ 命中 <strong>${count}</strong> 套冠军构筑 (${firstTourn})`;
+  } else if (toolName === 'query_speed_comparison') {
+    const ladder = (result?.speed_ladder || []).map(s => `${s.name}(${s.effective_spe})`).join(' > ');
+    return `⏱️ 50级速度线推演: <span class="trace-obs-summary">${ladder || '对比完成'}</span>`;
+  }
+  return `🔧 工具调用完成: <code>${toolName}</code>`;
+}
+
 async function requestAiTeamDiagnosis() {
   const members = builderState.slots.filter(s => s && s.pokemon);
   if (members.length === 0) {
@@ -1172,33 +1209,56 @@ async function requestAiTeamDiagnosis() {
 
   const container = document.getElementById('aiDiagnoseContent');
   const btn = document.getElementById('btnTriggerAiDiagnose');
-  if (!container) return;
+  const queryInput = document.getElementById('aiTacticalQueryInput');
+  const userQuery = queryInput ? queryInput.value.trim() : '';
 
+  if (!container) return;
   if (isAiDiagnosing) return;
+
   isAiDiagnosing = true;
   lastAiReportMarkdown = '';
 
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-inline">⏳</span> 战术分析中...';
+    btn.innerHTML = '<span class="spinner-inline">⏳</span> ReAct 推理中...';
   }
 
+  // 1. 初始化容器与 ReAct 轨迹面板
   container.innerHTML = `
-    <div class="ai-loading-box">
-      <div class="ai-pulse-dot"></div>
-      <div class="ai-loading-text">
-        <strong>⚡ 正在调用本地 Python AI 战术引擎展开深度对位推演...</strong>
-        <span>分析队伍核心战术轴、面对天梯主流体系选出方案与防守弱点微调...</span>
+    <!-- ReAct 推理轨迹与工具调用链 -->
+    <div class="react-trace-box" id="reactTraceBox">
+      <div class="react-trace-header" onclick="toggleReactTrace()">
+        <div class="react-trace-title">
+          <span class="pulse-dot"></span>
+          <span>🤔 AI ReAct 推理与本地工具调用链</span>
+        </div>
+        <span class="react-trace-indicator" id="reactTraceIndicator">▼ 点击收起</span>
       </div>
+      <div class="react-trace-body" id="reactTraceBody">
+        <div class="trace-step-item thought">
+          <span class="trace-step-title thought-title">💭 思考阶段 (Thought)</span>
+          <div class="trace-content-box" id="traceThoughtText">正在综合队伍 6 只宝可梦实数、18 属性盲点与天梯生态，制定取证推演计划...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 最终四段式 Markdown 战术诊断报告 -->
+    <div class="ai-report-markdown" id="aiReportMarkdown">
+      <span class="ai-typing-cursor"></span>
     </div>
   `;
 
-  // 构造 100% 结构化事实 Payload
+  const traceBody = document.getElementById('reactTraceBody');
+  const traceThoughtText = document.getElementById('traceThoughtText');
+  const reportBox = document.getElementById('aiReportMarkdown');
+
+  // 2. 构造 100% 结构化事实 Payload
   const audit = runTeamAudit();
   const payload = {
     format: builderState.format,
     formatName: builderState.format === 'double' ? '双打 (VGC)' : '单打 (Singles)',
-    team: members.map(m => {
+    userQuery: userQuery,
+    slots: members.map(m => {
       const p = m.pokemon;
       const mon = getActiveCombatant(p, m.isMega, m.megaBranch);
       return {
@@ -1209,28 +1269,32 @@ async function requestAiTeamDiagnosis() {
         nature: m.nature,
         moves: m.moves,
         evs: m.evs,
-        baseStats: mon.baseStats
+        stats: m.stats || mon.baseStats,
+        isMega: m.isMega
       };
     }),
-    defenseAudit: audit.weaknessStats,
-    metagameThreatsAudit: (audit.threatResults || []).map(tr => ({
-      rank: tr.rank,
-      threat: tr.threatMon.name,
-      status: tr.status,
-      counters: tr.counters,
-      vulnerableMembers: tr.vulnerableMembers
-    })),
+    blindSpots: Object.entries(audit.weaknessStats || {})
+      .filter(([_, v]) => v.weakCount >= 2 && v.immuneCount === 0)
+      .map(([k, v]) => `${TYPE_TRANSLATION[k] || k}(${v.weakCount}只弱)`),
+    counters: (audit.threatResults || [])
+      .filter(tr => tr.status === 'threat')
+      .map(tr => ({
+        name: tr.threatMon.name,
+        threatLevel: 'high',
+        reasons: tr.vulnerableMembers.map(vm => `威胁 ${vm}`)
+      })),
     speedTiers: (audit.speedTiers || []).map(st => ({
       name: st.name,
-      maxSpe: st.maxSpe,
-      neutralSpe: st.neutralSpe,
-      tailwindSpe: st.tailwindSpe
+      spe: st.maxSpe,
+      rank: 1
     }))
   };
 
   const endpoint = window.location.port === '8765'
     ? '/api/ai/diagnose'
     : 'http://127.0.0.1:8765/api/ai/diagnose';
+
+  const toolCallCards = {}; // tool_call_id -> DOM element
 
   try {
     const response = await fetch(endpoint, {
@@ -1244,9 +1308,6 @@ async function requestAiTeamDiagnosis() {
       const errorMsg = errData.detail || errData.error || `HTTP ${response.status} 接口调用异常`;
       throw new Error(errorMsg);
     }
-
-    container.innerHTML = '<div class="ai-report-markdown" id="aiReportMarkdown"></div>';
-    const reportBox = document.getElementById('aiReportMarkdown');
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder('utf-8');
@@ -1267,16 +1328,62 @@ async function requestAiTeamDiagnosis() {
         if (dataStr === '[DONE]') break;
 
         try {
-          const parsed = JSON.parse(dataStr);
-          if (parsed.error) {
-            throw new Error(parsed.error);
+          const event = JSON.parse(dataStr);
+
+          // 1. 错误事件 (Fail-Fast 严格阻断)
+          if (event.type === 'error' || event.error) {
+            throw new Error(event.error || event.detail || '大模型诊断返回异常');
           }
-          if (parsed.content) {
-            lastAiReportMarkdown += parsed.content;
+
+          // 2. 深度思考增量流
+          if (event.type === 'thought' && event.content) {
+            if (traceThoughtText) {
+              traceThoughtText.textContent += event.content;
+            }
+          }
+
+          // 3. 工具调用发起
+          if (event.type === 'tool_call') {
+            const card = document.createElement('div');
+            card.className = 'trace-step-item tool';
+            card.innerHTML = `
+              <span class="trace-step-title tool-title">
+                <span class="trace-tool-badge">🔧 ${event.name}</span>
+                <span>正在执行本地确定性取证...</span>
+              </span>
+              <div class="trace-content-box">
+                <pre style="margin:0; font-size:0.75rem; color:#90a4ae;">${JSON.stringify(event.args, null, 2)}</pre>
+              </div>
+            `;
+            if (traceBody) traceBody.appendChild(card);
+            toolCallCards[event.id] = card;
+          }
+
+          // 4. 工具调用执行完毕 (Observation)
+          if (event.type === 'tool_result') {
+            const card = toolCallCards[event.id];
+            if (card) {
+              const summaryHtml = formatToolSummary(event.name, event.args || {}, event.result || {});
+              card.innerHTML = `
+                <span class="trace-step-title tool-title">
+                  <span class="trace-tool-badge">✅ ${event.name}</span>
+                  <span>取证完毕</span>
+                </span>
+                <div class="trace-content-box">
+                  <div style="margin-bottom:0.3rem;">${summaryHtml}</div>
+                </div>
+              `;
+            }
+          }
+
+          // 5. 最终战术报告 Markdown 流
+          if (event.type === 'token' && event.content) {
+            lastAiReportMarkdown += event.content;
             if (reportBox) {
               reportBox.innerHTML = renderMarkdownBasic(lastAiReportMarkdown) + '<span class="ai-typing-cursor"></span>';
             }
           }
+
         } catch (e) {
           if (e.message && e.message.includes('【')) {
             throw e;
@@ -1294,7 +1401,7 @@ async function requestAiTeamDiagnosis() {
     actionsBar.className = 'ai-report-actions';
     actionsBar.innerHTML = `
       <button class="btn-copy-report" onclick="copyAiReportText()">📋 复制战术报告</button>
-      <button class="btn-refresh-report" onclick="requestAiTeamDiagnosis()">🔄 重新诊断</button>
+      <button class="btn-refresh-report" onclick="requestAiTeamDiagnosis()">🔄 重新推演</button>
     `;
     container.appendChild(actionsBar);
 

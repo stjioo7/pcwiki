@@ -260,7 +260,7 @@ async def recognize_screenshot(file: UploadFile = File(...)):
 from fastapi.responses import StreamingResponse
 from fastapi import HTTPException, Request
 from app.core.config import get_active_provider_config, load_config
-from app.ai.provider import stream_diagnose_team
+from app.ai.react_agent import stream_react_diagnose
 
 @app.get("/api/ai/status")
 def get_ai_status():
@@ -284,7 +284,7 @@ def get_ai_status():
 @app.post("/api/ai/diagnose")
 async def diagnose_team_endpoint(request: Request):
     """
-    接收队伍实数与确定性审计数据，以 SSE 流式实时输出四段式深度战术报告
+    接收队伍实数与确定性审计数据，以 ReAct (Reasoning + Acting) 多轮工具调用流式输出战术报告
     严格校验，遇到未配置或异常直接抛出，无静默降级
     """
     try:
@@ -300,12 +300,12 @@ async def diagnose_team_endpoint(request: Request):
 
     async def sse_event_generator():
         try:
-            async for token in stream_diagnose_team(payload):
-                # 遵循标准 SSE 格式
-                yield f"data: {json.dumps({'content': token}, ensure_ascii=False)}\n\n"
+            async for sse_json_event in stream_react_diagnose(payload):
+                # 遵循标准 SSE 格式传输结构化事件 (thought / tool_call / tool_result / token / error / done)
+                yield f"data: {sse_json_event}\n\n"
             yield "data: [DONE]\n\n"
         except Exception as err:
-            err_payload = json.dumps({"error": str(err)}, ensure_ascii=False)
+            err_payload = json.dumps({"type": "error", "error": str(err)}, ensure_ascii=False)
             yield f"data: {err_payload}\n\n"
             yield "data: [DONE]\n\n"
 
