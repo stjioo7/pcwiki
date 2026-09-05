@@ -929,7 +929,13 @@ async function startBuilderWizardJob() {
                 };
 
                 const isMega = Boolean(member.isMega || (member.item && member.item.includes('进化石')));
-                const megaBranch = member.megaBranch || (member.item && (member.item.includes('Ｙ') || member.item.includes('Y')) ? 'Y' : 'X');
+                let megaBranch = member.megaBranch;
+                if (!megaBranch && member.item && member.item.includes('进化石')) {
+                  if (member.item.includes('Y') || member.item.includes('Ｙ')) megaBranch = 'Y';
+                  else if (member.item.includes('Z') || member.item.includes('Ｚ')) megaBranch = 'Z';
+                  else megaBranch = 'X';
+                }
+                if (!megaBranch) megaBranch = 'X';
 
                 builderState.slots[i] = {
                   pokemon: matchedMon,
@@ -1001,7 +1007,11 @@ function renderBuilderSlots() {
       }
       if (rawAbilities.length === 0) rawAbilities = [slot.ability];
 
-      const currentAbility = slot.ability || (slot.isMega && activeMon.abilities && activeMon.abilities[0] ? (typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name) : (typeof rawAbilities[0] === 'string' ? rawAbilities[0] : rawAbilities[0].name));
+      const megaAbilityName = slot.isMega && activeMon.abilities && activeMon.abilities[0] ? (typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name) : null;
+      const currentAbility = megaAbilityName || slot.ability || (typeof rawAbilities[0] === 'string' ? rawAbilities[0] : rawAbilities[0].name);
+      if (slot.isMega && megaAbilityName && slot.ability !== megaAbilityName) {
+        slot.ability = megaAbilityName;
+      }
 
       const abilityOptions = rawAbilities.map(ab => {
         const abName = typeof ab === 'string' ? ab : (ab.name || '通常特性');

@@ -100,7 +100,8 @@ function getActiveCombatant(baseMon, isMega, branchKey) {
   }
 
   const forms = baseMon.mega.forms || [];
-  let form = forms.find(f => f.formKey === branchKey);
+  const bKey = (branchKey || 'X').toUpperCase();
+  let form = forms.find(f => (f.formKey || '').toUpperCase() === bKey);
   if (!form) form = forms[0] || baseMon.mega;
 
   return {

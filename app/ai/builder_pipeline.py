@@ -175,25 +175,47 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
         raw_mv = p_meta.get("topMoves") or p_meta.get("moves") or [m.get("name") for m in p_obj.get("learnset", [])[:6]]
         moves = [mv.get("name") if isinstance(mv, dict) else str(mv) for mv in raw_mv[:6]]
         
+        # 组装结构化候选物种详情 (Joint Repsets)
         cand_entry = {
             "name": p_obj.get("name"),
             "types": p_obj.get("types", ["Normal"]),
             "rank": p_meta.get("rank", 999),
-            "top_abilities": abilities or ["通常特性"],
-            "top_items": items or ["气势披带" if fmt == "double" else "吃剩的东西"],
             "top_moves": moves[:6],
             "top_nature": p_meta.get("natures", ["固执"])[0] if p_meta.get("natures") else "固执"
         }
 
-        # 若支持超级进化，附带标注
+        # 若支持超级进化，注入形态联合骨架 (Mega Joint Repset)
         mega_info = p_obj.get("mega", {})
         if mega_info and mega_info.get("supported"):
             cand_entry["can_mega"] = True
             forms = mega_info.get("forms", [])
-            if len(forms) > 1:
-                cand_entry["exclusive_mega_stones"] = [f.get("megaStone") for f in forms if f.get("megaStone")]
-            else:
-                cand_entry["exclusive_mega_stone"] = mega_info.get("megaStone") or (forms[0].get("megaStone") if forms else "")
+            mega_archetypes = []
+            for f in forms:
+                stone = f.get("megaStone", "")
+                f_key = f.get("formKey", "")
+                # 寻找该进化石在 meta.items 中的真实使用率
+                f_usage = 0.0
+                for mi in p_meta.get("items", []):
+                    mi_name = mi.get("name") if isinstance(mi, dict) else str(mi)
+                    if (stone and stone in mi_name) or (f_key and f_key in mi_name and "进化石" in mi_name):
+                        f_usage = mi.get("usage", 0.0) if isinstance(mi, dict) else 0.0
+                        break
+                mega_archetypes.append({
+                    "form_key": f_key,
+                    "mega_name": f.get("megaName") or f"超级{p_obj.get('name')}{f_key}",
+                    "required_stone": f"{stone} ({f_usage}%)" if f_usage > 0 else stone,
+                    "ability_after_mega": f.get("ability", "专属Mega特性"),
+                    "types_after_mega": f.get("types", p_obj.get("types")),
+                    "base_stats_after_mega": f.get("baseStats")
+                })
+            cand_entry["mega_forms"] = mega_archetypes
+            base_items = [it for it in items if "进化石" not in it]
+            cand_entry["non_mega_top_items"] = base_items or ["气势披带" if fmt == "double" else "吃剩的东西"]
+            cand_entry["non_mega_abilities"] = abilities or ["通常特性"]
+        else:
+            cand_entry["can_mega"] = False
+            cand_entry["top_items"] = items or ["气势披带" if fmt == "double" else "吃剩的东西"]
+            cand_entry["top_abilities"] = abilities or ["通常特性"]
 
         grounded_candidates.append(cand_entry)
 
@@ -208,38 +230,46 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
 # 3. Gate 3: assemble (大模型约束装配生成严格 JSON 队伍与战术思路)
 # ==========================================================================
 BUILDER_ASSEMBLE_SYSTEM_PROMPT = """你是一位精通宝可梦官方排位（VGC 64双打 / 63单打）的顶尖冠军级竞技战术教练。
-你的任务是：根据提供的【候选物种池】（含真实天梯使用率分布）与【玩家战术要求】，装配一套具备高度逻辑严密性、属性联防闭环与清晰对局获胜路线的【标准 6 只宝可梦队伍】。
+你的任务是：根据提供的【候选物种池】（含真实天梯使用率分布与 Mega 联合骨架）与【玩家战术要求】，装配一套具备高度逻辑严密性、属性联防闭环与清晰对局获胜路线的【标准 6 只宝可梦队伍】。
 
 【极其重要的构筑约束】
 1. 队伍必须恰好包含 6 只宝可梦，且必须包含用户指定的 Anchor 核心；
 2. 6 只宝可梦必须全部从给定的【候选物种池】中挑选，严禁挑选池子以外的宝可梦；
 3. 遵循官方排位 Item Clause：6 只宝可梦携带的道具严禁重复；
-4. 【使用率与道具严格匹配原则】：
-   - 候选池中为每只宝可梦提供了该物种在当前排位已实装的【全部携带道具分布情况】与【特性分布】（含真实使用率百分比）；
-   - 【严格限制】：你为每只宝可梦分配的道具，必须且只能从该宝可梦给出的【top_items 携带道具分布列表】中挑选；严禁脱离该物种给出的道具列表自行编造或挑选未上线的道具；
+4. 【使用率与道具特性严格匹配原则】：
+   - 候选池中为每只宝可梦明确标出了【Mega 形态联合配置 (包含对应进化石、Mega后专属特性与种族值)】以及【普通形态下的可用道具与特性】；
+   - 【严格限制】：若你为某只宝可梦分配了 Mega 进化石（如选择“雷丘进化石Ｙ”），其特性【必须且只能】使用该 Mega 形态所获得的专属特性（如超级雷丘Y必须使用“无防守”，超级暴鲤龙必须使用“破格”，超级雷丘X必须使用“电气制造者”）；严禁把普通形态的特性（如避雷针）分配给携带了 Mega 进化石的宝可梦！
    - 道具分配必须遵循真实使用率权重，优先选择高使用率的核心道具/Mega进化石；
    - 【Mega进化石规则】：本赛制为 6 选 3 单打 / 6 选 4 双打，队伍 6 人名单中【不限制 Mega 进化石的数量】（允许同时携带如雷丘进化石与暴鲤龙进化石作为双 Mega 选出轴，道具不重复即可）；
 5. 每只宝可梦必须配置 4 个合法招式、1 个特性、1 个道具、1 个性格；
 6. 你必须且仅输出严格的 JSON 字符串，绝不能添加任何 markdown 标记外的解释废话。
 
-【战术机制与运作逻辑 (rationale) 的专业撰写规范 —— 严禁胡编乱造与特性错配】
-你的 rationale 必须具备真实的排位实战深度（150~300字），清晰阐述本队的战术内核与选出逻辑，必须严格遵循以下规则：
-- 【特性与定位绝对真实准确】：
-  * 严禁将 Mega 宝可梦的特性与普通形态混淆（如超级雷丘Y的特性是「无防守」，核心是电磁炮/真气弹必定命中，绝不能写成避雷针转线；超级暴鲤龙是「破格」物攻重炮等）；
-  * 严禁虚构能力与定位（如铝钢桥龙物防130特防65，是物理高防对攻手，严禁称其为特盾；谜拟Q画皮是防一次攻击后的剑舞强化点等）；
-  * 严禁无逻辑拼凑天气或自相矛盾的机制（如队伍不是沙暴轴就不要乱写河马兽压制自己队友）。
-- 【符合 63单打 / 64双打 的实战选出逻辑】：
-  * 63单打：阐述「首发试探/控速压血 (Lead)」➜「联防转线支点 (Pivot)」➜「核心终结/强化推队 (Win Condition)」的选出逻辑，并给出 1~2 套常见的 3 只宝可梦选出轴（如：强攻选出轴、受攻平衡选出轴）；
-  * 64双打：阐述「首发双人组协同 (Lead Pair，如控速+输出或掩护+强化)」➜「后排联防换入与收割 (Backline)」以及针对主流空间/顺风的对策。
+【战术机制与 63单打 / 64双打 选出蓝图 (rationale) 的专业撰写规范 —— 严禁套话敷衍与虚假联防】
+你的 rationale 必须具备真实的排位实战深度（200~400字），严格按照以下 4 个结构化模块撰写：
+
+【核心获胜路线 (Win Condition)】
+- 明确本队的终极对局终结手段（例如：以 Mega雷丘Y 的 160 特攻配合无防守特性必中 120 威力电磁炮/真气弹作为极速特攻破盾核弹，配合残局先制/高速手进行清场收割）。
+
+【经典 63/64 选出模式与双核路由 (Selection Modes & Routes)】
+- 【模式 A (主力强攻压制轴)】：[首发位] + [中坚对攻/Mega核心] + [残局收割位]（说明该组合在面对平衡队/速攻队时的对局执行思路）；
+- 【模式 B (联防受攻轴)】：[物理防御支点] + [特殊联防盾] + [终结反击位]（说明面对强攻对局时如何利用属性与抗性化解攻势）；
+- 【模式 C (对策选出轴)】：针对环境高威胁（如面对特定空间队、顺风队或特定天敌）时的特化选出。
+- 若队伍包含多个 Mega 石，明确说明何时选出 Route 1（由 Mega A 领衔），何时选出 Route 2（由 Mega B 领衔）。
+
+【属性联防与攻防转线 (Defensive Pivoting)】
+- 严格基于本队 6 只成员的真实属性抗性（如：钢+龙+妖精 / 水+火+草 抗性循环，或者利用飞行/飘浮免疫地面、地面免疫电等）阐述联防切入时机。严禁胡乱拼凑自相矛盾的天气或虚构不存在的盾牌（如铝钢桥龙是物防对攻手，非特盾）。
+
+【关键天敌应对策略 (Counter-Play)】
+- 点名队伍面对环境热门威胁（如：高速地面系、幽灵系、恶系先制等）时的具体反制手段。
 
 【输出 JSON Schema】
 {
-  "rationale": "【核心战术体系】以xxx为核心...\\n【对局运作与选出路线】首发xxx配合xxx进行...后排由xxx负责收割...\\n【联防与克制对策】利用xxx与xxx形成属性联防闭环，针对常见天敌...",
+  "rationale": "【核心获胜路线】...\\n\\n【经典选出模式与路由】\\n- 模式 A (主力强攻轴): [xxx] + [xxx] + [xxx]，负责...\\n- 模式 B (联防受攻轴): [xxx] + [xxx] + [xxx]，负责...\\n- 模式 C (对策选出轴): [xxx] + [xxx] + [xxx]，针对...\\n\\n【属性联防与攻防转线】...\\n\\n【关键天敌应对策略】...",
   "team": [
     {
       "species": "宝可梦中文名",
-      "item": "道具中文名 (全队不得重复，必须来自该宝可梦 top_items)",
-      "ability": "特性中文名 (必须来自该宝可梦合法特性或其 Mega 专属特性)",
+      "item": "道具中文名 (全队不得重复)",
+      "ability": "特性中文名 (若携带Mega进化石，必须填入对应Mega形态的专属特性)",
       "nature": "性格中文名",
       "moves": ["招式1", "招式2", "招式3", "招式4"],
       "role": "核心特攻重炮 / 强化推队收割 / 控速掩护支点 / 物理高防联防 / 游击转线"
