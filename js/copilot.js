@@ -77,17 +77,16 @@ async function checkOcrBackendStatus() {
       const statusMsg = document.getElementById('analysisStatusMsg');
       const statusIcon = document.querySelector('.analysis-status-bar .status-icon');
       if (statusMsg && (!copilotState.hasAnalyzed || statusMsg.innerText.includes('未启动') || statusMsg.innerText.includes('等待载入'))) {
-        statusMsg.innerHTML = `🟢 <strong>RapidOCR 神经网络引擎在线</strong> (支持全世代 ${data.total_known_species || 1025} 种宝可梦与 ${data.total_known_moves || 835} 个官方招式实时识别)`;
+        statusMsg.innerHTML = `🟢 <strong>RapidOCR 视觉识别引擎在线</strong> (支持全世代 ${data.total_known_species || 1026} 种宝可梦与 ${data.total_known_moves || 835} 个官方招式实时识别)`;
       }
       if (statusIcon && !copilotState.hasAnalyzed) statusIcon.innerText = '🟢';
       return true;
     }
   } catch (err) {
-    console.warn('RapidOCR 本地引擎未启动或连接受限:', err.message);
     const statusMsg = document.getElementById('analysisStatusMsg');
     const statusIcon = document.querySelector('.analysis-status-bar .status-icon');
     if (statusMsg && !copilotState.hasAnalyzed) {
-      statusMsg.innerHTML = `🟡 <strong>本地 RapidOCR 引擎未连接</strong> (可运行 <code>uv run python server.py</code> 开启) | 支持在下方下拉框任选双方宝可梦`;
+      statusMsg.innerHTML = `🟡 <strong>本地 RapidOCR 引擎未连接</strong> (可运行 <code>uv run python server.py</code> 开启自动截图识别) | 支持手动点选宝可梦`;
     }
     if (statusIcon && !copilotState.hasAnalyzed) statusIcon.innerText = '🟡';
   }
@@ -110,7 +109,7 @@ async function callOcrApi(blobOrFile) {
       }
     }
   } catch (err) {
-    console.warn('本地 RapidOCR 服务请求异常:', err.message);
+    // 后端未运行时的静默捕获
   }
   return null;
 }
@@ -142,6 +141,9 @@ function applyOcrResultToState(ocrRes) {
   }
   if (statusIcon) statusIcon.innerText = '🟢';
 
+  const analysisCard = document.getElementById('analysisCard');
+  if (analysisCard) analysisCard.style.display = 'block';
+
   const canvas = document.getElementById('screenshotCanvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -150,39 +152,6 @@ function applyOcrResultToState(ocrRes) {
 
   syncCopilotInputUI();
   updateCopilotDashboard();
-}
-
-// 载入并处理用户上传的图片文件
-async function loadAndProcessImageFile(file) {
-  const reader = new FileReader();
-  reader.onload = async (event) => {
-    const img = new Image();
-    img.onload = async () => {
-      cachedBattleImage = img;
-
-      const statusMsg = document.getElementById('analysisStatusMsg');
-      const statusIcon = document.querySelector('.analysis-status-bar .status-icon');
-      if (statusMsg) statusMsg.innerHTML = '⚡ 正在通过本地 RapidOCR 引擎进行全图神经网络文字与数值识别...';
-      if (statusIcon) statusIcon.innerText = '🔄';
-
-      const canvas = document.getElementById('screenshotCanvas');
-      if (canvas) {
-        canvas.width = 1920;
-        canvas.height = 1080;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, 1920, 1080);
-      }
-
-      const ocrRes = await callOcrApi(file);
-      if (ocrRes) {
-        applyOcrResultToState(ocrRes);
-      } else {
-        processBattleScreenshotFallback(img);
-      }
-    };
-    img.src = event.target.result;
-  };
-  reader.readAsDataURL(file);
 }
 
 // 重新绘制当前 Canvas 画面及 ROI 框选标记
@@ -224,40 +193,67 @@ function drawCanvasRoiOverlay(ctx, pMon, oMon, playerHpPct, opponentHpPct, statu
   ctx.restore();
 }
 
-// OCR 离线状态下的兜底载入处理 (通用无硬编码)
-function processBattleScreenshotFallback(img) {
-  const canvas = document.getElementById('screenshotCanvas');
-  const statusMsg = document.getElementById('analysisStatusMsg');
-  const statusIcon = document.querySelector('.analysis-status-bar .status-icon');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+// 载入并处理用户上传的图片文件 (支持 RapidOCR 自动识别 + 兜底推演)
+async function loadAndProcessImageFile(file) {
+  const reader = new FileReader();
+  reader.onload = async (event) => {
+    const img = new Image();
+    img.onload = async () => {
+      cachedBattleImage = img;
 
-  canvas.width = 1920;
-  canvas.height = 1080;
-  ctx.drawImage(img, 0, 0, 1920, 1080);
+      const statusMsg = document.getElementById('analysisStatusMsg');
+      const statusIcon = document.querySelector('.analysis-status-bar .status-icon');
+      if (statusMsg) statusMsg.innerHTML = '⚡ 正在通过本地 RapidOCR 引擎进行对战画面识别...';
+      if (statusIcon) statusIcon.innerText = '🔄';
 
-  const pMon = copilotState.playerMon || allPokemonList[0];
-  const oMon = copilotState.opponentMon || allPokemonList[1] || allPokemonList[0];
+      const analysisCard = document.getElementById('analysisCard');
+      if (analysisCard) analysisCard.style.display = 'block';
 
-  const pBaseHp = pMon.baseStats ? pMon.baseStats.hp : 80;
-  const pMaxHp = calculateStat50('hp', pBaseHp, 0, { plus: null, minus: null });
+      const canvas = document.getElementById('screenshotCanvas');
+      if (canvas) {
+        canvas.width = 1920;
+        canvas.height = 1080;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, 1920, 1080);
+      }
 
-  copilotState.playerMon = pMon;
-  copilotState.opponentMon = oMon;
-  copilotState.playerHpMax = pMaxHp;
-  copilotState.playerHpCur = pMaxHp;
-  copilotState.playerHpPct = 100.0;
-  copilotState.opponentHpPct = 100.0;
-  copilotState.hasAnalyzed = true;
+      // 尝试调用本地 RapidOCR 识别接口
+      const ocrRes = await callOcrApi(file);
+      if (ocrRes) {
+        applyOcrResultToState(ocrRes);
+      } else {
+        // OCR 服务未连接时的优雅兜底
+        const pMon = copilotState.playerMon || allPokemonList[0];
+        const oMon = copilotState.opponentMon || allPokemonList[1] || allPokemonList[0];
 
-  if (statusMsg) {
-    statusMsg.innerHTML = '🟡 <strong>画面已载入！本地 RapidOCR 引擎未连接</strong> (请运行 <code>uv run python server.py</code> 开启自动识别，或直接在下方下拉框点选宝可梦)';
-  }
-  if (statusIcon) statusIcon.innerText = '🟡';
+        const pBaseHp = pMon.baseStats ? pMon.baseStats.hp : 80;
+        const pMaxHp = calculateStat50('hp', pBaseHp, 0, { plus: null, minus: null });
 
-  drawCanvasRoiOverlay(ctx, pMon, oMon, copilotState.playerHpPct, copilotState.opponentHpPct);
-  syncCopilotInputUI();
-  updateCopilotDashboard();
+        copilotState.playerMon = pMon;
+        copilotState.opponentMon = oMon;
+        copilotState.playerHpMax = pMaxHp;
+        copilotState.playerHpCur = pMaxHp;
+        copilotState.playerHpPct = 100.0;
+        copilotState.opponentHpPct = 100.0;
+        copilotState.hasAnalyzed = true;
+
+        if (statusMsg) {
+          statusMsg.innerHTML = '🟡 <strong>画面已载入！本地 OCR 引擎未连接</strong> (可运行 <code>uv run python server.py</code> 开启自动识别，或直接在下方下拉框点选宝可梦)';
+        }
+        if (statusIcon) statusIcon.innerText = '🟡';
+
+        if (canvas) {
+          const ctx = canvas.getContext('2d');
+          drawCanvasRoiOverlay(ctx, pMon, oMon, copilotState.playerHpPct, copilotState.opponentHpPct);
+        }
+
+        syncCopilotInputUI();
+        updateCopilotDashboard();
+      }
+    };
+    img.src = event.target.result;
+  };
+  reader.readAsDataURL(file);
 }
 
 // 剪贴板全局 Ctrl+V 粘贴监听

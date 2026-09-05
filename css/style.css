@@ -2588,7 +2588,7 @@ body {
   align-items: center;
 }
 
-.header-sync-capsule-btn {
+.header-status-capsule {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -2596,19 +2596,11 @@ body {
   border: 1px solid rgba(0, 229, 255, 0.35);
   border-radius: 24px;
   padding: 0.45rem 1.15rem;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 229, 255, 0.1);
+  user-select: none;
 }
 
-.header-sync-capsule-btn:hover {
-  border-color: #00e5ff;
-  background: linear-gradient(135deg, rgba(20, 34, 70, 0.95) 0%, rgba(26, 44, 85, 0.9) 100%);
-  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.35), inset 0 0 14px rgba(0, 229, 255, 0.2);
-  transform: translateY(-1px);
-}
-
-.header-sync-capsule-btn .sync-count-badge {
+.header-status-capsule .sync-count-badge {
   font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 700;
@@ -2616,252 +2608,18 @@ body {
   letter-spacing: 0.5px;
 }
 
-.header-sync-capsule-btn .sync-capsule-divider {
+.header-status-capsule .sync-capsule-divider {
   color: rgba(255, 255, 255, 0.3);
   font-weight: 300;
   font-size: 0.9rem;
 }
 
-.header-sync-capsule-btn .sync-icon {
-  font-size: 0.95rem;
-  color: #00e5ff;
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.header-sync-capsule-btn.syncing .sync-icon {
-  animation: sync-spin 1s linear infinite;
-}
-
-.header-sync-capsule-btn .sync-btn-text {
+.header-status-capsule .sync-status-indicator {
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
   color: #00e5ff;
   letter-spacing: 0.5px;
-}
-
-.header-sync-capsule-btn:hover .sync-btn-text {
-  color: #fff;
-}
-
-@keyframes sync-spin {
-  100% { transform: rotate(360deg); }
-}
-
-/* 模态框定制 */
-.sync-modal-card {
-  max-width: 540px !important;
-  padding: 1.75rem 2rem !important;
-  background: radial-gradient(circle at 50% 0%, rgba(20, 30, 55, 0.95), rgba(9, 13, 25, 0.98)) !important;
-  border: 1px solid rgba(0, 229, 255, 0.35) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 229, 255, 0.25) !important;
-}
-
-.sync-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.sync-modal-title {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.sync-modal-badge {
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #00e5ff;
-  text-transform: uppercase;
-}
-
-.sync-modal-title h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-
-/* 阶段 1: 探针雷达 */
-.sync-radar-container {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  margin: 1.5rem auto 1rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sync-radar-ring {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 229, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
-  animation: radar-pulse 1.8s infinite ease-out;
-}
-
-@keyframes radar-pulse {
-  0% { transform: scale(0.6); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 0.4; border-color: #7c4dff; }
-  100% { transform: scale(1.3); opacity: 0; }
-}
-
-.sync-radar-icon {
-  font-size: 2.2rem;
-  z-index: 2;
-  filter: drop-shadow(0 0 8px #00e5ff);
-}
-
-.sync-step-text {
-  text-align: center;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-}
-
-/* 阶段 2: 高科技进度条 */
-.sync-progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 0.75rem;
-}
-
-.sync-target-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.sync-target-label {
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.sync-target-name {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #fff;
-  margin-top: 0.2rem;
-}
-
-.sync-counter {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #00e5ff;
-}
-
-.sync-progress-track {
-  width: 100%;
-  height: 14px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 229, 255, 0.2);
-  border-radius: 7px;
-  overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
-  margin-bottom: 0.75rem;
-  position: relative;
-}
-
-.sync-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #00e5ff, #7c4dff, #ff007f);
-  background-size: 200% 100%;
-  border-radius: 7px;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.7);
-  animation: progress-shimmer 2s linear infinite;
-}
-
-@keyframes progress-shimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
-
-.sync-status-details {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.82rem;
-  color: var(--text-dim);
-}
-
-/* 阶段 3: 提示与结果 */
-.sync-result-icon {
-  font-size: 3rem;
-  text-align: center;
-  margin: 1rem 0 0.5rem 0;
-}
-
-.sync-result-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  text-align: center;
-  color: #fff;
-  margin: 0 0 0.5rem 0;
-}
-
-.sync-result-desc {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-/* 底部按钮 */
-.sync-modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 1.25rem;
-  margin-top: 1.5rem;
-}
-
-.sync-modal-btn {
-  padding: 0.55rem 1.2rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.9rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sync-modal-btn.btn-cancel {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--text-main);
-}
-
-.sync-modal-btn.btn-cancel:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-}
-
-.sync-modal-btn.btn-force {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(124, 77, 255, 0.25) 100%);
-  border: 1px solid #00e5ff;
-  color: #00e5ff;
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
-}
-
-.sync-modal-btn.btn-force:hover {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.35) 0%, rgba(124, 77, 255, 0.4) 100%);
-  color: #fff;
-  box-shadow: 0 0 18px rgba(0, 229, 255, 0.5);
 }
 
 /* 赛制切换按钮组 (双打 / 单打) */

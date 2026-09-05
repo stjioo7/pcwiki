@@ -20,12 +20,11 @@
         <p class="subtitle">《宝可梦冠军》竞技对战副驾与图鉴百科</p>
       </div>
       <div class="header-actions">
-        <button class="header-sync-capsule-btn" id="headerSyncBtn" title="检查并同步 PokéCham DB 官方实时数据">
+        <div class="header-status-capsule" title="官方竞技数据源 · 纯静态毫秒级加载">
           <span class="sync-count-badge" id="totalCountBadge">235 只宝可梦</span>
           <span class="sync-capsule-divider">·</span>
-          <span class="sync-icon">🔄</span>
-          <span class="sync-btn-text">同步数据</span>
-        </button>
+          <span class="sync-status-indicator">⚡ 官方排位 M-5</span>
+        </div>
       </div>
     </div>
 
@@ -112,7 +111,7 @@
               <div class="dropzone-content">
                 <div class="dropzone-icon">📥</div>
                 <div class="dropzone-title">拖入游戏对战截图，或直接按 <kbd>Ctrl + V</kbd> 粘贴任意画面</div>
-                <p class="dropzone-desc">支持任意对战界面截屏 · 自动识别双方在场宝可梦、剩余血量与招式</p>
+                <p class="dropzone-desc">支持任意实机对战截屏 · 自动识别在场宝可梦、剩余血量与招式，即时推演斩杀线</p>
                 <div class="dropzone-actions">
                   <label class="btn-file-select">
                     📁 选择本地截图文件
@@ -386,60 +385,6 @@
     </div>
   </div>
 
-  <!-- 官方对战数据实时同步与变化检测浮层 (Sync Modal) -->
-  <div class="modal-backdrop sync-modal-backdrop" id="syncModal">
-    <div class="modal-card sync-modal-card">
-      <div class="sync-modal-header">
-        <div class="sync-modal-title">
-          <span class="sync-modal-badge">POKÉCHAM DB LIVE</span>
-          <h3>官方竞技数据实时同步</h3>
-        </div>
-        <button class="modal-close-btn" id="syncModalCloseBtn">&times;</button>
-      </div>
-
-      <div class="sync-modal-body">
-        <!-- 阶段 1: 智能探针检测中 -->
-        <div class="sync-step" id="syncStepCheck">
-          <div class="sync-radar-container">
-            <div class="sync-radar-ring"></div>
-            <div class="sync-radar-icon">📡</div>
-          </div>
-          <p class="sync-step-text" id="syncCheckText">正在连接 PokéCham DB 官方数据源探针，检测最新版本...</p>
-        </div>
-
-        <!-- 阶段 2: 同步进行中 (高科技进度条) -->
-        <div class="sync-step" id="syncStepProgress" style="display: none;">
-          <div class="sync-progress-header">
-            <div class="sync-target-box">
-              <span class="sync-target-label">当前正在同步物种:</span>
-              <span class="sync-target-name" id="syncCurrentPokemon">初始化中...</span>
-            </div>
-            <div class="sync-counter" id="syncCounter">0 / 0 (0%)</div>
-          </div>
-
-          <div class="sync-progress-track">
-            <div class="sync-progress-bar" id="syncProgressBar" style="width: 0%;"></div>
-          </div>
-
-          <div class="sync-status-details">
-            <span class="sync-detail-msg" id="syncDetailMsg">正在建立官方双打数据流...</span>
-          </div>
-        </div>
-
-        <!-- 阶段 3: 提示状态 (已是最新 / 同步完成 / 错误) -->
-        <div class="sync-step" id="syncStepResult" style="display: none;">
-          <div class="sync-result-icon" id="syncResultIcon">✅</div>
-          <h4 class="sync-result-title" id="syncResultTitle">数据已是最新</h4>
-          <div class="sync-result-desc" id="syncResultDesc">远端官方更新时间与本地完全吻合，无需重新抓取。</div>
-        </div>
-      </div>
-
-      <div class="sync-modal-footer">
-        <button class="sync-modal-btn btn-cancel" id="syncCancelBtn">关闭</button>
-        <button class="sync-modal-btn btn-force" id="syncForceBtn" style="display: none;">强制全量同步</button>
-      </div>
-    </div>
-  </div>
 
   <footer class="site-footer">
     <div class="footer-container">

@@ -7,7 +7,7 @@ export_to_wiki.py - 将 M-5 全量数据热替换接入现有 Wiki 前后端
 1. 自动备份原有的 champions_data.json 和 champions_data.js。
 2. 读取 data/meta/pokechamdb_M-5_double_forms.json（314个形态记录）。
 3. 聚合通常形态与超级进化 (Mega/Mega X/Y/Z) 形态，映射官方中英属性与招式威力参数。
-4. 生成 100% 兼容现有 wiki.js, copilot.js 与 server.py 的 champions_data.json / .js。
+4. 生成 100% 兼容前端 wiki.js, copilot.js, teams.js 的 champions_data.json / .js。
 """
 
 import json

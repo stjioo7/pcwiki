@@ -36,29 +36,25 @@
 
 ---
 
-## 🏗️ 架构与运行模态
+## 🏗️ 架构与运行方式
 
-项目兼具“**开箱即用**”与“**本地增强**”双重优势：
+项目采用 **Jamstack 纯静态 + 自动化 CI 离线数据管道 + RapidOCR 视觉侧车** 架构：
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
-│                   浏览器客户端 (纯前端)                      │
-│   index.html + js/ (wiki.js, copilot.js, calc.js)           │
-│   依赖: data/champions_data.js (本地离线全量母库)            │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ (可选 REST API)
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│                本地 Python 增强服务 (server.py)             │
-│   - RapidOCR ONNX Runtime: 实机对战截图文字定位与物种提取   │
-│   - Sync Engine: PokéCham DB 爬虫管道与数据变化检测         │
-└─────────────────────────────────────────────────────────────┘
+│                 GitHub Pages 静态分发 (全球 CDN)             │
+│   - index.html + js/ (teams.js, wiki.js, copilot.js, ...)   │
+│   - 纯客户端 JavaScript 内存索引，零后端依赖，0 毫秒延迟     │
+└──────────────┬──────────────────────────────┬───────────────┘
+               │                              │ (可选本地视觉增强)
+               ▼                              ▼
+┌──────────────────────────────┐ ┌────────────────────────────┐
+│ 云端 GitHub Actions 自动化 CI │ │ 本地 RapidOCR 识别服务      │
+│ - 每日自动同步单双打排位数据 │ │ (server.py 监听 8765 端口) │
+│ - 自动抓取 Limitless 完赛队伍│ │ - 实机截图 OCR 物种与血量  │
+│ - 编译并推送静态 JS 母库     │ │ - 纯视觉侧车，零同步冗余   │
+└──────────────────────────────┘ └────────────────────────────┘
 ```
-
-| 运行模态 | 依赖要求 | 功能表现 | 部署方式 |
-| :--- | :--- | :--- | :--- |
-| **纯前端脱机模式** | **零依赖**，只需现代浏览器 | 图鉴浏览、形态切换、VP模拟器、对战伤害计算均 100% 正常工作 | 直接双击 `index.html`，或发布到 GitHub Pages / Vercel |
-| **本地服务增强模式** | Python 3.10+ 环境 | 额外支持实机截图 OCR 自动锁定与天梯数据一键同步 | 终端运行 `uv run python server.py`，访问本地服务 |
 
 ---
 
@@ -66,26 +62,28 @@
 
 ```text
 pokemon_champions_wiki/
-├── index.html            # 单页面主入口（整合对战副驾与竞技百科）
+├── index.html            # 单页面主入口（热门队伍、竞技百科、对战副驾）
+├── server.py             # FastAPI 本地 RapidOCR 视觉识别引擎 (端口: 8765)
 ├── css/
 │   └── style.css         # 赛博朋克深色电竞风格样式表
 ├── js/                   # 纯前端逻辑核心（零框架依赖，毫秒级响应）
-│   ├── app.js            # 主程序引导与事件总线注册
-│   ├── wiki.js           # 百科渲染、全量筛选、VP 加点器与同步模态交互
-│   ├── copilot.js        # 对战副驾控制面板、Canvas 绘制与战局联动
-│   ├── calc.js           # 标准宝可梦对战伤害浮动与斩杀概率计算器
+│   ├── app.js            # 主程序引导与事件注册
+│   ├── teams.js          # 🏆 热门排位队伍（Limitless 大赛完赛阵容渲染与检索）
+│   ├── wiki.js           # 📖 竞技图鉴百科（全量形态切换、VP 加点器、单双打切换）
+│   ├── copilot.js        # ⚡ 实时对战副驾（Canvas 战局预览与实时攻防推演）
+│   ├── calc.js           # 标准宝可梦伤害计算公式与斩杀线浮动预判
 │   └── constants.js      # 官方 18 属性克制字典与常量配置
-├── data/                 # 竞技数据母库
-│   ├── champions_data.js # 静态挂载母库（供前端离线免跨域加载）
-│   ├── champions_data.json
-│   ├── meta/             # 原始物种形态与天梯排位元数据缓存
-│   └── raw/              # 官方 1026 只宝可梦译名与 835 招式解包表
-├── scripts/              # 生产级数据采集与编译管线
-│   ├── sync_engine.py    # 智能探针、变化检测与异步线程进度引擎
-│   ├── sync_pokechamdb.py# 基于 Playwright 的全量形态采集管道
-│   └── export_to_wiki.py # 多形态聚合、属性映射与数据热替换编译程序
-├── server.py             # FastAPI 本地 OCR 与同步服务端
-├── pyproject.toml        # Python 依赖规范配置
+├── data/                 # 竞技数据母库（静态资产）
+│   ├── champions_data.js # 单双打排位大数据母库
+│   ├── champions_teams.js# 锦标赛完赛队伍数据集
+│   └── meta/             # 官方原始抓取缓存
+├── scripts/              # 离线数据采集与编译管线 (CLI / CI)
+│   ├── ci_sync.py        # 云端 CI 自动化入口与赛季嗅探探针
+│   ├── sync_pokechamdb.py# PokéCham DB 官方天梯大数据采集器
+│   ├── fetch_meta_teams.py# Limitless 锦标赛完赛队伍采集器
+│   ├── sync_engine.py    # 智能探针与数据完整性校验
+│   └── export_to_wiki.py # 数据清洗与静态 JS 编译器
+├── pyproject.toml        # 依赖规范配置 (FastAPI, RapidOCR, Playwright)
 └── README.md             # 项目说明文档
 ```
 
@@ -93,30 +91,27 @@ pokemon_champions_wiki/
 
 ## 🚀 快速上手
 
-### 方式一：纯前端直接使用（无需安装任何后端）
-直接在资源管理器中双击打开 `index.html`，或通过任何简易 HTTP 服务器（如 VS Code Live Server）打开。全部图鉴百科、形态切换与伤害计算功能立即可用。
+### 方式一：纯前端直接使用（零后端依赖）
+直接在浏览器中打开 `index.html`，或通过任何静态托管（GitHub Pages、VS Code Live Server 等）访问。
+全部排位队伍检索、图鉴百科、单双打切换、VP 模拟器均立即可用，副驾支持手动点选宝可梦即时推演。
 
-### 方式二：启动全功能本地服务（推荐）
-
-1. **环境准备**（推荐使用 [uv](https://github.com/astral-sh/uv) 极速管理环境）：
+### 方式二：开启本地 RapidOCR 视觉识别（对战副驾自动截图识别）
+如需在副驾面板直接按 `Ctrl + V` 粘贴游戏截图自动识别双方宝可梦与残血：
+1. **安装环境依赖**：
    ```powershell
-   # 安装依赖
-   uv pip install fastapi uvicorn rapidocr_onnxruntime pillow playwright
-
-   # 首次使用需安装 Playwright 浏览器驱动
-   uv run playwright install chromium
+   uv pip install fastapi uvicorn rapidocr_onnxruntime pillow python-multipart
    ```
-
-2. **启动主服务**：
+2. **启动本地识别引擎**：
    ```powershell
    uv run python server.py
    ```
-   服务启动后将监听 `http://127.0.0.1:8765`。
+   启动后打开 `http://127.0.0.1:8765/`，副驾即可自动调用本地神经网络进行毫秒级战局识别。
 
-3. **使用体验**：
-   - 打开浏览器访问 `http://127.0.0.1:8765/`；
-   - **截图识别**：在副驾面板直接按 `Ctrl + V` 粘贴游戏对战截图，OCR 将自动识别在场精灵并计算斩杀线；
-   - **一键同步**：点击顶部右上角胶囊按钮 **`[ 235 只宝可梦 · 🔄 同步数据 ]`**，系统将自动探测官方最新数据并直观呈现抓取进度。
+### 本地手动同步最新数据（CLI 离线管线）
+若希望在本地立即拉取官方最新排位数据并重新编译：
+```powershell
+uv run python scripts/ci_sync.py
+```
 
 ---
 
@@ -125,17 +120,13 @@ pokemon_champions_wiki/
 项目原生内置了 **100% 免费** 的 GitHub Actions 自动化数据同步工作流（`.github/workflows/sync_data.yml`）：
 
 1. **全自动定时同步**：
-   - 每日北京时间凌晨 04:00 (`cron: '0 20 * * *'`)，云端 Ubuntu 容器自动唤醒；
-   - 自动嗅探官方最新活跃赛季（如从 `M-5` 到 `M-6`，或新规公布）；
-   - 若官方产生更新，云端自动使用 Playwright 无头浏览器抓取并重新编译数据母库；
-   - 自动 commit 并 push 回仓库，全球 CDN / GitHub Pages 实时生效。
+   - 每日北京时间凌晨 04:00 (`cron: '0 20 * * *'`)，云端容器自动唤醒；
+   - 自动嗅探官方最新活跃赛季与数据更新时间戳；
+   - 若官方产生更新，云端自动抓取单双打大数据与完赛队伍，重新编译并 push 回仓库；
+   - GitHub Pages 实时刷新生效。
 
 2. **随时手动触发**：
-   - 在 GitHub 仓库页面点击 **Actions** -> **Automated Battle Data Sync** -> **Run workflow**，即可在云端即刻触发抓取。
-
-3. **使用者收益**：
-   - 本地**彻底无需常驻 Python 进程**，无需配置 Playwright；
-   - 赛季更替完全自适应，无需手动修改代码或升级文件，打开网页永远是最新赛季。
+   - 在 GitHub 仓库页面点击 **Actions** -> **Automated Battle Data Sync** -> **Run workflow** 即可即刻执行。
 
 ---
 

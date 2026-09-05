@@ -38,3 +38,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     checkOcrBackendStatus();
   }
 });
+
+

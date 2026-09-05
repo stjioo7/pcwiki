@@ -9,9 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from PIL import Image
 from rapidocr_onnxruntime import RapidOCR
 
-from scripts.sync_engine import check_for_updates, start_sync, get_progress, cancel_sync
-
-app = FastAPI(title="Pokemon Champions OCR & Sync Engine", version="2.0.0")
+app = FastAPI(title="Pokemon Champions OCR Engine", version="2.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,7 +21,7 @@ app.add_middleware(
 
 ocr_engine = RapidOCR()
 
-# 1. 载入 207 只完整的《宝可梦冠军》官方宝可梦数据库 (包含种族值、属性、学招表)
+# 1. 载入 235 只完整的《宝可梦冠军》官方宝可梦数据库 (包含种族值、属性、学招表)
 CHAMPIONS_DB = {}
 POKEMON_LIST = []
 try:
@@ -97,22 +95,6 @@ def get_status():
         "total_known_moves": len(ALL_MOVE_NAMES)
     }
 
-@app.get("/api/sync/check")
-def api_sync_check(season: str = "M-5", fmt: str = "double"):
-    return check_for_updates(season=season, fmt=fmt)
-
-@app.post("/api/sync/start")
-def api_sync_start(force: bool = False, limit: int = 0, season: str = "M-5", fmt: str = "double"):
-    return start_sync(season=season, fmt=fmt, force=force, limit=limit)
-
-@app.get("/api/sync/progress")
-def api_sync_progress():
-    return get_progress()
-
-@app.post("/api/sync/cancel")
-def api_sync_cancel():
-    return cancel_sync()
-
 @app.post("/api/recognize")
 async def recognize_screenshot(file: UploadFile = File(...)):
     contents = await file.read()
@@ -143,7 +125,7 @@ async def recognize_screenshot(file: UploadFile = File(...)):
         if any(ign in t for ign in IGNORE_PHRASES):
             continue
 
-        # 先查 champions 库 (207 只)
+        # 先查 champions 库 (235 只)
         matched_mon = None
         for name, mon in CHAMPIONS_DB.items():
             if isinstance(name, str) and (name == t or (name in t and len(t) <= len(name) + 2)):
@@ -216,12 +198,10 @@ async def recognize_screenshot(file: UploadFile = File(...)):
                 detected_moves.append(clean)
 
     # 3. 区分敌我双方宝可梦
-    # 规则：敌方在上方 (norm_y 偏小，通常 < 0.45)，我方在下方 (norm_y 偏大，通常 > 0.5)
     detected_player = None
     detected_opponent = None
 
     if pokemon_candidates:
-        # 按 cy 升序排列
         pokemon_candidates.sort(key=lambda c: c["cy"])
         if len(pokemon_candidates) >= 2:
             detected_opponent = pokemon_candidates[0]["mon"]
@@ -233,13 +213,13 @@ async def recognize_screenshot(file: UploadFile = File(...)):
             else:
                 detected_player = c["mon"]
 
-    # 兜底：若全图未找到宝可梦文字，默认使用数据库前两项
+    # 兜底
     if not detected_player:
         detected_player = POKEMON_LIST[0] if POKEMON_LIST else {"id": 1, "name": "妙蛙种子", "baseStats": {"hp": 45}}
     if not detected_opponent:
         detected_opponent = POKEMON_LIST[1] if len(POKEMON_LIST) > 1 else {"id": 4, "name": "小火龙", "baseStats": {"hp": 39}}
 
-    # HP 动态计算兜底 (不再针对 134/212 写死硬编码)
+    # HP 动态计算兜底
     if player_hp_cur is None or player_hp_max is None:
         base_hp = detected_player.get("baseStats", {}).get("hp", 80)
         player_hp_max = calculate_std_hp_50(base_hp)
@@ -249,7 +229,7 @@ async def recognize_screenshot(file: UploadFile = File(...)):
     if opponent_hp_pct is None:
         opponent_hp_pct = 100.0
 
-    # 招式动态填充：若未识别到招式，直接读取该宝可梦自身的实际学招表，绝不写死！
+    # 招式填充
     active_moves = []
     if detected_moves:
         active_moves = detected_moves[:4]
@@ -274,10 +254,13 @@ async def recognize_screenshot(file: UploadFile = File(...)):
         "moves": active_moves
     }
 
-# 挂载静态资源服务，使得 http://127.0.0.1:8765/ 可直接完整访问前端 Wiki 与 Copilot
+# 挂载静态资源服务，使得 http://127.0.0.1:8765/ 可直接完整访问前端
 static_dir = os.path.dirname(os.path.abspath(__file__))
 app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
 
 if __name__ == "__main__":
-    print("Starting General Pokemon Champions OCR & Sync Engine on http://127.0.0.1:8765 ...")
+    print("==================================================")
+    print(" 🚀 POKÉMON CHAMPIONS RAPIDOCR ENGINE (PORT: 8765)")
+    print(" 视觉识别: 在线 | 静态宿主: http://127.0.0.1:8765")
+    print("==================================================")
     uvicorn.run(app, host="127.0.0.1", port=8765, log_level="info")
