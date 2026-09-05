@@ -64,48 +64,52 @@ def main():
 
     print("==================================================")
     print(f" 🚀 POKÉMON CHAMPIONS 云端自动化同步启动")
-    print(f" 目标赛季: {active_season} | 赛制: {fmt} | 强制重刷: {force}")
+    print(f" 目标赛季: {active_season} | 赛制: 双打 + 单打 | 强制重刷: {force}")
     print("==================================================")
 
     # 1. 运行探针检查单体宝可梦排位数据
-    probe = check_for_updates(season=active_season, fmt=fmt)
+    probe = check_for_updates(season=active_season)
     print(f"[CI 探针] 远端时间戳: {probe.get('remote_timestamp')}")
     print(f"[CI 探针] 本地时间戳: {probe.get('local_timestamp')}")
-    print(f"[CI 探针] 检测判定: {'需要更新' if probe.get('has_update') else '已是最新'}")
+    print(f"[CI 探针] 双打文件状态: {probe.get('double_status')}")
+    print(f"[CI 探针] 单打文件状态: {probe.get('single_status')}")
+    print(f"[CI 探针] 检测判定: {'需要更新/补全' if probe.get('has_update') or force else '已是最新'} ({probe.get('reason')})")
 
     has_rank_update = probe.get("has_update") or force
 
     # 如果有新数据或强制更新
     if has_rank_update:
-        print("[CI] 正在执行双打排位抓取管线 (PokéCham DB)...")
-        sync_season(
-            season=active_season,
-            fmt="double",
-            lang="zh-Hans",
-            headless=True,
-            channel=None,
-            resume=not force,
-            base_dir=str(BASE_DIR)
-        )
-        print("[CI] 正在执行单打排位抓取管线 (PokéCham DB)...")
-        sync_season(
-            season=active_season,
-            fmt="single",
-            lang="zh-Hans",
-            headless=True,
-            channel=None,
-            resume=not force,
-            base_dir=str(BASE_DIR)
-        )
+        if probe.get("needs_double_sync") or force:
+            print("[CI] 正在执行双打排位抓取管线 (PokéCham DB)...")
+            sync_season(
+                season=active_season,
+                fmt="double",
+                lang="zh-Hans",
+                headless=True,
+                channel=None,
+                resume=not force,
+                base_dir=str(BASE_DIR)
+            )
+        if probe.get("needs_single_sync") or force:
+            print("[CI] 正在执行单打排位抓取管线 (PokéCham DB)...")
+            sync_season(
+                season=active_season,
+                fmt="single",
+                lang="zh-Hans",
+                headless=True,
+                channel=None,
+                resume=not force,
+                base_dir=str(BASE_DIR)
+            )
         run_export(base_dir=BASE_DIR)
         ensure_meta_dir()
         meta = {
             "season": active_season,
-            "format": fmt,
+            "formats": ["double", "single"],
             "remote_timestamp": probe.get("remote_timestamp", "2026/09/01 02:57"),
             "last_sync_time": probe.get("last_sync_time") or "2026-09-05",
-            "total_pokemon": probe.get("total_pokemon", 235),
-            "total_forms": probe.get("total_forms", 314)
+            "total_pokemon": 235,
+            "total_forms": 314
         }
         SYNC_META_FILE.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
 

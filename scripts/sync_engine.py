@@ -144,10 +144,13 @@ def compute_content_hash(pokemon_list):
 
 def check_for_updates(season="M-5", fmt="double"):
     """
-    轻量级远端智能探针
-    在无需启动 Chromium 的情况下，毫秒级探测 PokéCham DB 最新更新状态
+    轻量级远端智能探针：
+    1. 探测远端官方时间戳
+    2. 检查本地双打文件 pokechamdb_{season}_double_forms.json 是否存在且完整 (>= 235)
+    3. 检查本地单打文件 pokechamdb_{season}_single_forms.json 是否存在且完整 (>= 235)
+    4. 若时间戳有变动或本地任一赛制数据缺失/不完整，触发 has_update = True
     """
-    target_url = f"https://pokechamdb.com/zh-Hans?format={fmt}&season={season}&view=pokemon"
+    target_url = f"https://pokechamdb.com/zh-Hans?format=double&season={season}&view=pokemon"
     local_meta = get_local_meta()
     local_ts = local_meta.get("remote_timestamp", "")
 
@@ -171,7 +174,30 @@ def check_for_updates(season="M-5", fmt="double"):
     if not remote_ts:
         remote_ts = local_ts or "2026/09/01 02:57"
 
-    has_update = (remote_ts != local_ts) if local_ts else False
+    # 检查本地双打与单打文件的实际完整性
+    double_path = BASE_DIR / "data" / "meta" / f"pokechamdb_{season}_double_forms.json"
+    single_path = BASE_DIR / "data" / "meta" / f"pokechamdb_{season}_single_forms.json"
+
+    double_count = 0
+    if double_path.exists():
+        try:
+            d_data = json.loads(double_path.read_text(encoding="utf-8"))
+            double_count = len([x for x in d_data if x.get("form") == "通常"])
+        except Exception:
+            double_count = 0
+
+    single_count = 0
+    if single_path.exists():
+        try:
+            s_data = json.loads(single_path.read_text(encoding="utf-8"))
+            single_count = len([x for x in s_data if x.get("form") == "通常"])
+        except Exception:
+            single_count = 0
+
+    time_changed = (remote_ts != local_ts) if local_ts else False
+    needs_double_sync = time_changed or (double_count < 235)
+    needs_single_sync = time_changed or (single_count < 235)
+    has_update = needs_double_sync or needs_single_sync
 
     # 更新全局检测信息
     with _sync_lock:
@@ -179,18 +205,28 @@ def check_for_updates(season="M-5", fmt="double"):
         SYNC_STATE["local_timestamp"] = local_ts
         SYNC_STATE["has_update"] = has_update
 
-    reason = ""
-    if has_update:
-        reason = f"官方已发布全新对战数据 (远端: {remote_ts}，本地: {local_ts})"
-    else:
-        reason = f"当前数据已是最新 (官方发布时间: {remote_ts})"
+    reason_parts = []
+    if time_changed:
+        reason_parts.append(f"官方发布新数据 ({remote_ts})")
+    if double_count < 235:
+        reason_parts.append(f"双打本地缺失 ({double_count}/235)")
+    if single_count < 235:
+        reason_parts.append(f"单打本地缺失 ({single_count}/235)")
+
+    reason = "；".join(reason_parts) if reason_parts else f"当前双打与单打数据均已完整最新 ({remote_ts})"
 
     return {
         "has_update": has_update,
+        "needs_double_sync": needs_double_sync,
+        "needs_single_sync": needs_single_sync,
         "remote_timestamp": remote_ts,
         "local_timestamp": local_ts,
         "season": season,
         "format": fmt,
+        "double_count": double_count,
+        "single_count": single_count,
+        "double_status": f"{double_count}/235 只",
+        "single_status": f"{single_count}/235 只",
         "total_pokemon": local_meta.get("total_pokemon", 235),
         "total_forms": local_meta.get("total_forms", 314),
         "last_sync_time": local_meta.get("last_sync_time"),
