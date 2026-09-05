@@ -1,0 +1,16 @@
+# Python & Virtual Environments
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local logs & tests
+*.log
+scratch/

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《宝可梦冠军》实时对战副驾与全量图鉴 Wiki - Pokémon Champions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 背景动态科技网格 -->
+  <div class="bg-grid"></div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <h1>POKÉMON CHAMPIONS <span class="highlight">COPILOT & WIKI</span></h1>
+        <p class="subtitle">《宝可梦冠军》竞技对战副驾与图鉴百科</p>
+      </div>
+      <div class="header-actions">
+        <button class="header-sync-capsule-btn" id="headerSyncBtn" title="检查并同步 PokéCham DB 官方实时数据">
+          <span class="sync-count-badge" id="totalCountBadge">235 只宝可梦</span>
+          <span class="sync-capsule-divider">·</span>
+          <span class="sync-icon">🔄</span>
+          <span class="sync-btn-text">同步数据</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 顶部主导航 Tab -->
+    <nav class="main-tabs-nav">
+      <div class="nav-container">
+        <button class="main-tab-btn active" id="tabCopilotBtn" data-target="copilotView">
+          <span class="tab-icon">⚡</span> 实时对战副驾 (Battle Copilot)
+          <span class="tab-badge pulse">实战推荐</span>
+        </button>
+        <button class="main-tab-btn" id="tabWikiBtn" data-target="wikiView">
+          <span class="tab-icon">📖</span> 竞技图鉴百科 (Wiki Database)
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <!-- ====================================================================== -->
+    <!-- 视图 1：实时对战副驾 (Battle Copilot View) -->
+    <!-- ====================================================================== -->
+    <section id="copilotView" class="main-view active">
+      <div class="copilot-workbench">
+        <!-- 左栏：截图投放、解析与特征预览 -->
+        <div class="copilot-col copilot-left">
+          <div class="panel-box dropzone-panel">
+            <div class="panel-header">
+              <h3><span class="icon">📷</span> 对战画面输入</h3>
+              <span class="sub-badge">RapidOCR 神经网络引擎</span>
+            </div>
+
+            <!-- 截图拖拽与粘贴区 -->
+            <div class="dropzone" id="battleDropzone">
+              <div class="dropzone-content">
+                <div class="dropzone-icon">📥</div>
+                <div class="dropzone-title">拖入游戏对战截图，或直接按 <kbd>Ctrl + V</kbd> 粘贴任意画面</div>
+                <p class="dropzone-desc">支持任意对战界面截屏 · 自动识别双方在场宝可梦、剩余血量与招式</p>
+                <div class="dropzone-actions">
+                  <label class="btn-file-select">
+                    📁 选择本地截图文件
+                    <input type="file" id="imageFileInput" accept="image/*">
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- 识别结果预览卡片 -->
+            <div class="analysis-card" id="analysisCard" style="display: none;">
+              <div class="analysis-status-bar" id="analysisStatusBar">
+                <span class="status-icon">🟢</span>
+                <span class="status-msg" id="analysisStatusMsg">已精准锁定对战双方态势</span>
+                <span class="resolution-tag" id="resolutionTag">1080P</span>
+              </div>
+
+              <!-- Canvas 画面预览与高亮框 -->
+              <div class="screenshot-preview-wrapper">
+                <canvas id="screenshotCanvas"></canvas>
+                <div class="canvas-hint">Canvas 自动定位敌我头像与 HP 像素扫描区 (支持下拉改选修正)</div>
+              </div>
+
+
+
+              <!-- 识别出的双方在场对位 -->
+              <div class="extracted-matchup">
+                <!-- 我方精灵 -->
+                <div class="combatant-box player-box">
+                  <div class="combatant-header">
+                    <span class="combatant-badge player">我方在场</span>
+                    <span class="combatant-sub-status" id="playerStatusText">对战中</span>
+                  </div>
+                  <div class="combatant-profile">
+                    <img id="playerAvatar" class="combatant-avatar" src="" alt="我方宝可梦">
+                    <div class="combatant-info">
+                      <div class="combatant-name-row">
+                        <span class="combatant-name" id="playerNameText">我方宝可梦</span>
+                        <select id="playerMonSelect" class="combatant-select" title="点击切换任意宝可梦"></select>
+                        <button type="button" class="btn-mega-toggle" id="playerMegaBtn" style="display: none;" title="切换超级进化形态">
+                          <span class="mega-icon">🧬</span> Mega 进化
+                        </button>
+                        <select id="playerMegaBranchSelect" class="combatant-select mega-branch-select" style="display: none;" title="选择 Mega 分支形态">
+                          <option value="X">Mega X</option>
+                          <option value="Y">Mega Y</option>
+                        </select>
+                      </div>
+                      <div class="combatant-types" id="playerTypes"></div>
+                    </div>
+                  </div>
+                  <!-- 血条 -->
+                  <div class="combatant-hp-block">
+                    <div class="hp-meta">
+                      <span class="hp-label">实时 HP (可微调)</span>
+                      <span class="hp-value" id="playerHpTextWrap">
+                        <input type="number" id="playerHpCurInput" class="hp-inline-input" value="100" min="1" max="999"> / <span id="playerHpMaxText">100</span> (<span id="playerHpPctText">100.0%</span>)
+                      </span>
+                    </div>
+                    <div class="hp-bar-bg">
+                      <div class="hp-bar-fill green" id="playerHpFill" style="width: 100%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- VS 徽标 -->
+                <div class="vs-divider">VS</div>
+
+                <!-- 敌方精灵 -->
+                <div class="combatant-box opponent-box">
+                  <div class="combatant-header">
+                    <span class="combatant-badge opponent">敌方在场</span>
+                    <span class="combatant-sub-status" id="opponentStatusText">对战目标</span>
+                  </div>
+                  <div class="combatant-profile">
+                    <img id="opponentAvatar" class="combatant-avatar" src="" alt="敌方宝可梦">
+                    <div class="combatant-info">
+                      <div class="combatant-name-row">
+                        <span class="combatant-name" id="opponentNameText">敌方宝可梦</span>
+                        <select id="opponentMonSelect" class="combatant-select" title="点击切换任意宝可梦"></select>
+                        <button type="button" class="btn-mega-toggle" id="opponentMegaBtn" style="display: none;" title="切换超级进化形态">
+                          <span class="mega-icon">🧬</span> Mega 进化
+                        </button>
+                        <select id="opponentMegaBranchSelect" class="combatant-select mega-branch-select" style="display: none;" title="选择 Mega 分支形态">
+                          <option value="X">Mega X</option>
+                          <option value="Y">Mega Y</option>
+                        </select>
+                      </div>
+                      <div class="combatant-types" id="opponentTypes"></div>
+                    </div>
+                  </div>
+                  <!-- 血条 -->
+                  <div class="combatant-hp-block">
+                    <div class="hp-meta">
+                      <span class="hp-label">实时残血 (可微调)</span>
+                      <span class="hp-value" id="opponentHpTextWrap">
+                        <input type="number" id="opponentHpPctInput" class="hp-inline-input" value="100" min="1" max="100"> % (<span id="opponentHpPctText">100.0%</span>)
+                      </span>
+                    </div>
+                    <div class="hp-bar-bg">
+                      <div class="hp-bar-fill green" id="opponentHpFill" style="width: 100%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右栏：攻防双向透视仪表盘 -->
+        <div class="copilot-col copilot-right">
+          <div class="panel-box decision-panel">
+            <div class="panel-header">
+              <h3><span class="icon">🎯</span> 实时攻防决策仪表盘</h3>
+              <span class="sub-badge cyan">Level 50 排位实数</span>
+            </div>
+
+            <div id="copilotEmptyHint" class="copilot-empty-hint">
+              <div class="hint-icon">🕹️</div>
+              <h4>等待截屏载入...</h4>
+              <p>在左侧粘贴或拖入实机战斗截图，系统将毫秒级输出先手权判定、招式斩杀线与防守威胁预警。</p>
+            </div>
+
+            <div id="copilotDashboardContent" style="display: none;">
+              <!-- 1. 速度线先手判定模块 -->
+              <div class="decision-card speed-decision-card">
+                <div class="card-title-row">
+                  <h4>⚡ 速度线先手天梯</h4>
+                  <div class="speed-toggle-group">
+                    <label class="toggle-chip">
+                      <input type="checkbox" id="copilotTailwindToggle">
+                      <span>🌪️ 顺风 (2.0x)</span>
+                    </label>
+                    <label class="toggle-chip">
+                      <input type="checkbox" id="copilotScarfToggle">
+                      <span>🧣 围巾 (1.5x)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="speed-verdict-box" id="copilotSpeedVerdict">
+                  <!-- 动态判定红绿灯 -->
+                </div>
+
+                <div class="speed-bars-container" id="copilotSpeedBars">
+                  <!-- 动态对比轴 -->
+                </div>
+              </div>
+
+              <!-- 2. 进攻端：我方 4 招残血斩杀刻度 -->
+              <div class="decision-card attack-kill-card">
+                <div class="card-title-row">
+                  <h4>⚔️ 进攻斩杀刻度 (针对敌方当前 <span id="targetHpIndicator" class="highlight-hp">85%</span> 残血)</h4>
+                  <span class="formula-tag">伤害随机数 85% ~ 100% 实算</span>
+                </div>
+                <div class="kill-moves-list" id="copilotAttackMoves">
+                  <!-- 动态生成 4 个招式卡片 -->
+                </div>
+              </div>
+
+              <!-- 3. 防守端：敌方威胁招式预警与极限猝死风险 -->
+              <div class="decision-card defense-threat-card">
+                <div class="card-title-row">
+                  <h4>🛡️ 防守威胁预警 (针对我方当前 <span id="playerHpIndicator" class="highlight-hp">76%</span> 残血)</h4>
+                  <span class="formula-tag danger">敌方极速满攻模板模拟</span>
+                </div>
+                <div class="threat-content" id="copilotThreatContent">
+                  <!-- 动态生成敌方招式威胁评级 -->
+                </div>
+              </div>
+
+              <!-- 4. 战术锦囊推荐 -->
+              <div class="tactical-advice-box" id="copilotTacticalAdvice">
+                <!-- 战术建议 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- 视图 2：竞技图鉴百科 (Wiki Database View) -->
+    <!-- ====================================================================== -->
+    <section id="wikiView" class="main-view" style="display: none;">
+      <!-- 筛选与搜索工具条 -->
+      <section class="toolbar-section">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24"><path d="M21.71 20.29l-5.4-5.4A7.9 7.9 0 0018 10a8 8 0 10-8 8 7.9 7.9 0 004.89-1.69l5.4 5.4a1 1 0 001.42 0 1 1 0 000-1.42zM10 16a6 6 0 116-6 6 6 0 01-6 6z"/></svg>
+          <input type="text" id="searchInput" placeholder="实时搜索任意全量宝可梦 (如: 巨钳螳螂, 妙蛙种子, 快龙, 448)...">
+        </div>
+
+        <div class="filter-controls">
+          <div class="type-filter-group" id="typeFilters">
+            <button class="type-badge active" data-type="all">全部属性</button>
+            <!-- 动态注入 18 属性 -->
+          </div>
+
+          <div class="extra-filters">
+            <div class="view-mode-toggle">
+              <button class="mode-btn active" id="modeScrollBtn">⚡ 无限滚动</button>
+              <button class="mode-btn" id="modePageBtn">📄 经典分页</button>
+            </div>
+
+            <label class="checkbox-label">
+              <input type="checkbox" id="megaOnlyFilter">
+              <span class="custom-checkbox"></span>
+              <span>仅 Mega 进化</span>
+            </label>
+
+            <div class="sort-select-wrapper">
+              <label for="sortSelect">排序：</label>
+              <select id="sortSelect">
+                <option value="id">全国编号 (ID)</option>
+                <option value="bst_desc">总种族 (高到低)</option>
+                <option value="spe_desc">速度 (高到低)</option>
+                <option value="atk_desc">物攻 (高到低)</option>
+                <option value="spa_desc">特攻 (高到低)</option>
+                <option value="hp_desc">生命 (高到低)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 加载中遮罩/骨架条 -->
+      <div id="loadingIndicator" class="loading-panel">
+        <div class="spinner"></div>
+        <p id="loadingText">正在从 GitHub / jsDelivr CDN 动态按需解包官方数据...</p>
+      </div>
+
+      <!-- 宝可梦网格列表 -->
+      <section class="pokemon-grid-section" id="gridSection" style="display:none;">
+        <div class="section-meta">
+          <h2>宝可梦名录 (<span id="matchCount">0</span>)</h2>
+          <span class="tip" id="renderStatusText">已渲染 0 只 (支持随滚随载)</span>
+        </div>
+        
+        <div class="pokemon-grid" id="pokemonGrid">
+          <!-- 动态生成卡片 -->
+        </div>
+
+        <!-- 滚动加载底哨 (Sentinel) -->
+        <div id="scrollSentinel" class="scroll-sentinel">
+          <span class="loading-more-text">向下滚动自动加载更多宝可梦...</span>
+        </div>
+
+        <!-- 分页导航条 (分页模式可见) -->
+        <div id="paginationBar" class="pagination-bar" style="display: none;">
+          <button class="page-btn" id="prevPageBtn">上一页</button>
+          <span class="page-info" id="pageInfo">第 1 / 1 页</span>
+          <button class="page-btn" id="nextPageBtn">下一页</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- 宝可梦详情与 VP 模拟器浮层 (Modal) -->
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- 动态注入详情内容 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 官方对战数据实时同步与变化检测浮层 (Sync Modal) -->
+  <div class="modal-backdrop sync-modal-backdrop" id="syncModal">
+    <div class="modal-card sync-modal-card">
+      <div class="sync-modal-header">
+        <div class="sync-modal-title">
+          <span class="sync-modal-badge">POKÉCHAM DB LIVE</span>
+          <h3>官方竞技数据实时同步</h3>
+        </div>
+        <button class="modal-close-btn" id="syncModalCloseBtn">&times;</button>
+      </div>
+
+      <div class="sync-modal-body">
+        <!-- 阶段 1: 智能探针检测中 -->
+        <div class="sync-step" id="syncStepCheck">
+          <div class="sync-radar-container">
+            <div class="sync-radar-ring"></div>
+            <div class="sync-radar-icon">📡</div>
+          </div>
+          <p class="sync-step-text" id="syncCheckText">正在连接 PokéCham DB 官方数据源探针，检测最新版本...</p>
+        </div>
+
+        <!-- 阶段 2: 同步进行中 (高科技进度条) -->
+        <div class="sync-step" id="syncStepProgress" style="display: none;">
+          <div class="sync-progress-header">
+            <div class="sync-target-box">
+              <span class="sync-target-label">当前正在同步物种:</span>
+              <span class="sync-target-name" id="syncCurrentPokemon">初始化中...</span>
+            </div>
+            <div class="sync-counter" id="syncCounter">0 / 0 (0%)</div>
+          </div>
+
+          <div class="sync-progress-track">
+            <div class="sync-progress-bar" id="syncProgressBar" style="width: 0%;"></div>
+          </div>
+
+          <div class="sync-status-details">
+            <span class="sync-detail-msg" id="syncDetailMsg">正在建立官方双打数据流...</span>
+          </div>
+        </div>
+
+        <!-- 阶段 3: 提示状态 (已是最新 / 同步完成 / 错误) -->
+        <div class="sync-step" id="syncStepResult" style="display: none;">
+          <div class="sync-result-icon" id="syncResultIcon">✅</div>
+          <h4 class="sync-result-title" id="syncResultTitle">数据已是最新</h4>
+          <div class="sync-result-desc" id="syncResultDesc">远端官方更新时间与本地完全吻合，无需重新抓取。</div>
+        </div>
+      </div>
+
+      <div class="sync-modal-footer">
+        <button class="sync-modal-btn btn-cancel" id="syncCancelBtn">关闭</button>
+        <button class="sync-modal-btn btn-force" id="syncForceBtn" style="display: none;">强制全量同步</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>© 2026 Pokémon Champions Copilot & Wiki · 对战竞技数据源自 PokéCham DB 官方实时排位</p>
+    </div>
+  </footer>
+
+  <script src="data/champions_data.js"></script>
+  <script src="js/constants.js"></script>
+  <script src="js/calc.js"></script>
+  <script src="js/wiki.js"></script>
+  <script src="js/copilot.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
