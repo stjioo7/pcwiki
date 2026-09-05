@@ -189,7 +189,11 @@ def gate_grounding(intake_res: Dict[str, Any]) -> Dict[str, Any]:
         mega_info = p_obj.get("mega", {})
         if mega_info and mega_info.get("supported"):
             cand_entry["can_mega"] = True
-            cand_entry["exclusive_mega_stone"] = mega_info.get("megaStone") or (mega_info.get("forms", [{}])[0].get("megaStone"))
+            forms = mega_info.get("forms", [])
+            if len(forms) > 1:
+                cand_entry["exclusive_mega_stones"] = [f.get("megaStone") for f in forms if f.get("megaStone")]
+            else:
+                cand_entry["exclusive_mega_stone"] = mega_info.get("megaStone") or (forms[0].get("megaStone") if forms else "")
 
         grounded_candidates.append(cand_entry)
 
@@ -300,8 +304,8 @@ async def gate_assemble(intake_res: Dict[str, Any], grounding_res: Dict[str, Any
 # ==========================================================================
 FALLBACK_ITEMS = ["气势披带", "突击背心", "生命宝珠", "讲究头带", "讲究眼镜", "讲究围巾", "吃剩的东西", "密探斗篷", "文柚果", "木子果"]
 
-def is_mega_stone_for_mon(p_obj: Dict[str, Any], item_name: str) -> Optional[Dict[str, Any]]:
-    """检查道具是否为该宝可梦的专属 Mega 进化石，并返回对应的 Mega Form 信息"""
+def is_mega_stone_for_mon(p_obj: Dict[str, Any], item_name: str, fmt: str = "double") -> Optional[Dict[str, Any]]:
+    """检查道具是否为该宝可梦的专属 Mega 进化石，并精准返回对应的 Mega Form (支持 X/Y/Z 分支与使用率优先解析)"""
     if not p_obj or not item_name:
         return None
     mega_info = p_obj.get("mega", {})
@@ -312,11 +316,40 @@ def is_mega_stone_for_mon(p_obj: Dict[str, Any], item_name: str) -> Optional[Dic
     if not forms and "megaStone" in mega_info:
         forms = [mega_info]
     
+    norm_item = item_name.replace(" ", "").replace("　", "").replace("Ｘ", "X").replace("ｘ", "X").replace("Ｙ", "Y").replace("ｙ", "Y").replace("Ｚ", "Z").replace("ｚ", "Z").upper()
+    mon_name = p_obj.get("name", "").replace(" ", "")
+
+    # 1. 第一轮：精确匹配（道具名完全匹配 megaStone，或明确包含形态标识符如 X/Y/Z）
     for f in forms:
-        stone = f.get("megaStone", "")
-        # 兼容不同命名形式（如 "暴鲤龙进化石" 或 "喷火龙进化石 Y"）
-        if stone and (stone in item_name or item_name in stone or ("进化石" in item_name and p_obj.get("name", "") in item_name)):
+        stone = (f.get("megaStone") or "").replace(" ", "").replace("Ｘ", "X").replace("Ｙ", "Y").replace("Ｚ", "Z").upper()
+        f_key = (f.get("formKey") or "").upper()
+        
+        # 道具名与 megaStone 完全相等
+        if stone and norm_item == stone:
             return f
+        # 道具名包含宝可梦名字 + 进化石 + 明确的形态标识
+        if mon_name in norm_item and "进化石" in norm_item:
+            if f_key and (f_key in norm_item or f"超级{mon_name}{f_key}" in norm_item):
+                return f
+
+    # 2. 第二轮：泛化匹配（若仅提供了 '雷丘进化石' 等未指明 X/Y 的道具），优先根据天梯使用率最高的形态分支匹配
+    if mon_name in norm_item and "进化石" in norm_item:
+        fmt_meta = p_obj.get("meta", {}).get(fmt, {}) or p_obj.get("meta", {}).get("double", {}) or {}
+        meta_items = fmt_meta.get("items", [])
+        best_form = forms[0]
+        best_usage = -1.0
+        for f in forms:
+            f_key = (f.get("formKey") or "").upper()
+            stone = (f.get("megaStone") or "").replace(" ", "").replace("Ｘ", "X").replace("Ｙ", "Y").replace("Ｚ", "Z").upper()
+            for mi in meta_items:
+                mi_name = mi.get("name", "").replace(" ", "").replace("Ｘ", "X").replace("Ｙ", "Y").replace("Ｚ", "Z").upper()
+                if (f_key and f_key in mi_name) or (stone and stone == mi_name):
+                    u = mi.get("usage", 0)
+                    if u > best_usage:
+                        best_usage = u
+                        best_form = f
+        return best_form
+
     return None
 
 def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -349,7 +382,7 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
             raw_item = raw_item.split("（")[0].strip()
 
         # 2. Mega 进化石检查与 Mega Clause (全队限 1 个 Mega 石)
-        mega_form = is_mega_stone_for_mon(p_obj, raw_item)
+        mega_form = is_mega_stone_for_mon(p_obj, raw_item, fmt=fmt)
         is_mega = False
         mega_branch = "X"
         
@@ -364,7 +397,9 @@ def gate_validate_and_sanitize(assemble_res: Dict[str, Any], intake_res: Dict[st
             else:
                 mega_count += 1
                 is_mega = True
-                mega_branch = mega_form.get("formKey") or ("Y" if "Y" in raw_item or "Ｙ" in raw_item else "X")
+                mega_branch = mega_form.get("formKey") or "X"
+                # 规范化道具名称为该形态的标准名称
+                raw_item = mega_form.get("megaStone") or raw_item
         
         # 道具排重 (Item Clause)
         if not raw_item or raw_item in used_items:
