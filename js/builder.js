@@ -725,27 +725,13 @@ function renderBuilderWizard() {
     `;
   }
 
-  // 2. 当前赛制环境天梯热门宝可梦推荐胶囊 (Top 8)
-  const topMetaMons = [...allMons]
-    .filter(p => getPokemonMetaRank(p, fmt) < 999)
-    .sort((a, b) => getPokemonMetaRank(a, fmt) - getPokemonMetaRank(b, fmt))
-    .slice(0, 8)
-    .map(p => p.name);
-
-  const fallbackMeta = ['烈咬陆鲨', '仆斩将军', '赛富豪', '厄诡椪', '古玉鱼', '振翼发', '吃吼霸', '多龙巴鲁托'];
-  const pillsList = topMetaMons.length > 0 ? topMetaMons : fallbackMeta;
-
-  const metaPillsHtml = pillsList.map(p => `
-    <span class="quick-pill ${wizardState.anchor === p ? 'active' : ''}" onclick="selectWizardAnchor('${p}')">${p}</span>
-  `).join('');
-
-  // 3. 全量 235 宝可梦本地数据自动匹配 datalist
+  // 2. 全量 235 宝可梦本地数据自动匹配 datalist
   const datalistOptionsHtml = allMons.map(p => {
     const types = (p.types || ['Normal']).map(t => TYPE_TRANSLATION[t] || t).join('/');
     return `<option value="${p.name}">${p.name} · ${types} (${p.nameEn || ''})</option>`;
   }).join('');
 
-  // 4. 战术机制标签 (使用 button type=button 彻底杜绝 label 双击取消 bug)
+  // 3. 战术机制标签 (使用 button type=button 彻底杜绝 label 双击取消 bug)
   const tacticOptions = [
     { id: 'tailwind', label: '🌪️ 顺风提速' },
     { id: 'trick_room', label: '⏳ 戏法空间' },
@@ -799,20 +785,15 @@ function renderBuilderWizard() {
       </div>
 
       <div class="wizard-form-grid">
-        <!-- 核心宝可梦 Anchor (支持输入自动匹配本地数据 + 卡位直选 + 热门直选) -->
+        <!-- 核心宝可梦 Anchor (支持输入自动匹配本地 235 数据 + 已填卡位直选) -->
         <div class="wizard-field">
           <label class="wizard-label">🎯 战术核心物种 (Anchor · 自动匹配已有数据)</label>
-          <input type="text" id="wizardAnchorInput" class="wizard-input" list="wizardAnchorDatalist" value="${wizardState.anchor}" placeholder="输入或模糊检索宝可梦 (如: 烈咬陆鲨, 仆斩将军)..." oninput="updateWizardAnchor(this.value)" autocomplete="off">
+          <input type="text" id="wizardAnchorInput" class="wizard-input" list="wizardAnchorDatalist" value="${wizardState.anchor}" placeholder="输入或检索宝可梦 (如: 烈咬陆鲨, 仆斩将军)..." oninput="updateWizardAnchor(this.value)" autocomplete="off">
           <datalist id="wizardAnchorDatalist">
             ${datalistOptionsHtml}
           </datalist>
           
           ${teamPillsHtml}
-
-          <div class="quick-pills-row">
-            <span style="font-size:0.72rem; color:#80deea; font-weight:600; align-self:center;">环境热门:</span>
-            ${metaPillsHtml}
-          </div>
         </div>
 
         <!-- 战术风格 Posture -->
