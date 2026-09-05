@@ -241,6 +241,15 @@ def run_export(base_dir=None):
     waza_map = load_waza_catalog()
     print(f"已装载官方招式数值字典: {len(waza_map)} 个")
 
+    abilities_desc = {}
+    ab_desc_path = base_dir / "data" / "raw" / "abilities_desc.json"
+    if ab_desc_path.exists():
+        try:
+            abilities_desc = json.loads(ab_desc_path.read_text(encoding="utf-8"))
+            print(f"已装载官方特性效果说明字典: {len(abilities_desc)} 个")
+        except Exception as e:
+            print(f"Warning loading abilities_desc: {e}")
+
     # 按物种分组
     by_slug = {}
     for r in m5_records:
@@ -274,16 +283,18 @@ def run_export(base_dir=None):
             "spe": raw_stats.get("速度", 80)
         }
 
-        # 特性列表
+        # 特性列表 (包含官方效果说明 + 天梯使用率)
         abilities = []
         for ab in base_record.get("abilities", []):
             ab_name = ab.get("name", "")
             usage = ab.get("usage", 0.0)
+            effect_desc = abilities_desc.get(ab_name, "对战中触发的官方特性效果。")
             abilities.append({
                 "id": 0,
                 "name": ab_name,
-                "desc": f"M-5天梯携带率: {usage}%",
-                "usage": usage
+                "desc": effect_desc,
+                "usage": usage,
+                "usageText": f"{usage}%"
             })
 
         # 配招池与学招表
@@ -391,7 +402,18 @@ def run_export(base_dir=None):
                 "items": base_record.get("items", []),
                 "natures": base_record.get("natures", []),
                 "partners": base_record.get("partners", []),
-                "evSpreads": base_record.get("ev_spreads", [])
+                "evSpreads": base_record.get("ev_spreads", []),
+                "topMoves": [
+                    {
+                        "name": m.get("name", ""),
+                        "usage": m.get("usage", 0.0),
+                        "type": waza_map.get(m.get("name", ""), {}).get("type", types_en[0] if types_en else "Normal"),
+                        "category": waza_map.get(m.get("name", ""), {}).get("category", "物理"),
+                        "power": waza_map.get(m.get("name", ""), {}).get("power", "--"),
+                        "accuracy": waza_map.get(m.get("name", ""), {}).get("accuracy", 100)
+                    }
+                    for m in base_record.get("moves", [])[:12]
+                ]
             }
         }
         pokemon_list.append(pokemon_obj)

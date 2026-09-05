@@ -678,13 +678,15 @@ function parseChampoutData(personalArray, nameMap, abilityMap, wazaMap = {}, lea
     }
   });
 
-  // 融合对战截图验证补丁 (保障子弹拳等基础对位)
+  // 融合对战截图验证补丁 (保障子弹拳等基础对位与排位大数据)
   if (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) {
     window.CHAMPIONS_DATA.pokemon.forEach(patchP => {
       const target = list.find(l => l.id === patchP.id);
       if (target) {
         if (patchP.mega && patchP.mega.supported) target.mega = patchP.mega;
         if (patchP.tags) target.tags = Array.from(new Set([...target.tags, ...patchP.tags]));
+        if (patchP.metaUsage) target.metaUsage = patchP.metaUsage;
+        if (patchP.abilities && patchP.abilities.length > 0) target.abilities = patchP.abilities;
         if ((!target.learnset || target.learnset.length === 0) && patchP.commonMoves) {
           target.learnset = patchP.commonMoves.map((m, idx) => ({
             id: 9000 + idx,
@@ -733,6 +735,12 @@ function applyFilters() {
 
   // 排序
   filtered.sort((a, b) => {
+    if (sortMode === 'rank_asc') {
+      const rankA = (a.metaUsage && a.metaUsage.rank) ? a.metaUsage.rank : 999999;
+      const rankB = (b.metaUsage && b.metaUsage.rank) ? b.metaUsage.rank : 999999;
+      if (rankA !== rankB) return rankA - rankB;
+      return a.id - b.id;
+    }
     const bstA = Object.values(a.baseStats).reduce((sum, v) => sum + v, 0);
     const bstB = Object.values(b.baseStats).reduce((sum, v) => sum + v, 0);
     if (sortMode === 'id') return a.id - b.id;
@@ -820,10 +828,14 @@ function createPokemonCardElement(p) {
 
   const abilityPreview = p.abilities && p.abilities[0] ? p.abilities[0].name : '';
   const moveCount = (p.learnset && p.learnset.length) || 0;
+  const rankBadgeHtml = (p.metaUsage && p.metaUsage.rank)
+    ? `<span class="card-rank-badge">🔥 Rank #${p.metaUsage.rank}</span>`
+    : '';
 
   card.innerHTML = `
     <div class="card-top">
       <span class="pokemon-id">#${String(p.id).padStart(3, '0')}</span>
+      ${rankBadgeHtml}
       ${p.mega && p.mega.supported ? `<span class="card-mega-badge">${p.mega.forms && p.mega.forms.length > 1 ? 'MEGA 多分支' : 'MEGA SUPPORT'}</span>` : ''}
     </div>
     <div class="card-center">
@@ -862,22 +874,35 @@ function createPokemonCardElement(p) {
 }
 
 // ==========================================================================
-// 详情 Modal 与 对战推演工作台 (Battle Workbench)
+// 详情 Modal 与 官方排位实战大数据 (Metagame Dashboard)
 // ==========================================================================
 function openDetailModal(p) {
+  if (!p) return;
   selectedPokemon = p;
   activeFormIndex = 0;
-  isTailwindActive = false;
-  isChoiceScarfActive = false;
   isShowAllLearnset = false;
   
-  // 假想敌默认选择：若攻方为巨钳螳螂(#212)，假想敌默认对战路卡利欧(#448)，否则默认选另一只代表性怪
-  if (p.id === 212) {
-    selectedDefender = allPokemonList.find(x => x.id === 448) || allPokemonList[0];
+  // 默认根据官方天梯上位实战数据预选性格与努力值加点
+  if (p.metaUsage && p.metaUsage.evSpreads && p.metaUsage.evSpreads.length > 0) {
+    const topEv = p.metaUsage.evSpreads[0];
+    currentVpAllocation = {
+      hp: topEv.hp || 0,
+      atk: topEv.atk || 0,
+      def: topEv.def || 0,
+      spa: topEv.spa || 0,
+      spd: topEv.spd || 0,
+      spe: topEv.spe || 0
+    };
+  } else if (p.id === 212) {
     currentVpAllocation = { hp: 28, atk: 32, def: 6, spa: 0, spd: 0, spe: 0 };
   } else {
-    selectedDefender = allPokemonList.find(x => x.id !== p.id) || p;
     currentVpAllocation = { hp: 0, atk: 32, def: 0, spa: 0, spd: 0, spe: 32 };
+  }
+
+  if (p.metaUsage && p.metaUsage.natures && p.metaUsage.natures.length > 0) {
+    const topNat = p.metaUsage.natures[0].name;
+    const foundNat = NATURES.find(n => n.name.startsWith(topNat) || n.name.includes(topNat));
+    if (foundNat) selectedNature = foundNat;
   }
   
   renderModalContent();
@@ -891,7 +916,6 @@ function closeModal() {
 function renderModalContent() {
   if (!selectedPokemon) return;
   const p = selectedPokemon;
-  const def = selectedDefender || p;
   
   const hasMega = p.mega && p.mega.supported;
   const megaForms = hasMega && Array.isArray(p.mega.forms) && p.mega.forms.length > 0 
@@ -907,7 +931,7 @@ function renderModalContent() {
   const currentDisplayName = isMega ? activeMegaForm.megaName : p.name;
 
   const currentAbilityList = isMega 
-    ? [{ name: activeMegaForm.ability, desc: activeMegaForm.abilityDesc || "超级进化专属增强特性", tag: "Mega 特性" }] 
+    ? [{ name: activeMegaForm.ability, desc: activeMegaForm.abilityDesc || "超级进化专属增强特性", tag: "Mega 特性", usageText: "100%" }] 
     : (Array.isArray(p.abilities) ? p.abilities : []);
 
   const totalPointsUsed = Object.values(currentVpAllocation).reduce((s, v) => s + v, 0);
@@ -919,17 +943,8 @@ function renderModalContent() {
   ).join(' ');
 
   const matchups = calculateTypeMatchups(currentTypes);
-
-  // 速度线判定计算
-  const speedEval = evaluateSpeedTiers(currentStats, def);
-
-  // 招式与伤害计算
-  const attackerObj = {
-    baseStats: currentStats,
-    types: currentTypes,
-    name: currentDisplayName
-  };
-  const movesToDisplay = getMovesToDisplay(p);
+  const meta = p.metaUsage || null;
+  const rank = meta ? meta.rank : null;
 
   const modalBody = document.getElementById('modalBody');
   modalBody.innerHTML = `
@@ -942,9 +957,10 @@ function renderModalContent() {
         <h2>
           ${currentDisplayName}
           <span style="font-size: 1rem; color: var(--text-dim); font-weight: 400;">#${String(p.id).padStart(3, '0')}</span>
+          ${rank ? `<span class="modal-rank-badge">🔥 官方排位使用率 Rank #${rank}</span>` : ''}
         </h2>
         <p style="color: var(--text-muted); margin-bottom: 0.5rem;">${p.enName}</p>
-        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem;">
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
           ${typePills}
         </div>
         ${megaForms.length > 0 ? `
@@ -962,7 +978,7 @@ function renderModalContent() {
       </div>
     </div>
 
-    <!-- 数值与特性面板 -->
+    <!-- 第一部分：基础属性面板与克制倍率 -->
     <div class="modal-grid-sections">
       <!-- 左侧：VP点数调配模拟器与50级实数 -->
       <div class="modal-box">
@@ -995,26 +1011,13 @@ function renderModalContent() {
         </div>
 
         <div style="margin-top: 1rem; font-size: 0.78rem; color: var(--text-dim); background: rgba(0,0,0,0.25); padding: 0.6rem; border-radius: 6px; line-height: 1.5;">
-          💡 <strong>《宝可梦冠军》训练体系</strong>：每只 66 点，单项上限 32 点，满两项后留 2 点余量给第三项。<br>
-          巨钳螳螂分配 28 点 HP 时，50 级实数值精确达到 <strong>173</strong>，与对战截图完全吻合。
+          💡 <strong>点数调配说明</strong>：每只 66 点自由点数，单项上限 32 点，满两项后留 2 点给第三项。<br>
+          点击下方排位大数据的【应用方案】按钮可一键导入上位选手实战加点方案。
         </div>
       </div>
 
-      <!-- 右侧：全量特性与弱点抗性 -->
+      <!-- 右侧：属性克制防御受击倍率 -->
       <div class="modal-box">
-        <h4>特性与效果 (Abilities)</h4>
-        <ul style="list-style: none; margin-bottom: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem;">
-          ${currentAbilityList.map(a => `
-            <li style="background: rgba(255,255,255,0.06); padding: 0.6rem 0.8rem; border-radius: 6px; border-left: 3px solid var(--accent-cyan);">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                <strong style="color: var(--accent-cyan); font-size: 0.95rem;">✦ ${typeof a === 'string' ? a : a.name}</strong>
-                ${a.tag ? `<span style="font-size: 0.72rem; color: var(--accent-yellow); background: rgba(255,214,10,0.12); padding: 0.1rem 0.45rem; border-radius: 4px;">${a.tag}</span>` : ''}
-              </div>
-              <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.4;">${typeof a === 'string' ? '游戏内实装特性' : (a.desc || '对战中触发的官方特性效果。')}</p>
-            </li>
-          `).join('')}
-        </ul>
-
         <h4>属性克制防御受击倍率</h4>
         <div class="matchups-group">
           ${renderMatchupRow('4x 极弱', matchups['4'], 'label-4x')}
@@ -1023,207 +1026,253 @@ function renderModalContent() {
           ${renderMatchupRow('0.25x 极抗', matchups['0.25'], 'label-05x')}
           ${renderMatchupRow('0x 免疫', matchups['0'], 'label-0x')}
         </div>
+
+        <h4 style="margin-top: 1.5rem;">基础种族值 (BST: ${Object.values(currentStats).reduce((a,b)=>a+b,0)})</h4>
+        <div class="bst-breakdown-list">
+          <div class="stat-row-mini"><span class="stat-name-mini">HP</span><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${(currentStats.hp/255)*100}%; background:var(--accent-green);"></div></div><span class="stat-val-mini">${currentStats.hp}</span></div>
+          <div class="stat-row-mini"><span class="stat-name-mini">物攻</span><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${(currentStats.atk/255)*100}%; background:var(--accent-yellow);"></div></div><span class="stat-val-mini">${currentStats.atk}</span></div>
+          <div class="stat-row-mini"><span class="stat-name-mini">物防</span><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${(currentStats.def/255)*100}%; background:var(--accent-orange);"></div></div><span class="stat-val-mini">${currentStats.def}</span></div>
+          <div class="stat-row-mini"><span class="stat-name-mini">特攻</span><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${(currentStats.spa/255)*100}%; background:var(--accent-cyan);"></div></div><span class="stat-val-mini">${currentStats.spa}</span></div>
+          <div class="stat-row-mini"><span class="stat-name-mini">特防</span><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${(currentStats.spd/255)*100}%; background:var(--accent-purple);"></div></div><span class="stat-val-mini">${currentStats.spd}</span></div>
+          <div class="stat-row-mini"><span class="stat-name-mini">速度</span><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:${(currentStats.spe/255)*100}%; background:var(--accent-magenta);"></div></div><span class="stat-val-mini">${currentStats.spe}</span></div>
+        </div>
       </div>
     </div>
 
-    <!-- ==========================================================================
-         下半部：对战推演与假想敌对峙工作台 (Battle Workbench)
-         ========================================================================== -->
-    <div class="workbench-container">
-      <div class="workbench-title-bar">
-        <h3>⚔️ 对战推演与假想敌对峙工作台</h3>
-        <div class="defender-select-box">
-          <label style="font-size: 0.85rem; color: var(--text-muted);">设定假想敌：</label>
-          <select id="defenderSelect">
-            ${allPokemonList.slice(0, 150).map(item => `
-              <option value="${item.id}" ${item.id === def.id ? 'selected' : ''}>#${item.id} ${item.name} (${item.types.map(t=>TYPE_TRANSLATION[t]||t).join('/')})</option>
-            `).join('')}
-          </select>
+    <!-- 第二部分：官方天梯排位实战大数据 (网格卡片一屏流) -->
+    <div class="metagame-dashboard">
+      <div class="metagame-header">
+        <div class="metagame-title-group">
+          <h3>🔥 官方天梯排位实战大数据</h3>
+          ${rank ? `<span class="meta-rank-tag">排位使用率 Rank #${rank}</span>` : '<span class="meta-rank-tag meta-unranked">暂无天梯上位排名</span>'}
         </div>
+        <span class="metagame-subtitle">数据源于官方排位赛上位对局样本统计（单打/双打标准对战环境）</span>
       </div>
 
-      <!-- 双方对峙概要栏 -->
-      <div class="versus-hero-box">
-        <div class="versus-combatant">
-          <img class="versus-thumb" src="${currentAvatar}" alt="${currentDisplayName}">
-          <div class="versus-info">
-            <h5>${currentDisplayName} (我方)</h5>
-            <div class="versus-stats-preview">
-              <span>HP: ${calculateStat50('hp', currentStats.hp, currentVpAllocation.hp, selectedNature)}</span>
-              <span>物攻: ${calculateStat50('atk', currentStats.atk, currentVpAllocation.atk, selectedNature)}</span>
-              <span>速度: ${speedEval.atkRealSpe}</span>
-            </div>
+      <div class="metagame-cards-grid">
+        <!-- 卡片 1：特性效果与排位选用 -->
+        <div class="metagame-card">
+          <div class="meta-card-header">
+            <h4>✦ 特性效果与排位选用</h4>
+            <span class="meta-card-sub">含官方战斗效果说明</span>
           </div>
-        </div>
-
-        <div class="versus-badge">VS</div>
-
-        <div class="versus-combatant">
-          <img class="versus-thumb" src="${def.avatar}" alt="${def.name}">
-          <div class="versus-info">
-            <h5>${def.name} (假想敌)</h5>
-            <div class="versus-stats-preview">
-              <span>HP基准: ${calculateStat50('hp', def.baseStats.hp, 0, NATURES[0])}</span>
-              <span>物防基准: ${calculateStat50('def', def.baseStats.def, 0, NATURES[0])}</span>
-              <span>速度种族: ${def.baseStats.spe}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 1. 速度线先手判定仪表盘 -->
-      <div class="speed-tier-panel">
-        <div class="speed-tier-header">
-          <h4 style="font-family: var(--font-display); color: var(--accent-cyan); font-size: 1.05rem;">
-            ⚡ 速度线先手权对峙判定
-          </h4>
-          ${speedEval.statusBadge}
-        </div>
-
-        <div class="speed-comparison-grid">
-          <div class="speed-card-tier">
-            <div class="tier-name">假想敌：极限速度 (32点+性格)</div>
-            <div class="tier-val">${speedEval.defMax}</div>
-            <div class="tier-delta" style="color: ${speedEval.atkRealSpe >= speedEval.defMax ? 'var(--accent-green)' : 'var(--accent-red)'}">
-              ${speedEval.atkRealSpe >= speedEval.defMax ? `我方领先 +${speedEval.atkRealSpe - speedEval.defMax} (先手)` : `我方落后 -${speedEval.defMax - speedEval.atkRealSpe} (后手)`}
-            </div>
-          </div>
-
-          <div class="speed-card-tier">
-            <div class="tier-name">假想敌：满速标准 (32点无修正)</div>
-            <div class="tier-val">${speedEval.defMid}</div>
-            <div class="tier-delta" style="color: ${speedEval.atkRealSpe >= speedEval.defMid ? 'var(--accent-green)' : 'var(--accent-red)'}">
-              ${speedEval.atkRealSpe >= speedEval.defMid ? `我方领先 +${speedEval.atkRealSpe - speedEval.defMid} (先手)` : `我方落后 -${speedEval.defMid - speedEval.atkRealSpe} (后手)`}
-            </div>
-          </div>
-
-          <div class="speed-card-tier">
-            <div class="tier-name">假想敌：无速耐受 (0点无修正)</div>
-            <div class="tier-val">${speedEval.defMin}</div>
-            <div class="tier-delta" style="color: ${speedEval.atkRealSpe >= speedEval.defMin ? 'var(--accent-green)' : 'var(--accent-red)'}">
-              ${speedEval.atkRealSpe >= speedEval.defMin ? `我方领先 +${speedEval.atkRealSpe - speedEval.defMin} (先手)` : `我方落后 -${speedEval.defMin - speedEval.atkRealSpe} (后手)`}
-            </div>
-          </div>
-        </div>
-
-        <div class="speed-modifiers-bar">
-          <span>超速试算辅助：</span>
-          <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
-            <input type="checkbox" id="scarfCheckbox" ${isChoiceScarfActive ? 'checked' : ''}>
-            <span>讲究围巾 (1.5x)</span>
-          </label>
-          <label style="display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
-            <input type="checkbox" id="tailwindCheckbox" ${isTailwindActive ? 'checked' : ''}>
-            <span>顺风状态 (2.0x)</span>
-          </label>
-          <span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">
-            当前我方速度计算实数：<strong>${speedEval.atkRealSpe}</strong>
-          </span>
-        </div>
-      </div>
-
-      <!-- 2. 竞技招式斩杀与伤害计算器 -->
-      <div class="damage-calc-panel">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-          <h4 style="font-family: var(--font-display); color: var(--accent-magenta); font-size: 1.05rem;">
-            🎯 招式打击与伤害斩杀线推演 (对 ${def.name})
-          </h4>
-          <span style="font-size:0.78rem; color:var(--text-dim);">含 85%~100% 浮动区间 & 本系 1.5x 修正</span>
-        </div>
-
-        <div class="moves-calc-grid">
-          ${movesToDisplay.map(m => {
-            const dmg = calculateDamage(attackerObj, def, m);
-            const maxFill = Math.min(100, parseFloat(dmg.maxPct));
-            return `
-              <div class="move-damage-card">
-                <div class="move-header">
-                  <div class="move-name-box">
-                    <strong>${m.name}</strong>
-                    <span class="type-pill type-${m.type}">${TYPE_TRANSLATION[m.type]||m.type}</span>
+          <div class="meta-card-body">
+            <div class="meta-abilities-list">
+              ${currentAbilityList.map(a => {
+                const usageNum = typeof a.usage === 'number' ? a.usage : (a.usageText ? parseFloat(a.usageText) : null);
+                return `
+                  <div class="meta-ability-box">
+                    <div class="meta-ability-top">
+                      <div class="meta-ability-title">
+                        <strong>✦ ${typeof a === 'string' ? a : a.name}</strong>
+                        ${a.tag ? `<span class="meta-ability-badge">${a.tag}</span>` : ''}
+                      </div>
+                      ${usageNum !== null ? `<span class="meta-pct-badge">${usageNum.toFixed(1)}%</span>` : ''}
+                    </div>
+                    ${usageNum !== null ? `
+                      <div class="meta-progress-track">
+                        <div class="meta-progress-fill ability-fill" style="width: ${Math.min(100, usageNum)}%;"></div>
+                      </div>
+                    ` : ''}
+                    <p class="meta-ability-desc">${typeof a === 'string' ? '游戏内实装特性' : (a.desc || '官方原版战斗触发特性效果。')}</p>
                   </div>
-                  <div class="move-meta-pills">
-                    <span class="${m.category === '物理' ? 'pill-cat-phy' : (m.category === '特殊' ? 'pill-cat-spe' : 'pill-cat-sta')}">${m.category}</span>
-                    <span style="font-size:0.75rem; color:var(--text-muted);">威力: ${m.power || '--'}</span>
-                  </div>
-                </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
 
-                <!-- 特性与本系倍率拆解胶囊 -->
-                <div class="move-pills-row" style="margin: 0.3rem 0 0.5rem 0;">
-                  ${dmg.breakdownBadges ? dmg.breakdownBadges.join('') : ''}
-                </div>
+        <!-- 卡片 2：常用携带道具榜 -->
+        <div class="metagame-card">
+          <div class="meta-card-header">
+            <h4>🎒 常用携带道具榜 (Top Items)</h4>
+            <span class="meta-card-sub">上位对局道具百分比</span>
+          </div>
+          <div class="meta-card-body">
+            ${(meta && meta.items && meta.items.length > 0) ? `
+              <div class="meta-items-list">
+                ${meta.items.slice(0, 7).map((it, idx) => `
+                  <div class="meta-data-row">
+                    <div class="meta-row-header">
+                      <span class="meta-rank-num">#${idx + 1}</span>
+                      <span class="meta-item-name">${it.name}</span>
+                      <span class="meta-item-pct">${it.usage.toFixed(1)}%</span>
+                    </div>
+                    <div class="meta-progress-track">
+                      <div class="meta-progress-fill item-fill" style="width: ${Math.min(100, it.usage)}%;"></div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            ` : `
+              <div class="meta-empty-state">暂无该宝可梦的天梯道具携带率统计样本</div>
+            `}
+          </div>
+        </div>
 
-                <div class="damage-bar-wrapper">
-                  <div class="damage-track">
-                    <div class="damage-fill ${parseFloat(dmg.minPct) >= 100 ? 'ohko' : ''}" style="width: ${maxFill}%;"></div>
+        <!-- 卡片 3：主流竞技招式携带率 -->
+        <div class="metagame-card meta-card-wide">
+          <div class="meta-card-header">
+            <h4>⚔️ 实战主流招式携带率 (Top Moves)</h4>
+            <span class="meta-card-sub">官方排位高频出招配置</span>
+          </div>
+          <div class="meta-card-body">
+            ${(meta && meta.topMoves && meta.topMoves.length > 0) ? `
+              <div class="meta-moves-grid">
+                ${meta.topMoves.slice(0, 8).map((mv, idx) => `
+                  <div class="meta-move-box">
+                    <div class="meta-move-top">
+                      <div class="meta-move-left">
+                        <span class="meta-rank-num">#${idx + 1}</span>
+                        <strong class="meta-move-name">${mv.name}</strong>
+                        <span class="type-pill type-${mv.type}">${TYPE_TRANSLATION[mv.type] || mv.type}</span>
+                        <span class="${mv.category === '物理' ? 'pill-cat-phy' : (mv.category === '特殊' ? 'pill-cat-spe' : 'pill-cat-sta')}">${mv.category}</span>
+                      </div>
+                      <div class="meta-move-right">
+                        <span class="meta-move-power">威力: ${mv.power > 0 ? mv.power : '--'}</span>
+                        <span class="meta-move-pct">${mv.usage.toFixed(1)}%</span>
+                      </div>
+                    </div>
+                    <div class="meta-progress-track">
+                      <div class="meta-progress-fill move-fill" style="width: ${Math.min(100, mv.usage)}%;"></div>
+                    </div>
                   </div>
-                  <div class="damage-numbers-row">
-                    <span class="damage-range-text">
-                      ${m.power > 0 ? `${dmg.minDmg} ~ ${dmg.maxDmg} (${dmg.minPct}% ~ ${dmg.maxPct}%)` : '变化招式'}
-                    </span>
-                    <span class="kill-verdict-tag ${dmg.verdictClass}">${dmg.verdict}</span>
+                `).join('')}
+              </div>
+            ` : `
+              <div class="meta-empty-state">暂无该宝可梦的排位招式携带率统计样本</div>
+            `}
+
+            <!-- 官方全量学招池展开按钮 -->
+            ${(p.learnset && p.learnset.length > 0) ? `
+              <div class="learnset-fold-wrapper" style="margin-top: 1rem;">
+                <button class="learnset-fold-btn" id="toggleAllMovesBtn">
+                  ${isShowAllLearnset ? '▲ 收起全量学招池' : `▼ 展开官方全量学招池 (共 ${p.learnset.length} 个招式)`}
+                </button>
+                ${isShowAllLearnset ? `
+                  <div class="all-learnset-table-box">
+                    <table class="learnset-table">
+                      <thead>
+                        <tr>
+                          <th>招式名称</th>
+                          <th>属性</th>
+                          <th>分类</th>
+                          <th>威力</th>
+                          <th>命中</th>
+                          <th>优先度</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${p.learnset.map(m => `
+                          <tr>
+                            <td><strong>${m.name}</strong></td>
+                            <td><span class="type-pill type-${m.type}">${TYPE_TRANSLATION[m.type] || m.type}</span></td>
+                            <td><span class="${m.category === '物理' ? 'pill-cat-phy' : (m.category === '特殊' ? 'pill-cat-spe' : 'pill-cat-sta')}">${m.category}</span></td>
+                            <td>${m.power || '--'}</td>
+                            <td>${m.accuracy ? `${m.accuracy}%` : '--'}</td>
+                            <td>${m.priority > 0 ? `+${m.priority}` : (m.priority < 0 ? m.priority : '0')}</td>
+                          </tr>
+                        `).join('')}
+                      </tbody>
+                    </table>
                   </div>
+                ` : ''}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+
+        <!-- 卡片 4：性格分布与上位努力值加点 -->
+        <div class="metagame-card">
+          <div class="meta-card-header">
+            <h4>🧠 常用性格与上位努力值加点</h4>
+            <span class="meta-card-sub">点击可一键应用至模拟器</span>
+          </div>
+          <div class="meta-card-body">
+            ${meta ? `
+              <!-- 性格分布 -->
+              <div class="meta-sub-group">
+                <div class="meta-sub-label">实战常用性格分布</div>
+                <div class="meta-nature-chips">
+                  ${(meta.natures || []).slice(0, 6).map(nat => `
+                    <div class="meta-nature-chip">
+                      <span class="nature-name">${nat.name}</span>
+                      <span class="nature-pct">${nat.usage.toFixed(1)}%</span>
+                    </div>
+                  `).join('')}
                 </div>
               </div>
-            `;
-          }).join('')}
+
+              <!-- 上位努力值方案 -->
+              <div class="meta-sub-group" style="margin-top: 1rem;">
+                <div class="meta-sub-label">上位选手实战加点 (66点体系)</div>
+                <div class="meta-ev-schemes">
+                  ${(meta.evSpreads || []).slice(0, 5).map(ev => {
+                    const parts = [];
+                    if (ev.hp) parts.push(`HP ${ev.hp}`);
+                    if (ev.atk) parts.push(`物攻 ${ev.atk}`);
+                    if (ev.def) parts.push(`物防 ${ev.def}`);
+                    if (ev.spa) parts.push(`特攻 ${ev.spa}`);
+                    if (ev.spd) parts.push(`特防 ${ev.spd}`);
+                    if (ev.spe) parts.push(`速度 ${ev.spe}`);
+                    const spreadText = parts.length > 0 ? parts.join(' / ') : '均 0';
+                    return `
+                      <div class="meta-ev-item" data-ev-hp="${ev.hp||0}" data-ev-atk="${ev.atk||0}" data-ev-def="${ev.def||0}" data-ev-spa="${ev.spa||0}" data-ev-spd="${ev.spd||0}" data-ev-spe="${ev.spe||0}">
+                        <div class="meta-ev-text-wrap">
+                          <span class="meta-rank-num">#${ev.rank}</span>
+                          <span class="meta-ev-desc">${spreadText}</span>
+                          <span class="meta-ev-usage">${ev.usage.toFixed(1)}%</span>
+                        </div>
+                        <button class="btn-apply-ev" title="将此努力值直接填入上方VP模拟器">应用方案</button>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            ` : `
+              <div class="meta-empty-state">暂无该宝可梦的性格与努力值实战样本</div>
+            `}
+          </div>
         </div>
 
-        <!-- 展开全量学招池按钮 -->
-        ${(p.learnset && p.learnset.length > 4) ? `
-          <button class="learnset-fold-btn" id="toggleAllMovesBtn">
-            ${isShowAllLearnset ? '▲ 收起全量招式池' : `▼ 展开官方全量学招池 (共 ${p.learnset.length} 个技能，点击任意技能直接试算)`}
-          </button>
-        ` : ''}
+        <!-- 卡片 5：核心战术搭档队友 -->
+        <div class="metagame-card meta-card-wide">
+          <div class="meta-card-header">
+            <h4>🤝 核心战术搭档队友 (Top Partners)</h4>
+            <span class="meta-card-sub">点击队友头像可直接快速跳转详情</span>
+          </div>
+          <div class="meta-card-body">
+            ${(meta && meta.partners && meta.partners.length > 0) ? `
+              <div class="meta-partners-grid">
+                ${meta.partners.slice(0, 8).map(pt => {
+                  const partnerMon = allPokemonList.find(x => x.name === pt.name || (pt.name && x.name.includes(pt.name)));
+                  const avatar = partnerMon ? partnerMon.avatar : 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/items/poke-ball.png';
+                  const dexId = partnerMon ? `#${String(partnerMon.id).padStart(3, '0')}` : '';
+                  const partnerId = partnerMon ? partnerMon.id : '';
+                  return `
+                    <div class="partner-chip-card" data-partner-id="${partnerId}">
+                      <div class="partner-chip-avatar-wrap">
+                        <img class="partner-chip-avatar" src="${avatar}" alt="${pt.name}" loading="lazy" onerror="this.src='https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/items/poke-ball.png'">
+                        <span class="partner-rank-badge">#${pt.rank}</span>
+                      </div>
+                      <div class="partner-chip-info">
+                        <div class="partner-chip-name">${pt.name}</div>
+                        <div class="partner-chip-id">${dexId}</div>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            ` : `
+              <div class="meta-empty-state">暂无该宝可梦的天梯搭档统计样本</div>
+            `}
+          </div>
+        </div>
       </div>
     </div>
   `;
 
   bindModalDynamicEvents(currentStats);
-}
-
-// 获取要展示的招式列表 (默认展示前 4 个热门技能，展开时全展示)
-function getMovesToDisplay(p) {
-  if (!p.learnset || p.learnset.length === 0) {
-    return [
-      { id: 1, name: "子弹拳", power: 40, type: "Steel", category: "物理", priority: 1 },
-      { id: 2, name: "近身战", power: 120, type: "Fighting", category: "物理", priority: 0 },
-      { id: 3, name: "急速折返", power: 70, type: "Bug", category: "物理", priority: 0 },
-      { id: 4, name: "剑舞", power: 0, type: "Normal", category: "变化", priority: 0 }
-    ];
-  }
-  return isShowAllLearnset ? p.learnset : p.learnset.slice(0, 4);
-}
-
-// 速度线判定计算器
-function evaluateSpeedTiers(currentStats, defender) {
-  const baseSpe = currentStats.spe;
-  let atkRealSpe = calculateStat50('spe', baseSpe, currentVpAllocation.spe, selectedNature);
-
-  if (isTailwindActive) atkRealSpe = Math.floor(atkRealSpe * 2.0);
-  if (isChoiceScarfActive) atkRealSpe = Math.floor(atkRealSpe * 1.5);
-
-  const defBaseSpe = defender.baseStats.spe;
-  const defMin = calculateStat50('spe', defBaseSpe, 0, NATURES[0]);
-  const defMid = calculateStat50('spe', defBaseSpe, 32, NATURES[0]);
-  const defMax = calculateStat50('spe', defBaseSpe, 32, NATURES[2]);
-
-  let statusBadge = '';
-  if (atkRealSpe > defMax) {
-    statusBadge = `<span class="speed-status-badge badge-ahead">🟢 绝对先手 (快 ${atkRealSpe - defMax} 点)</span>`;
-  } else if (atkRealSpe === defMax) {
-    statusBadge = `<span class="speed-status-badge badge-tie">🟡 同速拼速 (50% 猜拳)</span>`;
-  } else {
-    statusBadge = `<span class="speed-status-badge badge-behind">🔴 假想敌极速先手 (慢 ${defMax - atkRealSpe} 点)</span>`;
-  }
-
-  return {
-    atkRealSpe,
-    defMin,
-    defMid,
-    defMax,
-    statusBadge
-  };
 }
 
 function renderMatchupRow(multiplier, types, labelClass) {
@@ -1301,24 +1350,7 @@ function bindModalDynamicEvents(currentStats) {
     };
   });
 
-  // 4. 围巾与顺风
-  const scarfBox = document.getElementById('scarfCheckbox');
-  if (scarfBox) {
-    scarfBox.onchange = (e) => {
-      isChoiceScarfActive = e.target.checked;
-      renderModalContent();
-    };
-  }
-
-  const tailwindBox = document.getElementById('tailwindCheckbox');
-  if (tailwindBox) {
-    tailwindBox.onchange = (e) => {
-      isTailwindActive = e.target.checked;
-      renderModalContent();
-    };
-  }
-
-  // 5. 展开招式池
+  // 4. 展开/收起全量招式池
   const toggleMovesBtn = document.getElementById('toggleAllMovesBtn');
   if (toggleMovesBtn) {
     toggleMovesBtn.onclick = () => {
@@ -1326,4 +1358,34 @@ function bindModalDynamicEvents(currentStats) {
       renderModalContent();
     };
   }
+
+  // 5. 点击努力值加点方案一键应用
+  document.querySelectorAll('.btn-apply-ev').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const parent = btn.closest('.meta-ev-item');
+      if (!parent) return;
+      currentVpAllocation = {
+        hp: parseInt(parent.dataset.evHp, 10) || 0,
+        atk: parseInt(parent.dataset.evAtk, 10) || 0,
+        def: parseInt(parent.dataset.evDef, 10) || 0,
+        spa: parseInt(parent.dataset.evSpa, 10) || 0,
+        spd: parseInt(parent.dataset.evSpd, 10) || 0,
+        spe: parseInt(parent.dataset.evSpe, 10) || 0
+      };
+      renderModalContent();
+    };
+  });
+
+  // 6. 点击搭档卡片一键跳转至该宝可梦详情
+  document.querySelectorAll('.partner-chip-card').forEach(card => {
+    card.onclick = () => {
+      const partnerId = parseInt(card.dataset.partnerId, 10);
+      if (!partnerId) return;
+      const targetMon = allPokemonList.find(x => x.id === partnerId);
+      if (targetMon) {
+        openDetailModal(targetMon);
+      }
+    };
+  });
 }

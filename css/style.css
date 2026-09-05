@@ -907,9 +907,49 @@ body {
 }
 
 /* ==========================================================================
-   对战推演与假想敌对峙工作台 (Battle Workbench)
+   排位使用率徽章与全量排位实战大数据 (Metagame Dashboard)
    ========================================================================== */
-.workbench-container {
+
+/* 卡片使用率排行徽章 */
+.card-rank-badge {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ffd60a;
+  background: rgba(255, 214, 10, 0.16);
+  border: 1px solid rgba(255, 214, 10, 0.45);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 8px rgba(255, 214, 10, 0.2);
+}
+
+/* 详情弹窗顶部 Rank 徽章 */
+.modal-rank-badge {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffd60a;
+  background: rgba(255, 214, 10, 0.18);
+  border: 1px solid rgba(255, 214, 10, 0.5);
+  padding: 0.2rem 0.75rem;
+  border-radius: 6px;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+  display: inline-block;
+  box-shadow: 0 0 12px rgba(255, 214, 10, 0.25);
+}
+
+/* 弹窗内的基础种族值分布条 */
+.bst-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+/* 排位实战大数据主容器 */
+.metagame-dashboard {
   margin-top: 2rem;
   background: linear-gradient(180deg, rgba(16, 22, 40, 0.95) 0%, rgba(10, 14, 26, 0.98) 100%);
   border: 1px solid var(--border-highlight);
@@ -918,345 +958,475 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.05);
 }
 
-.workbench-title-bar {
+.metagame-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.workbench-title-bar h3 {
+.metagame-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.metagame-title-group h3 {
   font-family: var(--font-display);
   font-size: 1.25rem;
   color: var(--accent-cyan);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  margin: 0;
 }
 
-.defender-select-box {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.defender-select-box select,
-.defender-select-box input {
-  background: rgba(8, 10, 18, 0.9);
-  color: #fff;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 0.4rem 0.8rem;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-}
-
-.defender-select-box select:focus,
-.defender-select-box input:focus {
-  outline: none;
-  border-color: var(--accent-cyan);
-}
-
-.versus-hero-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.versus-combatant {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.versus-thumb {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
-}
-
-.versus-info h5 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.versus-stats-preview {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 0.2rem;
-}
-
-.versus-badge {
+.meta-rank-tag {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--accent-magenta);
-  text-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
-  padding: 0 1rem;
-}
-
-/* 速度线对峙仪表盘 */
-.speed-tier-panel {
-  background: rgba(12, 16, 30, 0.8);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-
-.speed-tier-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.speed-status-badge {
-  font-family: var(--font-display);
+  font-size: 0.82rem;
   font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
+  color: #ffd60a;
+  background: rgba(255, 214, 10, 0.15);
+  border: 1px solid rgba(255, 214, 10, 0.4);
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
   letter-spacing: 0.5px;
 }
 
-.badge-ahead {
-  background: rgba(0, 245, 155, 0.15);
-  color: var(--accent-green);
-  border: 1px solid rgba(0, 245, 155, 0.4);
-  box-shadow: 0 0 10px rgba(0, 245, 155, 0.3);
-}
-
-.badge-behind {
-  background: rgba(255, 51, 102, 0.15);
-  color: var(--accent-red);
-  border: 1px solid rgba(255, 51, 102, 0.4);
-  box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
-}
-
-.badge-tie {
-  background: rgba(255, 214, 10, 0.15);
-  color: var(--accent-yellow);
-  border: 1px solid rgba(255, 214, 10, 0.4);
-}
-
-.speed-comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .speed-comparison-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.speed-card-tier {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 0.75rem;
-  text-align: center;
-}
-
-.speed-card-tier .tier-name {
-  font-size: 0.75rem;
+.meta-rank-tag.meta-unranked {
   color: var(--text-dim);
-  margin-bottom: 0.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.speed-card-tier .tier-val {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
+.metagame-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-dim);
 }
 
-.speed-card-tier .tier-delta {
-  font-size: 0.75rem;
-  margin-top: 0.2rem;
-  font-weight: 600;
-}
-
-.speed-modifiers-bar {
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  flex-wrap: wrap;
-}
-
-/* 招式与伤害计算器卡片 */
-.damage-calc-panel {
-  background: rgba(12, 16, 30, 0.8);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 1.25rem;
-}
-
-.moves-calc-grid {
+/* 排位实战大数据网格 (两列响应式) */
+.metagame-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
-@media (max-width: 768px) {
-  .moves-calc-grid {
+.meta-card-wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .metagame-cards-grid {
     grid-template-columns: 1fr;
+  }
+  .meta-card-wide {
+    grid-column: 1;
   }
 }
 
-.move-damage-card {
-  background: rgba(0, 0, 0, 0.35);
+.metagame-card {
+  background: rgba(12, 16, 30, 0.85);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 0.9rem;
+  border-radius: 10px;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  transition: border-color 0.2s;
+  gap: 0.8rem;
 }
 
-.move-damage-card:hover {
-  border-color: var(--border-highlight);
+.meta-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.6rem;
 }
 
-.move-header {
+.meta-card-header h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.meta-card-sub {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.meta-empty-state {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+/* 进度条样式体系 */
+.meta-progress-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 0.35rem;
+}
+
+.meta-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.ability-fill {
+  background: linear-gradient(90deg, #00e5ff, #3b82f6);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+}
+
+.item-fill {
+  background: linear-gradient(90deg, #ffd60a, #ff9f1c);
+  box-shadow: 0 0 8px rgba(255, 214, 10, 0.3);
+}
+
+.move-fill {
+  background: linear-gradient(90deg, #ff007f, #b5179e);
+  box-shadow: 0 0 8px rgba(255, 0, 127, 0.3);
+}
+
+/* 特性列表卡片 */
+.meta-abilities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.meta-ability-box {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+}
+
+.meta-ability-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.2rem;
 }
 
-.move-name-box {
+.meta-ability-title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.move-name-box strong {
-  font-size: 1rem;
-  color: #fff;
+.meta-ability-title strong {
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
 }
 
-.move-meta-pills {
-  display: flex;
-  gap: 0.35rem;
-  align-items: center;
-}
-
-.pill-cat-phy {
-  font-size: 0.68rem;
-  background: #c93b3b;
-  color: #fff;
+.meta-ability-badge {
+  font-size: 0.7rem;
+  color: var(--accent-yellow);
+  background: rgba(255, 214, 10, 0.12);
   padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  font-weight: 700;
-}
-
-.pill-cat-spe {
-  font-size: 0.68rem;
-  background: #3b8fe3;
-  color: #fff;
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  font-weight: 700;
-}
-
-.pill-cat-sta {
-  font-size: 0.68rem;
-  background: #8e9bb8;
-  color: #fff;
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  font-weight: 700;
-}
-
-.damage-bar-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.damage-track {
-  height: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 5px;
-  overflow: hidden;
-  position: relative;
-}
-
-.damage-fill {
-  height: 100%;
-  border-radius: 5px;
-  background: linear-gradient(90deg, #ffd60a, #ff007f);
-  transition: width 0.3s ease;
-}
-
-.damage-fill.ohko {
-  background: linear-gradient(90deg, #ff007f, #ff0055);
-  box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
-}
-
-.damage-numbers-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: 0.8rem;
-}
-
-.damage-range-text {
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: #fff;
-}
-
-.kill-verdict-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.1rem 0.5rem;
   border-radius: 4px;
 }
 
-.tag-ohko {
-  background: rgba(255, 0, 127, 0.2);
-  color: var(--accent-magenta);
-  border: 1px solid rgba(255, 0, 127, 0.4);
+.meta-pct-badge {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
 }
 
-.tag-high-rng {
-  background: rgba(255, 214, 10, 0.2);
-  color: var(--accent-yellow);
-  border: 1px solid rgba(255, 214, 10, 0.4);
+.meta-ability-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0.4rem 0 0 0;
 }
 
-.tag-2hko {
-  background: rgba(0, 229, 255, 0.15);
+/* 携带道具列表卡片 */
+.meta-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.meta-data-row {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.meta-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.meta-rank-num {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  width: 24px;
+}
+
+.meta-item-name {
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+  margin-left: 0.4rem;
+}
+
+.meta-item-pct {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #ffd60a;
+}
+
+/* 主流竞技招式列表卡片 */
+.meta-moves-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .meta-moves-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.meta-move-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+}
+
+.meta-move-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta-move-left {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.meta-move-name {
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.meta-move-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.meta-move-power {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.meta-move-pct {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #ff007f;
+  font-size: 0.88rem;
+}
+
+/* 全量学招池表格 */
+.all-learnset-table-box {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  margin-top: 0.6rem;
+}
+
+.learnset-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.learnset-table th,
+.learnset-table td {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.learnset-table th {
+  color: var(--text-dim);
+  font-weight: 600;
+  background: rgba(10, 14, 26, 0.9);
+  position: sticky;
+  top: 0;
+}
+
+/* 性格与努力值方案卡片 */
+.meta-sub-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-sub-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.meta-nature-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.meta-nature-chip {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.meta-nature-chip .nature-name {
+  color: #fff;
+  font-weight: 600;
+}
+
+.meta-nature-chip .nature-pct {
   color: var(--accent-cyan);
-  border: 1px solid rgba(0, 229, 255, 0.4);
 }
 
-.tag-chip {
-  background: rgba(255, 255, 255, 0.08);
+.meta-ev-schemes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meta-ev-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+.meta-ev-text-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.meta-ev-desc {
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.meta-ev-usage {
+  font-family: var(--font-display);
+  color: var(--accent-yellow);
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: 0.8rem;
+}
+
+.btn-apply-ev {
+  background: rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-apply-ev:hover {
+  background: rgba(0, 229, 255, 0.3);
+  color: #fff;
+  border-color: var(--accent-cyan);
+}
+
+/* 核心战术搭档队友卡片 */
+.meta-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.partner-chip-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.partner-chip-card:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.25);
+}
+
+.partner-chip-avatar-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+}
+
+.partner-chip-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.partner-rank-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  background: var(--accent-magenta);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+}
+
+.partner-chip-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.partner-chip-id {
+  font-size: 0.72rem;
   color: var(--text-dim);
 }
 
