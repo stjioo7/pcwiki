@@ -9,6 +9,14 @@ const builderState = {
   activeSlotIndex: null, // 当前正在选择宝可梦的卡位索引 (0..5)
 };
 
+// 全局通用立绘解析 (带多级安全兜底)
+function getPokemonSpriteUrl(mon) {
+  if (!mon) return 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/items/poke-ball.png';
+  if (mon.avatar) return mon.avatar;
+  const id = mon.id || mon.dexNo || 1;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+}
+
 // ==========================================================================
 // 1. 卡位初始化与主流配置自动填充 (Meta Rank 1 Auto-fill)
 // ==========================================================================
@@ -1030,6 +1038,13 @@ if (typeof window !== 'undefined') {
   window.exportTeamShowdownText = exportTeamShowdownText;
   window.initTeamBuilder = initTeamBuilder;
   window.renderBuilderView = renderBuilderView;
+  window.openPokemonPicker = openPokemonPicker;
+  window.removeSlot = removeSlot;
+  window.toggleSlotMega = toggleSlotMega;
+  window.updateSlotField = updateSlotField;
+  window.updateSlotMove = updateSlotMove;
+  window.addSuggestedPokemon = addSuggestedPokemon;
+  window.getPokemonSpriteUrl = getPokemonSpriteUrl;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -1039,6 +1054,7 @@ if (typeof module !== 'undefined' && module.exports) {
     calculateSmartSuggestions,
     autoCompleteTeam,
     runTeamAudit,
-    exportTeamShowdownText
+    exportTeamShowdownText,
+    getPokemonSpriteUrl
   };
 }

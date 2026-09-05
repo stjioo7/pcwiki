@@ -84,3 +84,39 @@ let copilotState = {
   isScarf: false
 };
 
+// 全局通用立绘解析
+function getPokemonSpriteUrl(mon) {
+  if (!mon) return 'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/items/poke-ball.png';
+  if (mon.avatar) return mon.avatar;
+  const id = mon.id || mon.dexNo || 1;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+}
+
+// 全局通用参战宝可梦形态解析 (若激活 Mega 则应用 Mega 种族、属性、特性与立绘)
+function getActiveCombatant(baseMon, isMega, branchKey) {
+  if (!baseMon) return null;
+  if (!isMega || !baseMon.mega || !baseMon.mega.supported) {
+    return baseMon;
+  }
+
+  const forms = baseMon.mega.forms || [];
+  let form = forms.find(f => f.formKey === branchKey);
+  if (!form) form = forms[0] || baseMon.mega;
+
+  return {
+    ...baseMon,
+    name: form.megaName || `超级${baseMon.name}`,
+    types: form.types || baseMon.types,
+    baseStats: form.baseStats || baseMon.baseStats,
+    abilities: [{ id: 0, name: form.ability || "专属Mega特性", desc: form.abilityDesc || "" }],
+    avatar: form.avatar || baseMon.avatar,
+    isMegaActive: true,
+    megaFormKey: form.formKey
+  };
+}
+
+if (typeof window !== 'undefined') {
+  window.getPokemonSpriteUrl = getPokemonSpriteUrl;
+  window.getActiveCombatant = getActiveCombatant;
+}
+
