@@ -21,9 +21,11 @@ function getPokemonSpriteUrl(mon) {
 // 1. 卡位初始化与主流配置自动填充 (Meta Rank 1 Auto-fill)
 // ==========================================================================
 function getPokemonMetaUsage(pokemon, fmt = 'double') {
-  if (!pokemon || !pokemon.metaUsage) return {};
-  if (pokemon.metaUsage[fmt]) return pokemon.metaUsage[fmt];
-  return pokemon.metaUsage;
+  if (!pokemon) return {};
+  if (pokemon.meta && pokemon.meta[fmt]) return pokemon.meta[fmt];
+  if (pokemon.metaUsage && pokemon.metaUsage[fmt]) return pokemon.metaUsage[fmt];
+  if (pokemon.metaUsage) return pokemon.metaUsage;
+  return {};
 }
 
 function getPokemonMetaRank(pokemon, fmt = 'double') {
@@ -36,22 +38,22 @@ function fillSlotWithMetaRank1(pokemon, fmt = 'double') {
 
   const usage = getPokemonMetaUsage(pokemon, fmt);
   
-  // 1. 道具：选取天梯最高使用率道具，兜底无道具
+  // 1. 道具：选取当前赛制天梯最高使用率道具，兜底无道具
   const topItem = (usage.items && usage.items.length > 0)
     ? (typeof usage.items[0] === 'string' ? usage.items[0] : usage.items[0].name)
-    : '气势披带';
+    : (fmt === 'double' ? '气势披带' : '吃剩的东西');
 
-  // 2. 特性：选取天梯最高使用率特性，兜底第一个特性
+  // 2. 特性：选取当前赛制天梯最高使用率特性，兜底第一个特性
   const topAbility = (usage.abilities && usage.abilities.length > 0)
     ? (typeof usage.abilities[0] === 'string' ? usage.abilities[0] : usage.abilities[0].name)
     : (pokemon.abilities && pokemon.abilities[0]) || '通常特性';
 
-  // 3. 性格：选取天梯最高使用率性格，兜底爽朗
+  // 3. 性格：选取当前赛制天梯最高使用率性格，兜底固执/爽朗
   const topNature = (usage.natures && usage.natures.length > 0)
     ? (typeof usage.natures[0] === 'string' ? usage.natures[0] : usage.natures[0].name)
     : '固执';
 
-  // 4. 招式：选取天梯前 4 大热门招式 (优先 topMoves，其次 moves)
+  // 4. 招式：选取当前赛制天梯前 4 大热门招式 (优先 topMoves，其次 moves)
   const moves = [];
   const metaMoves = usage.topMoves || usage.moves || [];
   if (metaMoves.length > 0) {
@@ -63,11 +65,22 @@ function fillSlotWithMetaRank1(pokemon, fmt = 'double') {
   if (moves.length < 4 && pokemon.learnset) {
     for (const lm of pokemon.learnset) {
       if (moves.length >= 4) break;
-      if (lm.name && !moves.includes(lm.name)) moves.push(lm.name);
+      if (lm.name && !moves.includes(lm.name)) {
+        // 单打模式下不优先补充守住，优先补充高威力或强化招式
+        if (fmt === 'single' && lm.name === '守住') continue;
+        moves.push(lm.name);
+      }
     }
   }
+  // 兜底招式
   while (moves.length < 4) {
-    moves.push('守住');
+    const fallbackMove = (fmt === 'double') ? '守住' : '替身';
+    if (!moves.includes(fallbackMove)) {
+      moves.push(fallbackMove);
+    } else {
+      moves.push('电光一闪');
+      break;
+    }
   }
 
   // 5. 努力值配置模板 (优先天梯 Rank 1 EV Spread，兜底极速极攻)
@@ -132,7 +145,7 @@ function calculateSmartSuggestions(fmt = 'double', limit = 6) {
   // 若当前队伍为空，直接推荐天梯排位前列的通用基石宝可梦
   if (currentMembers.length === 0) {
     const topMons = [...allPokemonList]
-      .filter(p => p.metaUsage && getPokemonMetaRank(p, fmt) < 999)
+      .filter(p => getPokemonMetaRank(p, fmt) < 999)
       .sort((a, b) => getPokemonMetaRank(a, fmt) - getPokemonMetaRank(b, fmt))
       .slice(0, limit);
 
@@ -214,51 +227,120 @@ function calculateSmartSuggestions(fmt = 'double', limit = 6) {
     }
   });
 
-  // 3. 战术职能与攻防平衡加权 (Tactical Roles)
-  const hasSpeedControl = currentMembers.some(m => m.moves.some(mv => ['顺风', '戏法空间', '电网', '冰冻之风'].includes(mv)));
-  const hasIntimidate = currentMembers.some(m => m.ability === '威吓');
+  // 3. 战术职能与攻防平衡加权 (Tactical Roles - 单打与双打专属职能模型)
   const hasSpecialAttacker = currentMembers.some(m => m.pokemon.baseStats && m.pokemon.baseStats.spa >= 110);
   const hasPhysicalAttacker = currentMembers.some(m => m.pokemon.baseStats && m.pokemon.baseStats.atk >= 110);
 
-  allPokemonList.forEach(cand => {
-    if (existingIds.has(cand.id)) return;
-    let roleBonus = 0;
-    const rReasons = [];
+  if (fmt === 'double') {
+    // 双打核心职能：控速 (顺风/空间) + 轮转干扰 (威吓/击掌奇袭/看我嘛) + 物特平衡
+    const hasSpeedControl = currentMembers.some(m => m.moves.some(mv => ['顺风', '戏法空间', '电网', '冰冻之风'].includes(mv)));
+    const hasIntimidateOrFakeOut = currentMembers.some(m => m.ability === '威吓' || m.moves.includes('击掌奇袭'));
+    const hasRedirection = currentMembers.some(m => m.moves.some(mv => ['看我嘛', '愤怒粉', '广域防守'].includes(mv)));
 
-    if (!hasSpeedControl && cand.learnset && cand.learnset.some(l => l.name === '顺风' || l.name === '戏法空间')) {
-      roleBonus += 25;
-      rReasons.push('提供顺风/空间控速轴');
-    }
-    if (!hasIntimidate && cand.abilities && cand.abilities.includes('威吓')) {
-      roleBonus += 20;
-      rReasons.push('提供威吓防守轮转');
-    }
-    if (!hasSpecialAttacker && cand.baseStats && cand.baseStats.spa >= 120) {
-      roleBonus += 15;
-      rReasons.push('补足特攻输出端');
-    }
-    if (!hasPhysicalAttacker && cand.baseStats && cand.baseStats.atk >= 120) {
-      roleBonus += 15;
-      rReasons.push('补足物攻爆破端');
-    }
+    allPokemonList.forEach(cand => {
+      if (existingIds.has(cand.id)) return;
+      let roleBonus = 0;
+      const rReasons = [];
 
-    if (roleBonus > 0) {
-      const cur = candidateScores.get(cand.id) || {
-        mon: cand,
-        cooccurrenceScore: 0,
-        defenseBonus: 0,
-        roleBonus: 0,
-        reasons: []
-      };
-      cur.roleBonus += roleBonus;
-      rReasons.forEach(r => {
-        if (!cur.reasons.includes(r) && cur.reasons.length < 3) {
-          cur.reasons.push(r);
+      if (!hasSpeedControl && cand.learnset && cand.learnset.some(l => ['顺风', '戏法空间', '电网', '冰冻之风'].includes(l.name))) {
+        roleBonus += 25;
+        rReasons.push('提供顺风/空间控速轴');
+      }
+      if (!hasIntimidateOrFakeOut && (cand.abilities && cand.abilities.includes('威吓') || (cand.learnset && cand.learnset.some(l => l.name === '击掌奇袭')))) {
+        roleBonus += 20;
+        rReasons.push('提供威吓/击掌防守轮转');
+      }
+      if (!hasRedirection && cand.learnset && cand.learnset.some(l => ['看我嘛', '愤怒粉', '广域防守'].includes(l.name))) {
+        roleBonus += 15;
+        rReasons.push('提供掩护/广防保护');
+      }
+      if (!hasSpecialAttacker && cand.baseStats && cand.baseStats.spa >= 115) {
+        roleBonus += 15;
+        rReasons.push('补足特攻输出端');
+      }
+      if (!hasPhysicalAttacker && cand.baseStats && cand.baseStats.atk >= 115) {
+        roleBonus += 15;
+        rReasons.push('补足物攻爆破端');
+      }
+
+      if (roleBonus > 0) {
+        const cur = candidateScores.get(cand.id) || {
+          mon: cand,
+          cooccurrenceScore: 0,
+          defenseBonus: 0,
+          roleBonus: 0,
+          reasons: []
+        };
+        cur.roleBonus += roleBonus;
+        rReasons.forEach(r => {
+          if (!cur.reasons.includes(r) && cur.reasons.length < 3) {
+            cur.reasons.push(r);
+          }
+        });
+        candidateScores.set(cand.id, cur);
+      }
+    });
+  } else {
+    // 单打核心职能：出钉撒钉 + 游击折返 (VoltTurn) + 强化推队 (Setup Sweeper) + 盾牌联防 + 物特平衡
+    const hasHazard = currentMembers.some(m => m.moves.some(mv => ['隐形岩', '撒菱', '毒菱', '黏黏网'].includes(mv)));
+    const hasPivot = currentMembers.some(m => m.moves.some(mv => ['急速折返', '伏特替换', '快速折返', '抛下狠话'].includes(mv)));
+    const hasSetupSweeper = currentMembers.some(m => m.moves.some(mv => ['剑舞', '龙之舞', '诡计', '冥想', '破壳', '蝶舞'].includes(mv)));
+    const hasWall = currentMembers.some(m => {
+      const bs = m.pokemon.baseStats || {};
+      return ((bs.hp || 0) + (bs.def || 0) >= 210) || ((bs.hp || 0) + (bs.spd || 0) >= 210);
+    });
+
+    allPokemonList.forEach(cand => {
+      if (existingIds.has(cand.id)) return;
+      let roleBonus = 0;
+      const rReasons = [];
+
+      if (!hasHazard && cand.learnset && cand.learnset.some(l => ['隐形岩', '撒菱', '毒菱', '黏黏网'].includes(l.name))) {
+        roleBonus += 25;
+        rReasons.push('提供撒钉破气披/工兵');
+      }
+      if (!hasPivot && cand.learnset && cand.learnset.some(l => ['急速折返', '伏特替换', '快速折返', '抛下狠话'].includes(l.name))) {
+        roleBonus += 20;
+        rReasons.push('提供游击折返中转');
+      }
+      if (!hasSetupSweeper && cand.learnset && cand.learnset.some(l => ['剑舞', '龙之舞', '诡计', '冥想', '破壳', '蝶舞'].includes(l.name))) {
+        roleBonus += 20;
+        rReasons.push('提供强化终结手段');
+      }
+      if (!hasWall && cand.baseStats) {
+        const bs = cand.baseStats;
+        if (((bs.hp || 0) + (bs.def || 0) >= 210) || ((bs.hp || 0) + (bs.spd || 0) >= 210)) {
+          roleBonus += 15;
+          rReasons.push('提供高耐久盾牌联防');
         }
-      });
-      candidateScores.set(cand.id, cur);
-    }
-  });
+      }
+      if (!hasSpecialAttacker && cand.baseStats && cand.baseStats.spa >= 115) {
+        roleBonus += 15;
+        rReasons.push('补足特攻输出端');
+      }
+      if (!hasPhysicalAttacker && cand.baseStats && cand.baseStats.atk >= 115) {
+        roleBonus += 15;
+        rReasons.push('补足物攻爆破端');
+      }
+
+      if (roleBonus > 0) {
+        const cur = candidateScores.get(cand.id) || {
+          mon: cand,
+          cooccurrenceScore: 0,
+          defenseBonus: 0,
+          roleBonus: 0,
+          reasons: []
+        };
+        cur.roleBonus += roleBonus;
+        rReasons.forEach(r => {
+          if (!cur.reasons.includes(r) && cur.reasons.length < 3) {
+            cur.reasons.push(r);
+          }
+        });
+        candidateScores.set(cand.id, cur);
+      }
+    });
+  }
 
   // 综合打分并排序
   const results = Array.from(candidateScores.values()).map(item => {
@@ -328,7 +410,7 @@ function runTeamAudit() {
   // 2. 天梯 Top 20 威胁度对位审查
   const fmt = builderState.format;
   const top20Meta = [...allPokemonList]
-    .filter(p => p.metaUsage && getPokemonMetaRank(p, fmt) < 999)
+    .filter(p => getPokemonMetaRank(p, fmt) < 999)
     .sort((a, b) => getPokemonMetaRank(a, fmt) - getPokemonMetaRank(b, fmt))
     .slice(0, 20);
 
@@ -878,7 +960,7 @@ function renderAuditDashboard() {
         <!-- 天梯前20威胁 -->
         <div class="audit-panel-box">
           <div class="panel-box-header">
-            <h3><span class="icon">🎯</span> 当前官方排位 Top 20 威胁度对位审查</h3>
+            <h3><span class="icon">🎯</span> 当前官方${builderState.format === 'double' ? '双打 (VGC)' : '单打 (Singles)'}排位 Top 20 威胁对位审查</h3>
             <span class="sub-hint">基于天梯热门核心推演胜势与灭队盲点</span>
           </div>
           <div class="threat-cards-grid">
