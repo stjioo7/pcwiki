@@ -459,6 +459,47 @@
     </div>
   </div>
 
+  <!-- API 节点配置模态框 (API Endpoint Settings Modal) -->
+  <div class="modal-backdrop" id="builderApiModal">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="picker-modal-header">
+        <h3 style="margin: 0; font-size: 1.05rem; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+          <span>⚙️</span> 后端 API 节点配置
+        </h3>
+        <button class="modal-close-btn" id="builderApiCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.25rem;">
+        <p style="font-size: 0.82rem; color: #90a4ae; margin-top: 0; margin-bottom: 1rem; line-height: 1.5;">
+          设置 AI 智能建队与压力测试后端地址。支持本地开发服务或已部署在 <strong>Hugging Face Spaces</strong> / 云端的线上 API。
+        </p>
+        
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #cfd8dc; margin-bottom: 0.4rem;">
+            服务 Base URL (以 http/https 开头，如无需端口可留空):
+          </label>
+          <input type="text" id="builderApiBaseUrlInput" class="wizard-input" style="width: 100%; box-sizing: border-box;" placeholder="例如: https://username-space.hf.space 或 http://127.0.0.1:8000">
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.1rem; flex-wrap: wrap;">
+          <button type="button" class="btn-api-preset" onclick="setApiUrlPreset('http://127.0.0.1:8000')">
+            🖥️ 填入默认本地 (127.0.0.1:8000)
+          </button>
+        </div>
+
+        <div id="builderApiTestStatus" style="display: none; padding: 0.6rem 0.85rem; border-radius: 6px; font-size: 0.82rem; margin-bottom: 1.1rem;"></div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.6rem;">
+          <button type="button" class="btn-api-config" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;" onclick="testApiConnection()">
+            🔍 测试连通性
+          </button>
+          <button type="button" class="btn-api-config" style="background: rgba(0, 229, 255, 0.2); border-color: #00e5ff; color: #00e5ff; padding: 0.45rem 0.9rem; font-size: 0.82rem;" onclick="saveApiConfig()">
+            💾 保存并应用
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="footer-container">
       <p>© 2026 Pokémon Champions Copilot & Wiki · 对战竞技数据源自 PokéCham DB 官方实时排位</p>

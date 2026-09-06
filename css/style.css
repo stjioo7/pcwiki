@@ -6208,3 +6208,43 @@ body {
   font-weight: 600;
 }
 
+/* API 节点设置按钮与面板 */
+.btn-api-config {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #b0bec5;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-api-config:hover {
+  background: rgba(0, 229, 255, 0.12);
+  border-color: #00e5ff;
+  color: #00e5ff;
+}
+
+.btn-api-preset {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  color: #90a4ae;
+  font-size: 0.76rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-api-preset:hover {
+  background: rgba(255, 213, 79, 0.12);
+  border-color: #ffd54f;
+  color: #ffd54f;
+}
+
+

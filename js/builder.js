@@ -745,6 +745,83 @@ const wizardState = {
   lastSlateResult: null,
 };
 
+function getBuilderApiBaseUrl() {
+  if (typeof localStorage !== 'undefined') {
+    const saved = localStorage.getItem('pc_builder_api_base_url');
+    if (saved && saved.trim()) {
+      return saved.trim().replace(/\/+$/, '');
+    }
+  }
+  return 'http://127.0.0.1:8000';
+}
+
+function openApiConfigModal() {
+  const modal = document.getElementById('builderApiModal');
+  const input = document.getElementById('builderApiBaseUrlInput');
+  const statusBox = document.getElementById('builderApiTestStatus');
+  if (modal) {
+    if (input) input.value = getBuilderApiBaseUrl();
+    if (statusBox) statusBox.style.display = 'none';
+    modal.classList.add('open');
+  }
+}
+
+function closeApiConfigModal() {
+  const modal = document.getElementById('builderApiModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function setApiUrlPreset(url) {
+  const input = document.getElementById('builderApiBaseUrlInput');
+  if (input) input.value = url;
+}
+
+async function testApiConnection() {
+  const input = document.getElementById('builderApiBaseUrlInput');
+  const statusBox = document.getElementById('builderApiTestStatus');
+  if (!input || !statusBox) return;
+
+  const targetUrl = (input.value.trim() || 'http://127.0.0.1:8000').replace(/\/+$/, '');
+  statusBox.style.display = 'block';
+  statusBox.style.background = 'rgba(0, 229, 255, 0.1)';
+  statusBox.style.border = '1px solid rgba(0, 229, 255, 0.3)';
+  statusBox.style.color = '#00e5ff';
+  statusBox.innerHTML = '⏳ 正在测试连通性...';
+
+  const startTime = Date.now();
+  try {
+    const res = await fetch(`${targetUrl}/api/health`, { method: 'GET', cache: 'no-cache' });
+    const latency = Date.now() - startTime;
+    if (res.ok) {
+      const data = await res.json();
+      statusBox.style.background = 'rgba(6, 214, 160, 0.15)';
+      statusBox.style.border = '1px solid rgba(6, 214, 160, 0.4)';
+      statusBox.style.color = '#06d6a0';
+      statusBox.innerHTML = `✅ <strong>连接成功！</strong> (延迟: ${latency}ms, 进程池状态: ${data.pool_active ? '正常运行' : '未就绪'})`;
+    } else {
+      statusBox.style.background = 'rgba(255, 0, 85, 0.15)';
+      statusBox.style.border = '1px solid rgba(255, 0, 85, 0.4)';
+      statusBox.style.color = '#ff3366';
+      statusBox.innerHTML = `❌ <strong>连接失败:</strong> 响应 HTTP ${res.status}`;
+    }
+  } catch (e) {
+    statusBox.style.background = 'rgba(255, 0, 85, 0.15)';
+    statusBox.style.border = '1px solid rgba(255, 0, 85, 0.4)';
+    statusBox.style.color = '#ff3366';
+    statusBox.innerHTML = `❌ <strong>连接异常:</strong> 无法连通目标服务 (${e.message})。请检查 URL 是否正确或云端实例是否已就绪。`;
+  }
+}
+
+function saveApiConfig() {
+  const input = document.getElementById('builderApiBaseUrlInput');
+  if (input && typeof localStorage !== 'undefined') {
+    const val = input.value.trim().replace(/\/+$/, '') || 'http://127.0.0.1:8000';
+    localStorage.setItem('pc_builder_api_base_url', val);
+  }
+  closeApiConfigModal();
+  checkBuilderBackendHealth();
+}
+
 function updateWizardAvoid(avoidStr) {
   wizardState.avoid = avoidStr.split(/[,，\s]+/).filter(Boolean);
 }
@@ -754,10 +831,14 @@ function setWizardMegaPreference(pref) {
   renderBuilderWizard();
 }
 
-// 异步探测本地 FastAPI 服务健康状态
+// 异步探测后端服务健康状态 (支持本地与 Hugging Face 线上节点)
 async function checkBuilderBackendHealth() {
+  const baseUrl = getBuilderApiBaseUrl();
+  const isLocal = baseUrl.includes('127.0.0.1') || baseUrl.includes('localhost');
+  const displayHost = isLocal ? '本地 :8000' : 'Hugging Face 云端';
+
   try {
-    const res = await fetch('http://127.0.0.1:8000/api/health', { method: 'GET', cache: 'no-cache' });
+    const res = await fetch(`${baseUrl}/api/health`, { method: 'GET', cache: 'no-cache' });
     if (res.ok) {
       const data = await res.json();
       wizardState.backendOnline = (data.status === 'ok');
@@ -771,12 +852,12 @@ async function checkBuilderBackendHealth() {
   if (badge) {
     if (wizardState.backendOnline === true) {
       badge.className = 'backend-status-pill online';
-      badge.innerHTML = '<span class="status-dot"></span> 🟢 AI 引擎在线 (:8000)';
-      badge.title = '本地 UEP 9 门禁 FastAPI 建队引擎运行正常';
+      badge.innerHTML = `<span class="status-dot"></span> 🟢 AI 引擎在线 (${displayHost})`;
+      badge.title = `连接正常: ${baseUrl}`;
     } else {
       badge.className = 'backend-status-pill offline';
-      badge.innerHTML = '<span class="status-dot"></span> 🔴 引擎未连接 (点击重试)';
-      badge.title = '请确认已在 pokemon_champion_builder 目录下双击运行 start_api.bat！';
+      badge.innerHTML = `<span class="status-dot"></span> 🔴 引擎未连接 (${displayHost})`;
+      badge.title = `无法连接 ${baseUrl}，点击配置 API 节点`;
     }
   }
 }
@@ -870,11 +951,20 @@ function renderBuilderWizard() {
     `;
   }).join('');
 
-  // 4. 后端在线状态徽标
+  // 4. 后端在线状态徽标与节点配置入口
+  const currentApiBase = getBuilderApiBaseUrl();
+  const isLocalApi = currentApiBase.includes('127.0.0.1') || currentApiBase.includes('localhost');
+  const apiLabel = isLocalApi ? '本地 :8000' : 'Hugging Face 云端';
+
   let statusBadgeHtml = `
-    <span class="backend-status-pill ${wizardState.backendOnline === true ? 'online' : wizardState.backendOnline === false ? 'offline' : ''}" id="wizardBackendStatusPill" onclick="checkBuilderBackendHealth()" style="cursor:pointer;" title="点击刷新连接状态">
-      <span class="status-dot"></span> ${wizardState.backendOnline === true ? '🟢 AI 引擎在线 (:8000)' : wizardState.backendOnline === false ? '🔴 引擎未连接 (点击重测)' : '🟡 检测引擎中...'}
-    </span>
+    <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+      <span class="backend-status-pill ${wizardState.backendOnline === true ? 'online' : wizardState.backendOnline === false ? 'offline' : ''}" id="wizardBackendStatusPill" onclick="openApiConfigModal()" style="cursor:pointer;" title="点击配置 API 服务节点">
+        <span class="status-dot"></span> ${wizardState.backendOnline === true ? `🟢 AI 引擎在线 (${apiLabel})` : wizardState.backendOnline === false ? `🔴 引擎未连接 (${apiLabel})` : '🟡 检测引擎中...'}
+      </span>
+      <button type="button" class="btn-api-config" onclick="openApiConfigModal()" title="设置后端 API 节点 (支持本地 / Hugging Face 线上地址)">
+        ⚙️ 节点设置
+      </button>
+    </div>
   `;
 
   // 5. 组队任务执行状态与计时展示 (去除伪造门禁列表，展示真实计时)
@@ -1104,7 +1194,8 @@ async function startBuilderWizardJob() {
     lang: 'zh',
   };
 
-  const endpoint = wizardState.apiUrl || 'http://127.0.0.1:8000/api/builder';
+  const baseUrl = getBuilderApiBaseUrl();
+  const endpoint = `${baseUrl}/api/builder`;
 
   try {
     const response = await fetch(endpoint, {
@@ -1114,7 +1205,7 @@ async function startBuilderWizardJob() {
     });
 
     if (!response.ok) {
-      const errData = await response.json().catch(() => ({ detail: '无法连接到本地 AI 建队服务，请确认 start_api.bat 是否已启动。' }));
+      const errData = await response.json().catch(() => ({ detail: `无法连接到 AI 建队服务 (${baseUrl})，请确认服务已启动或检查【节点设置】。` }));
       const detailMsg = typeof errData.detail === 'object' ? JSON.stringify(errData.detail) : (errData.detail || errData.error || `HTTP ${response.status} 接口异常`);
       throw new Error(detailMsg);
     }
@@ -2056,9 +2147,6 @@ function addSuggestedPokemon(pokemonId) {
   }
 }
 
-// ==========================================================================
-// 8. 宝可梦点选模态框 (Pokemon Picker Modal)
-// ==========================================================================
 function initPokemonPickerModal() {
   const modal = document.getElementById('builderPickerModal');
   const closeBtn = document.getElementById('builderPickerCloseBtn');
@@ -2068,6 +2156,15 @@ function initPokemonPickerModal() {
     closeBtn.addEventListener('click', () => modal.classList.remove('open'));
     modal.addEventListener('click', (e) => {
       if (e.target === modal) modal.classList.remove('open');
+    });
+  }
+
+  const apiModal = document.getElementById('builderApiModal');
+  const apiCloseBtn = document.getElementById('builderApiCloseBtn');
+  if (apiCloseBtn && apiModal) {
+    apiCloseBtn.addEventListener('click', () => apiModal.classList.remove('open'));
+    apiModal.addEventListener('click', (e) => {
+      if (e.target === apiModal) apiModal.classList.remove('open');
     });
   }
 
@@ -2162,6 +2259,12 @@ if (typeof window !== 'undefined') {
   window.toggleWizardTactic = toggleWizardTactic;
   window.updateWizardAvoid = updateWizardAvoid;
   window.checkBuilderBackendHealth = checkBuilderBackendHealth;
+  window.getBuilderApiBaseUrl = getBuilderApiBaseUrl;
+  window.openApiConfigModal = openApiConfigModal;
+  window.closeApiConfigModal = closeApiConfigModal;
+  window.setApiUrlPreset = setApiUrlPreset;
+  window.testApiConnection = testApiConnection;
+  window.saveApiConfig = saveApiConfig;
   window.openPokemonPicker = openPokemonPicker;
   window.removeSlot = removeSlot;
   window.toggleSlotMega = toggleSlotMega;
