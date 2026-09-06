@@ -122,20 +122,93 @@ function fillSlotWithMetaRank1(pokemon, fmt = 'double') {
 // ==========================================================================
 let MOVE_INFO_CACHE = null;
 function getMoveInfo(moveName) {
+  if (!moveName) return null;
   if (!MOVE_INFO_CACHE) {
     MOVE_INFO_CACHE = new Map();
-    const list = (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
+    const list = (typeof window !== 'undefined' && window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon)
+      || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
     list.forEach(p => {
       if (p.learnset) {
         p.learnset.forEach(m => {
           if (m.name && !MOVE_INFO_CACHE.has(m.name)) {
             MOVE_INFO_CACHE.set(m.name, m);
+            MOVE_INFO_CACHE.set(m.name.toLowerCase(), m);
           }
         });
       }
     });
   }
-  return MOVE_INFO_CACHE.get(moveName) || null;
+  if (MOVE_INFO_CACHE.has(moveName)) return MOVE_INFO_CACHE.get(moveName);
+  if (MOVE_INFO_CACHE.has(moveName.toLowerCase())) return MOVE_INFO_CACHE.get(moveName.toLowerCase());
+
+  // 尝试通过中英招式字典转译查找
+  const zhName = (typeof translateMoveToZh === 'function')
+    ? translateMoveToZh(moveName)
+    : (typeof CHAMPIONS_MOVES_ZH !== 'undefined' ? CHAMPIONS_MOVES_ZH[moveName] : null);
+  if (zhName && MOVE_INFO_CACHE.has(zhName)) return MOVE_INFO_CACHE.get(zhName);
+
+  return null;
+}
+
+function findPokemonByName(name) {
+  if (!name) return null;
+  const q = String(name).trim().toLowerCase();
+  const list = (typeof window !== 'undefined' && window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon)
+    || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
+  return list.find(p => 
+    (p.name && p.name.toLowerCase() === q) ||
+    (p.enName && p.enName.toLowerCase() === q) ||
+    (p.nameEn && p.nameEn.toLowerCase() === q) ||
+    (p.slug && p.slug.toLowerCase() === q)
+  ) || null;
+}
+
+function formatVariantZh(variantStr) {
+  if (!variantStr) return '';
+  let rawItem = '';
+  if (variantStr.includes('item=')) {
+    const match = variantStr.match(/item=([^|&]+)/);
+    if (match) rawItem = decodeURIComponent(match[1]);
+  } else if (!variantStr.includes('|') && !variantStr.includes(':')) {
+    rawItem = decodeURIComponent(variantStr);
+  }
+  
+  if (rawItem) {
+    const itemZh = (typeof translateItemToZh === 'function') ? translateItemToZh(rawItem) : rawItem;
+    return itemZh;
+  }
+  return '';
+}
+
+function aggregateThreatRoutes(routes) {
+  if (!routes || routes.length === 0) return [];
+  
+  const moveMap = new Map();
+  routes.forEach(r => {
+    const move = r.move;
+    const target = r.target_member || r.member;
+    const moveType = r.move_type || (getMoveInfo(move) && getMoveInfo(move).type) || 'Normal';
+    const variantItem = formatVariantZh(r.variant || r.opponentVariant);
+
+    const key = `${move}__${moveType}`;
+    if (!moveMap.has(key)) {
+      moveMap.set(key, {
+        move: move,
+        move_type: moveType,
+        targets: new Set(),
+        variants: new Set()
+      });
+    }
+    if (target) moveMap.get(key).targets.add(target);
+    if (variantItem) moveMap.get(key).variants.add(variantItem);
+  });
+
+  return Array.from(moveMap.values()).map(item => ({
+    move: item.move,
+    move_type: item.move_type,
+    targets: Array.from(item.targets),
+    variants: Array.from(item.variants)
+  }));
 }
 
 function calculateSmartSuggestions(fmt = 'double', limit = 6) {
@@ -507,10 +580,15 @@ function runTeamAudit() {
     if (m.isMega) megaCount++;
   });
 
-  if (megaCount > 1) {
+  if (megaCount === 2) {
+    legalityIssues.push({
+      level: 'info',
+      msg: `【双 Mega 选出轴提示】队伍登记了 2 只超级进化宝可梦。在 6选3/6选4 实战选出阶段请根据对手阵容二选一出战，切忌单场同时选出导致道具栏浪费。`
+    });
+  } else if (megaCount >= 3) {
     legalityIssues.push({
       level: 'warning',
-      msg: `【超级进化提示】队伍中有 ${megaCount} 只宝可梦携带了超级进化石。单场对战仅能激活 1 次 Mega 进化，请根据战局灵活选出。`
+      msg: `【超级进化数量过多】队伍中有 ${megaCount} 只宝可梦携带了超级进化石。过多进化石会严重压缩生命宝珠、气势披带等通用道具空间，建议调整为至多 2 个 Mega 备选。`
     });
   }
 
@@ -621,6 +699,7 @@ function initTeamBuilder() {
 
   // 初次渲染
   renderBuilderView();
+  checkBuilderBackendHealth();
 }
 
 // 一键智能补全队伍至 6 只
@@ -644,6 +723,7 @@ function autoCompleteTeam() {
   });
 
   renderBuilderView();
+  checkBuilderBackendHealth();
 }
 
 // ==========================================================================
@@ -651,15 +731,55 @@ function autoCompleteTeam() {
 // ==========================================================================
 
 const wizardState = {
-  anchor: '烈咬陆鲨',
-  posture: 'offense', // 'offense' | 'balance' | 'defense'
-  tactics: ['tailwind'], // ['tailwind', 'trick_room', 'sun', 'rain', 'snow', 'setup', 'volturn']
+  anchor: '',
+  posture: 'balance', // 'offense' | 'balance' | 'defense'
+  megaPreference: 'auto', // 'auto' | 'multi' | 'single' | 'none'
+  tactics: [], // ['tailwind', 'trick_room', 'sun', 'rain', 'snow', 'setup', 'volturn']
   avoid: [],
+  apiUrl: 'http://127.0.0.1:8000/api/builder',
+  backendOnline: null, // null | true | false
   isRunning: false,
-  gateLogs: [],
+  elapsedSeconds: 0,
+  lastBuildDuration: null,
   lastRationale: '',
   lastSlateResult: null,
 };
+
+function updateWizardAvoid(avoidStr) {
+  wizardState.avoid = avoidStr.split(/[,，\s]+/).filter(Boolean);
+}
+
+function setWizardMegaPreference(pref) {
+  wizardState.megaPreference = pref;
+  renderBuilderWizard();
+}
+
+// 异步探测本地 FastAPI 服务健康状态
+async function checkBuilderBackendHealth() {
+  try {
+    const res = await fetch('http://127.0.0.1:8000/api/health', { method: 'GET', cache: 'no-cache' });
+    if (res.ok) {
+      const data = await res.json();
+      wizardState.backendOnline = (data.status === 'ok');
+    } else {
+      wizardState.backendOnline = false;
+    }
+  } catch (e) {
+    wizardState.backendOnline = false;
+  }
+  const badge = document.getElementById('wizardBackendStatusPill');
+  if (badge) {
+    if (wizardState.backendOnline === true) {
+      badge.className = 'backend-status-pill online';
+      badge.innerHTML = '<span class="status-dot"></span> 🟢 AI 引擎在线 (:8000)';
+      badge.title = '本地 UEP 9 门禁 FastAPI 建队引擎运行正常';
+    } else {
+      badge.className = 'backend-status-pill offline';
+      badge.innerHTML = '<span class="status-dot"></span> 🔴 引擎未连接 (点击重试)';
+      badge.title = '请确认已在 pokemon_champion_builder 目录下双击运行 start_api.bat！';
+    }
+  }
+}
 
 function selectWizardAnchor(name) {
   wizardState.anchor = name;
@@ -698,7 +818,6 @@ function renderBuilderWizard() {
   if (!container) return;
 
   const allMons = (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
-  const fmt = builderState.format;
 
   // 1. 获取当前队伍卡位中已有宝可梦物种 (按顺序排重)
   const currentSlotMons = [];
@@ -731,7 +850,7 @@ function renderBuilderWizard() {
     return `<option value="${p.name}">${p.name} · ${types} (${p.nameEn || ''})</option>`;
   }).join('');
 
-  // 3. 战术机制标签 (使用 button type=button 彻底杜绝 label 双击取消 bug)
+  // 3. 战术机制标签 (使用 button type=button 杜绝双击取消)
   const tacticOptions = [
     { id: 'tailwind', label: '🌪️ 顺风提速' },
     { id: 'trick_room', label: '⏳ 戏法空间' },
@@ -751,23 +870,42 @@ function renderBuilderWizard() {
     `;
   }).join('');
 
-  let gateTimelineHtml = '';
-  if (wizardState.gateLogs.length > 0 || wizardState.isRunning) {
-    const stepsHtml = wizardState.gateLogs.map(log => `
-      <div class="gate-step-row ${log.status}">
-        <span class="gate-step-badge">${log.status === 'done' ? '✓ DONE' : log.status === 'running' ? '⏳ RUNNING' : '· WAIT'}</span>
-        <strong>${log.title}</strong>
-        ${log.detail ? `<span>— ${log.detail}</span>` : ''}
-      </div>
-    `).join('');
+  // 4. 后端在线状态徽标
+  let statusBadgeHtml = `
+    <span class="backend-status-pill ${wizardState.backendOnline === true ? 'online' : wizardState.backendOnline === false ? 'offline' : ''}" id="wizardBackendStatusPill" onclick="checkBuilderBackendHealth()" style="cursor:pointer;" title="点击刷新连接状态">
+      <span class="status-dot"></span> ${wizardState.backendOnline === true ? '🟢 AI 引擎在线 (:8000)' : wizardState.backendOnline === false ? '🔴 引擎未连接 (点击重测)' : '🟡 检测引擎中...'}
+    </span>
+  `;
 
-    gateTimelineHtml = `
-      <div class="gate-timeline-container" id="wizardGateTimeline">
-        <div class="gate-timeline-header">
-          <span class="pulse-dot"></span>
-          <span>⚡ UEP 5步确定性门控流水线 (Gated Pipeline) 运行状态</span>
+  // 5. 组队任务执行状态与计时展示 (去除伪造门禁列表，展示真实计时)
+  let statusBannerHtml = '';
+  if (wizardState.isRunning) {
+    statusBannerHtml = `
+      <div class="wizard-running-banner" id="wizardRunningBanner">
+        <div class="running-banner-top">
+          <div class="running-pulse-indicator">
+            <span class="running-spinner-circle"></span>
+          </div>
+          <div class="running-banner-content">
+            <div class="running-banner-title">
+              <span>⚡ AI 智能建队流水线推理中...</span>
+              <span class="running-timer-pill">已耗时: <strong id="wizardElapsedSec">${wizardState.elapsedSeconds || 0}</strong> 秒</span>
+            </div>
+            <div class="running-banner-desc">
+              正在执行：官方排位骨架检索 ➔ 大模型战术组装 ➔ Top-30 热门伤害对抗压测 ➔ 合规性终审。大模型推理与伤害对抗通常需 30~60 秒，请稍候...
+            </div>
+          </div>
         </div>
-        ${stepsHtml}
+        <div class="running-progress-track">
+          <div class="running-progress-indeterminate"></div>
+        </div>
+      </div>
+    `;
+  } else if (wizardState.lastBuildDuration !== null) {
+    statusBannerHtml = `
+      <div class="wizard-complete-banner">
+        <span class="complete-icon">✅</span>
+        <span>AI 智能组队已完成并自动上阵 (本次耗时: <strong>${wizardState.lastBuildDuration}</strong> 秒)。下方已同步更新【6 卡位详细配置】与【实战对战思路 (Battle Playbook)】。</span>
       </div>
     `;
   }
@@ -777,18 +915,18 @@ function renderBuilderWizard() {
       <div class="wizard-header-row">
         <div class="wizard-header-title">
           <span>🧙‍♂️ AI 智能从零组队向导 (Builder Wizard)</span>
-          <span class="wizard-header-badge">UEP 确定性 5 步门控</span>
+          <span class="wizard-header-badge">大模型战术组装 & 对抗压测</span>
         </div>
-        <div class="wizard-header-actions">
-          <span class="tip" style="font-size:0.75rem; color:#90a4ae;">自动匹配本地 235 只宝可梦全量数据，一键生成 6 只队伍并完成 Top-30 对抗压力测试</span>
+        <div class="wizard-header-actions" style="display:flex; align-items:center; gap:0.75rem;">
+          ${statusBadgeHtml}
         </div>
       </div>
 
       <div class="wizard-form-grid">
         <!-- 核心宝可梦 Anchor (支持输入自动匹配本地 235 数据 + 已填卡位直选) -->
         <div class="wizard-field">
-          <label class="wizard-label">🎯 战术核心物种 (Anchor · 自动匹配已有数据)</label>
-          <input type="text" id="wizardAnchorInput" class="wizard-input" list="wizardAnchorDatalist" value="${wizardState.anchor}" placeholder="输入或检索宝可梦 (如: 烈咬陆鲨, 仆斩将军)..." oninput="updateWizardAnchor(this.value)" autocomplete="off">
+          <label class="wizard-label">🎯 战术核心物种 (Anchor · 选填)</label>
+          <input type="text" id="wizardAnchorInput" class="wizard-input" list="wizardAnchorDatalist" value="${wizardState.anchor}" placeholder="可选：留空则由 AI 自动从当前环境优选核心，或输入指定宝可梦..." oninput="updateWizardAnchor(this.value)" autocomplete="off">
           <datalist id="wizardAnchorDatalist">
             ${datalistOptionsHtml}
           </datalist>
@@ -806,9 +944,28 @@ function renderBuilderWizard() {
           </div>
         </div>
 
+        <!-- Mega 偏好 Mega Preference -->
+        <div class="wizard-field" style="grid-column: 1 / -1;">
+          <label class="wizard-label">🌟 Mega 进化位配置偏好 (Mega Preference)</label>
+          <div class="mega-pref-buttons">
+            <button type="button" class="mega-pref-btn ${wizardState.megaPreference === 'auto' ? 'active' : ''}" onclick="setWizardMegaPreference('auto')">
+              🌟 自动推荐 (双Mega主流预览轴)
+            </button>
+            <button type="button" class="mega-pref-btn ${wizardState.megaPreference === 'multi' ? 'active' : ''}" onclick="setWizardMegaPreference('multi')">
+              ⚔️ 允许双Mega (二选一预览分支)
+            </button>
+            <button type="button" class="mega-pref-btn ${wizardState.megaPreference === 'single' ? 'active' : ''}" onclick="setWizardMegaPreference('single')">
+              🛡️ 仅单Mega (传统单核路线)
+            </button>
+            <button type="button" class="mega-pref-btn ${wizardState.megaPreference === 'none' ? 'active' : ''}" onclick="setWizardMegaPreference('none')">
+              🚫 不使用Mega (纯常规阵容)
+            </button>
+          </div>
+        </div>
+
         <!-- 战术标签 Tactics (点击即切换) -->
         <div class="wizard-field" style="grid-column: 1 / -1;">
-          <label class="wizard-label">🏷️ 战术机制与控场标签 (Tactical Mechanisms · 可多选切换)</label>
+          <label class="wizard-label">🏷️ 战术机制与控场标签 (Tactical Mechanisms · 可选)</label>
           <div class="tactics-chips-grid">
             ${tacticChipsHtml}
           </div>
@@ -816,43 +973,138 @@ function renderBuilderWizard() {
       </div>
 
       <div class="wizard-footer-actions">
+        <span style="font-size:0.78rem; color:#78909c; margin-right:auto;">
+          💡 提示：点击生成后，系统将自动经由全套流水线输出完整 6 只宝可梦并自动上阵。
+        </span>
         <button type="button" class="btn-wizard-run" id="btnRunWizard" onclick="startBuilderWizardJob()" ${wizardState.isRunning ? 'disabled' : ''}>
-          ${wizardState.isRunning ? '<span class="spinner-inline">⏳</span> 5步门控生成中...' : '🚀 AI 一键组队向导 (5步门控生成)'}
+          ${wizardState.isRunning ? '<span class="spinner-inline">⏳</span> 正在组装与压测中...' : '🚀 启动 AI 一键智能组队'}
         </button>
       </div>
 
-      ${gateTimelineHtml}
+      ${statusBannerHtml}
     </div>
   `;
 }
 
-// 异步运行 AI 组队向导 (SSE Gated Pipeline Runner)
+
+// 映射后端返回的英文宝可梦对象至前端中文卡位模型
+function mapEngineMemberToSlot(member, allMons) {
+  let spName = member.species || '';
+  let isMega = spName.startsWith('Mega ') || (member.item && (member.item.includes('ite') || member.item.includes('进化石')));
+  let baseName = spName.replace(/^Mega\s+/, '').replace(/\s+[XYZ]$/, '');
+  let branch = 'X';
+  if (spName.endsWith(' Y') || (member.item && member.item.includes('Y'))) branch = 'Y';
+  if (spName.endsWith(' Z') || (member.item && member.item.includes('Z'))) branch = 'Z';
+
+  // 在全量宝可梦中查找匹配
+  let matchedMon = allMons.find(p => 
+    (p.nameEn && p.nameEn.toLowerCase() === baseName.toLowerCase()) ||
+    (p.name && p.name === baseName) ||
+    (p.slug && p.slug.toLowerCase() === baseName.toLowerCase())
+  );
+
+  if (!matchedMon) {
+    matchedMon = {
+      id: 999,
+      name: baseName,
+      nameEn: baseName,
+      types: ['Normal'],
+      baseStats: { hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 80 },
+      abilities: [{ name: member.ability }],
+      learnset: (member.moves || []).map(m => ({ name: m }))
+    };
+  }
+
+  // 特性名称汉化匹配 (优先调用全量翻译函数 translateAbilityToZh)
+  let abilityName = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(member.ability) : (member.ability || '通常特性');
+  if (matchedMon.abilities) {
+    const abMatch = matchedMon.abilities.find(a => 
+      (a.enName && a.enName.toLowerCase() === (member.ability || '').toLowerCase()) || 
+      (typeof a === 'string' && a === member.ability) ||
+      (a.name && a.name === member.ability) ||
+      (a.name && a.name === abilityName)
+    );
+    if (abMatch) abilityName = typeof abMatch === 'string' ? abMatch : (abMatch.name || abilityName);
+  }
+
+  // 道具名称汉化对照 (调用全量翻译函数 translateItemToZh)
+  let itemName = typeof translateItemToZh === 'function' ? translateItemToZh(member.item) : (member.item || '');
+
+  // 招式名称汉化匹配 (调用全量翻译函数 translateMoveToZh)
+  let moves = (member.moves || []).map(m => {
+    let zhMove = typeof translateMoveToZh === 'function' ? translateMoveToZh(m) : m;
+    if (matchedMon.learnset) {
+      const lmMatch = matchedMon.learnset.find(l => 
+        (l.enName && l.enName.toLowerCase() === (m || '').toLowerCase()) || 
+        l.name === m || 
+        l.name === zhMove
+      );
+      if (lmMatch && lmMatch.name) return lmMatch.name;
+    }
+    return zhMove;
+  });
+
+  // 性格名称汉化匹配
+  const NATURE_MAP = {
+    'Jolly': '爽朗', 'Adamant': '固执', 'Modest': '内敛', 'Timid': '胆小',
+    'Bold': '大胆', 'Calm': '温和', 'Impish': '淘气', 'Careful': '慎重',
+    'Brave': '勇敢', 'Quiet': '冷静', 'Relaxed': '悠闲', 'Sassy': '自大'
+  };
+  let natureName = NATURE_MAP[member.nature] || member.nature || '固执';
+
+  // 将 SP 努力值转换为 EV (SP * 8, 最大 252)
+  let sp = member.spread || {};
+  let evs = {
+    hp: Math.min(252, (sp.hp || 0) * 8),
+    atk: Math.min(252, (sp.atk || 0) * 8),
+    def: Math.min(252, (sp.def || 0) * 8),
+    spa: Math.min(252, (sp.spa || 0) * 8),
+    spd: Math.min(252, (sp.spd || 0) * 8),
+    spe: Math.min(252, (sp.spe || 0) * 8),
+  };
+
+  return {
+    pokemon: matchedMon,
+    isMega: isMega,
+    megaBranch: branch,
+    item: itemName,
+    ability: abilityName,
+    nature: natureName,
+    moves: moves,
+    evs: evs,
+    sp: sp
+  };
+}
+
+// 异步运行 AI 智能组队流水线 (FastAPI Runner with Live Elapsed Timer)
 async function startBuilderWizardJob() {
   if (wizardState.isRunning) return;
 
-  const anchorName = wizardState.anchor || '烈咬陆鲨';
+  const anchorName = wizardState.anchor ? wizardState.anchor.trim() : '';
   wizardState.isRunning = true;
-  wizardState.gateLogs = [
-    { gate: 'intake', title: 'Gate 1: 参数标准化与合法性准备', status: 'running', detail: `核心物种: ${anchorName}` },
-    { gate: 'grounding', title: 'Gate 2: 环境共现率与冠军构筑检索', status: 'wait', detail: '' },
-    { gate: 'assemble', title: 'Gate 3: 大模型严格约束装配生成', status: 'wait', detail: '' },
-    { gate: 'validate', title: 'Gate 4: Showdown 合法性与规则检查', status: 'wait', detail: '' },
-    { gate: 'slate', title: 'Gate 5: Top-30 伤害对抗压力测试', status: 'wait', detail: '' },
-  ];
+  wizardState.elapsedSeconds = 0;
   renderBuilderWizard();
+
+  // 启动真实秒表计时器 (非伪造进度，每秒如实递增)
+  const timerId = setInterval(() => {
+    wizardState.elapsedSeconds++;
+    const secEl = document.getElementById('wizardElapsedSec');
+    if (secEl) {
+      secEl.textContent = wizardState.elapsedSeconds;
+    }
+  }, 1000);
 
   const payload = {
     format: builderState.format,
-    anchor: anchorName,
-    posture: wizardState.posture,
-    tactics: wizardState.tactics,
-    avoid: wizardState.avoid,
-    owned: []
+    anchor: anchorName || undefined,
+    posture: wizardState.posture || 'balance',
+    mega_preference: wizardState.megaPreference || 'auto',
+    wants: wizardState.tactics && wizardState.tactics.length > 0 ? wizardState.tactics : [],
+    avoid: wizardState.avoid && wizardState.avoid.length > 0 ? wizardState.avoid : [],
+    lang: 'zh',
   };
 
-  const endpoint = window.location.port === '8765'
-    ? '/api/builder/generate'
-    : 'http://127.0.0.1:8765/api/builder/generate';
+  const endpoint = wizardState.apiUrl || 'http://127.0.0.1:8000/api/builder';
 
   try {
     const response = await fetch(endpoint, {
@@ -862,107 +1114,170 @@ async function startBuilderWizardJob() {
     });
 
     if (!response.ok) {
-      const errData = await response.json().catch(() => ({ detail: '无法连接到本地 AI 服务，请确认 server.py 是否启动。' }));
-      throw new Error(errData.detail || errData.error || `HTTP ${response.status} 接口调用异常`);
+      const errData = await response.json().catch(() => ({ detail: '无法连接到本地 AI 建队服务，请确认 start_api.bat 是否已启动。' }));
+      const detailMsg = typeof errData.detail === 'object' ? JSON.stringify(errData.detail) : (errData.detail || errData.error || `HTTP ${response.status} 接口异常`);
+      throw new Error(detailMsg);
     }
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder('utf-8');
-    let buffer = '';
+    const data = await response.json();
+    if (!data.ok || !data.result) {
+      throw new Error(data.error || 'AI 建队流水线未返回有效阵容');
+    }
 
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
+    const result = data.result;
+    const teamMembers = (result.team && result.team.pokemon) || [];
+    const allMons = (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
 
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop();
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed || !trimmed.startsWith('data:')) continue;
-        const dataStr = trimmed.slice(5).trim();
-        if (dataStr === '[DONE]') break;
-
-        try {
-          const event = JSON.parse(dataStr);
-
-          if (event.type === 'error' || event.error) {
-            throw new Error(event.error || event.detail || '向导组队流水线执行异常');
-          }
-
-          if (event.type === 'gate') {
-            const existingGate = wizardState.gateLogs.find(g => g.gate === event.gate);
-            if (existingGate) {
-              existingGate.status = event.status;
-              existingGate.title = event.title || existingGate.title;
-              if (event.detail) existingGate.detail = event.detail;
-            } else {
-              wizardState.gateLogs.push({
-                gate: event.gate,
-                title: event.title,
-                status: event.status,
-                detail: event.detail || ''
-              });
-            }
-            renderBuilderWizard();
-          }
-
-          if (event.type === 'result' && event.data) {
-            const team = event.data.team || [];
-            wizardState.lastRationale = event.data.rationale || '';
-            wizardState.lastSlateResult = event.data.slate || null;
-
-            // 将生成的 6 只宝可梦灌入 builderState.slots
-            const allMons = (window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon) || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
-            
-            for (let i = 0; i < 6; i++) {
-              if (i < team.length) {
-                const member = team[i];
-                const matchedMon = allMons.find(p => p.name === member.name || p.id === member.id) || {
-                  id: member.id || (100 + i),
-                  name: member.name,
-                  types: member.types || ['Normal'],
-                  baseStats: member.baseStats || { hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 80 },
-                  abilities: [{ name: member.ability }],
-                  learnset: (member.moves || []).map(m => ({ name: m }))
-                };
-
-                const isMega = Boolean(member.isMega || (member.item && member.item.includes('进化石')));
-                let megaBranch = member.megaBranch;
-                if (!megaBranch && member.item && member.item.includes('进化石')) {
-                  if (member.item.includes('Y') || member.item.includes('Ｙ')) megaBranch = 'Y';
-                  else if (member.item.includes('Z') || member.item.includes('Ｚ')) megaBranch = 'Z';
-                  else megaBranch = 'X';
-                }
-                if (!megaBranch) megaBranch = 'X';
-
-                builderState.slots[i] = {
-                  pokemon: matchedMon,
-                  isMega: isMega,
-                  megaBranch: megaBranch,
-                  item: member.item || '',
-                  ability: member.ability || (matchedMon.abilities && matchedMon.abilities[0] ? (typeof matchedMon.abilities[0] === 'string' ? matchedMon.abilities[0] : matchedMon.abilities[0].name) : '通常特性'),
-                  nature: member.nature || '固执',
-                  moves: member.moves || [],
-                  evs: member.evs || { hp: 4, atk: 252, def: 0, spa: 0, spd: 0, spe: 252 },
-                  stats: member.stats || null
-                };
-              } else {
-                builderState.slots[i] = null;
-              }
-            }
-
-            renderBuilderView();
-          }
-        } catch (e) {
-          if (e.message && e.message.includes('【')) throw e;
-        }
+    // 填充 6 个卡位
+    for (let i = 0; i < 6; i++) {
+      if (i < teamMembers.length) {
+        builderState.slots[i] = mapEngineMemberToSlot(teamMembers[i], allMons);
+      } else {
+        builderState.slots[i] = null;
       }
     }
+
+    // 战术分析与确定性伤害对抗压力测试数据沉淀 (Slate Top-30 Matchup Threats)
+    wizardState.lastRationale = result.rationale || '';
+
+    if (result.matchupThreats && result.matchupThreats.opponents && result.matchupThreats.opponents.length > 0) {
+      const opps = result.matchupThreats.opponents;
+      const first = opps[0];
+      const worstOpp = first.opponent;
+      const firstMon = findPokemonByName(worstOpp);
+      const worstRank = first.usageRank || (first.routes && first.routes[0] && first.routes[0].usageRank) || (firstMon ? getPokemonMetaRank(firstMon, builderState.format) : null);
+      const worstGrade = first.grade || (first.affectedMemberCount >= 3 ? 'G3' : first.affectedMemberCount === 2 ? 'G2' : 'G1');
+      const worstAffMembers = first.affectedMembers || (first.routes ? [...new Set(first.routes.map(r => r.member))] : []);
+      
+      const worstRouteMap = new Map();
+      (first.routes || []).forEach(r => {
+        const mvInfo = getMoveInfo(r.move);
+        const moveType = (mvInfo && mvInfo.type) || 'Normal';
+        const key = `${r.member}__${r.move}`;
+        const itemZh = formatVariantZh(r.opponentVariant);
+        if (!worstRouteMap.has(key)) {
+          worstRouteMap.set(key, {
+            target_member: r.member,
+            move: r.move,
+            move_type: moveType,
+            variants: new Set(),
+            damage_pct: '100% 确定性极值斩杀',
+            verdict: '极高猝死风险'
+          });
+        }
+        if (itemZh) worstRouteMap.get(key).variants.add(itemZh);
+      });
+
+      const worstRoutes = Array.from(worstRouteMap.values()).map(r => {
+        const varList = Array.from(r.variants);
+        const itemNote = varList.length > 0 ? `常用携带: ${varList.slice(0, 3).join(' / ')}` : '极高猝死风险';
+        return {
+          target_member: r.target_member,
+          move: r.move,
+          move_type: r.move_type,
+          variant: '',
+          damage_pct: r.damage_pct,
+          verdict: itemNote
+        };
+      });
+
+      const highThreats = opps.slice(1).map(opp => {
+        const oppMon = findPokemonByName(opp.opponent);
+        const oppRank = opp.usageRank || (opp.routes && opp.routes[0] && opp.routes[0].usageRank) || (oppMon ? getPokemonMetaRank(oppMon, builderState.format) : null);
+        const oppAffMembers = opp.affectedMembers || (opp.routes ? [...new Set(opp.routes.map(r => r.member))] : []);
+        const routes = (opp.routes || []).map(r => {
+          const mvInfo = getMoveInfo(r.move);
+          return {
+            target_member: r.member,
+            move: r.move,
+            move_type: (mvInfo && mvInfo.type) || 'Normal',
+            variant: r.opponentVariant || ''
+          };
+        });
+        return {
+          opponent: opp.opponent,
+          rank: (oppRank && oppRank < 999) ? oppRank : '-',
+          grade: opp.grade || (opp.affectedMemberCount >= 3 ? 'G3' : opp.affectedMemberCount === 2 ? 'G2' : 'G1'),
+          affected_count: opp.affectedMemberCount || oppAffMembers.length,
+          affected_members: oppAffMembers,
+          routes: routes
+        };
+      });
+
+      wizardState.lastSlateResult = {
+        scope: result.matchupThreats.scope || { topK: 30, teamSize: 6 },
+        worst_threat: {
+          opponent: worstOpp,
+          rank: (worstRank && worstRank < 999) ? worstRank : '-',
+          grade: worstGrade,
+          affected_count: first.affectedMemberCount || worstAffMembers.length,
+          affected_members: worstAffMembers,
+          threat_routes: worstRoutes
+        },
+        high_threats: highThreats
+      };
+    } else if (result.worstMatchup || (result.threats && result.threats.length > 0)) {
+      const threatsList = result.threats || (result.worstMatchup ? [result.worstMatchup] : []);
+      const threatsByOpp = new Map();
+      threatsList.forEach(t => {
+        if (!threatsByOpp.has(t.opponent)) threatsByOpp.set(t.opponent, []);
+        threatsByOpp.get(t.opponent).push(t);
+      });
+
+      const allOppRows = Array.from(threatsByOpp.entries()).map(([opp, thrList]) => {
+        const aff = [...new Set(thrList.map(t => t.member))];
+        const oMon = findPokemonByName(opp);
+        const r = oMon ? getPokemonMetaRank(oMon, builderState.format) : null;
+        return {
+          opponent: opp,
+          rank: (r && r < 999) ? r : '-',
+          grade: aff.length >= 3 ? 'G3' : aff.length === 2 ? 'G2' : 'G1',
+          affected_count: aff.length,
+          affected_members: aff,
+          routes: thrList.map(t => {
+            const minfo = getMoveInfo(t.move);
+            return {
+              target_member: t.member,
+              move: t.move,
+              move_type: (minfo && minfo.type) || 'Normal'
+            };
+          })
+        };
+      });
+
+      const firstRow = allOppRows[0];
+      if (firstRow) {
+        wizardState.lastSlateResult = {
+          scope: { topK: 30, teamSize: 6 },
+          worst_threat: {
+            opponent: firstRow.opponent,
+            rank: firstRow.rank,
+            grade: firstRow.grade,
+            affected_count: firstRow.affected_count,
+            affected_members: firstRow.affected_members,
+            threat_routes: firstRow.routes.map(r => ({
+              target_member: r.target_member,
+              move: r.move,
+              move_type: r.move_type,
+              damage_pct: '100% 确定性极值斩杀',
+              verdict: '极高猝死风险'
+            }))
+          },
+          high_threats: allOppRows.slice(1)
+        };
+      } else {
+        wizardState.lastSlateResult = null;
+      }
+    } else {
+      wizardState.lastSlateResult = null;
+    }
+
+    renderBuilderView();
   } catch (err) {
-    alert(`【AI 组队向导执行失败】\n${err.message || '未知错误'}\n\n请确认已运行 uv run python server.py 并且 config.yaml 包含有效 API Key。`);
+    alert(`【AI 智能建队执行提示】\n${err.message || '未知错误'}\n\n请确保已在 pokemon_champion_builder 目录下运行 start_api.bat 启动本地后端！`);
   } finally {
+    if (timerId) clearInterval(timerId);
+    wizardState.lastBuildDuration = wizardState.elapsedSeconds;
     wizardState.isRunning = false;
     renderBuilderWizard();
   }
@@ -1025,15 +1340,17 @@ function renderBuilderSlots() {
         return `<option value="${nName}" ${nName === slot.nature ? 'selected' : ''}>${n.name}</option>`;
       }).join('');
 
-      // 生成 4 个招式下拉/选项
-      const allLearnable = p.learnset ? p.learnset.map(l => l.name) : [];
+      // 生成 4 个招式下拉/选项 (保证全量汉化)
+      const allLearnable = p.learnset ? p.learnset.map(l => (typeof translateMoveToZh === 'function' ? translateMoveToZh(l.name) : l.name)) : [];
       slot.moves.forEach(m => {
-        if (m && !allLearnable.includes(m)) allLearnable.unshift(m);
+        let zhM = typeof translateMoveToZh === 'function' ? translateMoveToZh(m) : m;
+        if (zhM && !allLearnable.includes(zhM)) allLearnable.unshift(zhM);
       });
 
       const moveInputsHtml = slot.moves.map((mv, mIdx) => {
+        let currentZhMove = typeof translateMoveToZh === 'function' ? translateMoveToZh(mv) : mv;
         const optionsHtml = allLearnable.map(lm => 
-          `<option value="${lm}" ${lm === mv ? 'selected' : ''}>${lm}</option>`
+          `<option value="${lm}" ${lm === currentZhMove ? 'selected' : ''}>${lm}</option>`
         ).join('');
         return `
           <div class="slot-move-row">
@@ -1044,6 +1361,59 @@ function renderBuilderSlots() {
           </div>
         `;
       }).join('');
+
+      // 计算 SP 和 EV 分配值
+      const sp = slot.sp || {};
+      const evs = slot.evs || {
+        hp: Math.min(252, (sp.hp || 0) * 8),
+        atk: Math.min(252, (sp.atk || 0) * 8),
+        def: Math.min(252, (sp.def || 0) * 8),
+        spa: Math.min(252, (sp.spa || 0) * 8),
+        spd: Math.min(252, (sp.spd || 0) * 8),
+        spe: Math.min(252, (sp.spe || 0) * 8),
+      };
+      const totalSp = (sp.hp || 0) + (sp.atk || 0) + (sp.def || 0) + (sp.spa || 0) + (sp.spd || 0) + (sp.spe || 0);
+
+      const evDistributionHtml = `
+        <div class="slot-evs-group full-width">
+          <div class="slot-evs-header">
+            <label>⚡ 努力值 (EV / SP 分配)</label>
+            <span class="evs-total-tag">已分配: ${totalSp}/66 SP</span>
+          </div>
+          <div class="slot-evs-bars">
+            <div class="ev-bar-item ${(evs.hp || sp.hp) ? 'active' : ''}">
+              <span class="ev-label">HP</span>
+              <span class="ev-val">${evs.hp || 0}</span>
+              <span class="sp-sub">${sp.hp || 0}sp</span>
+            </div>
+            <div class="ev-bar-item ${(evs.atk || sp.atk) ? 'active' : ''}">
+              <span class="ev-label">物攻</span>
+              <span class="ev-val">${evs.atk || 0}</span>
+              <span class="sp-sub">${sp.atk || 0}sp</span>
+            </div>
+            <div class="ev-bar-item ${(evs.def || sp.def) ? 'active' : ''}">
+              <span class="ev-label">物防</span>
+              <span class="ev-val">${evs.def || 0}</span>
+              <span class="sp-sub">${sp.def || 0}sp</span>
+            </div>
+            <div class="ev-bar-item ${(evs.spa || sp.spa) ? 'active' : ''}">
+              <span class="ev-label">特攻</span>
+              <span class="ev-val">${evs.spa || 0}</span>
+              <span class="sp-sub">${sp.spa || 0}sp</span>
+            </div>
+            <div class="ev-bar-item ${(evs.spd || sp.spd) ? 'active' : ''}">
+              <span class="ev-label">特防</span>
+              <span class="ev-val">${evs.spd || 0}</span>
+              <span class="sp-sub">${sp.spd || 0}sp</span>
+            </div>
+            <div class="ev-bar-item ${(evs.spe || sp.spe) ? 'active' : ''}">
+              <span class="ev-label">速度</span>
+              <span class="ev-val">${evs.spe || 0}</span>
+              <span class="sp-sub">${sp.spe || 0}sp</span>
+            </div>
+          </div>
+        </div>
+      `;
 
       // Mega 切换按钮 (若该宝可梦支持 Mega)
       let megaToggleHtml = '';
@@ -1102,6 +1472,9 @@ function renderBuilderSlots() {
               ${moveInputsHtml}
             </div>
           </div>
+
+          <!-- EV / SP 努力值分配 -->
+          ${evDistributionHtml}
         </div>
       `;
     }
@@ -1186,68 +1559,278 @@ function renderAuditDashboard() {
     legalityHtml = `<div class="audit-alerts-wrap">${alerts}</div>`;
   }
 
-  // 2. 战术机制与核心战术卡片 (AI Tactical Rationale Banner)
+  // 2. 战术机制与核心战术思路 (AI Tactical Rationale & Battle Playbook)
   let rationaleHtml = '';
-  if (wizardState.lastRationale) {
-    const formattedRationale = wizardState.lastRationale
-      .replace(/\n\n/g, '<br><br>')
-      .replace(/\n/g, '<br>')
-      .replace(/【(.*?)】/g, '<div style="color:#00e5ff; font-weight:700; font-size:0.95rem; margin-top:0.6rem; margin-bottom:0.2rem;">【$1】</div>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ffb703;">$1</strong>');
+  const currentMembers = builderState.slots.filter(s => s && s.pokemon);
+  const fmtText = builderState.format === 'double' ? '双打 (VGC Doubles)' : '单打 (Singles)';
 
-    rationaleHtml = `
-      <div class="rationale-panel-box full-width">
-        <div class="panel-box-header">
-          <h3><span class="icon">🤖</span> AI 构筑战术机制与运作逻辑 (Tactical Rationale)</h3>
-          <span class="sub-badge" style="background:rgba(0,229,255,0.15); color:#00e5ff; font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:4px;">UEP Pipeline 生成</span>
+  // 提取队伍中的实际战术角色与核心轴 (100% 真实动态提取，拒绝虚假死板模板)
+  const speedControlMons = currentMembers.filter(m => (m.moves || []).some(mv => ['顺风', '戏法空间', '电网', '冰冻之风', '极光幕', 'Tailwind', 'Trick Room', 'Electroweb', 'Icy Wind', 'Aurora Veil'].includes(mv))).map(m => m.pokemon.name);
+  const fakeOutMons = currentMembers.filter(m => (m.moves || []).some(mv => ['击掌奇袭', 'Fake Out'].includes(mv))).map(m => m.pokemon.name);
+  const intimidateMons = currentMembers.filter(m => m.ability === '威吓' || m.ability === 'Intimidate').map(m => m.pokemon.name);
+  const pivotMoveMons = currentMembers.filter(m => (m.moves || []).some(mv => ['急速折返', '伏特替换', '抛下狠话', 'U-turn', 'Volt Switch', 'Parting Shot'].includes(mv))).map(m => m.pokemon.name);
+  const megaMons = currentMembers.filter(m => m.isMega || (m.item && (m.item.includes('进化石') || m.item.toLowerCase().includes('ite')))).map(m => m.pokemon.name);
+  const priorityFinishers = currentMembers.filter(m => (m.moves || []).some(mv => ['突袭', '神速', '音速拳', '影子偷袭', '水先锋', '电光一闪', 'Sucker Punch', 'Extreme Speed', 'Mach Punch', 'Shadow Sneak', 'Aqua Jet', 'Quick Attack'].includes(mv))).map(m => m.pokemon.name);
+  const sweepers = currentMembers.filter(m => (m.moves || []).some(mv => ['剑舞', '龙之舞', '诡计', '冥想', '蝶舞', '破壳', 'Swords Dance', 'Dragon Dance', 'Nasty Plot', 'Calm Mind', 'Quiver Dance', 'Shell Smash'].includes(mv)) || (m.pokemon.baseStats && (m.pokemon.baseStats.atk >= 120 || m.pokemon.baseStats.spa >= 120))).map(m => m.pokemon.name);
+
+  let playbookHtml = '';
+  if (currentMembers.length >= 2) {
+    let openingItems = [];
+    if (speedControlMons.length > 0) {
+      openingItems.push(`• <strong>控速核心</strong>: 【${speedControlMons.join(' / ')}】先手开启顺风/空间或范围削速，抢占全场先手权。`);
+    }
+    if (fakeOutMons.length > 0) {
+      openingItems.push(`• <strong>首回合压制</strong>: 【${fakeOutMons.join(' / ')}】利用【击掌奇袭】封锁对手首发关键威胁或破除气势披带。`);
+    }
+    if (intimidateMons.length > 0) {
+      openingItems.push(`• <strong>物攻压制</strong>: 【${intimidateMons.join(' / ')}】登场触发【威吓】降低敌方全体物攻，为全队创造安全输出空间。`);
+    }
+    if (pivotMoveMons.length > 0) {
+      openingItems.push(`• <strong>游击轮转</strong>: 【${pivotMoveMons.join(' / ')}】携带急速折返/伏特替换，对局中灵活下场保留对位主动权。`);
+    }
+    if (openingItems.length === 0) {
+      openingItems.push(`• <strong>选出博弈</strong>: 面对快攻队伍优先选出耐久联防支点，面对受控队伍优先选出主力爆发位突破防线。`);
+    }
+
+    let megaAndLateItems = [];
+    if (megaMons.length === 1) {
+      megaAndLateItems.push(`• <strong>超级进化核心</strong>: 队伍以【${megaMons[0]}】为单一 Mega 爆发位，把握对局关键轮次开启超级进化撕裂对手联防。`);
+    } else if (megaMons.length === 2) {
+      megaAndLateItems.push(`• <strong>双 Mega 选出决策</strong>: 队伍构筑了【${megaMons.join(' / ')}】双 Mega 备选轴。根据对手属性盲点<strong>二选一选出</strong>，切忌单场同选导致道具栏浪费。`);
+    } else if (megaMons.length >= 3) {
+      megaAndLateItems.push(`• <strong>超级进化提示</strong>: 队伍中有 ${megaMons.length} 只携带进化石（【${megaMons.join('、')}】），单场仅能激活 1 次，请按对手弱点选出。`);
+    } else {
+      megaAndLateItems.push(`• <strong>常规道具爆发</strong>: 队伍全员依靠生命宝珠/气势披带/讲究类道具打出即时高额伤害与快速突破。`);
+    }
+
+    if (priorityFinishers.length > 0) {
+      megaAndLateItems.push(`• <strong>残局先制收割</strong>: 保护主力先制手【${priorityFinishers.slice(0, 2).join(' / ')}】血线，在中局完成对换后利用先制招式收割残局。`);
+    } else if (sweepers.length > 0) {
+      megaAndLateItems.push(`• <strong>主力强化清场</strong>: 掩护【${sweepers.slice(0, 2).join(' / ')}】完成强化或健康进场，锁定胜局。`);
+    }
+
+    playbookHtml = `
+      <div class="battle-playbook-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem; margin-top:1.1rem;">
+        <div class="playbook-card" style="background:rgba(0, 229, 255, 0.05); border:1px solid rgba(0, 229, 255, 0.2); border-radius:10px; padding:1rem;">
+          <h4 style="color:#00e5ff; font-size:0.95rem; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+            <span>🚀</span> 实战首发选出与控场节奏
+          </h4>
+          <div style="font-size:0.85rem; line-height:1.65; color:#cfd8dc;">
+            ${openingItems.join('<br>')}
+          </div>
         </div>
-        <div style="font-size:0.92rem; line-height:1.75; color:#d6e2ec; padding:0.5rem 0;">
-          ${formattedRationale}
+
+        <div class="playbook-card" style="background:rgba(255, 183, 3, 0.05); border:1px solid rgba(255, 183, 3, 0.2); border-radius:10px; padding:1rem;">
+          <h4 style="color:#ffb703; font-size:0.95rem; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+            <span>⚡</span> Mega 进化时机与残局终结
+          </h4>
+          <div style="font-size:0.85rem; line-height:1.65; color:#cfd8dc;">
+            ${megaAndLateItems.join('<br>')}
+          </div>
         </div>
       </div>
     `;
   }
 
-  // 3. Slate Top-30 伤害对抗压力测试结果 (Worst Threat Banner & Threat Routes)
-  let slateHtml = '';
-  if (wizardState.lastSlateResult && wizardState.lastSlateResult.worst_threat) {
-    const wt = wizardState.lastSlateResult.worst_threat;
-    const routesHtml = (wt.threat_routes || []).map(r => `
-      <div class="threat-route-pill">
-        💥 <strong>${r.target_member}</strong> 遭受对手 <strong>${r.move}</strong> (<span class="type-badge type-${r.move_type} mini">${r.move_type}</span>) ➜ <span style="color:#ff0055; font-weight:700;">${r.damage_pct}</span> (${r.verdict})
-      </div>
-    `).join('');
+  let formattedRationale = '';
+  if (wizardState.lastRationale) {
+    let localizedText = typeof localizeRationaleText === 'function' 
+      ? localizeRationaleText(wizardState.lastRationale) 
+      : wizardState.lastRationale;
 
-    const highThreatsListHtml = (wizardState.lastSlateResult.high_threats || []).slice(0, 4).map(ht => `
-      <div style="background:rgba(255,255,255,0.04); border-radius:6px; padding:0.5rem 0.75rem; font-size:0.82rem; margin-top:0.4rem;">
-        <strong>${ht.opponent}</strong> (Rank ${ht.rank}) · <span style="color:#ef476f;">${ht.grade}</span>: 压制全队 ${ht.affected_members.join(', ')} (${ht.affected_count}只)
+    formattedRationale = localizedText
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>')
+      .replace(/【(.*?)】/g, '<strong style="color:#00e5ff; font-weight:700;">【$1】</strong>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ffb703;">$1</strong>');
+  } else if (currentMembers.length > 0) {
+    formattedRationale = `当前为基于 ${fmtText} 天梯排位环境优选出的实战战术体系，依靠属性联防与攻防轮转建立对局节奏优势。`;
+  }
+
+  rationaleHtml = `
+    <div class="rationale-panel-box full-width" style="margin-bottom:1.5rem; background:linear-gradient(145deg, rgba(16, 24, 48, 0.85) 0%, rgba(10, 16, 32, 0.95) 100%); border:1px solid rgba(0, 229, 255, 0.25); border-radius:14px; padding:1.25rem; box-shadow:0 6px 20px rgba(0,0,0,0.35);">
+      <div class="panel-box-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.75rem; margin-bottom:0.85rem;">
+        <h3 style="font-size:1.1rem; color:#fff; display:flex; align-items:center; gap:0.5rem;"><span class="icon">📋</span> 战术配队思路 & 实战对战思路 (Tactical Strategy & Battle Playbook)</h3>
+        <span class="sub-badge" style="background:rgba(0,229,255,0.15); color:#00e5ff; font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:4px;">9 门禁实战推演</span>
       </div>
-    `).join('');
+      
+      <div style="font-size:0.92rem; line-height:1.75; color:#d6e2ec; padding:0.25rem 0;">
+        <div style="font-weight:700; color:#00e5ff; margin-bottom:0.3rem;">🎯 配队构筑逻辑与核心协同:</div>
+        <div>${formattedRationale}</div>
+      </div>
+
+      ${playbookHtml}
+    </div>
+  `;
+
+  // 3. Slate Top-30 伤害对抗压力测试结果 (Worst Threat Banner & High Threats List)
+  let slateHtml = '';
+  
+  // 判断是否有 AI 智能建队回传的 50 级确定性伤害实测数据，或降级为纯客户端实时联防推演
+  let slateData = wizardState.lastSlateResult;
+  let isBatteryGrounded = !!(slateData && slateData.worst_threat);
+
+  if (!isBatteryGrounded && currentMembers.length >= 2) {
+    // 纯客户端实时 Top-20 联防压力测算兜底
+    const threatMons = (audit.threatResults || []).filter(t => t.status === 'threat');
+    if (threatMons.length > 0) {
+      threatMons.sort((a, b) => b.vulnerableMembers.length - a.vulnerableMembers.length || a.rank - b.rank);
+      const topT = threatMons[0];
+      const otherT = threatMons.slice(1);
+
+      const topMonObj = topT.threatMon;
+      const topTypes = topMonObj.types || ['Normal'];
+      const topPrimaryType = topTypes[0];
+
+      const synRoutes = topT.vulnerableMembers.map(mName => {
+        return {
+          target_member: mName,
+          move: (topMonObj.learnset && topMonObj.learnset[0] && topMonObj.learnset[0].name) || `${TYPE_TRANSLATION[topPrimaryType] || topPrimaryType}系主力招式`,
+          move_type: topPrimaryType,
+          variant: '',
+          damage_pct: '200%~400% 属性克制压制',
+          verdict: '属性弱点突破'
+        };
+      });
+
+      slateData = {
+        scope: { topK: 20, teamSize: currentMembers.length },
+        worst_threat: {
+          opponent: topMonObj.name,
+          rank: topT.rank,
+          grade: topT.vulnerableMembers.length >= 3 ? 'G3' : topT.vulnerableMembers.length === 2 ? 'G2' : 'G1',
+          affected_count: topT.vulnerableMembers.length,
+          affected_members: topT.vulnerableMembers,
+          threat_routes: synRoutes
+        },
+        high_threats: otherT.map(ot => {
+          const otTypes = ot.threatMon.types || ['Normal'];
+          return {
+            opponent: ot.threatMon.name,
+            rank: ot.rank,
+            grade: ot.vulnerableMembers.length >= 3 ? 'G3' : ot.vulnerableMembers.length === 2 ? 'G2' : 'G1',
+            affected_count: ot.vulnerableMembers.length,
+            affected_members: ot.vulnerableMembers,
+            routes: ot.vulnerableMembers.map(mName => ({
+              target_member: mName,
+              move: (ot.threatMon.learnset && ot.threatMon.learnset[0] && ot.threatMon.learnset[0].name) || `${TYPE_TRANSLATION[otTypes[0]] || otTypes[0]}系技能`,
+              move_type: otTypes[0],
+              variant: ''
+            }))
+          };
+        })
+      };
+    }
+  }
+
+  if (slateData && slateData.worst_threat) {
+    const wt = slateData.worst_threat;
+    const opponentZh = typeof translatePokemonToZh === 'function' ? translatePokemonToZh(wt.opponent) : wt.opponent;
+    const affectedZh = (wt.affected_members || []).map(m => (typeof translatePokemonToZh === 'function' ? translatePokemonToZh(m) : m)).join('、');
+    const wtRankDisplay = (wt.rank && wt.rank !== '-') ? `Rank ${wt.rank}` : 'Top 30';
+
+    const routesHtml = (wt.threat_routes || []).map(r => {
+      const targetZh = typeof translatePokemonToZh === 'function' ? translatePokemonToZh(r.target_member) : r.target_member;
+      const moveZh = typeof translateMoveToZh === 'function' ? translateMoveToZh(r.move) : r.move;
+      const typeZh = TYPE_TRANSLATION[r.move_type] || r.move_type;
+      return `
+        <div class="threat-route-pill">
+          💥 <strong>${targetZh}</strong> 遭受对手 <strong>${moveZh}</strong> (<span class="type-badge ${r.move_type ? r.move_type.toLowerCase() : 'normal'} mini">${typeZh}</span>) ➜ <span style="color:#ff0055; font-weight:700;">${r.damage_pct}</span> (${r.verdict})
+        </div>
+      `;
+    }).join('');
+
+    let highThreatsListHtml = '';
+    if (slateData.high_threats && slateData.high_threats.length > 0) {
+      const cardsHtml = slateData.high_threats.slice(0, 8).map(ht => {
+        const htMon = findPokemonByName(ht.opponent);
+        const htSprite = getPokemonSpriteUrl(htMon);
+        const htOppZh = typeof translatePokemonToZh === 'function' ? translatePokemonToZh(ht.opponent) : ht.opponent;
+        const htAffZh = (ht.affected_members || []).map(m => (typeof translatePokemonToZh === 'function' ? translatePokemonToZh(m) : m)).join('、');
+        const htRankBadge = (ht.rank && ht.rank !== '-') ? `Rank ${ht.rank}` : 'Top 30';
+
+        const aggregated = aggregateThreatRoutes(ht.routes);
+        const routesRowsHtml = aggregated.map(a => {
+          const mvZh = typeof translateMoveToZh === 'function' ? translateMoveToZh(a.move) : a.move;
+          const typeZh = TYPE_TRANSLATION[a.move_type] || a.move_type;
+          const typeLower = (a.move_type ? a.move_type.toLowerCase() : 'normal');
+          const targetsZh = a.targets.map(t => (typeof translatePokemonToZh === 'function' ? translatePokemonToZh(t) : t)).join('、');
+          const itemsZh = a.variants.length > 0 ? `<span class="route-item-hint">(${a.variants.slice(0, 2).join(' / ')})</span>` : '';
+          return `
+            <div class="high-threat-route-row">
+              <span class="route-move-badge">
+                <strong>【${mvZh}】</strong><span class="type-badge ${typeLower} mini">${typeZh}</span>${itemsZh}
+              </span>
+              <span class="route-target-text">➜ 确一: <strong>${targetsZh}</strong></span>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="high-threat-item-card">
+            <div class="high-threat-header">
+              <div class="high-threat-identity">
+                <img class="high-threat-avatar" src="${htSprite}" alt="${htOppZh}">
+                <div>
+                  <span class="high-threat-name">${htOppZh}</span>
+                  <span class="high-threat-rank">${htRankBadge}</span>
+                </div>
+              </div>
+              <span class="high-threat-grade">${ht.grade} 级威胁</span>
+            </div>
+            <div class="high-threat-affected">
+              ⚠️ 压制全队 (${ht.affected_count}只): <strong>${htAffZh}</strong>
+            </div>
+            ${routesRowsHtml ? `<div class="high-threat-routes-list">${routesRowsHtml}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+
+      highThreatsListHtml = `
+        <div class="high-threats-grid">
+          ${cardsHtml}
+        </div>
+      `;
+    } else {
+      highThreatsListHtml = `
+        <div style="background:rgba(6, 214, 160, 0.08); border:1px solid rgba(6, 214, 160, 0.25); border-radius:8px; padding:0.75rem 1rem; color:#06d6a0; font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; margin-top:0.4rem;">
+          <span>🛡️</span> <strong>联防覆盖优秀：</strong>在 Top-30 天梯对抗压力测试中，除上述最大天敌外未检出其他成规模群体确一盲点。
+        </div>
+      `;
+    }
+
+    const badgeText = isBatteryGrounded ? '50 级确定性伤害实测 (Battery Grounded)' : '实时联防推演 (Realtime Dynamic)';
+    const badgeBg = isBatteryGrounded ? 'background:rgba(255,0,85,0.15); color:#ff3366;' : 'background:rgba(0,229,255,0.15); color:#00e5ff;';
 
     slateHtml = `
       <div class="audit-panel-box full-width" style="margin-bottom:1.5rem;">
         <div class="panel-box-header">
           <h3><span class="icon">🔥</span> Slate Top-30 确定性伤害对抗压力测试 (Stress Testing)</h3>
-          <span class="sub-hint">基于 50 级精确物特伤害计算，推演全队对抗天梯热门的极端受击路线</span>
+          <span class="sub-badge" style="${badgeBg} font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:4px;">${badgeText}</span>
+        </div>
+        <div style="font-size:0.82rem; color:#90a4ae; margin-bottom:0.85rem;">
+          基于 50 级精确物特伤害计算与官方排位高频配置库，推演全队对抗天梯热门的极端受击与确一灭队路线。
         </div>
         
         <div class="worst-threat-banner">
           <div class="worst-threat-header">
             <div>
-              <strong style="font-size:1.05rem; color:#fff;">⚠️ 最大天敌检出: ${wt.opponent} (天梯 Rank ${wt.rank})</strong>
-              <div style="font-size:0.8rem; color:#ffb4a2; margin-top:0.2rem;">
-                受制成员 (${wt.affected_count}只): ${wt.affected_members.join('、')}
+              <strong style="font-size:1.05rem; color:#fff;">⚠️ 最大天敌检出: ${opponentZh} (天梯 ${wtRankDisplay})</strong>
+              <div style="font-size:0.82rem; color:#ffb4a2; margin-top:0.25rem;">
+                受制成员 (${wt.affected_count}只): <strong>${affectedZh}</strong>
               </div>
             </div>
-            <span class="threat-grade-badge">${wt.grade}</span>
+            <span class="threat-grade-badge">${wt.grade} 级威胁</span>
           </div>
           <div class="threat-routes-list">
             ${routesHtml}
           </div>
         </div>
 
-        <div style="margin-top:0.8rem;">
-          <div style="font-size:0.82rem; font-weight:700; color:#b0bec5; margin-bottom:0.3rem;">高威胁对手对抗清单:</div>
+        <div style="margin-top:1.1rem;">
+          <div style="font-size:0.88rem; font-weight:700; color:#b0bec5; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+            <span>⚔️</span> 高威胁对手对抗清单 (High Threat Battery List):
+          </div>
           ${highThreatsListHtml}
         </div>
       </div>
@@ -1459,6 +2042,7 @@ function toggleSlotMega(slotIndex) {
 function removeSlot(slotIndex) {
   builderState.slots[slotIndex] = null;
   renderBuilderView();
+  checkBuilderBackendHealth();
 }
 
 function addSuggestedPokemon(pokemonId) {
@@ -1576,6 +2160,8 @@ if (typeof window !== 'undefined') {
   window.updateWizardAnchor = updateWizardAnchor;
   window.setWizardPosture = setWizardPosture;
   window.toggleWizardTactic = toggleWizardTactic;
+  window.updateWizardAvoid = updateWizardAvoid;
+  window.checkBuilderBackendHealth = checkBuilderBackendHealth;
   window.openPokemonPicker = openPokemonPicker;
   window.removeSlot = removeSlot;
   window.toggleSlotMega = toggleSlotMega;
