@@ -2765,7 +2765,9 @@ async function sendTeamQaMessage(questionText) {
   });
 
   const audit = runTeamAudit();
+  const currentFormat = builderState.format || 'single';
   const auditSummary = {
+    format: currentFormat,
     posture: wizardState.posture || 'balance',
     rationale: wizardState.lastRationale || '',
     weaknesses: audit.weaknessStats || {},
@@ -2778,6 +2780,7 @@ async function sendTeamQaMessage(questionText) {
   };
 
   const requestBody = {
+    format: currentFormat,
     team: teamPayload,
     audit_summary: auditSummary,
     history: teamQaState.history.slice(0, -1), // previous history excluding the current question
