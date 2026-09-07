@@ -1007,14 +1007,14 @@ function renderBuilderWizard() {
   // 4. 后端在线状态徽标与节点配置入口
   const currentApiBase = getBuilderApiBaseUrl();
   const isLocalApi = currentApiBase.includes('127.0.0.1') || currentApiBase.includes('localhost');
-  const apiLabel = isLocalApi ? '本地 :8000' : 'Hugging Face 云端';
+  const apiLabel = isLocalApi ? '本地' : '云端';
 
   let statusBadgeHtml = `
     <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
       <span class="backend-status-pill ${wizardState.backendOnline === true ? 'online' : wizardState.backendOnline === false ? 'offline' : ''}" id="wizardBackendStatusPill" onclick="openApiConfigModal()" style="cursor:pointer;" title="点击配置 API 服务节点">
         <span class="status-dot"></span> ${wizardState.backendOnline === true ? `🟢 AI 引擎在线 (${apiLabel})` : wizardState.backendOnline === false ? `🔴 引擎未连接 (${apiLabel})` : '🟡 检测引擎中...'}
       </span>
-      <button type="button" class="btn-api-config" onclick="openApiConfigModal()" title="设置后端 API 节点 (支持本地 / Hugging Face 线上地址)">
+      <button type="button" class="btn-api-config" onclick="openApiConfigModal()" title="设置后端 API 节点 (支持本地 / 云端线上地址)">
         ⚙️ 节点设置
       </button>
     </div>
