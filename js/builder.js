@@ -2003,11 +2003,7 @@ function renderAuditDashboard() {
       ? localizeRationaleText(wizardState.lastRationale) 
       : wizardState.lastRationale;
 
-    formattedRationale = localizedText
-      .replace(/\n\n/g, '<br><br>')
-      .replace(/\n/g, '<br>')
-      .replace(/【(.*?)】/g, '<strong style="color:#00e5ff; font-weight:700;">【$1】</strong>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong style="color:#ffb703;">$1</strong>');
+    formattedRationale = formatQaMarkdown(localizedText);
   } else if (currentMembers.length > 0) {
     formattedRationale = `当前为基于 ${fmtText} 天梯排位环境优选出的实战战术体系，依靠属性联防与攻防轮转建立对局节奏优势。`;
   }
@@ -2567,6 +2563,21 @@ function formatQaMarkdown(text) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
+  // Special block: 【⚡ 版本规则与数据冲突提示】
+  safe = safe.replace(/【⚡\s*版本规则与数据冲突提示】([\s\S]*?)(?=\n\s*【|\n\s*###|\n\s*##|$)/gi, function(match, body) {
+    let cleanBody = body.trim()
+      .replace(/^\s*[-*]\s+(.*$)/gim, '<li style="margin-left:1.2rem; margin-bottom:0.35rem; line-height:1.6; color:#fff8e1;">$1</li>')
+      .replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+    return `
+      <div class="qa-conflict-card" style="background:rgba(255, 183, 3, 0.08); border:1px solid #ffb703; border-left:4px solid #ffb703; border-radius:8px; padding:0.85rem 1rem; margin:0.75rem 0; color:#ffe082; box-shadow:0 4px 14px rgba(255,183,3,0.15);">
+        <div style="font-weight:700; color:#ffd54f; font-size:0.95rem; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+          <span>⚡</span> <span>版本规则与数据冲突提示 (Version Conflict Warning)</span>
+        </div>
+        <div class="conflict-body" style="font-size:0.86rem; line-height:1.65; color:#fff8e1;">${cleanBody}</div>
+      </div>
+    `;
+  });
+
   // Code blocks ```...```
   safe = safe.replace(/```([\s\S]*?)```/g, '<pre class="qa-code-block" style="background:rgba(10,14,26,0.85); padding:0.65rem 0.85rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.84rem; border:1px solid rgba(0,229,255,0.2); margin:0.6rem 0; color:#00e5ff;"><code>$1</code></pre>');
 
@@ -2927,6 +2938,7 @@ async function sendTeamQaMessage(questionText) {
             const toolArgs = tc.args || {};
             let toolLabel = '官方数据库';
             let queryDetail = '';
+            let isWebSearch = false;
             if (toolName === 'query_pokemon_dex') {
               toolLabel = '🔍 [图鉴/数值库]';
               queryDetail = `检索 ${toolArgs.name || ''} 种族/50级实数/Mega`;
@@ -2936,6 +2948,10 @@ async function sendTeamQaMessage(questionText) {
             } else if (toolName === 'query_tactic_archetype') {
               toolLabel = '⚡ [战术套路库]';
               queryDetail = `查询 ${toolArgs.tactic || ''} 核心开启手与打手`;
+            } else if (toolName === 'query_champions_web') {
+              toolLabel = '🌐 [网络检索 · Champions官方]';
+              queryDetail = `核实: ${toolArgs.query || ''}`;
+              isWebSearch = true;
             } else {
               toolLabel = `🔧 [${toolName}]`;
               queryDetail = JSON.stringify(toolArgs);
@@ -2944,8 +2960,13 @@ async function sendTeamQaMessage(questionText) {
             if (toolContainer) {
               const badge = document.createElement('div');
               badge.className = 'qa-tool-badge';
-              badge.style.cssText = 'display:inline-flex; align-items:center; gap:0.35rem; background:rgba(0,229,255,0.12); border:1px solid rgba(0,229,255,0.3); border-radius:6px; padding:0.2rem 0.5rem; font-size:0.75rem; color:#00e5ff;';
-              badge.innerHTML = `<span>${toolLabel}</span> <span style="color:#b0bec5;">${escapeHtml(queryDetail)}</span>`;
+              if (isWebSearch) {
+                badge.style.cssText = 'display:inline-flex; align-items:center; gap:0.35rem; background:rgba(255,183,3,0.15); border:1px solid rgba(255,183,3,0.4); border-radius:6px; padding:0.2rem 0.5rem; font-size:0.75rem; color:#ffb703; box-shadow:0 2px 8px rgba(255,183,3,0.15);';
+                badge.innerHTML = `<span>${toolLabel}</span> <span style="color:#ffe082;">${escapeHtml(queryDetail)}</span>`;
+              } else {
+                badge.style.cssText = 'display:inline-flex; align-items:center; gap:0.35rem; background:rgba(0,229,255,0.12); border:1px solid rgba(0,229,255,0.3); border-radius:6px; padding:0.2rem 0.5rem; font-size:0.75rem; color:#00e5ff;';
+                badge.innerHTML = `<span>${toolLabel}</span> <span style="color:#b0bec5;">${escapeHtml(queryDetail)}</span>`;
+              }
               toolContainer.appendChild(badge);
               const scrollArea = document.getElementById('teamQaMessagesScroll');
               if (scrollArea) scrollArea.scrollTop = scrollArea.scrollHeight;
