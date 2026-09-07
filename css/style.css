@@ -5377,6 +5377,14 @@ body {
   border-color: var(--accent-cyan);
 }
 
+.slot-item-input {
+  cursor: pointer;
+}
+
+.slot-item-input:focus {
+  cursor: text;
+}
+
 .slot-moves-group {
   grid-column: 1 / -1;
   margin-top: 0.3rem;

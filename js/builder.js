@@ -1614,6 +1614,16 @@ function renderBuilderSlots() {
   const grid = document.getElementById('builderSlotsGrid');
   if (!grid) return;
 
+  // 确保全局中文道具 datalist 存在且注入全量官方对战道具
+  let datalist = document.getElementById('slotItemsDatalist');
+  if (!datalist) {
+    datalist = document.createElement('datalist');
+    datalist.id = 'slotItemsDatalist';
+    const itemsList = (typeof CHAMPIONS_ALL_ITEMS !== 'undefined') ? CHAMPIONS_ALL_ITEMS : [];
+    datalist.innerHTML = itemsList.map(item => `<option value="${item}"></option>`).join('');
+    document.body.appendChild(datalist);
+  }
+
   grid.innerHTML = '';
 
   builderState.slots.forEach((slot, idx) => {
@@ -1795,7 +1805,14 @@ function renderBuilderSlots() {
           <!-- 道具与特性 -->
           <div class="slot-field-group">
             <label>道具</label>
-            <input type="text" class="builder-input" value="${slot.item || ''}" placeholder="如: 气势披带" onchange="updateSlotField(${idx}, 'item', this.value)">
+            <input type="text" 
+                   class="builder-input slot-item-input" 
+                   list="slotItemsDatalist" 
+                   value="${slot.item || ''}" 
+                   placeholder="如: 气势披带 (可输入搜索)" 
+                   oninput="updateSlotField(${idx}, 'item', this.value)"
+                   onchange="updateSlotField(${idx}, 'item', this.value)"
+                   autocomplete="off">
           </div>
 
           <div class="slot-field-group">
@@ -2319,8 +2336,8 @@ function updateSlotField(slotIndex, field, value) {
 
   if (field === 'item') {
     const isMega = value.includes('进化石');
-    slot.isMega = isMega;
     if (isMega) {
+      slot.isMega = true;
       if (value.includes('Y') || value.includes('Ｙ')) {
         slot.megaBranch = 'Y';
       } else if (value.includes('X') || value.includes('Ｘ')) {
@@ -2331,6 +2348,11 @@ function updateSlotField(slotIndex, field, value) {
       const activeMon = getActiveCombatant(slot.pokemon, slot.isMega, slot.megaBranch);
       if (activeMon && activeMon.abilities && activeMon.abilities[0]) {
         slot.ability = typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name;
+      }
+    } else if (slot.isMega) {
+      slot.isMega = false;
+      if (slot.pokemon && slot.pokemon.abilities && slot.pokemon.abilities[0]) {
+        slot.ability = typeof slot.pokemon.abilities[0] === 'string' ? slot.pokemon.abilities[0] : slot.pokemon.abilities[0].name;
       }
     }
     renderBuilderSlots();
