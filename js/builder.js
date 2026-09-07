@@ -1810,8 +1810,8 @@ function renderBuilderSlots() {
                    list="slotItemsDatalist" 
                    value="${slot.item || ''}" 
                    placeholder="如: 气势披带 (可输入搜索)" 
-                   oninput="updateSlotField(${idx}, 'item', this.value)"
-                   onchange="updateSlotField(${idx}, 'item', this.value)"
+                   oninput="updateSlotField(${idx}, 'item', this.value, true)"
+                   onchange="updateSlotField(${idx}, 'item', this.value, false)"
                    autocomplete="off">
           </div>
 
@@ -2328,14 +2328,18 @@ function renderAuditDashboard() {
 // 7. 槽位修改与模态框事件
 // ==========================================================================
 
-function updateSlotField(slotIndex, field, value) {
+function updateSlotField(slotIndex, field, value, isFromInput = false) {
   const slot = builderState.slots[slotIndex];
   if (!slot) return;
 
+  const prevIsMega = !!slot.isMega;
+  const prevBranch = slot.megaBranch;
   slot[field] = value;
 
+  let needSlotRerender = false;
+
   if (field === 'item') {
-    const isMega = value.includes('进化石');
+    const isMega = typeof value === 'string' && value.includes('进化石');
     if (isMega) {
       slot.isMega = true;
       if (value.includes('Y') || value.includes('Ｙ')) {
@@ -2349,12 +2353,23 @@ function updateSlotField(slotIndex, field, value) {
       if (activeMon && activeMon.abilities && activeMon.abilities[0]) {
         slot.ability = typeof activeMon.abilities[0] === 'string' ? activeMon.abilities[0] : activeMon.abilities[0].name;
       }
-    } else if (slot.isMega) {
+      if (!isFromInput && (!prevIsMega || prevBranch !== slot.megaBranch)) {
+        needSlotRerender = true;
+      }
+    } else if (prevIsMega) {
       slot.isMega = false;
       if (slot.pokemon && slot.pokemon.abilities && slot.pokemon.abilities[0]) {
         slot.ability = typeof slot.pokemon.abilities[0] === 'string' ? slot.pokemon.abilities[0] : slot.pokemon.abilities[0].name;
       }
+      if (!isFromInput) {
+        needSlotRerender = true;
+      }
     }
+  } else if (field === 'nature') {
+    needSlotRerender = true;
+  }
+
+  if (needSlotRerender && !isFromInput) {
     renderBuilderSlots();
   }
   renderAuditDashboard();
