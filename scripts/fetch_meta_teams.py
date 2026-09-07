@@ -358,6 +358,10 @@ def fetch_meta_teams(
     return all_teams
 
 
+# Backward compatibility alias for CI workflows
+fetch_latest_teams = fetch_meta_teams
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="从 Limitless 全量抓取真实比赛队伍")
     parser.add_argument("--max-tournaments", type=int, default=50, help="最多抓取的完赛赛事数量 (默认: 50)")
