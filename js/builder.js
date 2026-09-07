@@ -1688,7 +1688,7 @@ function renderBuilderSlots() {
         `;
       }).join('');
 
-      // 计算 SP 和 EV 分配值
+      // 计算 SP 和 EV 分配值以及 50 级能力实数
       const sp = slot.sp || {};
       const evs = slot.evs || {
         hp: Math.min(252, (sp.hp || 0) * 8),
@@ -1698,45 +1698,67 @@ function renderBuilderSlots() {
         spd: Math.min(252, (sp.spd || 0) * 8),
         spe: Math.min(252, (sp.spe || 0) * 8),
       };
-      const totalSp = (sp.hp || 0) + (sp.atk || 0) + (sp.def || 0) + (sp.spa || 0) + (sp.spd || 0) + (sp.spe || 0);
+
+      // 性格修正对象
+      const natObj = (typeof NATURES !== 'undefined' ? NATURES.find(n => n.name.split(' ')[0] === slot.nature) : null) || { plus: null, minus: null };
+      const base = activeMon.baseStats || { hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 80 };
+
+      // SP 点数计算 (上限 32)
+      const spHp = sp.hp !== undefined ? sp.hp : Math.min(32, Math.round((evs.hp || 0) / 8));
+      const spAtk = sp.atk !== undefined ? sp.atk : Math.min(32, Math.round((evs.atk || 0) / 8));
+      const spDef = sp.def !== undefined ? sp.def : Math.min(32, Math.round((evs.def || 0) / 8));
+      const spSpa = sp.spa !== undefined ? sp.spa : Math.min(32, Math.round((evs.spa || 0) / 8));
+      const spSpd = sp.spd !== undefined ? sp.spd : Math.min(32, Math.round((evs.spd || 0) / 8));
+      const spSpe = sp.spe !== undefined ? sp.spe : Math.min(32, Math.round((evs.spe || 0) / 8));
+
+      // 50 级能力实数 (31 个体值基准)
+      const realHp = calculateStat50('hp', base.hp || 80, spHp, natObj);
+      const realAtk = calculateStat50('atk', base.atk || 80, spAtk, natObj);
+      const realDef = calculateStat50('def', base.def || 80, spDef, natObj);
+      const realSpa = calculateStat50('spa', base.spa || 80, spSpa, natObj);
+      const realSpd = calculateStat50('spd', base.spd || 80, spSpd, natObj);
+      const realSpe = calculateStat50('spe', base.spe || 80, spSpe, natObj);
+
+      const totalSp = spHp + spAtk + spDef + spSpa + spSpd + spSpe;
+
+      const statItems = [
+        { key: 'hp', label: 'HP', real: realHp, sp: spHp, ev: evs.hp !== undefined ? evs.hp : (spHp * 8), nat: null },
+        { key: 'atk', label: '物攻', real: realAtk, sp: spAtk, ev: evs.atk !== undefined ? evs.atk : (spAtk * 8), nat: natObj.plus === 'atk' ? '+' : natObj.minus === 'atk' ? '-' : null },
+        { key: 'def', label: '物防', real: realDef, sp: spDef, ev: evs.def !== undefined ? evs.def : (spDef * 8), nat: natObj.plus === 'def' ? '+' : natObj.minus === 'def' ? '-' : null },
+        { key: 'spa', label: '特攻', real: realSpa, sp: spSpa, ev: evs.spa !== undefined ? evs.spa : (spSpa * 8), nat: natObj.plus === 'spa' ? '+' : natObj.minus === 'spa' ? '-' : null },
+        { key: 'spd', label: '特防', real: realSpd, sp: spSpd, ev: evs.spd !== undefined ? evs.spd : (spSpd * 8), nat: natObj.plus === 'spd' ? '+' : natObj.minus === 'spd' ? '-' : null },
+        { key: 'spe', label: '速度', real: realSpe, sp: spSpe, ev: evs.spe !== undefined ? evs.spe : (spSpe * 8), nat: natObj.plus === 'spe' ? '+' : natObj.minus === 'spe' ? '-' : null },
+      ];
+
+      const statBarsHtml = statItems.map(st => {
+        const isInvested = st.sp > 0;
+        const natBadge = st.nat === '+' 
+          ? '<span class="nature-tag plus" title="性格修正 +10%">▲</span>' 
+          : st.nat === '-' 
+          ? '<span class="nature-tag minus" title="性格修正 -10%">▼</span>' 
+          : '';
+        const evText = isInvested ? `+${st.sp}sp` : `${st.sp}sp`;
+        
+        return `
+          <div class="ev-bar-item ${isInvested ? 'active' : ''} ${st.nat ? 'has-nature-' + (st.nat === '+' ? 'plus' : 'minus') : ''}">
+            <div class="ev-label-row">
+              <span class="ev-label">${st.label}</span>
+              ${natBadge}
+            </div>
+            <div class="stat-real-val" title="50级能力实数: ${st.real}">${st.real}</div>
+            <div class="sp-sub" title="努力值分配: ${st.ev} EV (${st.sp} SP)">${evText}</div>
+          </div>
+        `;
+      }).join('');
 
       const evDistributionHtml = `
         <div class="slot-evs-group full-width">
           <div class="slot-evs-header">
-            <label>⚡ 努力值 (EV / SP 分配)</label>
+            <label>⚡ 50 级能力实数 & 努力值分配</label>
             <span class="evs-total-tag">已分配: ${totalSp}/66 SP</span>
           </div>
           <div class="slot-evs-bars">
-            <div class="ev-bar-item ${(evs.hp || sp.hp) ? 'active' : ''}">
-              <span class="ev-label">HP</span>
-              <span class="ev-val">${evs.hp || 0}</span>
-              <span class="sp-sub">${sp.hp || 0}sp</span>
-            </div>
-            <div class="ev-bar-item ${(evs.atk || sp.atk) ? 'active' : ''}">
-              <span class="ev-label">物攻</span>
-              <span class="ev-val">${evs.atk || 0}</span>
-              <span class="sp-sub">${sp.atk || 0}sp</span>
-            </div>
-            <div class="ev-bar-item ${(evs.def || sp.def) ? 'active' : ''}">
-              <span class="ev-label">物防</span>
-              <span class="ev-val">${evs.def || 0}</span>
-              <span class="sp-sub">${sp.def || 0}sp</span>
-            </div>
-            <div class="ev-bar-item ${(evs.spa || sp.spa) ? 'active' : ''}">
-              <span class="ev-label">特攻</span>
-              <span class="ev-val">${evs.spa || 0}</span>
-              <span class="sp-sub">${sp.spa || 0}sp</span>
-            </div>
-            <div class="ev-bar-item ${(evs.spd || sp.spd) ? 'active' : ''}">
-              <span class="ev-label">特防</span>
-              <span class="ev-val">${evs.spd || 0}</span>
-              <span class="sp-sub">${sp.spd || 0}sp</span>
-            </div>
-            <div class="ev-bar-item ${(evs.spe || sp.spe) ? 'active' : ''}">
-              <span class="ev-label">速度</span>
-              <span class="ev-val">${evs.spe || 0}</span>
-              <span class="sp-sub">${sp.spe || 0}sp</span>
-            </div>
+            ${statBarsHtml}
           </div>
         </div>
       `;
@@ -2742,14 +2764,40 @@ async function sendTeamQaMessage(questionText) {
   // 组装队伍与审计数据
   const teamPayload = currentMembers.map(m => {
     const mon = getActiveCombatant(m.pokemon, m.isMega, m.megaBranch);
+    const base = mon.baseStats || { hp: 80, atk: 80, def: 80, spa: 80, spd: 80, spe: 80 };
+    const natObj = (typeof NATURES !== 'undefined' ? NATURES.find(n => n.name.split(' ')[0] === m.nature) : null) || { plus: null, minus: null };
+    const sp = m.sp || {};
+    const evs = m.evs || {};
+
+    const spHp = sp.hp !== undefined ? sp.hp : Math.min(32, Math.round((evs.hp || 0) / 8));
+    const spAtk = sp.atk !== undefined ? sp.atk : Math.min(32, Math.round((evs.atk || 0) / 8));
+    const spDef = sp.def !== undefined ? sp.def : Math.min(32, Math.round((evs.def || 0) / 8));
+    const spSpa = sp.spa !== undefined ? sp.spa : Math.min(32, Math.round((evs.spa || 0) / 8));
+    const spSpd = sp.spd !== undefined ? sp.spd : Math.min(32, Math.round((evs.spd || 0) / 8));
+    const spSpe = sp.spe !== undefined ? sp.spe : Math.min(32, Math.round((evs.spe || 0) / 8));
+
     const stats50 = {
-      hp: calculateStat50('hp', mon.baseStats ? mon.baseStats.hp : 80, m.evs ? (m.evs.hp || 0) : 0, null),
-      atk: calculateStat50('atk', mon.baseStats ? mon.baseStats.atk : 80, m.evs ? (m.evs.atk || 0) : 0, { plus: m.nature === '固执' ? 'atk' : null, minus: null }),
-      def: calculateStat50('def', mon.baseStats ? mon.baseStats.def : 80, m.evs ? (m.evs.def || 0) : 0, null),
-      spa: calculateStat50('spa', mon.baseStats ? mon.baseStats.spa : 80, m.evs ? (m.evs.spa || 0) : 0, { plus: m.nature === '内敛' ? 'spa' : null, minus: null }),
-      spd: calculateStat50('spd', mon.baseStats ? mon.baseStats.spd : 80, m.evs ? (m.evs.spd || 0) : 0, null),
-      spe: calculateStat50('spe', mon.baseStats ? mon.baseStats.spe : 80, m.evs ? (m.evs.spe || 0) : 0, { plus: ['爽朗', '胆小'].includes(m.nature) ? 'spe' : null, minus: null })
+      hp: calculateStat50('hp', base.hp || 80, spHp, natObj),
+      atk: calculateStat50('atk', base.atk || 80, spAtk, natObj),
+      def: calculateStat50('def', base.def || 80, spDef, natObj),
+      spa: calculateStat50('spa', base.spa || 80, spSpa, natObj),
+      spd: calculateStat50('spd', base.spd || 80, spSpd, natObj),
+      spe: calculateStat50('spe', base.spe || 80, spSpe, natObj)
     };
+
+    const spreadEvs = {
+      hp: evs.hp !== undefined ? evs.hp : (spHp * 8),
+      atk: evs.atk !== undefined ? evs.atk : (spAtk * 8),
+      def: evs.def !== undefined ? evs.def : (spDef * 8),
+      spa: evs.spa !== undefined ? evs.spa : (spSpa * 8),
+      spd: evs.spd !== undefined ? evs.spd : (spSpd * 8),
+      spe: evs.spe !== undefined ? evs.spe : (spSpe * 8)
+    };
+
+    const spreadSp = {
+      hp: spHp, atk: spAtk, def: spDef, spa: spSpa, spd: spSpd, spe: spSpe
+    };
+
     return {
       name: mon.nameEn || mon.enName || mon.name,
       displayName: mon.name,
@@ -2760,7 +2808,9 @@ async function sendTeamQaMessage(questionText) {
       isMega: !!m.isMega,
       moves: m.moves || [],
       stats: stats50,
-      evs: m.evs || {}
+      evs: spreadEvs,
+      sp: spreadSp,
+      ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 }
     };
   });
 

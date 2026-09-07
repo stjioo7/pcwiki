@@ -248,3 +248,13 @@ function calculateAllMovesMatchup(attacker, defender, nature, vpAlloc) {
 
   return results;
 }
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    calculateStat50,
+    calculateDamage,
+    calculateTypeMatchups,
+    getMoveTypeMultiplier,
+    calculateAllMovesMatchup
+  };
+}
