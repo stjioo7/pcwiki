@@ -1107,9 +1107,11 @@ function toggleWizardTactic(tacticId) {
 
 function renderBuilderView() {
   if (typeof document === 'undefined') return;
+  checkTeamQaSignature();
   renderBuilderWizard();
   renderBuilderSlots();
   renderAuditDashboard();
+  renderTeamQaPanel();
 }
 
 // 渲染 AI 智能组队向导 (Builder Wizard)
@@ -2459,10 +2461,415 @@ function renderPokemonPickerGrid(query = '') {
   });
 }
 
+// ==========================================================================
+// 8. 智能配队战术问答系统 (Team-Grounded Tactical Copilot)
+// ==========================================================================
+
+const teamQaState = {
+  teamSignature: '',
+  history: [], // [{ role: 'user', content: '...' }, { role: 'assistant', content: '...' }]
+  isStreaming: false,
+  hasChangedNotice: false,
+  errorMsg: null,
+  currentStreamText: ''
+};
+
+function escapeHtml(text) {
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function getTeamSignature() {
+  const members = builderState.slots.filter(s => s && s.pokemon);
+  return members.map(m => {
+    const mon = getActiveCombatant(m.pokemon, m.isMega, m.megaBranch);
+    return `${mon.name}_${m.item || ''}_${m.ability || ''}_${m.nature || ''}_${(m.moves || []).join(',')}`;
+  }).join('|');
+}
+
+function checkTeamQaSignature() {
+  const currentSig = getTeamSignature();
+  if (teamQaState.teamSignature && teamQaState.teamSignature !== currentSig && teamQaState.history.length > 0) {
+    teamQaState.history = [];
+    teamQaState.hasChangedNotice = true;
+  }
+  teamQaState.teamSignature = currentSig;
+}
+
+function formatQaMarkdown(text) {
+  if (!text) return '';
+  let safe = String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // Code blocks ```...```
+  safe = safe.replace(/```([\s\S]*?)```/g, '<pre class="qa-code-block" style="background:rgba(10,14,26,0.85); padding:0.65rem 0.85rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.84rem; border:1px solid rgba(0,229,255,0.2); margin:0.6rem 0; color:#00e5ff;"><code>$1</code></pre>');
+
+  // Inline code `...`
+  safe = safe.replace(/`([^`]+)`/g, '<code style="background:rgba(0,229,255,0.15); color:#00e5ff; padding:0.12rem 0.38rem; border-radius:4px; font-size:0.88em;">$1</code>');
+
+  // Bold **...**
+  safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong style="color:#ffb703; font-weight:700;">$1</strong>');
+
+  // Italic *...*
+  safe = safe.replace(/\*([^*]+)\*/g, '<em style="color:#90caf9;">$1</em>');
+
+  // Headings ### ...
+  safe = safe.replace(/^### (.*$)/gim, '<h4 style="font-size:0.96rem; color:#00e5ff; font-weight:700; margin:0.85rem 0 0.35rem 0; border-bottom:1px solid rgba(0,229,255,0.2); padding-bottom:0.25rem;">$1</h4>');
+  safe = safe.replace(/^## (.*$)/gim, '<h3 style="font-size:1.05rem; color:#fff; font-weight:700; margin:0.95rem 0 0.45rem 0;">$1</h3>');
+
+  // Unordered list items - ...
+  safe = safe.replace(/^\s*[-*]\s+(.*$)/gim, '<li style="margin-left:1.3rem; margin-bottom:0.3rem; line-height:1.6;">$1</li>');
+
+  // Ordered list items 1. ...
+  safe = safe.replace(/^\s*(\d+)\.\s+(.*$)/gim, '<li style="margin-left:1.3rem; margin-bottom:0.3rem; line-height:1.6;" value="$1">$2</li>');
+
+  // Brackets 【...】
+  safe = safe.replace(/【(.*?)】/g, '<strong style="color:#00e5ff; font-weight:700;">【$1】</strong>');
+
+  // Line breaks
+  safe = safe.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+
+  return safe;
+}
+
+function clearTeamQaHistory() {
+  teamQaState.history = [];
+  teamQaState.hasChangedNotice = false;
+  teamQaState.errorMsg = null;
+  renderTeamQaPanel();
+}
+
+function dismissTeamQaNotice() {
+  teamQaState.hasChangedNotice = false;
+  renderTeamQaPanel();
+}
+
+function submitTeamQa() {
+  const inputEl = document.getElementById('teamQaInput');
+  if (!inputEl) return;
+  const q = inputEl.value.trim();
+  if (!q) return;
+  inputEl.value = '';
+  sendTeamQaMessage(q);
+}
+
+function askSuggestedQaQuestion(qText) {
+  if (!qText || teamQaState.isStreaming) return;
+  sendTeamQaMessage(qText);
+}
+
+function renderTeamQaPanel() {
+  if (typeof document === 'undefined') return;
+  const container = document.getElementById('builderQaSection');
+  if (!container) return;
+
+  const currentMembers = builderState.slots.filter(s => s && s.pokemon);
+  if (currentMembers.length === 0) {
+    container.style.display = 'none';
+    container.innerHTML = '';
+    return;
+  }
+
+  container.style.display = 'block';
+
+  // 1. 变更通知条
+  let noticeHtml = '';
+  if (teamQaState.hasChangedNotice) {
+    noticeHtml = `
+      <div style="background:rgba(255, 183, 3, 0.12); border:1px solid rgba(255, 183, 3, 0.4); border-radius:8px; padding:0.6rem 1rem; color:#ffd54f; font-size:0.85rem; display:flex; justify-content:space-between; align-items:center; margin-bottom:0.85rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span>💡</span>
+          <strong>检测到队伍阵容配置已更新，战术问答上下文已自动同步重置为最新阵容。</strong>
+        </div>
+        <button type="button" onclick="dismissTeamQaNotice()" style="background:none; border:none; color:#ffd54f; cursor:pointer; font-size:1.1rem; padding:0 0.4rem;">✕</button>
+      </div>
+    `;
+  }
+
+  // 2. 消息流列表
+  let messagesHtml = '';
+  if (teamQaState.history.length === 0 && !teamQaState.isStreaming) {
+    messagesHtml = `
+      <div class="qa-welcome-bubble" style="background:linear-gradient(135deg, rgba(0,229,255,0.06) 0%, rgba(16,24,48,0.7) 100%); border:1px solid rgba(0,229,255,0.2); border-radius:12px; padding:1.25rem; color:#d6e2ec; font-size:0.9rem; line-height:1.75; margin-bottom:1rem;">
+        <div style="font-weight:700; color:#00e5ff; font-size:1rem; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+          <span>🛡️</span> 队伍战术顾问已就绪 (Grounded on Current Team)
+        </div>
+        <div>
+          当前已装载全队 <strong>${currentMembers.length} 只</strong> 宝可梦的精准 50 级数值、道具特性及 9 门禁实战审计数据。你可以直接提问：
+        </div>
+        <ul style="margin:0.5rem 0 0.5rem 1.25rem; color:#b0bec5; font-size:0.86rem;">
+          <li>这套队伍的核心首发与选出策略是什么？</li>
+          <li>面对当前最大天敌（如西狮海壬/多龙巴鲁托）应该如何联防与突破？</li>
+          <li>如果遇到戏法空间或顺风体系队伍，该如何处理？</li>
+          <li>把某位成员换成其他宝可梦，联防盲点和速度线会有什么变化？</li>
+        </ul>
+        <div style="font-size:0.8rem; color:#78909c; margin-top:0.4rem;">
+          🔒 <strong>防幻觉保障：</strong>所有战术分析仅基于当前队伍与 Pokémon Champions 专属排位数据，严禁跨版本脑补。
+        </div>
+      </div>
+    `;
+  } else {
+    messagesHtml = teamQaState.history.map((msg) => {
+      const isUser = msg.role === 'user';
+      if (isUser) {
+        return `
+          <div class="qa-msg-row user" style="display:flex; justify-content:flex-end; margin-bottom:0.85rem;">
+            <div class="qa-bubble user" style="max-width:80%; background:linear-gradient(135deg, #00b4d8 0%, #0077b6 100%); color:#fff; padding:0.75rem 1rem; border-radius:14px 14px 2px 14px; font-size:0.9rem; line-height:1.6; box-shadow:0 4px 12px rgba(0,180,216,0.25);">
+              ${escapeHtml(msg.content)}
+            </div>
+          </div>
+        `;
+      } else {
+        const formattedContent = formatQaMarkdown(msg.content);
+        return `
+          <div class="qa-msg-row assistant" style="display:flex; justify-content:flex-start; margin-bottom:0.85rem;">
+            <div class="qa-bubble assistant" style="max-width:92%; background:linear-gradient(145deg, rgba(16,24,48,0.95) 0%, rgba(10,16,32,0.98) 100%); border:1px solid rgba(0,229,255,0.25); color:#d6e2ec; padding:1rem 1.25rem; border-radius:14px 14px 14px 2px; font-size:0.9rem; line-height:1.75; box-shadow:0 6px 20px rgba(0,0,0,0.35);">
+              <div style="font-size:0.75rem; color:#00e5ff; font-weight:700; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+                <span>🤖</span> 战术顾问 (Tactical Copilot)
+              </div>
+              <div class="qa-content-body">${formattedContent}</div>
+            </div>
+          </div>
+        `;
+      }
+    }).join('');
+
+    if (teamQaState.isStreaming) {
+      const streamingFormatted = formatQaMarkdown(teamQaState.currentStreamText);
+      messagesHtml += `
+        <div class="qa-msg-row assistant" style="display:flex; justify-content:flex-start; margin-bottom:0.85rem;">
+          <div class="qa-bubble assistant streaming" id="qaStreamingBubble" style="max-width:92%; background:linear-gradient(145deg, rgba(16,24,48,0.95) 0%, rgba(10,16,32,0.98) 100%); border:1px solid rgba(0,229,255,0.4); color:#d6e2ec; padding:1rem 1.25rem; border-radius:14px 14px 14px 2px; font-size:0.9rem; line-height:1.75; box-shadow:0 6px 20px rgba(0,0,0,0.35);">
+            <div style="font-size:0.75rem; color:#00e5ff; font-weight:700; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+              <span>🤖</span> 战术顾问思考推演中...
+            </div>
+            <div class="qa-content-body">${streamingFormatted || '<span style="color:#78909c;">正在组织战术推演...</span>'}</div>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  // 3. 错误提示
+  let errorHtml = '';
+  if (teamQaState.errorMsg) {
+    errorHtml = `
+      <div style="background:rgba(255,51,102,0.12); border:1px solid rgba(255,51,102,0.4); border-radius:8px; padding:0.6rem 1rem; color:#ff3366; font-size:0.85rem; margin-bottom:0.75rem;">
+        ⚠️ ${escapeHtml(teamQaState.errorMsg)}
+      </div>
+    `;
+  }
+
+  // 4. 组装整块看板
+  container.innerHTML = `
+    <div class="team-qa-panel-box" style="background:linear-gradient(145deg, rgba(16, 24, 48, 0.9) 0%, rgba(10, 16, 32, 0.95) 100%); border:1px solid rgba(0, 229, 255, 0.3); border-radius:14px; padding:1.25rem; box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+      <div class="panel-box-header" style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.75rem; margin-bottom:0.85rem;">
+        <h3 style="font-size:1.15rem; color:#fff; display:flex; align-items:center; gap:0.5rem;">
+          <span class="icon">💬</span> 队伍专属战术问答 (Team Tactical Copilot)
+        </h3>
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <span class="sub-badge" style="background:rgba(0,229,255,0.15); color:#00e5ff; font-size:0.75rem; padding:0.2rem 0.5rem; border-radius:4px;">
+            已绑定当前阵容 (${currentMembers.length}只)
+          </span>
+          ${teamQaState.history.length > 0 ? `
+            <button type="button" class="btn-clear-qa" onclick="clearTeamQaHistory()" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#b0bec5; font-size:0.75rem; padding:0.2rem 0.6rem; border-radius:4px; cursor:pointer;" title="清空对话历史">
+              🗑️ 清空问答
+            </button>
+          ` : ''}
+        </div>
+      </div>
+
+      ${noticeHtml}
+      ${errorHtml}
+
+      <div class="qa-messages-scroll-area" id="teamQaMessagesScroll" style="max-height:480px; min-height:120px; overflow-y:auto; padding-right:0.4rem; margin-bottom:0.85rem;">
+        ${messagesHtml}
+      </div>
+
+      <!-- 问答输入框与发送按钮 -->
+      <div class="qa-input-box" style="display:flex; gap:0.6rem; align-items:center;">
+        <input 
+          type="text" 
+          id="teamQaInput" 
+          class="builder-input" 
+          style="flex:1; background:rgba(10,14,26,0.85); border:1px solid rgba(0,229,255,0.35); border-radius:8px; padding:0.7rem 1rem; color:#fff; font-size:0.92rem; outline:none;" 
+          placeholder="向战术顾问提问 (如: 这套队伍首发选出怎么打？/ 面对西狮海壬如何联防？)..." 
+          ${teamQaState.isStreaming ? 'disabled' : ''}
+          onkeydown="if(event.key==='Enter') submitTeamQa();"
+        >
+        <button 
+          type="button" 
+          id="teamQaSendBtn" 
+          class="btn-builder-action btn-auto-fill" 
+          style="padding:0.7rem 1.4rem; font-size:0.92rem; font-weight:700; white-space:nowrap; border-radius:8px; background:linear-gradient(135deg, #00e5ff 0%, #0077b6 100%); color:#0a0c16; border:none; cursor:pointer;"
+          onclick="submitTeamQa()"
+          ${teamQaState.isStreaming ? 'disabled' : ''}
+        >
+          ${teamQaState.isStreaming ? '⏳ 分析中...' : '⚡ 发送提问'}
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Auto scroll to bottom
+  const scrollArea = document.getElementById('teamQaMessagesScroll');
+  if (scrollArea) {
+    scrollArea.scrollTop = scrollArea.scrollHeight;
+  }
+}
+
+async function sendTeamQaMessage(questionText) {
+  if (!questionText || teamQaState.isStreaming) return;
+
+  const currentMembers = builderState.slots.filter(s => s && s.pokemon);
+  if (currentMembers.length === 0) {
+    alert('请先在卡位中添加宝可梦后再进行战术问答！');
+    return;
+  }
+
+  teamQaState.history.push({ role: 'user', content: questionText });
+  teamQaState.isStreaming = true;
+  teamQaState.errorMsg = null;
+  teamQaState.currentStreamText = '';
+  renderTeamQaPanel();
+
+  // 组装队伍与审计数据
+  const teamPayload = currentMembers.map(m => {
+    const mon = getActiveCombatant(m.pokemon, m.isMega, m.megaBranch);
+    const stats50 = {
+      hp: calculateStat50('hp', mon.baseStats ? mon.baseStats.hp : 80, m.evs ? (m.evs.hp || 0) : 0, null),
+      atk: calculateStat50('atk', mon.baseStats ? mon.baseStats.atk : 80, m.evs ? (m.evs.atk || 0) : 0, { plus: m.nature === '固执' ? 'atk' : null, minus: null }),
+      def: calculateStat50('def', mon.baseStats ? mon.baseStats.def : 80, m.evs ? (m.evs.def || 0) : 0, null),
+      spa: calculateStat50('spa', mon.baseStats ? mon.baseStats.spa : 80, m.evs ? (m.evs.spa || 0) : 0, { plus: m.nature === '内敛' ? 'spa' : null, minus: null }),
+      spd: calculateStat50('spd', mon.baseStats ? mon.baseStats.spd : 80, m.evs ? (m.evs.spd || 0) : 0, null),
+      spe: calculateStat50('spe', mon.baseStats ? mon.baseStats.spe : 80, m.evs ? (m.evs.spe || 0) : 0, { plus: ['爽朗', '胆小'].includes(m.nature) ? 'spe' : null, minus: null })
+    };
+    return {
+      name: mon.nameEn || mon.enName || mon.name,
+      displayName: mon.name,
+      types: mon.types || ['Normal'],
+      item: m.item || '无携带',
+      ability: m.ability || '默认特性',
+      nature: m.nature || '通常',
+      isMega: !!m.isMega,
+      moves: m.moves || [],
+      stats: stats50,
+      evs: m.evs || {}
+    };
+  });
+
+  const audit = runTeamAudit();
+  const auditSummary = {
+    posture: wizardState.posture || 'balance',
+    rationale: wizardState.lastRationale || '',
+    weaknesses: audit.weaknessStats || {},
+    speed_tiers: audit.speedTiers || [],
+    worst_threat: (wizardState.lastSlateResult && wizardState.lastSlateResult.worst_threat) || (audit.threatResults && audit.threatResults[0] ? {
+      opponent: audit.threatResults[0].threatMon.name,
+      rank: audit.threatResults[0].rank,
+      affected_members: audit.threatResults[0].vulnerableMembers
+    } : null)
+  };
+
+  const requestBody = {
+    team: teamPayload,
+    audit_summary: auditSummary,
+    history: teamQaState.history.slice(0, -1), // previous history excluding the current question
+    question: questionText,
+    secret: getBuilderApiSecret() || undefined
+  };
+
+  const apiBase = getBuilderApiBaseUrl();
+  const streamUrl = `${apiBase.replace(/\/$/, '')}/api/team_qa/stream`;
+
+  try {
+    const response = await fetch(streamUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'text/event-stream'
+      },
+      body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+      let errDetail = `HTTP ${response.status}`;
+      try {
+        const errJson = await response.json();
+        errDetail = errJson.message || errJson.detail || errDetail;
+      } catch (e) {}
+      throw new Error(errDetail);
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder('utf-8');
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // keep remainder
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith('data:')) continue;
+        const jsonStr = trimmed.slice(5).trim();
+        if (jsonStr === '[DONE]') break;
+
+        try {
+          const parsed = JSON.parse(jsonStr);
+          if (parsed.error) {
+            throw new Error(parsed.error);
+          }
+          if (parsed.delta) {
+            teamQaState.currentStreamText += parsed.delta;
+            // Update the streaming DOM element directly
+            const bubbleEl = document.querySelector('#qaStreamingBubble .qa-content-body');
+            if (bubbleEl) {
+              bubbleEl.innerHTML = formatQaMarkdown(teamQaState.currentStreamText);
+              const scrollArea = document.getElementById('teamQaMessagesScroll');
+              if (scrollArea) scrollArea.scrollTop = scrollArea.scrollHeight;
+            }
+          }
+          if (parsed.done) {
+            break;
+          }
+        } catch (pe) {
+          if (pe.message && !pe.message.includes('JSON')) {
+            throw pe;
+          }
+        }
+      }
+    }
+
+    // Finished streaming successfully
+    teamQaState.history.push({
+      role: 'assistant',
+      content: teamQaState.currentStreamText || '分析完成。'
+    });
+  } catch (err) {
+    teamQaState.errorMsg = `问答服务连接异常: ${err.message || err}`;
+  } finally {
+    teamQaState.isStreaming = false;
+    teamQaState.currentStreamText = '';
+    renderTeamQaPanel();
+  }
+}
+
 // Global & Node export bindings
 if (typeof window !== 'undefined') {
   window.builderState = builderState;
   window.wizardState = wizardState;
+  window.teamQaState = teamQaState;
   window.fillSlotWithMetaRank1 = fillSlotWithMetaRank1;
   window.calculateSmartSuggestions = calculateSmartSuggestions;
   window.autoCompleteTeam = autoCompleteTeam;
@@ -2472,6 +2879,12 @@ if (typeof window !== 'undefined') {
   window.renderBuilderView = renderBuilderView;
   window.renderBuilderWizard = renderBuilderWizard;
   window.renderAuditDashboard = renderAuditDashboard;
+  window.renderTeamQaPanel = renderTeamQaPanel;
+  window.submitTeamQa = submitTeamQa;
+  window.clearTeamQaHistory = clearTeamQaHistory;
+  window.dismissTeamQaNotice = dismissTeamQaNotice;
+  window.askSuggestedQaQuestion = askSuggestedQaQuestion;
+  window.sendTeamQaMessage = sendTeamQaMessage;
   window.startBuilderWizardJob = startBuilderWizardJob;
   window.selectWizardAnchor = selectWizardAnchor;
   window.updateWizardAnchor = updateWizardAnchor;
@@ -2499,6 +2912,7 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     builderState,
     wizardState,
+    teamQaState,
     fillSlotWithMetaRank1,
     calculateSmartSuggestions,
     autoCompleteTeam,
@@ -2506,7 +2920,10 @@ if (typeof module !== 'undefined' && module.exports) {
     exportTeamShowdownText,
     getPokemonSpriteUrl,
     renderBuilderWizard,
-    startBuilderWizardJob
+    startBuilderWizardJob,
+    renderTeamQaPanel,
+    sendTeamQaMessage,
+    formatQaMarkdown
   };
 }
 
