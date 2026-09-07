@@ -755,12 +755,24 @@ function getBuilderApiBaseUrl() {
   return 'http://127.0.0.1:8000';
 }
 
+function getBuilderApiSecret() {
+  if (typeof localStorage !== 'undefined') {
+    const saved = localStorage.getItem('pc_builder_api_secret');
+    if (saved && saved.trim()) {
+      return saved.trim();
+    }
+  }
+  return '';
+}
+
 function openApiConfigModal() {
   const modal = document.getElementById('builderApiModal');
-  const input = document.getElementById('builderApiBaseUrlInput');
+  const urlInput = document.getElementById('builderApiBaseUrlInput');
+  const secretInput = document.getElementById('builderApiSecretInput');
   const statusBox = document.getElementById('builderApiTestStatus');
   if (modal) {
-    if (input) input.value = getBuilderApiBaseUrl();
+    if (urlInput) urlInput.value = getBuilderApiBaseUrl();
+    if (secretInput) secretInput.value = getBuilderApiSecret();
     if (statusBox) statusBox.style.display = 'none';
     modal.classList.add('open');
   }
@@ -777,11 +789,14 @@ function setApiUrlPreset(url) {
 }
 
 async function testApiConnection() {
-  const input = document.getElementById('builderApiBaseUrlInput');
+  const urlInput = document.getElementById('builderApiBaseUrlInput');
+  const secretInput = document.getElementById('builderApiSecretInput');
   const statusBox = document.getElementById('builderApiTestStatus');
-  if (!input || !statusBox) return;
+  if (!urlInput || !statusBox) return;
 
-  const targetUrl = (input.value.trim() || 'http://127.0.0.1:8000').replace(/\/+$/, '');
+  const targetUrl = (urlInput.value.trim() || 'http://127.0.0.1:8000').replace(/\/+$/, '');
+  const secret = secretInput ? secretInput.value.trim() : '';
+
   statusBox.style.display = 'block';
   statusBox.style.background = 'rgba(0, 229, 255, 0.1)';
   statusBox.style.border = '1px solid rgba(0, 229, 255, 0.3)';
@@ -790,14 +805,35 @@ async function testApiConnection() {
 
   const startTime = Date.now();
   try {
-    const res = await fetch(`${targetUrl}/api/health`, { method: 'GET', cache: 'no-cache' });
+    const headers = {};
+    if (secret) {
+      headers['X-API-Secret'] = secret;
+      headers['Authorization'] = `Bearer ${secret}`;
+    }
+    const res = await fetch(`${targetUrl}/api/health`, { method: 'GET', headers, cache: 'no-cache' });
     const latency = Date.now() - startTime;
     if (res.ok) {
       const data = await res.json();
+      let authNote = '';
+      if (data.auth_required) {
+        if (data.auth_valid) {
+          authNote = ' · 🔐 <strong>密钥校验通过</strong>';
+        } else {
+          authNote = ' · ⚠️ <span style="color:#ffb703;">服务端启用了密钥保护但未提供有效密钥</span>';
+        }
+      } else {
+        authNote = ' · 🔓 开放访问模式';
+      }
+
       statusBox.style.background = 'rgba(6, 214, 160, 0.15)';
       statusBox.style.border = '1px solid rgba(6, 214, 160, 0.4)';
       statusBox.style.color = '#06d6a0';
-      statusBox.innerHTML = `✅ <strong>连接成功！</strong> (延迟: ${latency}ms, 进程池状态: ${data.pool_active ? '正常运行' : '未就绪'})`;
+      statusBox.innerHTML = `✅ <strong>连接成功！</strong> (延迟: ${latency}ms, 进程池: ${data.pool_active ? '正常运行' : '未就绪'}${authNote})`;
+    } else if (res.status === 401) {
+      statusBox.style.background = 'rgba(255, 0, 85, 0.15)';
+      statusBox.style.border = '1px solid rgba(255, 0, 85, 0.4)';
+      statusBox.style.color = '#ff3366';
+      statusBox.innerHTML = `❌ <strong>鉴权失败 (HTTP 401):</strong> 服务端开启了访问控制，请检查输入的 Secret 访问密钥。`;
     } else {
       statusBox.style.background = 'rgba(255, 0, 85, 0.15)';
       statusBox.style.border = '1px solid rgba(255, 0, 85, 0.4)';
@@ -813,10 +849,21 @@ async function testApiConnection() {
 }
 
 function saveApiConfig() {
-  const input = document.getElementById('builderApiBaseUrlInput');
-  if (input && typeof localStorage !== 'undefined') {
-    const val = input.value.trim().replace(/\/+$/, '') || 'http://127.0.0.1:8000';
-    localStorage.setItem('pc_builder_api_base_url', val);
+  const urlInput = document.getElementById('builderApiBaseUrlInput');
+  const secretInput = document.getElementById('builderApiSecretInput');
+  if (typeof localStorage !== 'undefined') {
+    if (urlInput) {
+      const val = urlInput.value.trim().replace(/\/+$/, '') || 'http://127.0.0.1:8000';
+      localStorage.setItem('pc_builder_api_base_url', val);
+    }
+    if (secretInput) {
+      const secVal = secretInput.value.trim();
+      if (secVal) {
+        localStorage.setItem('pc_builder_api_secret', secVal);
+      } else {
+        localStorage.removeItem('pc_builder_api_secret');
+      }
+    }
   }
   closeApiConfigModal();
   checkBuilderBackendHealth();
@@ -831,14 +878,20 @@ function setWizardMegaPreference(pref) {
   renderBuilderWizard();
 }
 
-// 异步探测后端服务健康状态 (支持本地与 Hugging Face 线上节点)
+// 异步探测后端服务健康状态 (支持本地与云端节点，携带 Secret 鉴权)
 async function checkBuilderBackendHealth() {
   const baseUrl = getBuilderApiBaseUrl();
+  const secret = getBuilderApiSecret();
   const isLocal = baseUrl.includes('127.0.0.1') || baseUrl.includes('localhost');
-  const displayHost = isLocal ? '本地 :8000' : 'Hugging Face 云端';
+  const displayHost = isLocal ? '本地 :8000' : '云端节点';
 
   try {
-    const res = await fetch(`${baseUrl}/api/health`, { method: 'GET', cache: 'no-cache' });
+    const headers = {};
+    if (secret) {
+      headers['X-API-Secret'] = secret;
+      headers['Authorization'] = `Bearer ${secret}`;
+    }
+    const res = await fetch(`${baseUrl}/api/health`, { method: 'GET', headers, cache: 'no-cache' });
     if (res.ok) {
       const data = await res.json();
       wizardState.backendOnline = (data.status === 'ok');
@@ -852,12 +905,12 @@ async function checkBuilderBackendHealth() {
   if (badge) {
     if (wizardState.backendOnline === true) {
       badge.className = 'backend-status-pill online';
-      badge.innerHTML = `<span class="status-dot"></span> 🟢 AI 引擎在线 (${displayHost})`;
-      badge.title = `连接正常: ${baseUrl}`;
+      badge.innerHTML = `<span class="status-dot"></span> 🟢 AI 引擎在线 (${displayHost}${secret ? ' 🔐' : ''})`;
+      badge.title = `连接正常: ${baseUrl}${secret ? ' (已配置 Secret)' : ''}`;
     } else {
       badge.className = 'backend-status-pill offline';
       badge.innerHTML = `<span class="status-dot"></span> 🔴 引擎未连接 (${displayHost})`;
-      badge.title = `无法连接 ${baseUrl}，点击配置 API 节点`;
+      badge.title = `无法连接 ${baseUrl}，点击配置 API 节点与 Secret`;
     }
   }
 }
@@ -1195,16 +1248,30 @@ async function startBuilderWizardJob() {
   };
 
   const baseUrl = getBuilderApiBaseUrl();
+  const secret = getBuilderApiSecret();
   const endpoint = `${baseUrl}/api/builder`;
+
+  if (secret) {
+    payload.secret = secret;
+  }
+
+  const reqHeaders = { 'Content-Type': 'application/json' };
+  if (secret) {
+    reqHeaders['X-API-Secret'] = secret;
+    reqHeaders['Authorization'] = `Bearer ${secret}`;
+  }
 
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: reqHeaders,
       body: JSON.stringify(payload)
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error(`API 访问密钥鉴权失败 (HTTP 401 Unauthorized)。请在【⚙️ 节点设置】中配置正确的 Secret 密钥。`);
+      }
       const errData = await response.json().catch(() => ({ detail: `无法连接到 AI 建队服务 (${baseUrl})，请确认服务已启动或检查【节点设置】。` }));
       const detailMsg = typeof errData.detail === 'object' ? JSON.stringify(errData.detail) : (errData.detail || errData.error || `HTTP ${response.status} 接口异常`);
       throw new Error(detailMsg);
@@ -2260,6 +2327,7 @@ if (typeof window !== 'undefined') {
   window.updateWizardAvoid = updateWizardAvoid;
   window.checkBuilderBackendHealth = checkBuilderBackendHealth;
   window.getBuilderApiBaseUrl = getBuilderApiBaseUrl;
+  window.getBuilderApiSecret = getBuilderApiSecret;
   window.openApiConfigModal = openApiConfigModal;
   window.closeApiConfigModal = closeApiConfigModal;
   window.setApiUrlPreset = setApiUrlPreset;

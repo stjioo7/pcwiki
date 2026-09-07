@@ -480,6 +480,13 @@
           <input type="text" id="builderApiBaseUrlInput" class="wizard-input" style="width: 100%; box-sizing: border-box;" placeholder="例如: https://username-space.hf.space 或 http://127.0.0.1:8000">
         </div>
 
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #cfd8dc; margin-bottom: 0.4rem;">
+            API 访问密钥 (Secret / 可选):
+          </label>
+          <input type="password" id="builderApiSecretInput" class="wizard-input" style="width: 100%; box-sizing: border-box;" placeholder="若服务端配置了 BUILDER_SECRET / API_SECRET 请在此填入">
+        </div>
+
         <div style="display: flex; gap: 0.5rem; margin-bottom: 1.1rem; flex-wrap: wrap;">
           <button type="button" class="btn-api-preset" onclick="setApiUrlPreset('http://127.0.0.1:8000')">
             🖥️ 填入默认本地 (127.0.0.1:8000)
