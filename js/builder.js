@@ -2708,6 +2708,7 @@ function renderTeamQaPanel() {
             <div style="font-size:0.75rem; color:#00e5ff; font-weight:700; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
               <span>🤖</span> 战术顾问思考推演中...
             </div>
+            <div class="qa-tools-badge-area" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.5rem;"></div>
             <div class="qa-content-body">${streamingFormatted || '<span style="color:#78909c;">正在组织战术推演...</span>'}</div>
           </div>
         </div>
@@ -2919,6 +2920,36 @@ async function sendTeamQaMessage(questionText) {
           const parsed = JSON.parse(jsonStr);
           if (parsed.error) {
             throw new Error(parsed.error);
+          }
+          if (parsed.tool_call) {
+            const tc = parsed.tool_call;
+            const toolName = tc.tool || '';
+            const toolArgs = tc.args || {};
+            let toolLabel = '官方数据库';
+            let queryDetail = '';
+            if (toolName === 'query_pokemon_dex') {
+              toolLabel = '🔍 [图鉴/数值库]';
+              queryDetail = `检索 ${toolArgs.name || ''} 种族/50级实数/Mega`;
+            } else if (toolName === 'query_learnset') {
+              toolLabel = '📚 [合法招式池]';
+              queryDetail = `校验 ${toolArgs.name || ''} ${toolArgs.move_name ? '招式: ' + toolArgs.move_name : '招式表'}`;
+            } else if (toolName === 'query_tactic_archetype') {
+              toolLabel = '⚡ [战术套路库]';
+              queryDetail = `查询 ${toolArgs.tactic || ''} 核心开启手与打手`;
+            } else {
+              toolLabel = `🔧 [${toolName}]`;
+              queryDetail = JSON.stringify(toolArgs);
+            }
+            const toolContainer = document.querySelector('#qaStreamingBubble .qa-tools-badge-area');
+            if (toolContainer) {
+              const badge = document.createElement('div');
+              badge.className = 'qa-tool-badge';
+              badge.style.cssText = 'display:inline-flex; align-items:center; gap:0.35rem; background:rgba(0,229,255,0.12); border:1px solid rgba(0,229,255,0.3); border-radius:6px; padding:0.2rem 0.5rem; font-size:0.75rem; color:#00e5ff;';
+              badge.innerHTML = `<span>${toolLabel}</span> <span style="color:#b0bec5;">${escapeHtml(queryDetail)}</span>`;
+              toolContainer.appendChild(badge);
+              const scrollArea = document.getElementById('teamQaMessagesScroll');
+              if (scrollArea) scrollArea.scrollTop = scrollArea.scrollHeight;
+            }
           }
           if (parsed.delta) {
             teamQaState.currentStreamText += parsed.delta;
