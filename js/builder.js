@@ -211,6 +211,164 @@ function aggregateThreatRoutes(routes) {
   }));
 }
 
+function findBestThreatRouteAgainstMember(threatMon, targetMemberName) {
+  if (!threatMon) return null;
+  const tMon = (typeof threatMon === 'string') ? findPokemonByName(threatMon) : threatMon;
+  if (!tMon) return null;
+
+  // 1. 查找我方目标宝可梦的防御属性与形态
+  const memberSlot = builderState.slots.find(s => s && s.pokemon && (
+    (typeof getActiveCombatant === 'function' && getActiveCombatant(s.pokemon, s.isMega, s.megaBranch).name === targetMemberName) ||
+    s.pokemon.name === targetMemberName ||
+    (s.pokemon.enName && s.pokemon.enName === targetMemberName)
+  ));
+
+  let defMon = null;
+  if (memberSlot) {
+    defMon = typeof getActiveCombatant === 'function' 
+      ? getActiveCombatant(memberSlot.pokemon, memberSlot.isMega, memberSlot.megaBranch)
+      : memberSlot.pokemon;
+  } else {
+    defMon = findPokemonByName(targetMemberName);
+  }
+
+  const defTypes = (defMon && defMon.types) || ['Normal'];
+  const threatTypes = tMon.types || ['Normal'];
+
+  // 2. 遍历对手学招表，寻找真正克制且威力最高的有效招式
+  let bestMoveObj = null;
+  let bestMult = 0.0;
+  let bestScore = -1;
+
+  const learnset = (tMon.learnset && tMon.learnset.length > 0) ? tMon.learnset : [];
+  const damagingMoves = learnset.filter(m => m && (m.power > 0 || m.category === '物理' || m.category === '特殊'));
+
+  damagingMoves.forEach(m => {
+    const mType = m.type || threatTypes[0] || 'Normal';
+    const mult = typeof getMoveTypeMultiplier === 'function' ? getMoveTypeMultiplier(mType, defTypes) : 1.0;
+    const isStab = threatTypes.includes(mType);
+    const stabMult = isStab ? 1.5 : 1.0;
+    const pwr = (typeof m.power === 'number' && m.power > 0) ? m.power : 80;
+    const score = pwr * stabMult * mult;
+
+    // 优先选取克制倍率最大且综合威胁分最高的招式
+    if (mult > bestMult || (mult === bestMult && score > bestScore)) {
+      bestMult = mult;
+      bestScore = score;
+      bestMoveObj = m;
+    }
+  });
+
+  // 3. 如果学招表中没找到 >= 2.0x 的招式，但对手本系属性本身能造成属性克制
+  if (bestMult < 2.0) {
+    let bestType = threatTypes[0];
+    let maxTypeMult = 1.0;
+    threatTypes.forEach(t => {
+      const mult = typeof getMoveTypeMultiplier === 'function' ? getMoveTypeMultiplier(t, defTypes) : 1.0;
+      if (mult > maxTypeMult) {
+        maxTypeMult = mult;
+        bestType = t;
+      }
+    });
+
+    if (maxTypeMult >= 2.0) {
+      bestMult = maxTypeMult;
+      const stabMove = damagingMoves.find(m => m.type === bestType);
+      if (stabMove) {
+        bestMoveObj = stabMove;
+      } else {
+        const typeZh = TYPE_TRANSLATION[bestType] || bestType;
+        bestMoveObj = {
+          name: `${typeZh}系主力招式`,
+          type: bestType,
+          power: 90,
+          category: '特殊'
+        };
+      }
+    }
+  }
+
+  // 4. 若依然没有克制招式，降级到对手最强输出招式或首选招式
+  if (!bestMoveObj) {
+    if (damagingMoves.length > 0) {
+      bestMoveObj = damagingMoves[0];
+      const mType = bestMoveObj.type || threatTypes[0] || 'Normal';
+      bestMult = typeof getMoveTypeMultiplier === 'function' ? getMoveTypeMultiplier(mType, defTypes) : 1.0;
+    } else {
+      const pType = threatTypes[0] || 'Normal';
+      const typeZh = TYPE_TRANSLATION[pType] || pType;
+      bestMoveObj = {
+        name: `${typeZh}系主力招式`,
+        type: pType,
+        power: 80,
+        category: '物理'
+      };
+      bestMult = typeof getMoveTypeMultiplier === 'function' ? getMoveTypeMultiplier(pType, defTypes) : 1.0;
+    }
+  }
+
+  const finalMoveType = bestMoveObj.type || threatTypes[0] || 'Normal';
+  const moveName = bestMoveObj.name;
+
+  // 5. 精确计算伤害区间与裁定
+  let damagePctText = '';
+  let verdictText = '';
+
+  if (bestMult >= 4.0) {
+    damagePctText = '4.0x 致命四倍弱点';
+    verdictText = '4倍克制绝杀';
+  } else if (bestMult >= 2.0) {
+    damagePctText = '2.0x 属性弱点突破';
+    verdictText = '属性弱点突破';
+  } else if (bestMult <= 0.0) {
+    damagePctText = '0.0x 免疫无效';
+    verdictText = '属性联防免疫';
+  } else if (bestMult <= 0.5) {
+    damagePctText = `${bestMult}x 属性抵抗`;
+    verdictText = '属性联防抵抗';
+  } else {
+    damagePctText = '1.0x 标准属性对抗';
+    verdictText = '均势等倍对攻';
+  }
+
+  // 若 defMon 和 tMon 均具备完整数值，使用 calculateDamage 精算 50 级伤害
+  if (defMon && tMon && defMon.baseStats && tMon.baseStats && typeof calculateDamage === 'function' && typeof calculateStat50 === 'function' && bestMoveObj.power > 0) {
+    try {
+      const isPhysical = (bestMoveObj.category === '物理' || bestMoveObj.category === 'Physical');
+      const atkBase = isPhysical ? (tMon.baseStats.atk || 100) : (tMon.baseStats.spa || 100);
+      const customAtk = calculateStat50(isPhysical ? 'atk' : 'spa', atkBase, 32, { plus: isPhysical ? 'atk' : 'spa', minus: isPhysical ? 'spa' : 'atk' });
+      
+      const defBase = isPhysical ? (defMon.baseStats.def || 80) : (defMon.baseStats.spd || 80);
+      const customDef = calculateStat50(isPhysical ? 'def' : 'spd', defBase, 0, null);
+      const customHp = calculateStat50('hp', defMon.baseStats.hp || 80, 0, null);
+
+      const dmgCalc = calculateDamage(tMon, defMon, bestMoveObj, customAtk, customDef, customHp);
+      if (dmgCalc && dmgCalc.minPct && dmgCalc.maxPct && !dmgCalc.isBuff) {
+        if (bestMult >= 4.0) {
+          damagePctText = `4.0x 致命弱点 (${dmgCalc.minPct}%~${dmgCalc.maxPct}%)`;
+        } else if (bestMult >= 2.0) {
+          damagePctText = `2.0x 属性弱点 (${dmgCalc.minPct}%~${dmgCalc.maxPct}%)`;
+        } else {
+          damagePctText = `${dmgCalc.minPct}%~${dmgCalc.maxPct}% 伤害`;
+        }
+        verdictText = dmgCalc.verdict || verdictText;
+      }
+    } catch (e) {
+      // 容错降级
+    }
+  }
+
+  return {
+    target_member: targetMemberName,
+    move: moveName,
+    move_type: finalMoveType,
+    variant: '',
+    damage_pct: damagePctText,
+    verdict: verdictText,
+    multiplier: bestMult
+  };
+}
+
 function calculateSmartSuggestions(fmt = 'double', limit = 6) {
   const currentMembers = builderState.slots.filter(s => s && s.pokemon);
   if (currentMembers.length >= 6) return [];
@@ -510,12 +668,20 @@ function runTeamAudit() {
         if (mvMult > maxAtkMult) maxAtkMult = mvMult;
       });
 
-      // 评估敌方对我的克制 (敌方所有属性攻击我方的最大克制倍数)
+      // 评估敌方对我的克制 (敌方所有本系属性与学招攻击我方的最大克制倍数)
       let maxDefMult = 1.0;
       threatTypes.forEach(t => {
         const mult = getMoveTypeMultiplier(t, mTypes);
         if (mult > maxDefMult) maxDefMult = mult;
       });
+      if (threat.learnset && threat.learnset.length > 0) {
+        threat.learnset.forEach(lm => {
+          if (lm && lm.type && lm.power > 0) {
+            const mult = getMoveTypeMultiplier(lm.type, mTypes);
+            if (mult > maxDefMult) maxDefMult = mult;
+          }
+        });
+      }
 
       if (maxAtkMult >= 2.0 && maxDefMult <= 1.0) {
         counterScore += 2;
@@ -1829,27 +1995,17 @@ function renderAuditDashboard() {
   let isBatteryGrounded = !!(slateData && slateData.worst_threat);
 
   if (!isBatteryGrounded && currentMembers.length >= 2) {
-    // 纯客户端实时 Top-20 联防压力测算兜底
+    // 纯客户端实时 Top-20 联防压力测算兜底 (基于真实属性相克与学招精算)
     const threatMons = (audit.threatResults || []).filter(t => t.status === 'threat');
     if (threatMons.length > 0) {
       threatMons.sort((a, b) => b.vulnerableMembers.length - a.vulnerableMembers.length || a.rank - b.rank);
       const topT = threatMons[0];
       const otherT = threatMons.slice(1);
-
       const topMonObj = topT.threatMon;
-      const topTypes = topMonObj.types || ['Normal'];
-      const topPrimaryType = topTypes[0];
 
-      const synRoutes = topT.vulnerableMembers.map(mName => {
-        return {
-          target_member: mName,
-          move: (topMonObj.learnset && topMonObj.learnset[0] && topMonObj.learnset[0].name) || `${TYPE_TRANSLATION[topPrimaryType] || topPrimaryType}系主力招式`,
-          move_type: topPrimaryType,
-          variant: '',
-          damage_pct: '200%~400% 属性克制压制',
-          verdict: '属性弱点突破'
-        };
-      });
+      const synRoutes = topT.vulnerableMembers.map(mName => 
+        findBestThreatRouteAgainstMember(topMonObj, mName)
+      ).filter(Boolean);
 
       slateData = {
         scope: { topK: 20, teamSize: currentMembers.length },
@@ -1862,19 +2018,16 @@ function renderAuditDashboard() {
           threat_routes: synRoutes
         },
         high_threats: otherT.map(ot => {
-          const otTypes = ot.threatMon.types || ['Normal'];
+          const otRoutes = ot.vulnerableMembers.map(mName => 
+            findBestThreatRouteAgainstMember(ot.threatMon, mName)
+          ).filter(Boolean);
           return {
             opponent: ot.threatMon.name,
             rank: ot.rank,
             grade: ot.vulnerableMembers.length >= 3 ? 'G3' : ot.vulnerableMembers.length === 2 ? 'G2' : 'G1',
             affected_count: ot.vulnerableMembers.length,
             affected_members: ot.vulnerableMembers,
-            routes: ot.vulnerableMembers.map(mName => ({
-              target_member: mName,
-              move: (ot.threatMon.learnset && ot.threatMon.learnset[0] && ot.threatMon.learnset[0].name) || `${TYPE_TRANSLATION[otTypes[0]] || otTypes[0]}系技能`,
-              move_type: otTypes[0],
-              variant: ''
-            }))
+            routes: otRoutes
           };
         })
       };
@@ -1919,7 +2072,7 @@ function renderAuditDashboard() {
               <span class="route-move-badge">
                 <strong>【${mvZh}】</strong><span class="type-badge ${typeLower} mini">${typeZh}</span>${itemsZh}
               </span>
-              <span class="route-target-text">➜ 确一: <strong>${targetsZh}</strong></span>
+              <span class="route-target-text">➜ 压制: <strong>${targetsZh}</strong></span>
             </div>
           `;
         }).join('');
