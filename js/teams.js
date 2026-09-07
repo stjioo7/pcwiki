@@ -1,12 +1,16 @@
 /**
- * teams.js - 热门排位实战队伍浏览、筛选与阵容详情展示
+ * teams.js - 热门排位实战队伍浏览、筛选与高性能增量滚动加载
  */
 
+const TEAMS_CHUNK_SIZE = 10;
 let allTeamsList = [];
 let filteredTeamsList = [];
 let currentTeamFormat = 'all';
 let currentTeamPlacing = 'all';
 let currentTeamSearch = '';
+let currentRenderedTeamCount = 0;
+let teamsScrollObserver = null;
+let isTeamLoadingChunk = false;
 
 function initTeams() {
   if (window.CHAMPIONS_TEAMS && Array.isArray(window.CHAMPIONS_TEAMS)) {
@@ -16,6 +20,7 @@ function initTeams() {
   }
 
   bindTeamControls();
+  initTeamsScrollObserver();
   applyTeamFilters();
 }
 
@@ -47,6 +52,45 @@ function bindTeamControls() {
       applyTeamFilters();
     });
   }
+
+  // 兜底 Window 滚动事件（以防部分浏览器 IntersectionObserver 延迟）
+  window.addEventListener('scroll', () => {
+    const teamsView = document.getElementById('teamsView');
+    if (!teamsView || teamsView.style.display === 'none' || !teamsView.classList.contains('active')) {
+      return;
+    }
+    if (isTeamLoadingChunk) return;
+    if (currentRenderedTeamCount >= filteredTeamsList.length) return;
+
+    const scrollBottom = window.innerHeight + window.scrollY;
+    const docHeight = document.documentElement.offsetHeight;
+    if (docHeight - scrollBottom < 400) {
+      renderNextTeamChunk();
+    }
+  }, { passive: true });
+}
+
+function initTeamsScrollObserver() {
+  const sentinel = document.getElementById('teamsScrollSentinel');
+  if (!sentinel || typeof IntersectionObserver === 'undefined') return;
+
+  if (teamsScrollObserver) {
+    teamsScrollObserver.disconnect();
+  }
+
+  teamsScrollObserver = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    if (entry.isIntersecting) {
+      const teamsView = document.getElementById('teamsView');
+      if (teamsView && (teamsView.style.display !== 'none' || teamsView.classList.contains('active'))) {
+        if (currentRenderedTeamCount < filteredTeamsList.length) {
+          renderNextTeamChunk();
+        }
+      }
+    }
+  }, { rootMargin: '300px' });
+
+  teamsScrollObserver.observe(sentinel);
 }
 
 function applyTeamFilters() {
@@ -100,14 +144,22 @@ function applyTeamFilters() {
     countEl.innerText = filteredTeamsList.length;
   }
 
-  renderTeamsList(filteredTeamsList);
+  // 重置增量渲染计数与清空 DOM
+  currentRenderedTeamCount = 0;
+  const container = document.getElementById('teamsList');
+  if (container) {
+    container.innerHTML = '';
+  }
+
+  renderNextTeamChunk();
 }
 
-function renderTeamsList(teams) {
+function renderNextTeamChunk() {
   const container = document.getElementById('teamsList');
+  const sentinel = document.getElementById('teamsScrollSentinel');
   if (!container) return;
 
-  if (teams.length === 0) {
+  if (filteredTeamsList.length === 0) {
     container.innerHTML = `
       <div class="team-empty-state">
         <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔍</div>
@@ -115,10 +167,35 @@ function renderTeamsList(teams) {
         <p style="color: var(--text-dim); margin-top: 0.4rem; font-size: 0.85rem;">请尝试调整筛选条件或搜索其他宝可梦名称</p>
       </div>
     `;
+    if (sentinel) sentinel.style.display = 'none';
     return;
   }
 
-  container.innerHTML = teams.map(team => createTeamCardHtml(team)).join('');
+  if (currentRenderedTeamCount >= filteredTeamsList.length) {
+    if (sentinel) {
+      sentinel.style.display = 'block';
+      sentinel.innerHTML = `<span style="color: var(--text-dim); font-size: 0.85rem;">🏁 已加载全部 ${filteredTeamsList.length} 支实战队伍</span>`;
+    }
+    return;
+  }
+
+  isTeamLoadingChunk = true;
+  const nextChunk = filteredTeamsList.slice(currentRenderedTeamCount, currentRenderedTeamCount + TEAMS_CHUNK_SIZE);
+  const chunkHtml = nextChunk.map(team => createTeamCardHtml(team)).join('');
+  container.insertAdjacentHTML('beforeend', chunkHtml);
+  currentRenderedTeamCount += nextChunk.length;
+
+  if (sentinel) {
+    if (currentRenderedTeamCount < filteredTeamsList.length) {
+      sentinel.style.display = 'block';
+      sentinel.innerHTML = `<span class="loading-spinner">⚡</span> 正在加载更多实战队伍 (${currentRenderedTeamCount}/${filteredTeamsList.length})...`;
+    } else {
+      sentinel.style.display = 'block';
+      sentinel.innerHTML = `<span style="color: var(--text-dim); font-size: 0.85rem;">🏁 已加载全部 ${filteredTeamsList.length} 支实战队伍</span>`;
+    }
+  }
+
+  isTeamLoadingChunk = false;
 }
 
 function createTeamCardHtml(team) {
