@@ -52,7 +52,7 @@ except Exception as e:
     _import_err = str(e)
 
 from scripts.export_to_wiki import run_export
-META_DIR = BASE_DIR / "cache"
+META_DIR = BASE_DIR / "data" / "meta"
 SYNC_META_FILE = META_DIR / "sync_meta.json"
 
 _cancel_requested = False

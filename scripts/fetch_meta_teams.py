@@ -265,8 +265,31 @@ def fetch_meta_teams(
         print(f"[*] 当前批次计划抓取前: {len(tournaments)} 场比赛")
 
     mon_en_to_zh, avatar_map, types_map, moves_dict, items_dict = load_local_translation_catalogs()
-    all_teams = []
+    
+    out_dir = Path("data")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_json = out_dir / "champions_teams.json"
+    out_js = out_dir / "champions_teams.js"
+
+    # 1. 载入已有历史队伍库（确保 CI 定时更新时只增不减，绝不覆盖历史数据）
+    teams_dict = {}
     seen_fingerprints = set()
+    if out_json.exists():
+        try:
+            existing_teams = json.loads(out_json.read_text(encoding="utf-8"))
+            for t in existing_teams:
+                tid = t.get("id")
+                if tid:
+                    teams_dict[tid] = t
+                pkmn = t.get("pokemon") or []
+                fp = tuple(sorted((m.get("enSpecies", ""), m.get("enItem", "")) for m in pkmn))
+                if fp:
+                    seen_fingerprints.add(fp)
+            print(f"[*] 成功载入已有历史队伍: {len(teams_dict)} 支")
+        except Exception as e:
+            print(f"[!] 读取现有队伍库异常: {e}")
+
+    newly_added_count = 0
 
     for idx, tourn in enumerate(tournaments, start=1):
         t_name = tourn["name"]
@@ -314,8 +337,9 @@ def fetch_meta_teams(
                         continue
                     seen_fingerprints.add(fp)
 
-                    all_teams.append({
-                        "id": f"limitless-{tourn['id'][:8]}-{player_id}",
+                    team_id = f"limitless-{tourn['id'][:8]}-{player_id}"
+                    teams_dict[team_id] = {
+                        "id": team_id,
                         "source": "Limitless VGC",
                         "tournamentName": t_name,
                         "tournamentUrl": t_url,
@@ -328,8 +352,9 @@ def fetch_meta_teams(
                         "showdown": showdown_text,
                         "pokemon": team_pokemon,
                         "fetchedAt": time.strftime("%Y-%m-%d %H:%M:%S")
-                    })
+                    }
                     tourn_team_count += 1
+                    newly_added_count += 1
                     print(f"   [{tourn_team_count}] {placing_tag} {player_id} ({record_str}) -> 6 Mons: {[p['species'] for p in team_pokemon]}")
 
                 if tourn_team_count >= max_teams_per_tourn:
@@ -338,24 +363,20 @@ def fetch_meta_teams(
         except Exception as e:
             print(f"  [!] 抓取比赛 《{t_name}》 失败: {e}")
 
+    final_teams = list(teams_dict.values())
     print(f"\n================================================================")
-    print(f"=== 全量抓取完成！共收集高水平真实队伍: {len(all_teams)} 支 ===")
+    print(f"=== 全量同步完成！历史沉淀+本次新增: {len(final_teams)} 支 (新增 {newly_added_count} 支) ===")
     print(f"================================================================")
 
-    out_dir = Path("data")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_json = out_dir / "champions_teams.json"
-    out_js = out_dir / "champions_teams.js"
-
     with open(out_json, "w", encoding="utf-8") as f:
-        json.dump(all_teams, f, ensure_ascii=False, indent=2)
+        json.dump(final_teams, f, ensure_ascii=False, indent=2)
 
     with open(out_js, "w", encoding="utf-8") as f:
-        f.write("window.CHAMPIONS_TEAMS = " + json.dumps(all_teams, ensure_ascii=False, indent=2) + ";\n")
+        f.write("window.CHAMPIONS_TEAMS = " + json.dumps(final_teams, ensure_ascii=False, indent=2) + ";\n")
 
     print(f"[OK] 已生成前端队伍数据: {out_json} ({out_json.stat().st_size / 1024:.2f} KB)")
     print(f"[OK] 已生成前端队伍脚本: {out_js} ({out_js.stat().st_size / 1024:.2f} KB)")
-    return all_teams
+    return final_teams
 
 
 # Backward compatibility alias for CI workflows

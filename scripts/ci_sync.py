@@ -116,7 +116,7 @@ def main():
     # 2. 抓取 Limitless 官方最新完赛真实队伍 (单打 + 双打)
     print("\n[CI] 正在执行热门比赛队伍抓取管线 (Limitless VGC/X1)...")
     try:
-        teams = fetch_latest_teams(max_tournaments=8, max_teams_per_tourn=4)
+        teams = fetch_latest_teams(max_tournaments=50, max_teams_per_tourn=16, max_placing=32)
         print(f"[CI] 比赛队伍抓取完成，共载入 {len(teams)} 支队伍")
     except Exception as e:
         print(f"[CI] 队伍抓取出现异常 (非致命): {e}")
