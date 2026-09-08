@@ -142417,5 +142417,18649 @@ window.CHAMPIONS_TEAMS = [
       }
     ],
     "fetchedAt": "2026-09-08 03:40:55"
+  },
+  {
+    "id": "limitless-6a9c957d-hamsterbasketball",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 1,
+    "placingTag": "🥇 冠军 (1st)",
+    "record": "8-0-0",
+    "player": "hamsterbasketball",
+    "showdown": "Pyroar @ Pyroarite\nAbility: Unnerve\nTimid Nature Nature\n- Heat Wave\n- Overheat\n- Flamethrower\n- Protect\n\nScrafty @ Scraftinite\nAbility: Intimidate\nAdamant Nature Nature\n- Fake Out\n- Close Combat\n- Knock Off\n- Drain Punch\n\nTorkoal @ Charcoal\nAbility: Drought\nQuiet Nature Nature\n- Eruption\n- Weather Ball\n- Helping Hand\n- Protect\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nQuiet Nature Nature\n- Psychic\n- Thunderbolt\n- Trick Room\n- Helping Hand\n\nVenusaur @ Focus Sash\nAbility: Chlorophyll\nModest Nature Nature\n- Leaf Storm\n- Sludge Bomb\n- Earth Power\n- Protect\n\nAnnihilape @ Choice Scarf\nAbility: Defiant\nAdamant Nature Nature\n- Close Combat\n- Ice Punch\n- Rock Slide\n- U-Turn",
+    "pokemon": [
+      {
+        "species": "火炎狮",
+        "enSpecies": "Pyroar",
+        "slug": "pyroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/668.png",
+        "types": [
+          "Fire",
+          "Normal"
+        ],
+        "item": "火炎狮进化石",
+        "enItem": "Pyroarite",
+        "ability": "Unnerve",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 过热",
+            "enName": "Overheat",
+            "type": "Fire",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 喷射火焰",
+            "enName": "Flamethrower",
+            "type": "Fire",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "头巾混混",
+        "enSpecies": "Scrafty",
+        "slug": "scrafty",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/560.png",
+        "types": [
+          "Dark",
+          "Fighting"
+        ],
+        "item": "Scraftin进化石",
+        "enItem": "Scraftinite",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "拍落",
+            "enName": "Knock Off",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "65*"
+          },
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          }
+        ]
+      },
+      {
+        "species": "煤炭龟",
+        "enSpecies": "Torkoal",
+        "slug": "torkoal",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/324.png",
+        "types": [
+          "Fire"
+        ],
+        "item": "木炭",
+        "enItem": "Charcoal",
+        "ability": "Drought",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 喷火",
+            "enName": "Eruption",
+            "type": "Fire",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 飞叶风暴",
+            "enName": "Leaf Storm",
+            "type": "Grass",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "弃世猴",
+        "enSpecies": "Annihilape",
+        "slug": "annihilape",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/979.png",
+        "types": [
+          "Fighting",
+          "Ghost"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "急速折返",
+            "enName": "U-Turn",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "70"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:34"
+  },
+  {
+    "id": "limitless-6a9c957d-kotori",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 2,
+    "placingTag": "🥈 亚军 (2nd)",
+    "record": "6-2-0",
+    "player": "kotori",
+    "showdown": "Farigiraf @ Colbur Berry\nAbility: Armor Tail\nBold Nature Nature\n- Psychic\n- Trick Room\n- Protect\n- Hyper Voice\n\nRaichu @ Raichunite Y\nAbility: Lightning Rod\nTimid Nature Nature\n- Zap Cannon\n- Fake Out\n- Focus Blast\n- Protect\n\nIncineroar @ Passho Berry\nAbility: Intimidate\nImpish Nature Nature\n- Fake Out\n- Darkest Lariat\n- Flare Blitz\n- Parting Shot\n\nGholdengo @ Life Orb\nAbility: Good as Gold\nModest Nature Nature\n- Make It Rain\n- Shadow Ball\n- Nasty Plot\n- Protect\n\nGarchomp @ Sitrus Berry\nAbility: Rough Skin\nAdamant Nature Nature\n- Dragon Claw\n- Rock Slide\n- Stomping Tantrum\n- Protect\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Tailwind\n- Moonblast\n- Protect\n- Encore",
+    "pokemon": [
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "雷丘",
+        "enSpecies": "Raichu",
+        "slug": "raichu",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/26.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Raichun进化石 Y",
+        "enItem": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 电磁炮",
+            "enName": "Zap Cannon",
+            "type": "Electric",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 真气弹",
+            "enName": "Focus Blast",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "千香果",
+        "enItem": "Passho Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "赛富豪",
+        "enSpecies": "Gholdengo",
+        "slug": "gholdengo",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1000.png",
+        "types": [
+          "Steel",
+          "Ghost"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Good as Gold",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Make It Rain",
+            "enName": "Make It Rain",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 诡计",
+            "enName": "Nasty Plot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Rough Skin",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:34"
+  },
+  {
+    "id": "limitless-6a9c957d-bjd",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 6,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "4-2-0",
+    "player": "bjd",
+    "showdown": "Staraptor @ Staraptite\nAbility: Intimidate\nJolly Nature Nature\n- Close Combat\n- Dual Wingbeat\n- Roost\n- Protect\n\nDelphox @ Delphoxite\nAbility: Blaze\nTimid Nature Nature\n- Heat Wave\n- Psychic\n- Encore\n- Protect\n\nWhimsicott @ Black Glasses\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Tailwind\n- Encore\n- Protect\n\nFarigiraf @ Colbur Berry\nAbility: Armor Tail\nQuiet Nature Nature\n- Psychic\n- Thunderbolt\n- Helping Hand\n- Trick Room\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Rock Slide\n- Earthquake\n- Dragon Claw\n- Protect\n\nGlimmora @ Focus Sash\nAbility: Toxic Debris\nModest Nature Nature\n- Power Gem\n- Sludge Bomb\n- Earth Power\n- Spiky Shield",
+    "pokemon": [
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 羽栖",
+            "enName": "Roost",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妖火红狐",
+        "enSpecies": "Delphox",
+        "slug": "delphox",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/655.png",
+        "types": [
+          "Fire",
+          "Psychic"
+        ],
+        "item": "妖火红狐进化石",
+        "enItem": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Armor Tail",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "晶光花",
+        "enSpecies": "Glimmora",
+        "slug": "glimmora",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/970.png",
+        "types": [
+          "Rock",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Toxic Debris",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "力量宝石",
+            "enName": "Power Gem",
+            "type": "Rock",
+            "category": "Special",
+            "power": "80*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "尖刺防守",
+            "enName": "Spiky Shield",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:35"
+  },
+  {
+    "id": "limitless-6a9c957d-ahwokn",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 7,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "4-2-0",
+    "player": "ahwokn",
+    "showdown": "Venusaur @ Wide Lens\nAbility: Chlorophyll\nModest Nature Nature\n- Leaf Storm\n- Sludge Bomb\n- Sleep Powder\n- Protect\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Dragon Claw\n- Earthquake\n- Stomping Tantrum\n- Protect\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Heat Wave\n- Weather Ball\n- Ancient Power\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Quick Attack\n- Hyper Beam\n- Hyper Voice\n- Protect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nCareful Nature Nature\n- Fake Out\n- Flare Blitz\n- Darkest Lariat\n- Parting Shot\n\nAerodactyl @ Focus Sash\nAbility: Unnerve\nJolly Nature Nature\n- Tailwind\n- Rock Slide\n- Dual Wingbeat\n- Protect",
+    "pokemon": [
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "广角镜",
+        "enItem": "Wide Lens",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 飞叶风暴",
+            "enName": "Leaf Storm",
+            "type": "Grass",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "化石翼龙",
+        "enSpecies": "Aerodactyl",
+        "slug": "aerodactyl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/142.png",
+        "types": [
+          "Rock",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Unnerve",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:35"
+  },
+  {
+    "id": "limitless-6a9c957d-malyssious",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 10,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "3-2-0",
+    "player": "malyssious",
+    "showdown": "Charizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Heat Wave\n- Protect\n- Weather Ball\n- Solar Beam\n\nAerodactyl @ Aerodactylite\nAbility: Unnerve\nJolly Nature Nature\n- Tailwind\n- Wide Guard\n- Ice Fang\n- Rock Slide\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nCareful Nature Nature\n- Fake Out\n- Parting Shot\n- Flare Blitz\n- Darkest Lariat\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Quick Attack\n- Detect\n- Hyper Voice\n- Hyper Beam\n\nFarigiraf @ Lum Berry\nAbility: Armor Tail\nModest Nature Nature\n- Imprison\n- Psychic\n- Trick Room\n- Protect\n\nGarchomp @ Choice Scarf\nAbility: Rough Skin\nJolly Nature Nature\n- Rock Slide\n- Stomping Tantrum\n- Earthquake\n- Dragon Claw",
+    "pokemon": [
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      },
+      {
+        "species": "化石翼龙",
+        "enSpecies": "Aerodactyl",
+        "slug": "aerodactyl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/142.png",
+        "types": [
+          "Rock",
+          "Flying"
+        ],
+        "item": "化石翼龙进化石",
+        "enItem": "Aerodactylite",
+        "ability": "Unnerve",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻牙",
+            "enName": "Ice Fang",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "65"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "木子果",
+        "enItem": "Lum Berry",
+        "ability": "Armor Tail",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "封印",
+            "enName": "Imprison",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:36"
+  },
+  {
+    "id": "limitless-6a9c957d-miltonfoo",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 11,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "3-2-0",
+    "player": "miltonfoo",
+    "showdown": "Raichu @ Raichunite Y\nAbility: Lightning Rod\nTimid Nature Nature\n- Protect\n- Zap Cannon\n- Focus Blast\n- Fake Out\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nAdamant Nature Nature\n- Flare Blitz\n- Throat Chop\n- Fake Out\n- Parting Shot\n\nMilotic @ Leftovers\nAbility: Competitive\nCalm Nature Nature\n- Muddy Water\n- Hypnosis\n- Recover\n- Coil\n\nSinistcha @ Occa Berry\nAbility: Hospitality\nBold Nature Nature\n- Matcha Gotcha\n- Rage Powder\n- Trick Room\n- Protect\n\nEternal Flower Floette @ Floettite\nAbility: Flower Veil\nTimid Nature Nature\n- Protect\n- Calm Mind\n- Dazzling Gleam\n- Draining Kiss\n\nCeruledge @ Colbur Berry\nAbility: Flash Fire\nAdamant Nature Nature\n- Protect\n- Bulk Up\n- Bitter Blade\n- Shadow Sneak",
+    "pokemon": [
+      {
+        "species": "雷丘",
+        "enSpecies": "Raichu",
+        "slug": "raichu",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/26.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Raichun进化石 Y",
+        "enItem": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 电磁炮",
+            "enName": "Zap Cannon",
+            "type": "Electric",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 真气弹",
+            "enName": "Focus Blast",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Competitive",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": " 浊流",
+            "enName": "Muddy Water",
+            "type": "Water",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 催眠术",
+            "enName": "Hypnosis",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "自我再生",
+            "enName": "Recover",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 盘蜷",
+            "enName": "Coil",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "巧可果",
+        "enItem": "Occa Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "吸取之吻",
+            "enName": "Draining Kiss",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "50"
+          }
+        ]
+      },
+      {
+        "species": "苍炎刃鬼",
+        "enSpecies": "Ceruledge",
+        "slug": "ceruledge",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/937.png",
+        "types": [
+          "Fire",
+          "Ghost"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Flash Fire",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Bitter Blade",
+            "enName": "Bitter Blade",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 影子偷袭",
+            "enName": "Shadow Sneak",
+            "type": "Ghost",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:36"
+  },
+  {
+    "id": "limitless-6a9c957d-marowakky",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 12,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "3-2-0",
+    "player": "marowakky",
+    "showdown": "Farigiraf @ Mental Herb\nAbility: Armor Tail\nBold Nature Nature\n- Trick Room\n- Psychic\n- Helping Hand\n- Protect\n\nHisuian Avalugg @ Wide Lens\nAbility: Sturdy\nBrave Nature Nature\n- Mountain Gale\n- Rock Slide\n- Wide Guard\n- Body Press\n\nMawile @ Mawilite\nAbility: Hyper Cutter\nBrave Nature Nature\n- Iron Head\n- Foul Play\n- Play Rough\n- Protect\n\nArchaludon @ Leftovers\nAbility: Stamina\nQuiet Nature Nature\n- Electro Shot\n- Flash Cannon\n- Protect\n- Dragon Pulse\n\nGarganacl @ Sitrus Berry\nAbility: Purifying Salt\nRelaxed Nature Nature\n- Salt Cure\n- Body Press\n- Recover\n- Iron Defense\n\nTorkoal @ Charcoal\nAbility: Drought\nQuiet Nature Nature\n- Eruption\n- Protect\n- Weather Ball\n- Heat Wave",
+    "pokemon": [
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "心灵香草",
+        "enItem": "Mental Herb",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Avalugg",
+        "enSpecies": "Hisuian Avalugg",
+        "slug": "hisuian-avalugg",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-avalugg.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "广角镜",
+        "enItem": "Wide Lens",
+        "ability": "Sturdy",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": "Mountain Gale",
+            "enName": "Mountain Gale",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "扑击",
+            "enName": "Body Press",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "大嘴娃",
+        "enSpecies": "Mawile",
+        "slug": "mawile",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/303.png",
+        "types": [
+          "Steel",
+          "Fairy"
+        ],
+        "item": "Mawil进化石",
+        "enItem": "Mawilite",
+        "ability": "Hyper Cutter",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 欺诈",
+            "enName": "Foul Play",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": "嬉闹",
+            "enName": "Play Rough",
+            "type": "Fairy",
+            "category": "Physical",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          }
+        ]
+      },
+      {
+        "species": "盐石巨灵",
+        "enSpecies": "Garganacl",
+        "slug": "garganacl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/934.png",
+        "types": [
+          "Rock"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Purifying Salt",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "Salt Cure",
+            "enName": "Salt Cure",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "扑击",
+            "enName": "Body Press",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "自我再生",
+            "enName": "Recover",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 铁壁",
+            "enName": "Iron Defense",
+            "type": "Steel",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "煤炭龟",
+        "enSpecies": "Torkoal",
+        "slug": "torkoal",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/324.png",
+        "types": [
+          "Fire"
+        ],
+        "item": "木炭",
+        "enItem": "Charcoal",
+        "ability": "Drought",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 喷火",
+            "enName": "Eruption",
+            "type": "Fire",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:36"
+  },
+  {
+    "id": "limitless-6a9c957d-jayxcer",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 13,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "3-2-0",
+    "player": "jayxcer",
+    "showdown": "Dragapult @ Focus Sash\nAbility: Clear Body\nJolly Nature Nature\n- Dragon Cheer\n- Dragon Tail\n- Light Screen\n- U-turn\n\nArchaludon @ Scope Lens\nAbility: Stamina\nModest Nature Nature\n- Electro Shot\n- Draco Meteor\n- Flash Cannon\n- Protect\n\nMilotic @ Leftovers\nAbility: Competitive\nBold Nature Nature\n- Scald\n- Life Dew\n- Icy Wind\n- Rain Dance\n\nSneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Close Combat\n- Dire Claw\n- Protect\n- Fake Out\n\nTalonflame @ Life Orb\nAbility: Gale Wings\nJolly Nature Nature\n- Brave Bird\n- Flare Blitz\n- Upper Hand\n- Tailwind\n\nCharizard @ Charizardite Y\nAbility: Solar Power\nModest Nature Nature\n- Heat Wave\n- Solar Beam\n- Weather Ball\n- Protect",
+    "pokemon": [
+      {
+        "species": "多龙巴鲁托",
+        "enSpecies": "Dragapult",
+        "slug": "dragapult",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/887.png",
+        "types": [
+          "Dragon",
+          "Ghost"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Clear Body",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Dragon Cheer",
+            "enName": "Dragon Cheer",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 龙尾",
+            "enName": "Dragon Tail",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "急速折返",
+            "enName": "U-turn",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "70"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "焦点镜",
+        "enItem": "Scope Lens",
+        "ability": "Stamina",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "流星群",
+            "enName": "Draco Meteor",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Competitive",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 热水",
+            "enName": "Scald",
+            "type": "Water",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "生命水滴",
+            "enName": "Life Dew",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": "求雨",
+            "enName": "Rain Dance",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "烈箭鹰",
+        "enSpecies": "Talonflame",
+        "slug": "talonflame",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/663.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Gale Wings",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Upper Hand",
+            "enName": "Upper Hand",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:37"
+  },
+  {
+    "id": "limitless-6a9c957d-ib",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 14,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "ib",
+    "showdown": "Incineroar @ Sitrus Berry\nAbility: Intimidate\nAdamant Nature Nature\n- Fake Out\n- Flare Blitz\n- Throat Chop\n- Parting Shot\n\nDragonite @ Dragoninite\nAbility: Multiscale\nModest Nature Nature\n- Dragon Pulse\n- Heat Wave\n- Tailwind\n- Protect\n\nMetagross @ Metagrossite\nAbility: Clear Body\nJolly Nature Nature\n- Psychic Fangs\n- Bullet Punch\n- Body Press\n- Protect\n\nSneasler @ Focus Sash\nAbility: Poison Touch\nJolly Nature Nature\n- Close Combat\n- Dire Claw\n- Fake Out\n- Protect\n\nPrimarina @ Life Orb\nAbility: Liquid Voice\nModest Nature Nature\n- Hyper Voice\n- Moonblast\n- Calm Mind\n- Protect\n\nFarigiraf @ Colbur Berry\nAbility: Armor Tail\nQuiet Nature Nature\n- Thunderbolt\n- Psychic\n- Trick Room\n- Helping Hand",
+    "pokemon": [
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "快龙",
+        "enSpecies": "Dragonite",
+        "slug": "dragonite",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/149.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "Dragonin进化石",
+        "enItem": "Dragoninite",
+        "ability": "Multiscale",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨金怪",
+        "enSpecies": "Metagross",
+        "slug": "metagross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/376.png",
+        "types": [
+          "Steel",
+          "Psychic"
+        ],
+        "item": "巨金怪进化石",
+        "enItem": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "扑击",
+            "enName": "Body Press",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "西狮海壬",
+        "enSpecies": "Primarina",
+        "slug": "primarina",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/730.png",
+        "types": [
+          "Water",
+          "Fairy"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Liquid Voice",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Armor Tail",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:37"
+  },
+  {
+    "id": "limitless-6a9c957d-sordanjingleton",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 15,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "sordanjingleton",
+    "showdown": "Manectric @ Manectite\nAbility: Lightning Rod\nTimid Nature Nature\n- Thunderbolt\n- Snarl\n- Overheat\n- Protect\n\nPrimarina @ Mystic Water\nAbility: Liquid Voice\nModest Nature Nature\n- Hyper Voice\n- Moonblast\n- Haze\n- Protect\n\nScizor @ Expert Belt\nAbility: Technician\nAdamant Nature Nature\n- Bullet Punch\n- Knock Off\n- Bug Bite\n- Protect\n\nAnnihilape @ Lum Berry\nAbility: Defiant\nAdamant Nature Nature\n- Drain Punch\n- Rage Fist\n- Bulk Up\n- Protect\n\nMaushold @ Leftovers\nAbility: Friend Guard\nImpish Nature Nature\n- Beat Up\n- Follow Me\n- Feint\n- Protect\n\nAltaria @ Sitrus Berry\nAbility: Cloud Nine\nBold Nature Nature\n- Dragon Pulse\n- Tailwind\n- Will-O-Wisp\n- Protect",
+    "pokemon": [
+      {
+        "species": "雷电兽",
+        "enSpecies": "Manectric",
+        "slug": "manectric",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/310.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Manect进化石",
+        "enItem": "Manectite",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 大声咆哮",
+            "enName": "Snarl",
+            "type": "Dark",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": " 过热",
+            "enName": "Overheat",
+            "type": "Fire",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "西狮海壬",
+        "enSpecies": "Primarina",
+        "slug": "primarina",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/730.png",
+        "types": [
+          "Water",
+          "Fairy"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Liquid Voice",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 黑雾",
+            "enName": "Haze",
+            "type": "Ice",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨钳螳螂",
+        "enSpecies": "Scizor",
+        "slug": "scizor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/212.png",
+        "types": [
+          "Bug",
+          "Steel"
+        ],
+        "item": "达人带",
+        "enItem": "Expert Belt",
+        "ability": "Technician",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "拍落",
+            "enName": "Knock Off",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "65*"
+          },
+          {
+            "name": " 虫咬",
+            "enName": "Bug Bite",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "弃世猴",
+        "enSpecies": "Annihilape",
+        "slug": "annihilape",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/979.png",
+        "types": [
+          "Fighting",
+          "Ghost"
+        ],
+        "item": "木子果",
+        "enItem": "Lum Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          },
+          {
+            "name": "Rage Fist",
+            "enName": "Rage Fist",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "一家鼠",
+        "enSpecies": "Maushold",
+        "slug": "maushold",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/925.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Friend Guard",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 围攻",
+            "enName": "Beat Up",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": "看我嘛",
+            "enName": "Follow Me",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "佯攻",
+            "enName": "Feint",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "30*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "七夕青鸟",
+        "enSpecies": "Altaria",
+        "slug": "altaria",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/334.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Cloud Nine",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "磷火",
+            "enName": "Will-O-Wisp",
+            "type": "Fire",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:37"
+  },
+  {
+    "id": "limitless-6a9c957d-kundan_s",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 16,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "kundan_s",
+    "showdown": "Farigiraf @ Life Orb\nAbility: Armor tail\nJolly Nature Nature\n- protect\n- psychic\n- thunderbolt\n- ally switch\n\nSneasler @ White Herb\nAbility: Unburden\nAdamant Nature Nature\n- Protect\n- Throat Chop\n- Fake Out\n- Close Combat\n\nBasculegion @ Choice Scarf\nAbility: Adaptability\nAdamant Nature Nature\n- Flip Turn\n- Liquidation\n- Last Respects\n- Psychic Fangs\n\nStarmie @ Starminite\nAbility: Natural Cure\nAdamant Nature Nature\n- Aqua Jet\n- Liquidation\n- Zen Headbutt\n- Ice Spinner\n\nBlaziken @ Blazikenite\nAbility: Speed Boost\nAdamant Nature Nature\n- Protect\n- Close Combat\n- Rock Slide\n- Flare Blitz\n\nKingambit @ Chople Berry\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Low Kick\n- Protect",
+    "pokemon": [
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Armor tail",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 交换场地",
+            "enName": "ally switch",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "快速折返",
+            "enName": "Flip Turn",
+            "type": "Water",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          }
+        ]
+      },
+      {
+        "species": "宝石海星",
+        "enSpecies": "Starmie",
+        "slug": "starmie",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/121.png",
+        "types": [
+          "Water",
+          "Psychic"
+        ],
+        "item": "Starmin进化石",
+        "enItem": "Starminite",
+        "ability": "Natural Cure",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": " 意念头锤",
+            "enName": "Zen Headbutt",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "Ice Spinner",
+            "enName": "Ice Spinner",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "火焰鸡",
+        "enSpecies": "Blaziken",
+        "slug": "blaziken",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/257.png",
+        "types": [
+          "Fire",
+          "Fighting"
+        ],
+        "item": "火焰鸡进化石",
+        "enItem": "Blazikenite",
+        "ability": "Speed Boost",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:37"
+  },
+  {
+    "id": "limitless-6a9c957d-abhigod",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 19,
+    "placingTag": "🎗️ 三十二强 (Top 32)",
+    "record": "1-4-0",
+    "player": "abhigod",
+    "showdown": "Sneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Dire Claw\n- Close Combat\n- Fake Out\n- Protect\n\nBasculegion @ Choice Scarf\nAbility: Adaptability\nAdamant Nature Nature\n- Wave Crash\n- Flip Turn\n- Last Respects\n- Aqua Jet\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Earthquake\n- Dragon Claw\n- Stomping Tantrum\n- Protect\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Heat Wave\n- Protect\n- Solar Beam\n- Weather Ball\n\nKingambit @ Black Glasses\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Iron Head\n- Sucker Punch\n- Protect\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Tailwind\n- Encore\n- Protect",
+    "pokemon": [
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "快速折返",
+            "enName": "Flip Turn",
+            "type": "Water",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:38"
+  },
+  {
+    "id": "limitless-6a9c957d-moklionty2",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 20,
+    "placingTag": "🎗️ 三十二强 (Top 32)",
+    "record": "0-5-0",
+    "player": "moklionty2",
+    "showdown": "Blaziken @ Blazikenite\nAbility: Speed Boost\nAdamant Nature Nature\n- Close Combat\n- Rock Slide\n- Flare Blitz\n- Protect\n\nFroslass @ Froslassite\nAbility: Cursed Body\nTimid Nature Nature\n- Blizzard\n- Thunderbolt\n- Aurora Veil\n- Protect\n\nToxapex @ Leftovers\nAbility: Regenerator\nBold Nature Nature\n- Toxic\n- Infestation\n- Baneful Bunker\n- Wide Guard\n\nKingambit @ Focus Sash\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Iron Head\n- Protect\n\nTalonflame @ Sharp Beak\nAbility: Gale Wings\nJolly Nature Nature\n- Swords Dance\n- Brave Bird\n- Flare Blitz\n- Protect\n\nSinistcha @ Sitrus Berry\nAbility: Hospitality\nRelaxed Nature Nature\n- Matcha Gotcha\n- Trick Room\n- Rage Powder\n- Protect",
+    "pokemon": [
+      {
+        "species": "火焰鸡",
+        "enSpecies": "Blaziken",
+        "slug": "blaziken",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/257.png",
+        "types": [
+          "Fire",
+          "Fighting"
+        ],
+        "item": "火焰鸡进化石",
+        "enItem": "Blazikenite",
+        "ability": "Speed Boost",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "雪妖女",
+        "enSpecies": "Froslass",
+        "slug": "froslass",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/478.png",
+        "types": [
+          "Ice",
+          "Ghost"
+        ],
+        "item": "雪妖女进化石",
+        "enItem": "Froslassite",
+        "ability": "Cursed Body",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 暴风雪",
+            "enName": "Blizzard",
+            "type": "Ice",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "极光幕",
+            "enName": "Aurora Veil",
+            "type": "Ice",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "超坏星",
+        "enSpecies": "Toxapex",
+        "slug": "toxapex",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/748.png",
+        "types": [
+          "Poison",
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Regenerator",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 剧毒",
+            "enName": "Toxic",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "纠缠不休",
+            "enName": "Infestation",
+            "type": "Bug",
+            "category": "Special",
+            "power": "20"
+          },
+          {
+            "name": "碉堡",
+            "enName": "Baneful Bunker",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈箭鹰",
+        "enSpecies": "Talonflame",
+        "slug": "talonflame",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/663.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "锐利鸟嘴",
+        "enItem": "Sharp Beak",
+        "ability": "Gale Wings",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Hospitality",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:38"
+  },
+  {
+    "id": "limitless-6a9c957d-goyardghazi",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 14,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "0-2-0",
+    "player": "goyardghazi",
+    "showdown": "Froslass @ Froslassite\nAbility: Cursed Body\nTimid Nature Nature\n- Protect\n- Aurora Veil\n- Blizzard\n- Shadow Ball\n\nSinistcha @ Occa Berry\nAbility: Hospitality\nBold Nature Nature\n- Protect\n- Trick Room\n- Matcha Gotcha\n- Rage Powder\n\nBlaziken @ Life Orb\nAbility: Speed Boost\nAdamant Nature Nature\n- Protect\n- Rock Slide\n- Close Combat\n- Flare Blitz\n\nKingambit @ Black Glasses\nAbility: Defiant\nAdamant Nature Nature\n- Protect\n- Sucker Punch\n- Kowtow Cleave\n- Swords Dance\n\nSneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Fake Out\n- Feint\n- Dire Claw\n- Close Combat\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nCareful Nature Nature\n- Fake Out\n- Parting Shot\n- Flare Blitz\n- Roar",
+    "pokemon": [
+      {
+        "species": "雪妖女",
+        "enSpecies": "Froslass",
+        "slug": "froslass",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/478.png",
+        "types": [
+          "Ice",
+          "Ghost"
+        ],
+        "item": "雪妖女进化石",
+        "enItem": "Froslassite",
+        "ability": "Cursed Body",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "极光幕",
+            "enName": "Aurora Veil",
+            "type": "Ice",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 暴风雪",
+            "enName": "Blizzard",
+            "type": "Ice",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "巧可果",
+        "enItem": "Occa Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "火焰鸡",
+        "enSpecies": "Blaziken",
+        "slug": "blaziken",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/257.png",
+        "types": [
+          "Fire",
+          "Fighting"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Speed Boost",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "佯攻",
+            "enName": "Feint",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "30*"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "吼叫",
+            "enName": "Roar",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:39"
+  },
+  {
+    "id": "limitless-6a9c957d-jorman",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 15,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "1-2-0",
+    "player": "jorman",
+    "showdown": "Dragonite @ Dragoninite\nAbility: Multiscale\nModest Nature Nature\n- Protect\n- Extreme Speed\n- Heat Wave\n- Dragon Pulse\n\nMetagross @ Metagrossite\nAbility: Clear Body\nAdamant Nature Nature\n- Body Press\n- Protect\n- Bullet Punch\n- Psychic Fangs\n\nSneasler @ White Herb\nAbility: Unburden\nAdamant Nature Nature\n- Close Combat\n- Dire Claw\n- Fake Out\n- Protect\n\nKingambit @ Chople Berry\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Iron Head\n- Kowtow Cleave\n- Swords Dance\n\nMilotic @ Leftovers\nAbility: Competitive\nSassy Nature Nature\n- Alluring Voice\n- Weather Ball\n- Helping Hand\n- Alluring Voice\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Encore\n- Protect\n- Moonblast\n- Tailwind",
+    "pokemon": [
+      {
+        "species": "快龙",
+        "enSpecies": "Dragonite",
+        "slug": "dragonite",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/149.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "Dragonin进化石",
+        "enItem": "Dragoninite",
+        "ability": "Multiscale",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "神速",
+            "enName": "Extreme Speed",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          }
+        ]
+      },
+      {
+        "species": "巨金怪",
+        "enSpecies": "Metagross",
+        "slug": "metagross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/376.png",
+        "types": [
+          "Steel",
+          "Psychic"
+        ],
+        "item": "巨金怪进化石",
+        "enItem": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "扑击",
+            "enName": "Body Press",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Competitive",
+        "nature": "Sassy Nature",
+        "moves": [
+          {
+            "name": "Alluring Voice",
+            "enName": "Alluring Voice",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Alluring Voice",
+            "enName": "Alluring Voice",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:39"
+  },
+  {
+    "id": "limitless-6a9c957d-paparott",
+    "source": "Limitless VGC",
+    "tournamentName": "˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9c957dab080c8c957fb3dc/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 16,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "paparott",
+    "showdown": "Gardevoir @ Gardevoirite\nAbility: Trace\nTimid Nature Nature\n- Psychic\n- Hyper Voice\n- Calm Mind\n- Protect\n\nGarchomp @ Garchompite\nAbility: Rough Skin\nJolly Nature Nature\n- Stomping Tantrum\n- Rock Slide\n- Swords Dance\n- Protect\n\nSneasler @ Focus Sash\nAbility: Poison Touch\nJolly Nature Nature\n- Close Combat\n- Dire Claw\n- Fake Out\n- Feint\n\nKingambit @ Chople Berry\nAbility: Defiant\nJolly Nature Nature\n- Kowtow Cleave\n- Swords Dance\n- Sucker Punch\n- Protect\n\nSinistcha @ Colbur Berry\nAbility: Hospitality\nSassy Nature Nature\n- Matcha Gotcha\n- Rage Powder\n- Trick Room\n- Protect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nCareful Nature Nature\n- Flare Blitz\n- Parting Shot\n- Helping Hand\n- Fake Out",
+    "pokemon": [
+      {
+        "species": "沙奈朵",
+        "enSpecies": "Gardevoir",
+        "slug": "gardevoir",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/282.png",
+        "types": [
+          "Psychic",
+          "Fairy"
+        ],
+        "item": "沙奈朵进化石",
+        "enItem": "Gardevoirite",
+        "ability": "Trace",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "烈咬陆鲨进化石",
+        "enItem": "Garchompite",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "佯攻",
+            "enName": "Feint",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "30*"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Hospitality",
+        "nature": "Sassy Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:39"
+  },
+  {
+    "id": "limitless-6a9aab7c-calielbr",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 1,
+    "placingTag": "🥇 冠军 (1st)",
+    "record": "1-2-0",
+    "player": "calielbr",
+    "showdown": "Altaria @ Haban Berry\nAbility: Cloud Nine\nBold Nature Nature\n- Fire Spin\n- Perish Song\n- Roost\n- Protect\n\nGengar @ Gengarite\nAbility: Cursed Body\nModest Nature Nature\n- Shadow Ball\n- Sludge Bomb\n- Perish Song\n- Protect\n\nVaporeon @ Leftovers\nAbility: Water Absorb\nRelaxed Nature Nature\n- Flip Turn\n- Yawn\n- Ice Beam\n- Detect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nRelaxed Nature Nature\n- Fake Out\n- Flare Blitz\n- Parting Shot\n- Protect\n\nKingambit @ Focus Sash\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Low Kick\n- Protect\n\nSneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Fake Out\n- Close Combat\n- Gunk Shot\n- Protect",
+    "pokemon": [
+      {
+        "species": "七夕青鸟",
+        "enSpecies": "Altaria",
+        "slug": "altaria",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/334.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "莓榴果",
+        "enItem": "Haban Berry",
+        "ability": "Cloud Nine",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 火焰旋涡",
+            "enName": "Fire Spin",
+            "type": "Fire",
+            "category": "Special",
+            "power": "35*"
+          },
+          {
+            "name": " 灭亡之歌",
+            "enName": "Perish Song",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 羽栖",
+            "enName": "Roost",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "耿鬼",
+        "enSpecies": "Gengar",
+        "slug": "gengar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/94.png",
+        "types": [
+          "Ghost",
+          "Poison"
+        ],
+        "item": "耿鬼进化石",
+        "enItem": "Gengarite",
+        "ability": "Cursed Body",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 灭亡之歌",
+            "enName": "Perish Song",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "水伊布",
+        "enSpecies": "Vaporeon",
+        "slug": "vaporeon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/134.png",
+        "types": [
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Water Absorb",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "快速折返",
+            "enName": "Flip Turn",
+            "type": "Water",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "哈欠",
+            "enName": "Yawn",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 垃圾射击",
+            "enName": "Gunk Shot",
+            "type": "Poison",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:45"
+  },
+  {
+    "id": "limitless-6a9aab7c-gusta21",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 2,
+    "placingTag": "🥈 亚军 (2nd)",
+    "record": "2-4-0",
+    "player": "gusta21",
+    "showdown": "Metagross @ Metagrossite\nAbility: Clear Body\nAdamant Nature Nature\n- Psychic Fangs\n- Meteor Mash\n- Bullet Punch\n- Protect\n\nAnnihilape @ Roseli Berry\nAbility: Defiant\nAdamant Nature Nature\n- Drain Punch\n- Rage Fist\n- Close Combat\n- Protect\n\nMaushold @ Chople Berry\nAbility: Friend Guard\nJolly Nature Nature\n- Super Fang\n- Beat Up\n- Follow Me\n- Feint\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Throat Chop\n- Parting Shot\n- Fake Out\n- Flare Blitz\n\nPolitoed @ Mystic Water\nAbility: Drizzle\nModest Nature Nature\n- Weather Ball\n- Icy Wind\n- Ice Beam\n- Protect\n\nGyarados @ Gyaradosite\nAbility: Intimidate\nAdamant Nature Nature\n- Waterfall\n- Lash Out\n- Dragon Dance\n- Protect",
+    "pokemon": [
+      {
+        "species": "巨金怪",
+        "enSpecies": "Metagross",
+        "slug": "metagross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/376.png",
+        "types": [
+          "Steel",
+          "Psychic"
+        ],
+        "item": "巨金怪进化石",
+        "enItem": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "彗星拳",
+            "enName": "Meteor Mash",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "90*"
+          },
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "弃世猴",
+        "enSpecies": "Annihilape",
+        "slug": "annihilape",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/979.png",
+        "types": [
+          "Fighting",
+          "Ghost"
+        ],
+        "item": "洛玫果",
+        "enItem": "Roseli Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          },
+          {
+            "name": "Rage Fist",
+            "enName": "Rage Fist",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "一家鼠",
+        "enSpecies": "Maushold",
+        "slug": "maushold",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/925.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Friend Guard",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 愤怒门牙",
+            "enName": "Super Fang",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "—"
+          },
+          {
+            "name": " 围攻",
+            "enName": "Beat Up",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": "看我嘛",
+            "enName": "Follow Me",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "佯攻",
+            "enName": "Feint",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "30*"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "蚊香蛙皇",
+        "enSpecies": "Politoed",
+        "slug": "politoed",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/186.png",
+        "types": [
+          "Water"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Drizzle",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "暴鲤龙",
+        "enSpecies": "Gyarados",
+        "slug": "gyarados",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/130.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "暴鲤龙进化石",
+        "enItem": "Gyaradosite",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "攀瀑",
+            "enName": "Waterfall",
+            "type": "Water",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "洩憤",
+            "enName": "Lash Out",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 龙之舞",
+            "enName": "Dragon Dance",
+            "type": "Dragon",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:46"
+  },
+  {
+    "id": "limitless-6a9aab7c-odrigan",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 3,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "2-3-0",
+    "player": "odrigan",
+    "showdown": "Whimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Tailwind\n- Encore\n- Protect\n\nCharizard @ Charizardite Y\nAbility: Solar Power\nModest Nature Nature\n- Solar Beam\n- Heat Wave\n- Weather Ball\n- Protect\n\nEternal Flower Floette @ Floettite\nAbility: Flower Veil\nModest Nature Nature\n- Light of Ruin\n- Protect\n- Psychic\n- Dazzling Gleam\n\nBasculegion @ Life Orb\nAbility: Adaptability\nAdamant Nature Nature\n- Last Respects\n- Wave Crash\n- Protect\n- Aqua Jet\n\nGarchomp @ Choice Scarf\nAbility: Rough Skin\nAdamant Nature Nature\n- Stomping Tantrum\n- Dragon Claw\n- Rock Slide\n- Earthquake\n\nKingambit @ Chople Berry\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Low Kick\n- Iron Head",
+    "pokemon": [
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "破灭之光",
+            "enName": "Light of Ruin",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "140"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:46"
+  },
+  {
+    "id": "limitless-6a9aab7c-phantom40",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 4,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "1-3-0",
+    "player": "phantom40",
+    "showdown": "Alolan Ninetales @ Choice Scarf\nAbility: Snow Warning\nTimid Nature Nature\n- Blizzard\n- Freeze-Dry\n- Icy Wind\n- Encore\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Flare Blitz\n- Throat Chop\n- Fake Out\n- Parting Shot\n\nDragonite @ Life Orb\nAbility: Inner Focus\nAdamant Nature Nature\n- Dragon Claw\n- Superpower\n- Extreme Speed\n- Protect\n\nSneasler @ Focus Sash\nAbility: Unburden\nAdamant Nature Nature\n- Close Combat\n- Dire Claw\n- Rock Slide\n- Protect\n\nGengar @ Gengarite\nAbility: Cursed Body\nTimid Nature Nature\n- Sludge Bomb\n- Shadow Ball\n- Substitute\n- Protect\n\nSwampert @ Leftovers\nAbility: Torrent\nRelaxed Nature Nature\n- High Horsepower\n- Flip Turn\n- Yawn\n- Protect",
+    "pokemon": [
+      {
+        "species": "Alolan Ninetales",
+        "enSpecies": "Alolan Ninetales",
+        "slug": "alolan-ninetales",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/alolan-ninetales.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Snow Warning",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 暴风雪",
+            "enName": "Blizzard",
+            "type": "Ice",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "冷冻干燥",
+            "enName": "Freeze-Dry",
+            "type": "Ice",
+            "category": "Special",
+            "power": "70"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "快龙",
+        "enSpecies": "Dragonite",
+        "slug": "dragonite",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/149.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Inner Focus",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 蛮力",
+            "enName": "Superpower",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "神速",
+            "enName": "Extreme Speed",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Unburden",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "耿鬼",
+        "enSpecies": "Gengar",
+        "slug": "gengar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/94.png",
+        "types": [
+          "Ghost",
+          "Poison"
+        ],
+        "item": "耿鬼进化石",
+        "enItem": "Gengarite",
+        "ability": "Cursed Body",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "替身",
+            "enName": "Substitute",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Torrent",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": "快速折返",
+            "enName": "Flip Turn",
+            "type": "Water",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "哈欠",
+            "enName": "Yawn",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:46"
+  },
+  {
+    "id": "limitless-6a9aab7c-ninabruxa",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 5,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "2-3-0",
+    "player": "ninabruxa",
+    "showdown": "Heracross @ Heracronite\nAbility: Moxie\nAdamant Nature Nature\n- Close Combat\n- Pin Missile\n- Protect\n- Rock Blast\n\nPrimarina @ Life Orb\nAbility: Liquid Voice\nCalm Nature Nature\n- Moonblast\n- Hyper Voice\n- Protect\n- Calm Mind\n\nMorpeko @ Focus Sash\nAbility: Hunger Switch\nAdamant Nature Nature\n- Aura Wheel\n- Fake Out\n- Protect\n- Reversal\n\nExcadrill @ Excadrite\nAbility: Mold Breaker\nAdamant Nature Nature\n- High Horsepower\n- Iron Head\n- Earthquake\n- Protect\n\nTalonflame @ Sharp Beak\nAbility: Gale Wings\nAdamant Nature Nature\n- Flare Blitz\n- Dual Wingbeat\n- Tailwind\n- Protect\n\nTsareena @ Wide Lens\nAbility: Queenly Majesty\nAdamant Nature Nature\n- Power Whip\n- Triple Axel\n- Protect\n- High Jump Kick",
+    "pokemon": [
+      {
+        "species": "赫拉克罗斯",
+        "enSpecies": "Heracross",
+        "slug": "heracross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/214.png",
+        "types": [
+          "Bug",
+          "Fighting"
+        ],
+        "item": "Heracron进化石",
+        "enItem": "Heracronite",
+        "ability": "Moxie",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 飞弹针",
+            "enName": "Pin Missile",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "25*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 岩石爆击",
+            "enName": "Rock Blast",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "25"
+          }
+        ]
+      },
+      {
+        "species": "西狮海壬",
+        "enSpecies": "Primarina",
+        "slug": "primarina",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/730.png",
+        "types": [
+          "Water",
+          "Fairy"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Liquid Voice",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "莫鲁贝可",
+        "enSpecies": "Morpeko",
+        "slug": "morpeko",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/877.png",
+        "types": [
+          "Electric",
+          "Dark"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Hunger Switch",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "气场轮",
+            "enName": "Aura Wheel",
+            "type": "Electric",
+            "category": "Physical",
+            "power": "110"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "绝处逢生",
+            "enName": "Reversal",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "龙头地鼠",
+        "enSpecies": "Excadrill",
+        "slug": "excadrill",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/530.png",
+        "types": [
+          "Ground",
+          "Steel"
+        ],
+        "item": "Excadr进化石",
+        "enItem": "Excadrite",
+        "ability": "Mold Breaker",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈箭鹰",
+        "enSpecies": "Talonflame",
+        "slug": "talonflame",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/663.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "锐利鸟嘴",
+        "enItem": "Sharp Beak",
+        "ability": "Gale Wings",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "甜冷美后",
+        "enSpecies": "Tsareena",
+        "slug": "tsareena",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/763.png",
+        "types": [
+          "Grass"
+        ],
+        "item": "广角镜",
+        "enItem": "Wide Lens",
+        "ability": "Queenly Majesty",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 强力鞭打",
+            "enName": "Power Whip",
+            "type": "Grass",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "三旋擊",
+            "enName": "Triple Axel",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "20"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 飞膝踢",
+            "enName": "High Jump Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "130*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:46"
+  },
+  {
+    "id": "limitless-6a9aab7c-srroxaskun",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 6,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "1-2-0",
+    "player": "srroxaskun",
+    "showdown": "Sinistcha @ Sitrus Berry\nAbility: Hospitality\nBold Nature Nature\n- Matcha Gotcha\n- Rage Powder\n- Life Dew\n- Trick Room\n\nVivillon @ Focus Sash\nAbility: Compound Eyes\nTimid Nature Nature\n- Sleep Powder\n- Protect\n- Tailwind\n- Pollen Puff\n\nSylveon @ Life Orb\nAbility: Pixilate\nModest Nature Nature\n- Detect\n- Quick Attack\n- Hyper Voice\n- Hyper Beam\n\nIncineroar @ Passho Berry\nAbility: Intimidate\nImpish Nature Nature\n- Fake Out\n- Throat Chop\n- Flare Blitz\n- Parting Shot\n\nBlastoise @ Blastoisinite\nAbility: Rain Dish\nModest Nature Nature\n- Fake Out\n- Shell Smash\n- Water Spout\n- Dark Pulse\n\nCharizard @ Charizardite X\nAbility: Blaze\nAdamant Nature Nature\n- Flare Blitz\n- Dragon Dance\n- Breaking Swipe\n- Protect",
+    "pokemon": [
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "生命水滴",
+            "enName": "Life Dew",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "彩粉蝶",
+        "enSpecies": "Vivillon",
+        "slug": "vivillon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/666.png",
+        "types": [
+          "Bug",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Compound Eyes",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "花粉团",
+            "enName": "Pollen Puff",
+            "type": "Bug",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "千香果",
+        "enItem": "Passho Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "水箭龟",
+        "enSpecies": "Blastoise",
+        "slug": "blastoise",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/9.png",
+        "types": [
+          "Water"
+        ],
+        "item": "Blastoisin进化石",
+        "enItem": "Blastoisinite",
+        "ability": "Rain Dish",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 破壳",
+            "enName": "Shell Smash",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 喷水",
+            "enName": "Water Spout",
+            "type": "Water",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 恶之波动",
+            "enName": "Dark Pulse",
+            "type": "Dark",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 X",
+        "enItem": "Charizardite X",
+        "ability": "Blaze",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 龙之舞",
+            "enName": "Dragon Dance",
+            "type": "Dragon",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "广域破坏",
+            "enName": "Breaking Swipe",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:47"
+  },
+  {
+    "id": "limitless-6a9aab7c-seakingglazer123",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 7,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "1-3-0",
+    "player": "seakingglazer123",
+    "showdown": "Leafeon @ Miracle Seed\nAbility: Chlorophyll\nSerious Nature Nature\n- Solar Blade\n- Knock Off\n- Quick Attack\n- Detect\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Heat Wave\n- Weather Ball\n- Air Slash\n- Solar Beam\n\nVivillon @ Focus Sash\nAbility: Compound Eyes\nTimid Nature Nature\n- Tailwind\n- Struggle Bug\n- Air Cutter\n- Sleep Powder\n\nDedenne @ Sitrus Berry\nAbility: Plus\nTimid Nature Nature\n- Entrainment\n- Helping Hand\n- Electroweb\n- Protect\n\nFarigiraf @ Colbur Berry\nAbility: Armor Tail\nBold Nature Nature\n- Protect\n- Hyper Voice\n- Trick Room\n- Imprison\n\nBasculegion @ Mystic Water\nAbility: Adaptability\nAdamant Nature Nature\n- Aqua Jet\n- Liquidation\n- Scale Shot\n- Last Respects",
+    "pokemon": [
+      {
+        "species": "叶伊布",
+        "enSpecies": "Leafeon",
+        "slug": "leafeon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/470.png",
+        "types": [
+          "Grass"
+        ],
+        "item": "奇迹种子",
+        "enItem": "Miracle Seed",
+        "ability": "Chlorophyll",
+        "nature": "Serious Nature",
+        "moves": [
+          {
+            "name": "日光刃",
+            "enName": "Solar Blade",
+            "type": "Grass",
+            "category": "Physical",
+            "power": "125"
+          },
+          {
+            "name": "拍落",
+            "enName": "Knock Off",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "65*"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 空气斩",
+            "enName": "Air Slash",
+            "type": "Flying",
+            "category": "Special",
+            "power": "75"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      },
+      {
+        "species": "彩粉蝶",
+        "enSpecies": "Vivillon",
+        "slug": "vivillon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/666.png",
+        "types": [
+          "Bug",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Compound Eyes",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 虫之抵抗",
+            "enName": "Struggle Bug",
+            "type": "Bug",
+            "category": "Special",
+            "power": "50*"
+          },
+          {
+            "name": " 空气利刃",
+            "enName": "Air Cutter",
+            "type": "Flying",
+            "category": "Special",
+            "power": "60*"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "咚咚鼠",
+        "enSpecies": "Dedenne",
+        "slug": "dedenne",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/702.png",
+        "types": [
+          "Electric",
+          "Fairy"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Plus",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 找伙伴",
+            "enName": "Entrainment",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 电网",
+            "enName": "Electroweb",
+            "type": "Electric",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "封印",
+            "enName": "Imprison",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "鱗射",
+            "enName": "Scale Shot",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "25"
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:47"
+  },
+  {
+    "id": "limitless-6a9aab7c-hop",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 8,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "2-3-0",
+    "player": "hop",
+    "showdown": "Oranguru @ Sitrus Berry\nAbility: Inner Focus\nSassy Nature Nature\n- Trick Room\n- Instruct\n- Encore\n- Psychic\n\nCrabominable @ Crabominite\nAbility: Hyper Cutter\nAdamant Nature Nature\n- Ice Hammer\n- Crabhammer\n- Drain Punch\n- Protect\n\nAraquanid @ Life Orb\nAbility: Water Bubble\nAdamant Nature Nature\n- Liquidation\n- Leech Life\n- Protect\n- Wide Guard\n\nHydrapple @ Yache Berry\nAbility: Regenerator\nModest Nature Nature\n- Fickle Beam\n- Giga Drain\n- Protect\n- Earth Power\n\nAegislash @ Spell Tag\nAbility: Stance Change\nAdamant Nature Nature\n- Sacred Sword\n- Poltergeist\n- Iron Head\n- King's Shield\n\nEmpoleon @ Chople Berry\nAbility: Competitive\nModest Nature Nature\n- Flash Cannon\n- Hydro Pump\n- Ice Beam\n- Protect",
+    "pokemon": [
+      {
+        "species": "智挥猩",
+        "enSpecies": "Oranguru",
+        "slug": "oranguru",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/765.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Inner Focus",
+        "nature": "Sassy Nature",
+        "moves": [
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "号令",
+            "enName": "Instruct",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "好胜毛蟹",
+        "enSpecies": "Crabominable",
+        "slug": "crabominable",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/740.png",
+        "types": [
+          "Fighting",
+          "Ice"
+        ],
+        "item": "Crabomin进化石",
+        "enItem": "Crabominite",
+        "ability": "Hyper Cutter",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "冰锤",
+            "enName": "Ice Hammer",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 蟹钳锤",
+            "enName": "Crabhammer",
+            "type": "Water",
+            "category": "Physical",
+            "power": "100*"
+          },
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "滴蛛霸",
+        "enSpecies": "Araquanid",
+        "slug": "araquanid",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/752.png",
+        "types": [
+          "Water",
+          "Bug"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Water Bubble",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "汲取",
+            "enName": "Leech Life",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "80*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "蜜集大蛇",
+        "enSpecies": "Hydrapple",
+        "slug": "hydrapple",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1019.png",
+        "types": [
+          "Grass",
+          "Dragon"
+        ],
+        "item": "番荔果",
+        "enItem": "Yache Berry",
+        "ability": "Regenerator",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Fickle Beam",
+            "enName": "Fickle Beam",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 终极吸取",
+            "enName": "Giga Drain",
+            "type": "Grass",
+            "category": "Special",
+            "power": "75*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "坚盾剑怪",
+        "enSpecies": "Aegislash",
+        "slug": "aegislash",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/681.png",
+        "types": [
+          "Steel",
+          "Ghost"
+        ],
+        "item": "诅咒之符",
+        "enItem": "Spell Tag",
+        "ability": "Stance Change",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 圣剑",
+            "enName": "Sacred Sword",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "90"
+          },
+          {
+            "name": "靈騷",
+            "enName": "Poltergeist",
+            "type": "Ghost",
+            "category": "Physical",
+            "power": "110"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "王者盾牌",
+            "enName": "King's Shield",
+            "type": "Steel",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "帝王拿波",
+        "enSpecies": "Empoleon",
+        "slug": "empoleon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/395.png",
+        "types": [
+          "Water",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Competitive",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "水炮",
+            "enName": "Hydro Pump",
+            "type": "Water",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:47"
+  },
+  {
+    "id": "limitless-6a9aab7c-jag0604",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 9,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "0-2-0",
+    "player": "jag0604",
+    "showdown": "Gholdengo @ Spell Tag\nAbility: Good as Gold\nTimid Nature Nature\n- Protect\n- Shadow Ball\n- Nasty Plot\n- Make It Rain\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Protect\n- Solar Beam\n- Weather Ball\n- Heat Wave\n\nBasculegion @ Mystic Water\nAbility: Adaptability\nJolly Nature Nature\n- Last Respects\n- Flip Turn\n- Aqua Jet\n- Wave Crash\n\nSneasler @ White Herb\nAbility: Pressure\nRelaxed Nature Nature\n- Dire Claw\n- Taunt\n- U-turn\n- Close Combat\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Encore\n- Protect\n- Tailwind\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Dragon Claw\n- Earthquake\n- Rock Slide\n- Swords Dance",
+    "pokemon": [
+      {
+        "species": "赛富豪",
+        "enSpecies": "Gholdengo",
+        "slug": "gholdengo",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1000.png",
+        "types": [
+          "Steel",
+          "Ghost"
+        ],
+        "item": "诅咒之符",
+        "enItem": "Spell Tag",
+        "ability": "Good as Gold",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 诡计",
+            "enName": "Nasty Plot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Make It Rain",
+            "enName": "Make It Rain",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "快速折返",
+            "enName": "Flip Turn",
+            "type": "Water",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Pressure",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 挑衅",
+            "enName": "Taunt",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "急速折返",
+            "enName": "U-turn",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "70"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:47"
+  },
+  {
+    "id": "limitless-6a9aab7c-dark_cris07",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 10,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "dark_cris07",
+    "showdown": "Delphox @ Delphoxite\nAbility: Blaze\nTimid Nature Nature\n- Heat Wave\n- Protect\n- Calm Mind\n- Psychic\n\nGrimmsnarl @ Light Clay\nAbility: Prankster\nImpish Nature Nature\n- Reflect\n- Light Screen\n- Taunt\n- Spirit Break\n\nMilotic @ Leftovers\nAbility: Competitive\nBold Nature Nature\n- Scald\n- Recover\n- Ice Beam\n- Protect\n\nSinistcha @ Mental Herb\nAbility: Hospitality\nBold Nature Nature\n- Matcha Gotcha\n- Strength Sap\n- Rage Powder\n- Trick Room\n\nSneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Fake Out\n- Close Combat\n- Dire Claw\n- Protect\n\nKingambit @ Black Glasses\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Iron Head\n- Protect",
+    "pokemon": [
+      {
+        "species": "妖火红狐",
+        "enSpecies": "Delphox",
+        "slug": "delphox",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/655.png",
+        "types": [
+          "Fire",
+          "Psychic"
+        ],
+        "item": "妖火红狐进化石",
+        "enItem": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "长毛巨魔",
+        "enSpecies": "Grimmsnarl",
+        "slug": "grimmsnarl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/861.png",
+        "types": [
+          "Dark",
+          "Fairy"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 挑衅",
+            "enName": "Taunt",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "灵魂冲击",
+            "enName": "Spirit Break",
+            "type": "Fairy",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Competitive",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 热水",
+            "enName": "Scald",
+            "type": "Water",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "自我再生",
+            "enName": "Recover",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "心灵香草",
+        "enItem": "Mental Herb",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "吸取力量",
+            "enName": "Strength Sap",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:47"
+  },
+  {
+    "id": "limitless-6a9aab7c-buzzverse",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 11,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "1-1-0",
+    "player": "buzzverse",
+    "showdown": "Tyranitar @ Tyranitarite\nAbility: Sand Stream\nAdamant Nature Nature\n- Knock Off\n- Rock Slide\n- Protect\n- Low Kick\n\nExcadrill @ Focus Sash\nAbility: Sand Rush\nJolly Nature Nature\n- Earthquake\n- High Horsepower\n- Rock Slide\n- Iron Head\n\nSableye @ Mental Herb\nAbility: Prankster\nCareful Nature Nature\n- Quash\n- Encore\n- Rain Dance\n- Helping Hand\n\nCorviknight @ Sitrus Berry\nAbility: Mirror Armor\nCareful Nature Nature\n- Brave Bird\n- Iron Head\n- Tailwind\n- Roost\n\nMilotic @ Mystic Water\nAbility: Competitive\nBold Nature Nature\n- Ice Beam\n- Protect\n- Haze\n- Scald\n\nDragonite @ Dragoninite\nAbility: Multiscale\nModest Nature Nature\n- Protect\n- Draco Meteor\n- Hurricane\n- Thunder",
+    "pokemon": [
+      {
+        "species": "班基拉斯",
+        "enSpecies": "Tyranitar",
+        "slug": "tyranitar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/248.png",
+        "types": [
+          "Rock",
+          "Dark"
+        ],
+        "item": "班基拉斯进化石",
+        "enItem": "Tyranitarite",
+        "ability": "Sand Stream",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "拍落",
+            "enName": "Knock Off",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "65*"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          }
+        ]
+      },
+      {
+        "species": "龙头地鼠",
+        "enSpecies": "Excadrill",
+        "slug": "excadrill",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/530.png",
+        "types": [
+          "Ground",
+          "Steel"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Sand Rush",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "勾魂眼",
+        "enSpecies": "Sableye",
+        "slug": "sableye",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/302.png",
+        "types": [
+          "Dark",
+          "Ghost"
+        ],
+        "item": "心灵香草",
+        "enItem": "Mental Herb",
+        "ability": "Prankster",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 延后",
+            "enName": "Quash",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "求雨",
+            "enName": "Rain Dance",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "钢铠鸦",
+        "enSpecies": "Corviknight",
+        "slug": "corviknight",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/823.png",
+        "types": [
+          "Flying",
+          "Steel"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Mirror Armor",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 羽栖",
+            "enName": "Roost",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Competitive",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 黑雾",
+            "enName": "Haze",
+            "type": "Ice",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 热水",
+            "enName": "Scald",
+            "type": "Water",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "快龙",
+        "enSpecies": "Dragonite",
+        "slug": "dragonite",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/149.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "Dragonin进化石",
+        "enItem": "Dragoninite",
+        "ability": "Multiscale",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "流星群",
+            "enName": "Draco Meteor",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "打雷",
+            "enName": "Thunder",
+            "type": "Electric",
+            "category": "Special",
+            "power": "110*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:48"
+  },
+  {
+    "id": "limitless-6a9aab7c-charliea",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 12,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "0-3-0",
+    "player": "charliea",
+    "showdown": "Victreebel @ Victreebelite\nAbility: Chlorophyll\nSassy Nature Nature\n- Power Whip\n- Leaf Storm\n- Toxic\n- Leaf Blade\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Aerial Ace\n- Flamethrower\n- Fire Blast\n- Solar Beam\n\nPalafin @ Metronome\nAbility: Zero to Hero\nAdamant Nature Nature\n- Surf\n- Flip Turn\n- Close Combat\n- Jet Punch\n\nHisuian Zoroark @ Wise Glasses\nAbility: Illusion\nModest Nature Nature\n- Bitter Malice\n- Nasty Plot\n- Fake Tears\n- Hyper Voice\n\nDitto @ Choice Scarf\nAbility: Imposter\nBrave Nature Nature\n- Transform\n\nGholdengo @ White Herb\nAbility: Good as Gold\nModest Nature Nature\n- Make It Rain\n- Surf\n- Flash Cannon\n- Low Sweep",
+    "pokemon": [
+      {
+        "species": "大食花",
+        "enSpecies": "Victreebel",
+        "slug": "victreebel",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/71.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "大食花进化石",
+        "enItem": "Victreebelite",
+        "ability": "Chlorophyll",
+        "nature": "Sassy Nature",
+        "moves": [
+          {
+            "name": " 强力鞭打",
+            "enName": "Power Whip",
+            "type": "Grass",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 飞叶风暴",
+            "enName": "Leaf Storm",
+            "type": "Grass",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 剧毒",
+            "enName": "Toxic",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 叶刃",
+            "enName": "Leaf Blade",
+            "type": "Grass",
+            "category": "Physical",
+            "power": "90*"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "燕返",
+            "enName": "Aerial Ace",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": " 喷射火焰",
+            "enName": "Flamethrower",
+            "type": "Fire",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "大字爆炎",
+            "enName": "Fire Blast",
+            "type": "Fire",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      },
+      {
+        "species": "海豚侠",
+        "enSpecies": "Palafin",
+        "slug": "palafin",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/964.png",
+        "types": [
+          "Water"
+        ],
+        "item": "节拍器",
+        "enItem": "Metronome",
+        "ability": "Zero to Hero",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 冲浪",
+            "enName": "Surf",
+            "type": "Water",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "快速折返",
+            "enName": "Flip Turn",
+            "type": "Water",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Jet Punch",
+            "enName": "Jet Punch",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Zoroark",
+        "enSpecies": "Hisuian Zoroark",
+        "slug": "hisuian-zoroark",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-zoroark.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "博识眼镜",
+        "enItem": "Wise Glasses",
+        "ability": "Illusion",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Bitter Malice",
+            "enName": "Bitter Malice",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 诡计",
+            "enName": "Nasty Plot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "假哭",
+            "enName": "Fake Tears",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "百变怪",
+        "enSpecies": "Ditto",
+        "slug": "ditto",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/132.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Imposter",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": " 变身",
+            "enName": "Transform",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "赛富豪",
+        "enSpecies": "Gholdengo",
+        "slug": "gholdengo",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1000.png",
+        "types": [
+          "Steel",
+          "Ghost"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Good as Gold",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Make It Rain",
+            "enName": "Make It Rain",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 冲浪",
+            "enName": "Surf",
+            "type": "Water",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 下盘踢",
+            "enName": "Low Sweep",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "65*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:48"
+  },
+  {
+    "id": "limitless-6a9aab7c-mrbear21",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 13,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "3-2-0",
+    "player": "mrbear21",
+    "showdown": "Venusaur @ Focus Sash\nAbility: Chlorophyll\nTimid Nature Nature\n- Energy Ball\n- Sludge Bomb\n- Sleep Powder\n- Protect\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nBold Nature Nature\n- Psychic\n- Thunderbolt\n- Trick Room\n- Helping Hand\n\nTorkoal @ Charcoal\nAbility: Drought\nQuiet Nature Nature\n- Eruption\n- Weather Ball\n- Helping Hand\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Voice\n- Hyper Beam\n- Quick Attack\n- Protect\n\nPyroar @ Pyroarite\nAbility: Unnerve\nTimid Nature Nature\n- Heat Wave\n- Overheat\n- Solar Beam\n- Protect\n\nIncineroar @ White Herb\nAbility: Intimidate\nAdamant Nature Nature\n- Fake Out\n- Flare Blitz\n- Close Combat\n- Darkest Lariat",
+    "pokemon": [
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "能量球",
+            "enName": "Energy Ball",
+            "type": "Grass",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "煤炭龟",
+        "enSpecies": "Torkoal",
+        "slug": "torkoal",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/324.png",
+        "types": [
+          "Fire"
+        ],
+        "item": "木炭",
+        "enItem": "Charcoal",
+        "ability": "Drought",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 喷火",
+            "enName": "Eruption",
+            "type": "Fire",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "火炎狮",
+        "enSpecies": "Pyroar",
+        "slug": "pyroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/668.png",
+        "types": [
+          "Fire",
+          "Normal"
+        ],
+        "item": "火炎狮进化石",
+        "enItem": "Pyroarite",
+        "ability": "Unnerve",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 过热",
+            "enName": "Overheat",
+            "type": "Fire",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:48"
+  },
+  {
+    "id": "limitless-6a9aab7c-kimius64",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 14,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "0-1-0",
+    "player": "kimius64",
+    "showdown": "Staraptor @ Staraptite\nAbility: Intimidate\nJolly Nature Nature\n- Close Combat\n- Protect\n- Brave Bird\n- Roost\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Charm\n- Tailwind\n- Encore\n- Moonblast\n\nCeruledge @ Colbur Berry\nAbility: Flash Fire\nAdamant Nature Nature\n- Bitter Blade\n- Bulk Up\n- Shadow Sneak\n- Protect\n\nMetagross @ Metagrossite\nAbility: Clear Body\nAdamant Nature Nature\n- Iron Head\n- Stomping Tantrum\n- Protect\n- Psychic Fangs\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Stomping Tantrum\n- Dragon Claw\n- Protect\n- Rock Slide\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nCalm Nature Nature\n- Thunderbolt\n- Twin Beam\n- Trick Room\n- Protect",
+    "pokemon": [
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 羽栖",
+            "enName": "Roost",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 撒娇",
+            "enName": "Charm",
+            "type": "Fairy",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          }
+        ]
+      },
+      {
+        "species": "苍炎刃鬼",
+        "enSpecies": "Ceruledge",
+        "slug": "ceruledge",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/937.png",
+        "types": [
+          "Fire",
+          "Ghost"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Flash Fire",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Bitter Blade",
+            "enName": "Bitter Blade",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 影子偷袭",
+            "enName": "Shadow Sneak",
+            "type": "Ghost",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨金怪",
+        "enSpecies": "Metagross",
+        "slug": "metagross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/376.png",
+        "types": [
+          "Steel",
+          "Psychic"
+        ],
+        "item": "巨金怪进化石",
+        "enItem": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "Twin Beam",
+            "enName": "Twin Beam",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:48"
+  },
+  {
+    "id": "limitless-6a9aab7c-sordanjingleton",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 15,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "0-3-0",
+    "player": "sordanjingleton",
+    "showdown": "Manectric @ Manectite\nAbility: Lightning Rod\nTimid Nature Nature\n- Thunderbolt\n- Snarl\n- Volt Switch\n- Protect\n\nPrimarina @ Mystic Water\nAbility: Liquid Voice\nModest Nature Nature\n- Hyper Voice\n- Moonblast\n- Haze\n- Protect\n\nAnnihilape @ Leftovers\nAbility: Defiant\nAdamant Nature Nature\n- Rage Fist\n- Drain Punch\n- Bulk Up\n- Protect\n\nMaushold @ Focus Sash\nAbility: Friend Guard\nJolly Nature Nature\n- Follow Me\n- Beat Up\n- Feint\n- Protect\n\nAltaria @ Sitrus Berry\nAbility: Cloud Nine\nBold Nature Nature\n- Tailwind\n- Will-O-Wisp\n- Breaking Swipe\n- Protect\n\nScizor @ Occa Berry\nAbility: Technician\nAdamant Nature Nature\n- Bullet Punch\n- Bug Bite\n- Knock Off\n- Protect",
+    "pokemon": [
+      {
+        "species": "雷电兽",
+        "enSpecies": "Manectric",
+        "slug": "manectric",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/310.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Manect进化石",
+        "enItem": "Manectite",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 大声咆哮",
+            "enName": "Snarl",
+            "type": "Dark",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": " 伏特替换",
+            "enName": "Volt Switch",
+            "type": "Electric",
+            "category": "Special",
+            "power": "70"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "西狮海壬",
+        "enSpecies": "Primarina",
+        "slug": "primarina",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/730.png",
+        "types": [
+          "Water",
+          "Fairy"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Liquid Voice",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 黑雾",
+            "enName": "Haze",
+            "type": "Ice",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "弃世猴",
+        "enSpecies": "Annihilape",
+        "slug": "annihilape",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/979.png",
+        "types": [
+          "Fighting",
+          "Ghost"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Rage Fist",
+            "enName": "Rage Fist",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "一家鼠",
+        "enSpecies": "Maushold",
+        "slug": "maushold",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/925.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Friend Guard",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "看我嘛",
+            "enName": "Follow Me",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 围攻",
+            "enName": "Beat Up",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": "佯攻",
+            "enName": "Feint",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "30*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "七夕青鸟",
+        "enSpecies": "Altaria",
+        "slug": "altaria",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/334.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Cloud Nine",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "磷火",
+            "enName": "Will-O-Wisp",
+            "type": "Fire",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "广域破坏",
+            "enName": "Breaking Swipe",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨钳螳螂",
+        "enSpecies": "Scizor",
+        "slug": "scizor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/212.png",
+        "types": [
+          "Bug",
+          "Steel"
+        ],
+        "item": "巧可果",
+        "enItem": "Occa Berry",
+        "ability": "Technician",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 虫咬",
+            "enName": "Bug Bite",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": "拍落",
+            "enName": "Knock Off",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "65*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:49"
+  },
+  {
+    "id": "limitless-6a9aab7c-lokehighwell12",
+    "source": "Limitless VGC",
+    "tournamentName": "Intimidators Champions Challenge #41 REG M-B",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9aab7cab080c8c957f97d4/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 16,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-1-0",
+    "player": "lokehighwell12",
+    "showdown": "Pelipper @ Focus Sash\nAbility: Drizzle\nCalm Nature Nature\n- Hurricane\n- Weather Ball\n- Tailwind\n- Wide Guard\n\nSwampert @ Swampertite\nAbility: Torrent\nAdamant Nature Nature\n- Wave Crash\n- Earthquake\n- Ice Punch\n- Protect\n\nArchaludon @ Leftovers\nAbility: Stamina\nCalm Nature Nature\n- Electro Shot\n- Aura Sphere\n- Flash Cannon\n- Protect\n\nGrimmsnarl @ Light Clay\nAbility: Prankster\nCareful Nature Nature\n- Spirit Break\n- Reflect\n- Light Screen\n- Parting Shot\n\nCharizard @ Charizardite Y\nAbility: Blaze\nBold Nature Nature\n- Heat Wave\n- Weather Ball\n- Ancient Power\n- Protect\n\nVenusaur @ Life Orb\nAbility: Chlorophyll\nModest Nature Nature\n- Energy Ball\n- Sludge Wave\n- Earth Power\n- Protect",
+    "pokemon": [
+      {
+        "species": "大嘴鸥",
+        "enSpecies": "Pelipper",
+        "slug": "pelipper",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/279.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Drizzle",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Torrent",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 波导弹",
+            "enName": "Aura Sphere",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "80*"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "长毛巨魔",
+        "enSpecies": "Grimmsnarl",
+        "slug": "grimmsnarl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/861.png",
+        "types": [
+          "Dark",
+          "Fairy"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": "灵魂冲击",
+            "enName": "Spirit Break",
+            "type": "Fairy",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "能量球",
+            "enName": "Energy Ball",
+            "type": "Grass",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "污泥波",
+            "enName": "Sludge Wave",
+            "type": "Poison",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:17:49"
+  },
+  {
+    "id": "limitless-6a951f78-mrpokenjoy",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 1,
+    "placingTag": "🥇 冠军 (1st)",
+    "record": "2-2-0",
+    "player": "mrpokenjoy",
+    "showdown": "Venusaur @ Venusaurite\nAbility: Chlorophyll\nTimid Nature Nature\n- Protect\n- Sludge Bomb\n- Earth Power\n- Giga Drain\n\nAlolan Ninetales @ Light Clay\nAbility: Snow Warning\nTimid Nature Nature\n- Protect\n- Icy Wind\n- Blizzard\n- Aurora Veil\n\nGarchomp @ Life Orb\nAbility: Sand Veil\nJolly Nature Nature\n- Dragon Claw\n- Earthquake\n- Poison Jab\n- Rock Slide\n\nGyarados @ Gyaradosite\nAbility: Intimidate\nAdamant Nature Nature\n- Crunch\n- Ice Fang\n- Waterfall\n- Protect\n\nSneasler @ Mental Herb\nAbility: Unburden\nJolly Nature Nature\n- Close Combat\n- Dire Claw\n- Coaching\n- Protect\n\nTalonflame @ Sharp Beak\nAbility: Gale Wings\nJolly Nature Nature\n- Dual Wingbeat\n- Tailwind\n- Flare Blitz\n- Protect",
+    "pokemon": [
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "妙蛙花进化石",
+        "enItem": "Venusaurite",
+        "ability": "Chlorophyll",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 终极吸取",
+            "enName": "Giga Drain",
+            "type": "Grass",
+            "category": "Special",
+            "power": "75*"
+          }
+        ]
+      },
+      {
+        "species": "Alolan Ninetales",
+        "enSpecies": "Alolan Ninetales",
+        "slug": "alolan-ninetales",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/alolan-ninetales.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Snow Warning",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": " 暴风雪",
+            "enName": "Blizzard",
+            "type": "Ice",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "极光幕",
+            "enName": "Aurora Veil",
+            "type": "Ice",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Sand Veil",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 毒击",
+            "enName": "Poison Jab",
+            "type": "Poison",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "暴鲤龙",
+        "enSpecies": "Gyarados",
+        "slug": "gyarados",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/130.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "暴鲤龙进化石",
+        "enItem": "Gyaradosite",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "咬碎",
+            "enName": "Crunch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 冰冻牙",
+            "enName": "Ice Fang",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "65"
+          },
+          {
+            "name": "攀瀑",
+            "enName": "Waterfall",
+            "type": "Water",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "心灵香草",
+        "enItem": "Mental Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "指導",
+            "enName": "Coaching",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈箭鹰",
+        "enSpecies": "Talonflame",
+        "slug": "talonflame",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/663.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "锐利鸟嘴",
+        "enItem": "Sharp Beak",
+        "ability": "Gale Wings",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:08"
+  },
+  {
+    "id": "limitless-6a951f78-hester23",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 2,
+    "placingTag": "🥈 亚军 (2nd)",
+    "record": "0-1-0",
+    "player": "hester23",
+    "showdown": "Staraptor @ Staraptite\nAbility: Intimidate\nAdamant Nature Nature\n- Close Combat\n- Brave Bird\n- Tailwind\n- Protect\n\nKingambit @ Black Glasses\nAbility: Defiant\nBrave Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Swords Dance\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nQuiet Nature Nature\n- Moonblast\n- Hyper Voice\n- Quick Attack\n- Detect\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nQuiet Nature Nature\n- Psychic\n- Nasty Plot\n- Trick Room\n- Thunderbolt\n\nRaichu @ Raichunite Y\nAbility: Lightning Rod\nTimid Nature Nature\n- Zap Cannon\n- Focus Blast\n- Fake Out\n- Protect\n\nHisuian Arcanine @ Focus Sash\nAbility: Rock Head\nAdamant Nature Nature\n- Head Smash\n- Flare Blitz\n- Extreme Speed\n- Protect",
+    "pokemon": [
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 诡计",
+            "enName": "Nasty Plot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          }
+        ]
+      },
+      {
+        "species": "雷丘",
+        "enSpecies": "Raichu",
+        "slug": "raichu",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/26.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Raichun进化石 Y",
+        "enItem": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 电磁炮",
+            "enName": "Zap Cannon",
+            "type": "Electric",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 真气弹",
+            "enName": "Focus Blast",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Arcanine",
+        "enSpecies": "Hisuian Arcanine",
+        "slug": "hisuian-arcanine",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-arcanine.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 双刃头锤",
+            "enName": "Head Smash",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "150"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "神速",
+            "enName": "Extreme Speed",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:09"
+  },
+  {
+    "id": "limitless-6a951f78-feiwynd",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 3,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "0-2-0",
+    "player": "feiwynd",
+    "showdown": "Hisuian Zoroark @ Spell Tag\nAbility: Illusion\nModest Nature Nature\n- Protect\n- Bitter Malice\n- Nasty Plot\n- Hyper Voice\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Earthquake\n- Dragon Claw\n- Rock Slide\n- Protect\n\nSneasler @ Focus Sash\nAbility: Poison Touch\nJolly Nature Nature\n- Poison Jab\n- Close Combat\n- Fake Out\n- Protect\n\nHeliolisk @ Magnet\nAbility: Solar Power\nModest Nature Nature\n- Protect\n- Parabolic Charge\n- Dark Pulse\n- Weather Ball\n\nMilotic @ Mystic Water\nAbility: Competitive\nModest Nature Nature\n- Scald\n- Protect\n- Ice Beam\n- Recover\n\nHisuian Arcanine @ Choice Scarf\nAbility: Rock Head\nJolly Nature Nature\n- Head Smash\n- Protect\n- Flare Blitz\n- Wild Charge",
+    "pokemon": [
+      {
+        "species": "Hisuian Zoroark",
+        "enSpecies": "Hisuian Zoroark",
+        "slug": "hisuian-zoroark",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-zoroark.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "诅咒之符",
+        "enItem": "Spell Tag",
+        "ability": "Illusion",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Bitter Malice",
+            "enName": "Bitter Malice",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 诡计",
+            "enName": "Nasty Plot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 毒击",
+            "enName": "Poison Jab",
+            "type": "Poison",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "光电伞蜥",
+        "enSpecies": "Heliolisk",
+        "slug": "heliolisk",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/695.png",
+        "types": [
+          "Electric",
+          "Normal"
+        ],
+        "item": "磁铁",
+        "enItem": "Magnet",
+        "ability": "Solar Power",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "抛物面充电",
+            "enName": "Parabolic Charge",
+            "type": "Electric",
+            "category": "Special",
+            "power": "65*"
+          },
+          {
+            "name": " 恶之波动",
+            "enName": "Dark Pulse",
+            "type": "Dark",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Competitive",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热水",
+            "enName": "Scald",
+            "type": "Water",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "自我再生",
+            "enName": "Recover",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Arcanine",
+        "enSpecies": "Hisuian Arcanine",
+        "slug": "hisuian-arcanine",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-arcanine.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rock Head",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 双刃头锤",
+            "enName": "Head Smash",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "150"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 疯狂伏特",
+            "enName": "Wild Charge",
+            "type": "Electric",
+            "category": "Physical",
+            "power": "90"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:09"
+  },
+  {
+    "id": "limitless-6a951f78-wheretfismariojudah",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 4,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "0-2-0",
+    "player": "wheretfismariojudah",
+    "showdown": "Delphox @ Delphoxite\nAbility: Blaze\nTimid Nature Nature\n- Heat Wave\n- Psychic\n- Nasty Plot\n- Protect\n\nVanilluxe @ Choice Scarf\nAbility: Snow Warning\nTimid Nature Nature\n- Blizzard\n- Freeze-Dry\n- Sheer Cold\n- Icy Wind\n\nFloette @ Floettite\nAbility: Flower Veil\nModest Nature Nature\n- Protect\n- Moonblast\n- Dazzling Gleam\n- Calm Mind\n\nSinistcha @ Colbur Berry\nAbility: Hospitality\nBold Nature Nature\n- Life Dew\n- Rage Powder\n- Matcha Gotcha\n- Protect\n\nMilotic @ Leftovers\nAbility: Competitive\nBold Nature Nature\n- Coil\n- Protect\n- Hydro Pump\n- Hypnosis\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Fake Out\n- Parting Shot\n- Flare Blitz\n- Darkest Lariat",
+    "pokemon": [
+      {
+        "species": "妖火红狐",
+        "enSpecies": "Delphox",
+        "slug": "delphox",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/655.png",
+        "types": [
+          "Fire",
+          "Psychic"
+        ],
+        "item": "妖火红狐进化石",
+        "enItem": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 诡计",
+            "enName": "Nasty Plot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "双倍多多冰",
+        "enSpecies": "Vanilluxe",
+        "slug": "vanilluxe",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/584.png",
+        "types": [
+          "Ice"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Snow Warning",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 暴风雪",
+            "enName": "Blizzard",
+            "type": "Ice",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "冷冻干燥",
+            "enName": "Freeze-Dry",
+            "type": "Ice",
+            "category": "Special",
+            "power": "70"
+          },
+          {
+            "name": " 绝对零度",
+            "enName": "Sheer Cold",
+            "type": "Ice",
+            "category": "Special",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          }
+        ]
+      },
+      {
+        "species": "花叶蒂",
+        "enSpecies": "Floette",
+        "slug": "floette",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/670.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "生命水滴",
+            "enName": "Life Dew",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "美纳斯",
+        "enSpecies": "Milotic",
+        "slug": "milotic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/350.png",
+        "types": [
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Competitive",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 盘蜷",
+            "enName": "Coil",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "水炮",
+            "enName": "Hydro Pump",
+            "type": "Water",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 催眠术",
+            "enName": "Hypnosis",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:09"
+  },
+  {
+    "id": "limitless-6a951f78-joniaco",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 5,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "2-2-0",
+    "player": "joniaco",
+    "showdown": "Gardevoir @ Gardevoirite\nAbility: Telepathy\nModest Nature Nature\n- Hyper Voice\n- Psychic\n- Round\n- Protect\n\nGreninja @ Choice Scarf\nAbility: Protean\nModest Nature Nature\n- Round\n- Dark Pulse\n- Icy Wind\n- Hydro Pump\n\nHisuian Decidueye @ Focus Sash\nAbility: Scrappy\nAdamant Nature Nature\n- Triple Arrows\n- Leaf Blade\n- Swords Dance\n- Protect\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Dragon Claw\n- Stomping Tantrum\n- Rock Slide\n- Protect\n\nLiepard @ Roseli Berry\nAbility: Prankster\nImpish Nature Nature\n- Fake Out\n- Fake Tears\n- Encore\n- Yawn\n\nAltaria @ Yache Berry\nAbility: Cloud Nine\nImpish Nature Nature\n- Brave Bird\n- Tailwind\n- Will-O-Wisp\n- Helping Hand",
+    "pokemon": [
+      {
+        "species": "沙奈朵",
+        "enSpecies": "Gardevoir",
+        "slug": "gardevoir",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/282.png",
+        "types": [
+          "Psychic",
+          "Fairy"
+        ],
+        "item": "沙奈朵进化石",
+        "enItem": "Gardevoirite",
+        "ability": "Telepathy",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 轮唱",
+            "enName": "Round",
+            "type": "Normal",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "甲贺忍蛙",
+        "enSpecies": "Greninja",
+        "slug": "greninja",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/658.png",
+        "types": [
+          "Water",
+          "Dark"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Protean",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 轮唱",
+            "enName": "Round",
+            "type": "Normal",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": " 恶之波动",
+            "enName": "Dark Pulse",
+            "type": "Dark",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": "水炮",
+            "enName": "Hydro Pump",
+            "type": "Water",
+            "category": "Special",
+            "power": "110*"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Decidueye",
+        "enSpecies": "Hisuian Decidueye",
+        "slug": "hisuian-decidueye",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-decidueye.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Scrappy",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Triple Arrows",
+            "enName": "Triple Arrows",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 叶刃",
+            "enName": "Leaf Blade",
+            "type": "Grass",
+            "category": "Physical",
+            "power": "90*"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "酷豹",
+        "enSpecies": "Liepard",
+        "slug": "liepard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/510.png",
+        "types": [
+          "Dark"
+        ],
+        "item": "洛玫果",
+        "enItem": "Roseli Berry",
+        "ability": "Prankster",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "假哭",
+            "enName": "Fake Tears",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "哈欠",
+            "enName": "Yawn",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "七夕青鸟",
+        "enSpecies": "Altaria",
+        "slug": "altaria",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/334.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "番荔果",
+        "enItem": "Yache Berry",
+        "ability": "Cloud Nine",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "磷火",
+            "enName": "Will-O-Wisp",
+            "type": "Fire",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:10"
+  },
+  {
+    "id": "limitless-6a951f78-linxwolf",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 6,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "3-3-0",
+    "player": "linxwolf",
+    "showdown": "Altaria @ Altarianite\nAbility: Cloud Nine\nModest Nature Nature\n- Hyper Voice\n- Draco Meteor\n- Tailwind\n- Protect\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Earthquake\n- Rock Slide\n- Dragon Claw\n- Protect\n\nAraquanid @ Sitrus Berry\nAbility: Water Bubble\nJolly Nature Nature\n- Liquidation\n- Leech Life\n- Wide Guard\n- Protect\n\nHeat Rotom @ Choice Scarf\nAbility: Levitate\nModest Nature Nature\n- Thunder\n- Overheat\n- Electroweb\n- Helping Hand\n\nHydrapple @ Leftovers\nAbility: Supersweet Syrup\nQuiet Nature Nature\n- Syrup Bomb\n- Draco Meteor\n- Yawn\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Voice\n- Quick Attack\n- Hyper Beam\n- Detect",
+    "pokemon": [
+      {
+        "species": "七夕青鸟",
+        "enSpecies": "Altaria",
+        "slug": "altaria",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/334.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "Altarian进化石",
+        "enItem": "Altarianite",
+        "ability": "Cloud Nine",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "流星群",
+            "enName": "Draco Meteor",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "滴蛛霸",
+        "enSpecies": "Araquanid",
+        "slug": "araquanid",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/752.png",
+        "types": [
+          "Water",
+          "Bug"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Water Bubble",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "汲取",
+            "enName": "Leech Life",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "80*"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Heat Rotom",
+        "enSpecies": "Heat Rotom",
+        "slug": "heat-rotom",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/heat-rotom.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Levitate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "打雷",
+            "enName": "Thunder",
+            "type": "Electric",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 过热",
+            "enName": "Overheat",
+            "type": "Fire",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 电网",
+            "enName": "Electroweb",
+            "type": "Electric",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "蜜集大蛇",
+        "enSpecies": "Hydrapple",
+        "slug": "hydrapple",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1019.png",
+        "types": [
+          "Grass",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Supersweet Syrup",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": "Syrup Bomb",
+            "enName": "Syrup Bomb",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "流星群",
+            "enName": "Draco Meteor",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": "哈欠",
+            "enName": "Yawn",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:10"
+  },
+  {
+    "id": "limitless-6a951f78-gobinfr",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 7,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "0-1-0",
+    "player": "gobinfr",
+    "showdown": "Tyranitar @ Tyranitarite\nAbility: Sand Stream\nAdamant Nature Nature\n- Protect\n- Rock Slide\n- High Horsepower\n- Surf\n\nFeraligatr @ Feraligite\nAbility: Sheer Force\nBrave Nature Nature\n- Liquidation\n- Dragon Claw\n- Ice Beam\n- Brick Break\n\nIncineroar @ Leftovers\nAbility: Intimidate\nAdamant Nature Nature\n- Darkest Lariat\n- Fake Out\n- Flare Blitz\n- Parting Shot\n\nKingambit @ Focus Sash\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Steel Beam\n- Sucker Punch\n- Low Kick\n\nSteelix @ Sitrus Berry\nAbility: Sturdy\nRelaxed Nature Nature\n- Earthquake\n- Iron Defense\n- Thunder Fang\n- Body Press\n\nGalarian Slowking @ Poison Barb\nAbility: Curious Medicine\nQuiet Nature Nature\n- Psychic\n- Sludge Wave\n- Trick Room\n- Foul Play",
+    "pokemon": [
+      {
+        "species": "班基拉斯",
+        "enSpecies": "Tyranitar",
+        "slug": "tyranitar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/248.png",
+        "types": [
+          "Rock",
+          "Dark"
+        ],
+        "item": "班基拉斯进化石",
+        "enItem": "Tyranitarite",
+        "ability": "Sand Stream",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": " 冲浪",
+            "enName": "Surf",
+            "type": "Water",
+            "category": "Special",
+            "power": "90*"
+          }
+        ]
+      },
+      {
+        "species": "大力鳄",
+        "enSpecies": "Feraligatr",
+        "slug": "feraligatr",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/160.png",
+        "types": [
+          "Water"
+        ],
+        "item": "Feralig进化石",
+        "enItem": "Feraligite",
+        "ability": "Sheer Force",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 冰冻光束",
+            "enName": "Ice Beam",
+            "type": "Ice",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "劈瓦",
+            "enName": "Brick Break",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "铁蹄光线",
+            "enName": "Steel Beam",
+            "type": "Steel",
+            "category": "Special",
+            "power": "140"
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          }
+        ]
+      },
+      {
+        "species": "大钢蛇",
+        "enSpecies": "Steelix",
+        "slug": "steelix",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/208.png",
+        "types": [
+          "Steel",
+          "Ground"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Sturdy",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 铁壁",
+            "enName": "Iron Defense",
+            "type": "Steel",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "雷电牙",
+            "enName": "Thunder Fang",
+            "type": "Electric",
+            "category": "Physical",
+            "power": "65"
+          },
+          {
+            "name": "扑击",
+            "enName": "Body Press",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "Galarian Slowking",
+        "enSpecies": "Galarian Slowking",
+        "slug": "galarian-slowking",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/galarian-slowking.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "毒针",
+        "enItem": "Poison Barb",
+        "ability": "Curious Medicine",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "污泥波",
+            "enName": "Sludge Wave",
+            "type": "Poison",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 欺诈",
+            "enName": "Foul Play",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "95"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:10"
+  },
+  {
+    "id": "limitless-6a951f78-drdizzy34",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 8,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "3-2-0",
+    "player": "drdizzy34",
+    "showdown": "Camerupt @ Cameruptite\nAbility: Solid Rock\nQuiet Nature Nature\n- Protect\n- Heat Wave\n- Earth Power\n- Ancient Power\n\nAbomasnow @ Abomasite\nAbility: Snow Warning\nQuiet Nature Nature\n- Energy Ball\n- Blizzard\n- Earth Power\n- Ice Shard\n\nMaushold @ Wide Lens\nAbility: Technician\nJolly Nature Nature\n- Population Bomb\n- Follow Me\n- After You\n- Protect\n\nIncineroar @ White Herb\nAbility: Intimidate\nAdamant Nature Nature\n- Fake Out\n- Close Combat\n- Flare Blitz\n- Throat Chop\n\nSylveon @ Life Orb\nAbility: Pixilate\nQuiet Nature Nature\n- Hyper Voice\n- Hyper Beam\n- Quick Attack\n- Detect\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nRelaxed Nature Nature\n- Thunderbolt\n- Twin Beam\n- Helping Hand\n- Trick Room",
+    "pokemon": [
+      {
+        "species": "喷火驼",
+        "enSpecies": "Camerupt",
+        "slug": "camerupt",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/323.png",
+        "types": [
+          "Fire",
+          "Ground"
+        ],
+        "item": "喷火驼进化石",
+        "enItem": "Cameruptite",
+        "ability": "Solid Rock",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          }
+        ]
+      },
+      {
+        "species": "暴雪王",
+        "enSpecies": "Abomasnow",
+        "slug": "abomasnow",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/460.png",
+        "types": [
+          "Grass",
+          "Ice"
+        ],
+        "item": "Abomas进化石",
+        "enItem": "Abomasite",
+        "ability": "Snow Warning",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": "能量球",
+            "enName": "Energy Ball",
+            "type": "Grass",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 暴风雪",
+            "enName": "Blizzard",
+            "type": "Ice",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 冰砾",
+            "enName": "Ice Shard",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "一家鼠",
+        "enSpecies": "Maushold",
+        "slug": "maushold",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/925.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "广角镜",
+        "enItem": "Wide Lens",
+        "ability": "Technician",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Population Bomb",
+            "enName": "Population Bomb",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "看我嘛",
+            "enName": "Follow Me",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 您先请",
+            "enName": "After You",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Pixilate",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": "Twin Beam",
+            "enName": "Twin Beam",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:10"
+  },
+  {
+    "id": "limitless-6a951f78-champninjastar",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 9,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "1-2-0",
+    "player": "champninjastar",
+    "showdown": "Charizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Heat Wave\n- Weather Ball\n- Ancient Power\n- Protect\n\nVenusaur @ Focus Sash\nAbility: Chlorophyll\nModest Nature Nature\n- Sludge Bomb\n- Earth Power\n- Sleep Powder\n- Protect\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Dragon Claw\n- Earthquake\n- Rock Slide\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Voice\n- Hyper Beam\n- Quick Attack\n- Detect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Throat Chop\n- Fake Out\n- Parting Shot\n- Helping Hand\n\nKingambit @ Chople Berry\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Iron Head\n- Low Kick",
+    "pokemon": [
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:10"
+  },
+  {
+    "id": "limitless-6a951f78-jaremase",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 10,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "jaremase",
+    "showdown": "Maushold @ Chople Berry\nAbility: Friend Guard\nJolly Nature Nature\n- Super Fang\n- Follow Me\n- Helping Hand\n- Encore\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Protect\n- Weather Ball\n- Heat Wave\n- Ancient Power\n\nMeganium @ Meganiumite\nAbility: Overgrow\nModest Nature Nature\n- Protect\n- Synthesis\n- Weather Ball\n- Solar Beam\n\nBlaziken @ Life Orb\nAbility: Speed Boost\nJolly Nature Nature\n- Detect\n- Rock Slide\n- Close Combat\n- Flare Blitz\n\nKlefki @ Light Clay\nAbility: Prankster\nBold Nature Nature\n- Dazzling Gleam\n- Light Screen\n- Reflect\n- Thunder Wave\n\nGliscor @ Expert Belt\nAbility: Hyper Cutter\nAdamant Nature Nature\n- Protect\n- Tailwind\n- High Horsepower\n- Ice Fang",
+    "pokemon": [
+      {
+        "species": "一家鼠",
+        "enSpecies": "Maushold",
+        "slug": "maushold",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/925.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Friend Guard",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 愤怒门牙",
+            "enName": "Super Fang",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "—"
+          },
+          {
+            "name": "看我嘛",
+            "enName": "Follow Me",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          }
+        ]
+      },
+      {
+        "species": "大竺葵",
+        "enSpecies": "Meganium",
+        "slug": "meganium",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/154.png",
+        "types": [
+          "Grass"
+        ],
+        "item": "大竺葵进化石",
+        "enItem": "Meganiumite",
+        "ability": "Overgrow",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "光合作用",
+            "enName": "Synthesis",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      },
+      {
+        "species": "火焰鸡",
+        "enSpecies": "Blaziken",
+        "slug": "blaziken",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/257.png",
+        "types": [
+          "Fire",
+          "Fighting"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Speed Boost",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "钥圈儿",
+        "enSpecies": "Klefki",
+        "slug": "klefki",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/707.png",
+        "types": [
+          "Steel",
+          "Fairy"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 电磁波",
+            "enName": "Thunder Wave",
+            "type": "Electric",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "天蝎王",
+        "enSpecies": "Gliscor",
+        "slug": "gliscor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/472.png",
+        "types": [
+          "Ground",
+          "Flying"
+        ],
+        "item": "达人带",
+        "enItem": "Expert Belt",
+        "ability": "Hyper Cutter",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": " 冰冻牙",
+            "enName": "Ice Fang",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "65"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:10"
+  },
+  {
+    "id": "limitless-6a951f78-vinnamon",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 11,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-3-0",
+    "player": "vinnamon",
+    "showdown": "Archaludon @ Leftovers\nAbility: Stamina\nModest Nature Nature\n- Protect\n- Electro Shot\n- Flash Cannon\n- Dragon Pulse\n\nPelipper @ Sitrus Berry\nAbility: Drizzle\nModest Nature Nature\n- Hurricane\n- Weather Ball\n- Tailwind\n- Wide Guard\n\nBasculegion @ Life Orb\nAbility: Swift Swim\nAdamant Nature Nature\n- Wave Crash\n- Last Respects\n- Aqua Jet\n- Protect\n\nScolipede @ Scolipite\nAbility: Speed Boost\nJolly Nature Nature\n- Swords Dance\n- Gunk Shot\n- Leech Life\n- Protect\n\nMeowstic @ Meowsticite\nAbility: Prankster\nTimid Nature Nature\n- Rain Dance\n- Psychic Terrain\n- Expanding Force\n- Fake Out\n\nIncineroar @ Chople Berry\nAbility: Intimidate\nImpish Nature Nature\n- Fake Out\n- Parting Shot\n- Flare Blitz\n- Throat Chop",
+    "pokemon": [
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          }
+        ]
+      },
+      {
+        "species": "大嘴鸥",
+        "enSpecies": "Pelipper",
+        "slug": "pelipper",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/279.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Swift Swim",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "蜈蚣王",
+        "enSpecies": "Scolipede",
+        "slug": "scolipede",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/545.png",
+        "types": [
+          "Bug",
+          "Poison"
+        ],
+        "item": "Scolip进化石",
+        "enItem": "Scolipite",
+        "ability": "Speed Boost",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 垃圾射击",
+            "enName": "Gunk Shot",
+            "type": "Poison",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "汲取",
+            "enName": "Leech Life",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "80*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "超能妙喵",
+        "enSpecies": "Meowstic",
+        "slug": "meowstic",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/678.png",
+        "types": [
+          "Psychic"
+        ],
+        "item": "超能妙喵进化石",
+        "enItem": "Meowsticite",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "求雨",
+            "enName": "Rain Dance",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "精神场地",
+            "enName": "Psychic Terrain",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "廣域戰力",
+            "enName": "Expanding Force",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:11"
+  },
+  {
+    "id": "limitless-6a951f78-queercrocodile",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 12,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-2-0",
+    "player": "queercrocodile",
+    "showdown": "Swampert @ Swampertite\nAbility: Torrent\nAdamant Nature Nature\n- Liquidation\n- High Horsepower\n- Bulk Up\n- Protect\n\nSableye @ Light Clay\nAbility: Prankster\nBold Nature Nature\n- Light Screen\n- Reflect\n- Disable\n- Rain Dance\n\nPrimarina @ Life Orb\nAbility: Liquid Voice\nModest Nature Nature\n- Hyper Voice\n- Moonblast\n- Dazzling Gleam\n- Protect\n\nGalarian Slowking @ Sitrus Berry\nAbility: Regenerator\nBold Nature Nature\n- Flamethrower\n- Sludge Bomb\n- Trick Room\n- Helping Hand\n\nRhyperior @ White Herb\nAbility: Solid Rock\nAdamant Nature Nature\n- Rock Slide\n- High Horsepower\n- Protect\n- Rock Wrecker\n\nKangaskhan @ Kangaskhanite\nAbility: Scrappy\nBrave Nature Nature\n- Fake Out\n- Drain Punch\n- Double-Edge\n- Ice Punch",
+    "pokemon": [
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Torrent",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "水流裂破",
+            "enName": "Liquidation",
+            "type": "Water",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "勾魂眼",
+        "enSpecies": "Sableye",
+        "slug": "sableye",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/302.png",
+        "types": [
+          "Dark",
+          "Ghost"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "定身法",
+            "enName": "Disable",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "求雨",
+            "enName": "Rain Dance",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "西狮海壬",
+        "enSpecies": "Primarina",
+        "slug": "primarina",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/730.png",
+        "types": [
+          "Water",
+          "Fairy"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Liquid Voice",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Galarian Slowking",
+        "enSpecies": "Galarian Slowking",
+        "slug": "galarian-slowking",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/galarian-slowking.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Regenerator",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 喷射火焰",
+            "enName": "Flamethrower",
+            "type": "Fire",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "超甲狂犀",
+        "enSpecies": "Rhyperior",
+        "slug": "rhyperior",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/464.png",
+        "types": [
+          "Ground",
+          "Rock"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Solid Rock",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "十万马力",
+            "enName": "High Horsepower",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "岩石炮",
+            "enName": "Rock Wrecker",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "150"
+          }
+        ]
+      },
+      {
+        "species": "袋兽",
+        "enSpecies": "Kangaskhan",
+        "slug": "kangaskhan",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/115.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "袋兽进化石",
+        "enItem": "Kangaskhanite",
+        "ability": "Scrappy",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          },
+          {
+            "name": " 舍身冲撞",
+            "enName": "Double-Edge",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "120*"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:11"
+  },
+  {
+    "id": "limitless-6a951f78-zonglu",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 13,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "1-1-0",
+    "player": "zonglu",
+    "showdown": "Kangaskhan @ Kangaskhanite\nAbility: Scrappy\nAdamant Nature Nature\n- Double-Edge\n- Protect\n- Drain Punch\n- Sucker Punch\n\nDelphox @ Delphoxite\nAbility: Blaze\nTimid Nature Nature\n- Protect\n- Encore\n- Heat Wave\n- Psychic\n\nVivillon @ Focus Sash\nAbility: Compound Eyes\nTimid Nature Nature\n- Hurricane\n- Rage Powder\n- Sleep Powder\n- Protect\n\nPrimarina @ Sitrus Berry\nAbility: Liquid Voice\nModest Nature Nature\n- Energy Ball\n- Hyper Voice\n- Moonblast\n- Protect\n\nGarchomp @ Choice Scarf\nAbility: Rough Skin\nAdamant Nature Nature\n- Rock Slide\n- Earthquake\n- Iron Head\n- Dragon Claw\n\nUmbreon @ Leftovers\nAbility: Inner Focus\nBold Nature Nature\n- Snarl\n- Protect\n- Yawn\n- Foul Play",
+    "pokemon": [
+      {
+        "species": "袋兽",
+        "enSpecies": "Kangaskhan",
+        "slug": "kangaskhan",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/115.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "袋兽进化石",
+        "enItem": "Kangaskhanite",
+        "ability": "Scrappy",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 舍身冲撞",
+            "enName": "Double-Edge",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "120*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "吸取拳",
+            "enName": "Drain Punch",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "75*"
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          }
+        ]
+      },
+      {
+        "species": "妖火红狐",
+        "enSpecies": "Delphox",
+        "slug": "delphox",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/655.png",
+        "types": [
+          "Fire",
+          "Psychic"
+        ],
+        "item": "妖火红狐进化石",
+        "enItem": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          }
+        ]
+      },
+      {
+        "species": "彩粉蝶",
+        "enSpecies": "Vivillon",
+        "slug": "vivillon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/666.png",
+        "types": [
+          "Bug",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Compound Eyes",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "西狮海壬",
+        "enSpecies": "Primarina",
+        "slug": "primarina",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/730.png",
+        "types": [
+          "Water",
+          "Fairy"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Liquid Voice",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "能量球",
+            "enName": "Energy Ball",
+            "type": "Grass",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "月亮伊布",
+        "enSpecies": "Umbreon",
+        "slug": "umbreon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/197.png",
+        "types": [
+          "Dark"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Inner Focus",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 大声咆哮",
+            "enName": "Snarl",
+            "type": "Dark",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "哈欠",
+            "enName": "Yawn",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 欺诈",
+            "enName": "Foul Play",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "95"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:11"
+  },
+  {
+    "id": "limitless-6a951f78-ketzuvgc",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 14,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "1-3-0",
+    "player": "ketzuvgc",
+    "showdown": "Farigiraf @ Sitrus Berry\nAbility: Armor Tail\nBold Nature Nature\n- Helping Hand\n- Psychic\n- Thunderbolt\n- Trick Room\n\nGarchomp @ Choice Scarf\nAbility: Rough Skin\nAdamant Nature Nature\n- Stomping Tantrum\n- Rock Slide\n- Dragon Claw\n- Earthquake\n\nEternal Flower Floette @ Floettite\nAbility: Flower Veil\nModest Nature Nature\n- Protect\n- Calm Mind\n- Draining Kiss\n- Dazzling Gleam\n\nSneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Protect\n- Dire Claw\n- Close Combat\n- Fake Out\n\nBasculegion @ Life Orb\nAbility: Adaptability\nJolly Nature Nature\n- Protect\n- Aqua Jet\n- Wave Crash\n- Last Respects\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Protect\n- Weather Ball\n- Heat Wave\n- Solar Beam",
+    "pokemon": [
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          }
+        ]
+      },
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "冥想",
+            "enName": "Calm Mind",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "吸取之吻",
+            "enName": "Draining Kiss",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Adaptability",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:11"
+  },
+  {
+    "id": "limitless-6a951f78-eissiyal092",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 15,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "1-2-0",
+    "player": "eissiyal092",
+    "showdown": "Staraptor @ Staraptite\nAbility: Intimidate\nAdamant Nature Nature\n- Close Combat\n- Brave Bird\n- Quick Attack\n- Final Gambit\n\nGrimmsnarl @ Sitrus Berry\nAbility: Prankster\nCareful Nature Nature\n- Spirit Break\n- Parting Shot\n- Fake Out\n- Scary Face\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Fake Tears\n- Attract\n- Encore\n- Moonblast\n\nToxapex @ Leftovers\nAbility: Merciless\nBold Nature Nature\n- Recover\n- Baneful Bunker\n- Infestation\n- Iron Defense\n\nCharizard @ Charizardite Y\nAbility: Solar Power\nModest Nature Nature\n- Heat Wave\n- Weather Ball\n- Protect\n- Helping Hand\n\nVenusaur @ Life Orb\nAbility: Chlorophyll\nModest Nature Nature\n- Earth Power\n- Sludge Bomb\n- Sleep Powder\n- Solar Beam",
+    "pokemon": [
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "搏命",
+            "enName": "Final Gambit",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "长毛巨魔",
+        "enSpecies": "Grimmsnarl",
+        "slug": "grimmsnarl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/861.png",
+        "types": [
+          "Dark",
+          "Fairy"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Prankster",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": "灵魂冲击",
+            "enName": "Spirit Break",
+            "type": "Fairy",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "可怕面孔",
+            "enName": "Scary Face",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "假哭",
+            "enName": "Fake Tears",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "迷人",
+            "enName": "Attract",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          }
+        ]
+      },
+      {
+        "species": "超坏星",
+        "enSpecies": "Toxapex",
+        "slug": "toxapex",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/748.png",
+        "types": [
+          "Poison",
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Merciless",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "自我再生",
+            "enName": "Recover",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "碉堡",
+            "enName": "Baneful Bunker",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "纠缠不休",
+            "enName": "Infestation",
+            "type": "Bug",
+            "category": "Special",
+            "power": "20"
+          },
+          {
+            "name": " 铁壁",
+            "enName": "Iron Defense",
+            "type": "Steel",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:11"
+  },
+  {
+    "id": "limitless-6a951f78-ayoitsbenji",
+    "source": "Limitless VGC",
+    "tournamentName": "Sketch Academy Sunday Regulation M-B Tournament",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a951f78abb948223750464c/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 16,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "2-2-0",
+    "player": "ayoitsbenji",
+    "showdown": "Whimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Protect\n- Encore\n- Moonblast\n- Tailwind\n\nCharizard @ Charizardite Y\nAbility: Drought\nModest Nature Nature\n- Weather Ball\n- Protect\n- Heat Wave\n- Solar Beam\n\nBasculegion @ Mystic Water\nAbility: Adaptability\nAdamant Nature Nature\n- Wave Crash\n- Last Respects\n- Aqua Jet\n- Protect\n\nKingambit @ Chople Berry\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Iron Head\n- Kowtow Cleave\n- Low Kick\n\nSneasler @ White Herb\nAbility: Unburden\nAdamant Nature Nature\n- Close Combat\n- Dire Claw\n- Rock Tomb\n- Protect\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Rock Slide\n- Earthquake\n- Dragon Claw\n- Protect",
+    "pokemon": [
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Drought",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 岩石封锁",
+            "enName": "Rock Tomb",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "60*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:12"
+  },
+  {
+    "id": "limitless-6a9691f7-anmolkakarot",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 1,
+    "placingTag": "🥇 冠军 (1st)",
+    "record": "0-2-0",
+    "player": "anmolkakarot",
+    "showdown": "Charizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Solar Beam\n- Air Slash\n- Heat Wave\n- Protect\n\nGarchomp @ Sitrus Berry\nAbility: Rough Skin\nJolly Nature Nature\n- Rock Slide\n- Stomping Tantrum\n- Dragon Claw\n- Protect\n\nWhimsicott @ Mental Herb\nAbility: Prankster\nTimid Nature Nature\n- Tailwind\n- Encore\n- Moonblast\n- Energy Ball\n\nAnnihilape @ Focus Sash\nAbility: Defiant\nJolly Nature Nature\n- Rage Fist\n- Close Combat\n- Rock Tomb\n- Protect\n\nToxapex @ Leftovers\nAbility: Regenerator\nBold Nature Nature\n- Infestation\n- Toxic\n- Baneful Bunker\n- Wide Guard\n\nKingambit @ Black Glasses\nAbility: Supreme Overlord\nAdamant Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Iron Head\n- Protect",
+    "pokemon": [
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 空气斩",
+            "enName": "Air Slash",
+            "type": "Flying",
+            "category": "Special",
+            "power": "75"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "心灵香草",
+        "enItem": "Mental Herb",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "能量球",
+            "enName": "Energy Ball",
+            "type": "Grass",
+            "category": "Special",
+            "power": "90*"
+          }
+        ]
+      },
+      {
+        "species": "弃世猴",
+        "enSpecies": "Annihilape",
+        "slug": "annihilape",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/979.png",
+        "types": [
+          "Fighting",
+          "Ghost"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Defiant",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Rage Fist",
+            "enName": "Rage Fist",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 岩石封锁",
+            "enName": "Rock Tomb",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "60*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "超坏星",
+        "enSpecies": "Toxapex",
+        "slug": "toxapex",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/748.png",
+        "types": [
+          "Poison",
+          "Water"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Regenerator",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "纠缠不休",
+            "enName": "Infestation",
+            "type": "Bug",
+            "category": "Special",
+            "power": "20"
+          },
+          {
+            "name": " 剧毒",
+            "enName": "Toxic",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "碉堡",
+            "enName": "Baneful Bunker",
+            "type": "Poison",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Supreme Overlord",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:47"
+  },
+  {
+    "id": "limitless-6a9691f7-burd_vgc",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 2,
+    "placingTag": "🥈 亚军 (2nd)",
+    "record": "5-1-0",
+    "player": "burd_vgc",
+    "showdown": "Whimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Tailwind\n- Sunny Day\n- Encore\n- Moonblast\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nBold Nature Nature\n- Trick Room\n- Helping Hand\n- Psychic\n- Protect\n\nSneasler @ Hard Stone\nAbility: Poison Touch\nAdamant Nature Nature\n- Protect\n- Close Combat\n- Rock Slide\n- Dire Claw\n\nIncineroar @ Passho Berry\nAbility: Intimidate\nCareful Nature Nature\n- Fake Out\n- Throat Chop\n- Flare Blitz\n- Parting Shot\n\nEternal Flower Floette @ Floettite\nAbility: Flower Veil\nModest Nature Nature\n- Protect\n- Light of Ruin\n- Moonblast\n- Dazzling Gleam\n\nHisuian Typhlosion @ Choice Scarf\nAbility: Frisk\nTimid Nature Nature\n- Eruption\n- Heat Wave\n- Rock Slide\n- Shadow Ball",
+    "pokemon": [
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "大晴天",
+            "enName": "Sunny Day",
+            "type": "Fire",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 帮助",
+            "enName": "Helping Hand",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "硬石头",
+        "enItem": "Hard Stone",
+        "ability": "Poison Touch",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "千香果",
+        "enItem": "Passho Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "破灭之光",
+            "enName": "Light of Ruin",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "140"
+          },
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Typhlosion",
+        "enSpecies": "Hisuian Typhlosion",
+        "slug": "hisuian-typhlosion",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-typhlosion.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Frisk",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 喷火",
+            "enName": "Eruption",
+            "type": "Fire",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:48"
+  },
+  {
+    "id": "limitless-6a9691f7-koly",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 3,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "2-1-0",
+    "player": "koly",
+    "showdown": "Basculegion @ Sitrus Berry\nAbility: Adaptability\nJolly Nature Nature\n- Wave Crash\n- Last Respects\n- Aqua Jet\n- Protect\n\nGarchomp @ Garchompite\nAbility: Rough Skin\nModest Nature Nature\n- Earth Power\n- Draco Meteor\n- Power Gem\n- Protect\n\nScizor @ Life Orb\nAbility: Technician\nAdamant Nature Nature\n- Bullet Punch\n- Bug Bite\n- Swords Dance\n- Protect\n\nTyranitar @ Choice Scarf\nAbility: Sand Stream\nJolly Nature Nature\n- Rock Slide\n- Knock Off\n- Ice Punch\n- Superpower\n\nSneasler @ Focus Sash\nAbility: Poison Touch\nJolly Nature Nature\n- Poison Jab\n- Close Combat\n- Fake Out\n- Protect\n\nCorviknight @ Leftovers\nAbility: Mirror Armor\nImpish Nature Nature\n- Iron Head\n- Brave Bird\n- Tailwind\n- Protect",
+    "pokemon": [
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Adaptability",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "烈咬陆鲨进化石",
+        "enItem": "Garchompite",
+        "ability": "Rough Skin",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "流星群",
+            "enName": "Draco Meteor",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": "力量宝石",
+            "enName": "Power Gem",
+            "type": "Rock",
+            "category": "Special",
+            "power": "80*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨钳螳螂",
+        "enSpecies": "Scizor",
+        "slug": "scizor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/212.png",
+        "types": [
+          "Bug",
+          "Steel"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Technician",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 虫咬",
+            "enName": "Bug Bite",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "60"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "班基拉斯",
+        "enSpecies": "Tyranitar",
+        "slug": "tyranitar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/248.png",
+        "types": [
+          "Rock",
+          "Dark"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Sand Stream",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "拍落",
+            "enName": "Knock Off",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "65*"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 蛮力",
+            "enName": "Superpower",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 毒击",
+            "enName": "Poison Jab",
+            "type": "Poison",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "钢铠鸦",
+        "enSpecies": "Corviknight",
+        "slug": "corviknight",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/823.png",
+        "types": [
+          "Flying",
+          "Steel"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Mirror Armor",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:48"
+  },
+  {
+    "id": "limitless-6a9691f7-readdybear",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 4,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "0-1-0",
+    "player": "readdybear",
+    "showdown": "Politoed @ Sitrus Berry\nAbility: Drizzle\nBold Nature Nature\n- Protect\n- Weather Ball\n- Perish Song\n- Encore\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Tailwind\n- Encore\n- Worry Seed\n\nArchaludon @ Leftovers\nAbility: Stamina\nCalm Nature Nature\n- Protect\n- Electro Shot\n- Flash Cannon\n- Dragon Pulse\n\nSwampert @ Swampertite\nAbility: Damp\nAdamant Nature Nature\n- Protect\n- Wave Crash\n- Earthquake\n- Ice Punch\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Protect\n- Heat Wave\n- Solar Beam\n- Weather Ball\n\nTsareena @ Wide Lens\nAbility: Queenly Majesty\nImpish Nature Nature\n- Protect\n- Power Whip\n- Triple Axel\n- U-turn",
+    "pokemon": [
+      {
+        "species": "蚊香蛙皇",
+        "enSpecies": "Politoed",
+        "slug": "politoed",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/186.png",
+        "types": [
+          "Water"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 灭亡之歌",
+            "enName": "Perish Song",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 烦恼种子",
+            "enName": "Worry Seed",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Damp",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          }
+        ]
+      },
+      {
+        "species": "甜冷美后",
+        "enSpecies": "Tsareena",
+        "slug": "tsareena",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/763.png",
+        "types": [
+          "Grass"
+        ],
+        "item": "广角镜",
+        "enItem": "Wide Lens",
+        "ability": "Queenly Majesty",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 强力鞭打",
+            "enName": "Power Whip",
+            "type": "Grass",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "三旋擊",
+            "enName": "Triple Axel",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "20"
+          },
+          {
+            "name": "急速折返",
+            "enName": "U-turn",
+            "type": "Bug",
+            "category": "Physical",
+            "power": "70"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:49"
+  },
+  {
+    "id": "limitless-6a9691f7-oyasumigab",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 5,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "1-1-0",
+    "player": "oyasumigab",
+    "showdown": "Hatterene @ Life Orb\nAbility: Magic Bounce\nQuiet Nature Nature\n- Protect\n- Psychic\n- Dazzling Gleam\n- Trick Room\n\nOranguru @ Mental Herb\nAbility: Inner Focus\nBold Nature Nature\n- Protect\n- Instruct\n- Psychic\n- Trick Room\n\nTorkoal @ Charcoal\nAbility: Drought\nQuiet Nature Nature\n- Eruption\n- Protect\n- Earth Power\n- Heat Wave\n\nMawile @ Mawilite\nAbility: Hyper Cutter\nBrave Nature Nature\n- Play Rough\n- Sucker Punch\n- Protect\n- Iron Head\n\nKangaskhan @ Silk Scarf\nAbility: Scrappy\nBrave Nature Nature\n- Fake Out\n- Last Resort\n\nVenusaur @ Focus Sash\nAbility: Chlorophyll\nModest Nature Nature\n- Leaf Storm\n- Sludge Bomb\n- Protect\n- Sleep Powder",
+    "pokemon": [
+      {
+        "species": "布莉姆温",
+        "enSpecies": "Hatterene",
+        "slug": "hatterene",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/858.png",
+        "types": [
+          "Psychic",
+          "Fairy"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Magic Bounce",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "智挥猩",
+        "enSpecies": "Oranguru",
+        "slug": "oranguru",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/765.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "心灵香草",
+        "enItem": "Mental Herb",
+        "ability": "Inner Focus",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "号令",
+            "enName": "Instruct",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "煤炭龟",
+        "enSpecies": "Torkoal",
+        "slug": "torkoal",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/324.png",
+        "types": [
+          "Fire"
+        ],
+        "item": "木炭",
+        "enItem": "Charcoal",
+        "ability": "Drought",
+        "nature": "Quiet Nature",
+        "moves": [
+          {
+            "name": " 喷火",
+            "enName": "Eruption",
+            "type": "Fire",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          }
+        ]
+      },
+      {
+        "species": "大嘴娃",
+        "enSpecies": "Mawile",
+        "slug": "mawile",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/303.png",
+        "types": [
+          "Steel",
+          "Fairy"
+        ],
+        "item": "Mawil进化石",
+        "enItem": "Mawilite",
+        "ability": "Hyper Cutter",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": "嬉闹",
+            "enName": "Play Rough",
+            "type": "Fairy",
+            "category": "Physical",
+            "power": "90"
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "袋兽",
+        "enSpecies": "Kangaskhan",
+        "slug": "kangaskhan",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/115.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "丝绸围巾",
+        "enItem": "Silk Scarf",
+        "ability": "Scrappy",
+        "nature": "Brave Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "珍藏",
+            "enName": "Last Resort",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "140*"
+          }
+        ]
+      },
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 飞叶风暴",
+            "enName": "Leaf Storm",
+            "type": "Grass",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:49"
+  },
+  {
+    "id": "limitless-6a9691f7-harodtheone",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 6,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "3-2-0",
+    "player": "harodtheone",
+    "showdown": "Kingambit @ Occa Berry\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Iron Head\n- Low Kick\n\nBasculegion @ Mystic Water\nAbility: Adaptability\nAdamant Nature Nature\n- Wave Crash\n- Last Respects\n- Aqua Jet\n- Protect\n\nGarchomp @ Sitrus Berry\nAbility: Rough Skin\nJolly Nature Nature\n- Dragon Claw\n- Earthquake\n- Rock Slide\n- Protect\n\nCharizard @ Charizardite Y\nAbility: Blaze\nTimid Nature Nature\n- Heat Wave\n- Weather Ball\n- Ancient Power\n- Protect\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Tailwind\n- Encore\n- Protect\n\nEternal Flower Floette @ Floettite\nAbility: Flower Veil\nModest Nature Nature\n- Moonblast\n- Dazzling Gleam\n- Light of Ruin\n- Protect",
+    "pokemon": [
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "巧可果",
+        "enItem": "Occa Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "破灭之光",
+            "enName": "Light of Ruin",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "140"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:50"
+  },
+  {
+    "id": "limitless-6a9691f7-jaasesin15",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 7,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "0-3-0",
+    "player": "jaasesin15",
+    "showdown": "Raichu @ Raichunite Y\nAbility: Lightning Rod\nTimid Nature Nature\n- Zap Cannon\n- Focus Blast\n- Fake Out\n- Protect\n\nStaraptor @ Staraptite\nAbility: Intimidate\nJolly Nature Nature\n- Close Combat\n- Brave Bird\n- Tailwind\n- Protect\n\nHisuian Arcanine @ Focus Sash\nAbility: Rock Head\nJolly Nature Nature\n- Flare Blitz\n- Head Smash\n- Extreme Speed\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Voice\n- Quick Attack\n- Hyper Beam\n- Protect\n\nKingambit @ Black Belt\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Swords Dance\n- Protect\n\nFarigiraf @ Sitrus Berry\nAbility: Armor Tail\nBold Nature Nature\n- Trick Room\n- Thunderbolt\n- Psychic\n- Protect",
+    "pokemon": [
+      {
+        "species": "雷丘",
+        "enSpecies": "Raichu",
+        "slug": "raichu",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/26.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Raichun进化石 Y",
+        "enItem": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 电磁炮",
+            "enName": "Zap Cannon",
+            "type": "Electric",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 真气弹",
+            "enName": "Focus Blast",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Arcanine",
+        "enSpecies": "Hisuian Arcanine",
+        "slug": "hisuian-arcanine",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-arcanine.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 双刃头锤",
+            "enName": "Head Smash",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "150"
+          },
+          {
+            "name": "神速",
+            "enName": "Extreme Speed",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑带",
+        "enItem": "Black Belt",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "奇麒麟",
+        "enSpecies": "Farigiraf",
+        "slug": "farigiraf",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/981.png",
+        "types": [
+          "Normal",
+          "Psychic"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Armor Tail",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": " 戏法空间",
+            "enName": "Trick Room",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:50"
+  },
+  {
+    "id": "limitless-6a9691f7-ricky_falco",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 8,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "0-1-0",
+    "player": "ricky_falco",
+    "showdown": "Dragonite @ Dragoninite\nAbility: Multiscale\nModest Nature Nature\n- Dragon Pulse\n- Heat Wave\n- Extreme Speed\n- Protect\n\nAerodactyl @ Aerodactylite\nAbility: Unnerve\nJolly Nature Nature\n- Rock Slide\n- Ice Fang\n- Dual Wingbeat\n- Protect\n\nHisuian Zoroark @ Choice Scarf\nAbility: Illusion\nModest Nature Nature\n- Hyper Voice\n- Icy Wind\n- Shadow Ball\n- Focus Blast\n\nHisuian Arcanine @ Focus Sash\nAbility: Rock Head\nJolly Nature Nature\n- Head Smash\n- Flare Blitz\n- Close Combat\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Voice\n- Quick Attack\n- Detect\n- Yawn\n\nKingambit @ Chople Berry\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Iron Head\n- Low Kick",
+    "pokemon": [
+      {
+        "species": "快龙",
+        "enSpecies": "Dragonite",
+        "slug": "dragonite",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/149.png",
+        "types": [
+          "Dragon",
+          "Flying"
+        ],
+        "item": "Dragonin进化石",
+        "enItem": "Dragoninite",
+        "ability": "Multiscale",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": "神速",
+            "enName": "Extreme Speed",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "化石翼龙",
+        "enSpecies": "Aerodactyl",
+        "slug": "aerodactyl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/142.png",
+        "types": [
+          "Rock",
+          "Flying"
+        ],
+        "item": "化石翼龙进化石",
+        "enItem": "Aerodactylite",
+        "ability": "Unnerve",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 冰冻牙",
+            "enName": "Ice Fang",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "65"
+          },
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Zoroark",
+        "enSpecies": "Hisuian Zoroark",
+        "slug": "hisuian-zoroark",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-zoroark.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Illusion",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 真气弹",
+            "enName": "Focus Blast",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Arcanine",
+        "enSpecies": "Hisuian Arcanine",
+        "slug": "hisuian-arcanine",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-arcanine.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Rock Head",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 双刃头锤",
+            "enName": "Head Smash",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "150"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "哈欠",
+            "enName": "Yawn",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "莲蒲果",
+        "enItem": "Chople Berry",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:50"
+  },
+  {
+    "id": "limitless-6a9691f7-leon0124",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 9,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "3-3-0",
+    "player": "leon0124",
+    "showdown": "Incineroar @ Sitrus Berry\nAbility: Intimidate\nCareful Nature Nature\n- Protect\n- Fake Out\n- Parting Shot\n- Flare Blitz\n\nPelipper @ Damp Rock\nAbility: Drizzle\nTimid Nature Nature\n- Protect\n- Weather Ball\n- Tailwind\n- Hurricane\n\nKingambit @ Life Orb\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Iron Head\n- Swords Dance\n\nArchaludon @ Leftovers\nAbility: Stamina\nModest Nature Nature\n- Protect\n- Flash Cannon\n- Dragon Pulse\n- Electro Shot\n\nGengar @ Gengarite\nAbility: Cursed Body\nTimid Nature Nature\n- Protect\n- Perish Song\n- Substitute\n- Shadow Ball\n\nStaraptor @ Staraptite\nAbility: Intimidate\nJolly Nature Nature\n- Protect\n- Close Combat\n- Brave Bird\n- Tailwind",
+    "pokemon": [
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          }
+        ]
+      },
+      {
+        "species": "大嘴鸥",
+        "enSpecies": "Pelipper",
+        "slug": "pelipper",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/279.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "潮湿岩石",
+        "enItem": "Damp Rock",
+        "ability": "Drizzle",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "耿鬼",
+        "enSpecies": "Gengar",
+        "slug": "gengar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/94.png",
+        "types": [
+          "Ghost",
+          "Poison"
+        ],
+        "item": "耿鬼进化石",
+        "enItem": "Gengarite",
+        "ability": "Cursed Body",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 灭亡之歌",
+            "enName": "Perish Song",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "替身",
+            "enName": "Substitute",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:51"
+  },
+  {
+    "id": "limitless-6a9691f7-gdp",
+    "source": "Limitless VGC",
+    "tournamentName": "Reg M-B Last Stand (Battle Chateau)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9691f7629039f77d8a7361/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 10,
+    "placingTag": "🎖️ 十六强 (Top 16)",
+    "record": "0-2-0",
+    "player": "gdp",
+    "showdown": "Grimmsnarl @ Light Clay\nAbility: Prankster\nCalm Nature Nature\n- Foul Play\n- Parting Shot\n- Reflect\n- Light Screen\n\nSwampert @ Swampertite\nAbility: Damp\nAdamant Nature Nature\n- Wave Crash\n- Earthquake\n- Ice Punch\n- Protect\n\nPelipper @ Sitrus Berry\nAbility: Drizzle\nModest Nature Nature\n- Hurricane\n- Weather Ball\n- Tailwind\n- Wide Guard\n\nArchaludon @ Leftovers\nAbility: Stamina\nModest Nature Nature\n- Electro Shot\n- Dragon Pulse\n- Flash Cannon\n- Protect\n\nSinistcha @ Coba Berry\nAbility: Hospitality\nRelaxed Nature Nature\n- Matcha Gotcha\n- Rage Powder\n- Shadow Ball\n- Protect\n\nMetagross @ Metagrossite\nAbility: Clear Body\nJolly Nature Nature\n- Iron Head\n- Psychic Fangs\n- Body Press\n- Protect",
+    "pokemon": [
+      {
+        "species": "长毛巨魔",
+        "enSpecies": "Grimmsnarl",
+        "slug": "grimmsnarl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/861.png",
+        "types": [
+          "Dark",
+          "Fairy"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": " 欺诈",
+            "enName": "Foul Play",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Damp",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大嘴鸥",
+        "enSpecies": "Pelipper",
+        "slug": "pelipper",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/279.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "棱瓜果",
+        "enItem": "Coba Berry",
+        "ability": "Hospitality",
+        "nature": "Relaxed Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨金怪",
+        "enSpecies": "Metagross",
+        "slug": "metagross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/376.png",
+        "types": [
+          "Steel",
+          "Psychic"
+        ],
+        "item": "巨金怪进化石",
+        "enItem": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "扑击",
+            "enName": "Body Press",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:18:51"
+  },
+  {
+    "id": "limitless-6a839848-karlin22",
+    "source": "Limitless VGC",
+    "tournamentName": "PokeInstinct VGC #2 ($20 USD for the Winner)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a83984878baaa6d1c2228f7/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 1,
+    "placingTag": "🥇 冠军 (1st)",
+    "record": "0-2-0",
+    "player": "karlin22",
+    "showdown": "Overqwil @ Leftovers\nAbility: Poison Point\nCareful Nature Nature\n- Minimize\n- Protect\n- Stockpile\n- Barb Barrage\n\nSableye @ Roseli Berry\nAbility: Prankster\nCalm Nature Nature\n- Reflect\n- Light Screen\n- Foul Play\n- Fake Out\n\nDelphox @ Delphoxite\nAbility: Blaze\nTimid Nature Nature\n- Protect\n- Psych Up\n- Psychic\n- Heat Wave\n\nMow Rotom @ Choice Scarf\nAbility: Levitate\nModest Nature Nature\n- Leaf Storm\n- Thunderbolt\n- Volt Switch\n- Electroweb\n\nSinistcha @ Occa Berry\nAbility: Hospitality\nBold Nature Nature\n- Matcha Gotcha\n- Rage Powder\n- Psych Up\n- Life Dew\n\nNinetales @ Focus Sash\nAbility: Flash Fire\nTimid Nature Nature\n- Psych Up\n- Protect\n- Disable\n- Heat Wave",
+    "pokemon": [
+      {
+        "species": "万针鱼",
+        "enSpecies": "Overqwil",
+        "slug": "overqwil",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/904.png",
+        "types": [
+          "Dark",
+          "Poison"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Poison Point",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": " 变小",
+            "enName": "Minimize",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "蓄力",
+            "enName": "Stockpile",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Barb Barrage",
+            "enName": "Barb Barrage",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "勾魂眼",
+        "enSpecies": "Sableye",
+        "slug": "sableye",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/302.png",
+        "types": [
+          "Dark",
+          "Ghost"
+        ],
+        "item": "洛玫果",
+        "enItem": "Roseli Berry",
+        "ability": "Prankster",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 欺诈",
+            "enName": "Foul Play",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "95"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "妖火红狐",
+        "enSpecies": "Delphox",
+        "slug": "delphox",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/655.png",
+        "types": [
+          "Fire",
+          "Psychic"
+        ],
+        "item": "妖火红狐进化石",
+        "enItem": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "自我暗示",
+            "enName": "Psych Up",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          }
+        ]
+      },
+      {
+        "species": "Mow Rotom",
+        "enSpecies": "Mow Rotom",
+        "slug": "mow-rotom",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/mow-rotom.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Levitate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 飞叶风暴",
+            "enName": "Leaf Storm",
+            "type": "Grass",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 十万伏特",
+            "enName": "Thunderbolt",
+            "type": "Electric",
+            "category": "Special",
+            "power": "90*"
+          },
+          {
+            "name": " 伏特替换",
+            "enName": "Volt Switch",
+            "type": "Electric",
+            "category": "Special",
+            "power": "70"
+          },
+          {
+            "name": " 电网",
+            "enName": "Electroweb",
+            "type": "Electric",
+            "category": "Special",
+            "power": "55"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "巧可果",
+        "enItem": "Occa Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "自我暗示",
+            "enName": "Psych Up",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "生命水滴",
+            "enName": "Life Dew",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "九尾",
+        "enSpecies": "Ninetales",
+        "slug": "ninetales",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/38.png",
+        "types": [
+          "Fire"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Flash Fire",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "自我暗示",
+            "enName": "Psych Up",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "定身法",
+            "enName": "Disable",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:13"
+  },
+  {
+    "id": "limitless-6a839848-grent",
+    "source": "Limitless VGC",
+    "tournamentName": "PokeInstinct VGC #2 ($20 USD for the Winner)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a83984878baaa6d1c2228f7/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 2,
+    "placingTag": "🥈 亚军 (2nd)",
+    "record": "1-2-0",
+    "player": "grent",
+    "showdown": "Glimmora @ Focus Sash\nAbility: Toxic Debris\nTimid Nature Nature\n- Spiky Shield\n- Earth Power\n- Sludge Bomb\n- Power Gem\n\nHisuian Zoroark @ Colbur Berry\nAbility: Illusion\nTimid Nature Nature\n- Protect\n- Taunt\n- Icy Wind\n- Bitter Malice\n\nEternal Flower Floette @ Floettite\nAbility: Flower Veil\nTimid Nature Nature\n- Moonblast\n- Dazzling Gleam\n- Light of Ruin\n- Protect\n\nStaraptor @ Staraptite\nAbility: Intimidate\nJolly Nature Nature\n- Close Combat\n- Brave Bird\n- Tailwind\n- Protect\n\nCeruledge @ Life Orb\nAbility: Flash Fire\nAdamant Nature Nature\n- Protect\n- Shadow Sneak\n- Bitter Blade\n- Bulk Up\n\nCeruledge @ Life Orb\nAbility: Flash Fire\nAdamant Nature Nature\n- Protect\n- Shadow Sneak\n- Bitter Blade\n- Bulk Up",
+    "pokemon": [
+      {
+        "species": "晶光花",
+        "enSpecies": "Glimmora",
+        "slug": "glimmora",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/970.png",
+        "types": [
+          "Rock",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Toxic Debris",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "尖刺防守",
+            "enName": "Spiky Shield",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "大地之力",
+            "enName": "Earth Power",
+            "type": "Ground",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "力量宝石",
+            "enName": "Power Gem",
+            "type": "Rock",
+            "category": "Special",
+            "power": "80*"
+          }
+        ]
+      },
+      {
+        "species": "Hisuian Zoroark",
+        "enSpecies": "Hisuian Zoroark",
+        "slug": "hisuian-zoroark",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/hisuian-zoroark.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "刺耳果",
+        "enItem": "Colbur Berry",
+        "ability": "Illusion",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 挑衅",
+            "enName": "Taunt",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻之风",
+            "enName": "Icy Wind",
+            "type": "Ice",
+            "category": "Special",
+            "power": "55"
+          },
+          {
+            "name": "Bitter Malice",
+            "enName": "Bitter Malice",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "魔法闪耀",
+            "enName": "Dazzling Gleam",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "破灭之光",
+            "enName": "Light of Ruin",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "140"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "苍炎刃鬼",
+        "enSpecies": "Ceruledge",
+        "slug": "ceruledge",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/937.png",
+        "types": [
+          "Fire",
+          "Ghost"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Flash Fire",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 影子偷袭",
+            "enName": "Shadow Sneak",
+            "type": "Ghost",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "Bitter Blade",
+            "enName": "Bitter Blade",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "苍炎刃鬼",
+        "enSpecies": "Ceruledge",
+        "slug": "ceruledge",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/937.png",
+        "types": [
+          "Fire",
+          "Ghost"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Flash Fire",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 影子偷袭",
+            "enName": "Shadow Sneak",
+            "type": "Ghost",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "Bitter Blade",
+            "enName": "Bitter Blade",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "健美",
+            "enName": "Bulk Up",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:14"
+  },
+  {
+    "id": "limitless-6a839848-bhelixb",
+    "source": "Limitless VGC",
+    "tournamentName": "PokeInstinct VGC #2 ($20 USD for the Winner)",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a83984878baaa6d1c2228f7/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 3,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "4-2-0",
+    "player": "bhelixb",
+    "showdown": "Raichu @ Raichunite Y\nAbility: Lightning Rod\nTimid Nature Nature\n- Zap Cannon\n- Focus Blast\n- Fake Out\n- Protect\n\nKingambit @ Life Orb\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Swords Dance\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Voice\n- Hyper Beam\n- Quick Attack\n- Detect\n\nAerodactyl @ Aerodactylite\nAbility: Unnerve\nJolly Nature Nature\n- Rock Slide\n- Dual Wingbeat\n- Tailwind\n- Protect\n\nBasculegion @ Mystic Water\nAbility: Adaptability\nAdamant Nature Nature\n- Wave Crash\n- Aqua Jet\n- Last Respects\n- Protect\n\nSneasler @ Focus Sash\nAbility: Poison Touch\nJolly Nature Nature\n- Dire Claw\n- Close Combat\n- Fake Out\n- Protect",
+    "pokemon": [
+      {
+        "species": "雷丘",
+        "enSpecies": "Raichu",
+        "slug": "raichu",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/26.png",
+        "types": [
+          "Electric"
+        ],
+        "item": "Raichun进化石 Y",
+        "enItem": "Raichunite Y",
+        "ability": "Lightning Rod",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 电磁炮",
+            "enName": "Zap Cannon",
+            "type": "Electric",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": " 真气弹",
+            "enName": "Focus Blast",
+            "type": "Fighting",
+            "category": "Special",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 剑舞",
+            "enName": "Swords Dance",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "化石翼龙",
+        "enSpecies": "Aerodactyl",
+        "slug": "aerodactyl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/142.png",
+        "types": [
+          "Rock",
+          "Flying"
+        ],
+        "item": "化石翼龙进化石",
+        "enItem": "Aerodactylite",
+        "ability": "Unnerve",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "幽尾玄鱼",
+        "enSpecies": "Basculegion",
+        "slug": "basculegion",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/902.png",
+        "types": [
+          "Water",
+          "Ghost"
+        ],
+        "item": "神秘水滴",
+        "enItem": "Mystic Water",
+        "ability": "Adaptability",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 水流喷射",
+            "enName": "Aqua Jet",
+            "type": "Water",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "Last Respects",
+            "enName": "Last Respects",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Poison Touch",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:14"
+  },
+  {
+    "id": "limitless-6a9996a2-figuee",
+    "source": "Limitless VGC",
+    "tournamentName": "Ratorneo #7 Champions 2026 | Reg MB",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9996a2a4272c53be645c75/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 1,
+    "placingTag": "🥇 冠军 (1st)",
+    "record": "1-3-0",
+    "player": "figuee",
+    "showdown": "Metagross @ Metagrossite\nAbility: Clear Body\nAdamant Nature Nature\n- Bullet Punch\n- Psychic Fangs\n- Rock Slide\n- Protect\n\nPelipper @ Sitrus Berry\nAbility: Keen Eye\nModest Nature Nature\n- Hurricane\n- Tailwind\n- Weather Ball\n- Protect\n\nSwampert @ Swampertite\nAbility: Torrent\nAdamant Nature Nature\n- Wave Crash\n- Earthquake\n- Ice Punch\n- Protect\n\nSinistcha @ Kasib Berry\nAbility: Hospitality\nBold Nature Nature\n- Matcha Gotcha\n- Rage Powder\n- Life Dew\n- Strength Sap\n\nSableye @ Light Clay\nAbility: Prankster\nCalm Nature Nature\n- Reflect\n- Light Screen\n- Quash\n- Rain Dance\n\nArchaludon @ Leftovers\nAbility: Stamina\nModest Nature Nature\n- Electro Shot\n- Dragon Pulse\n- Flash Cannon\n- Protect",
+    "pokemon": [
+      {
+        "species": "巨金怪",
+        "enSpecies": "Metagross",
+        "slug": "metagross",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/376.png",
+        "types": [
+          "Steel",
+          "Psychic"
+        ],
+        "item": "巨金怪进化石",
+        "enItem": "Metagrossite",
+        "ability": "Clear Body",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 子弹拳",
+            "enName": "Bullet Punch",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "精神之牙",
+            "enName": "Psychic Fangs",
+            "type": "Psychic",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大嘴鸥",
+        "enSpecies": "Pelipper",
+        "slug": "pelipper",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/279.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Keen Eye",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Torrent",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "佛柑果",
+        "enItem": "Kasib Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "生命水滴",
+            "enName": "Life Dew",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "吸取力量",
+            "enName": "Strength Sap",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "勾魂眼",
+        "enSpecies": "Sableye",
+        "slug": "sableye",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/302.png",
+        "types": [
+          "Dark",
+          "Ghost"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 延后",
+            "enName": "Quash",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "求雨",
+            "enName": "Rain Dance",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:29"
+  },
+  {
+    "id": "limitless-6a9996a2-kerosama",
+    "source": "Limitless VGC",
+    "tournamentName": "Ratorneo #7 Champions 2026 | Reg MB",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9996a2a4272c53be645c75/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 2,
+    "placingTag": "🥈 亚军 (2nd)",
+    "record": "2-1-0",
+    "player": "kerosama",
+    "showdown": "Gengar @ Gengarite\nAbility: Cursed Body\nTimid Nature Nature\n- Shadow Ball\n- Sludge Bomb\n- Perish Song\n- Protect\n\nPolitoed @ Sitrus Berry\nAbility: Drizzle\nCalm Nature Nature\n- Weather Ball\n- Perish Song\n- Hypnosis\n- Protect\n\nArchaludon @ Leftovers\nAbility: Stamina\nTimid Nature Nature\n- Dragon Pulse\n- Flash Cannon\n- Protect\n- Electro Shot\n\nSwampert @ Swampertite\nAbility: Damp\nAdamant Nature Nature\n- Wave Crash\n- Earthquake\n- Protect\n- Ice Punch\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nCareful Nature Nature\n- Throat Chop\n- Parting Shot\n- Protect\n- Fake Out\n\nVivillon @ Focus Sash\nAbility: Compound Eyes\nTimid Nature Nature\n- Sleep Powder\n- Protect\n- Hurricane\n- Rage Powder",
+    "pokemon": [
+      {
+        "species": "耿鬼",
+        "enSpecies": "Gengar",
+        "slug": "gengar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/94.png",
+        "types": [
+          "Ghost",
+          "Poison"
+        ],
+        "item": "耿鬼进化石",
+        "enItem": "Gengarite",
+        "ability": "Cursed Body",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 灭亡之歌",
+            "enName": "Perish Song",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "蚊香蛙皇",
+        "enSpecies": "Politoed",
+        "slug": "politoed",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/186.png",
+        "types": [
+          "Water"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Drizzle",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": " 灭亡之歌",
+            "enName": "Perish Song",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 催眠术",
+            "enName": "Hypnosis",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 龙之波动",
+            "enName": "Dragon Pulse",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "85*"
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Damp",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Careful Nature",
+        "moves": [
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          }
+        ]
+      },
+      {
+        "species": "彩粉蝶",
+        "enSpecies": "Vivillon",
+        "slug": "vivillon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/666.png",
+        "types": [
+          "Bug",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Compound Eyes",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:29"
+  },
+  {
+    "id": "limitless-6a9996a2-igi2408",
+    "source": "Limitless VGC",
+    "tournamentName": "Ratorneo #7 Champions 2026 | Reg MB",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9996a2a4272c53be645c75/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 3,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "0-2-0",
+    "player": "igi2408",
+    "showdown": "Sinistcha @ Kasib Berry\nAbility: Hospitality\nBold Nature Nature\n- Matcha Gotcha\n- Life Dew\n- Rage Powder\n- Shadow Ball\n\nPelipper @ Focus Sash\nAbility: Drizzle\nModest Nature Nature\n- Hurricane\n- Protect\n- Tailwind\n- Weather Ball\n\nSwampert @ Swampertite\nAbility: Torrent\nAdamant Nature Nature\n- Wave Crash\n- Earthquake\n- Ice Punch\n- Protect\n\nArchaludon @ Leftovers\nAbility: Stamina\nCalm Nature Nature\n- Draco Meteor\n- Electro Shot\n- Flash Cannon\n- Protect\n\nSneasler @ White Herb\nAbility: Unburden\nJolly Nature Nature\n- Fake Out\n- Close Combat\n- Dire Claw\n- Protect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Fake Out\n- Flare Blitz\n- Throat Chop\n- Parting Shot",
+    "pokemon": [
+      {
+        "species": "来悲粗茶",
+        "enSpecies": "Sinistcha",
+        "slug": "sinistcha",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1013.png",
+        "types": [
+          "Grass",
+          "Ghost"
+        ],
+        "item": "佛柑果",
+        "enItem": "Kasib Berry",
+        "ability": "Hospitality",
+        "nature": "Bold Nature",
+        "moves": [
+          {
+            "name": "Matcha Gotcha",
+            "enName": "Matcha Gotcha",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "生命水滴",
+            "enName": "Life Dew",
+            "type": "Water",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 愤怒粉",
+            "enName": "Rage Powder",
+            "type": "Bug",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "暗影球",
+            "enName": "Shadow Ball",
+            "type": "Ghost",
+            "category": "Special",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "大嘴鸥",
+        "enSpecies": "Pelipper",
+        "slug": "pelipper",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/279.png",
+        "types": [
+          "Water",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Drizzle",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 暴风",
+            "enName": "Hurricane",
+            "type": "Flying",
+            "category": "Special",
+            "power": "110*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          }
+        ]
+      },
+      {
+        "species": "巨沼怪",
+        "enSpecies": "Swampert",
+        "slug": "swampert",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/260.png",
+        "types": [
+          "Water",
+          "Ground"
+        ],
+        "item": "巨沼怪进化石",
+        "enItem": "Swampertite",
+        "ability": "Torrent",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Wave Crash",
+            "enName": "Wave Crash",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 冰冻拳",
+            "enName": "Ice Punch",
+            "type": "Ice",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "铝钢桥龙",
+        "enSpecies": "Archaludon",
+        "slug": "archaludon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/1018.png",
+        "types": [
+          "Steel",
+          "Dragon"
+        ],
+        "item": "吃剩的东西",
+        "enItem": "Leftovers",
+        "ability": "Stamina",
+        "nature": "Calm Nature",
+        "moves": [
+          {
+            "name": "流星群",
+            "enName": "Draco Meteor",
+            "type": "Dragon",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": "Electro Shot",
+            "enName": "Electro Shot",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 加农光炮",
+            "enName": "Flash Cannon",
+            "type": "Steel",
+            "category": "Special",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "大狃拉",
+        "enSpecies": "Sneasler",
+        "slug": "sneasler",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/903.png",
+        "types": [
+          "Fighting",
+          "Poison"
+        ],
+        "item": "白色香草",
+        "enItem": "White Herb",
+        "ability": "Unburden",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "Dire Claw",
+            "enName": "Dire Claw",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:29"
+  },
+  {
+    "id": "limitless-6a9996a2-celestial1803",
+    "source": "Limitless VGC",
+    "tournamentName": "Ratorneo #7 Champions 2026 | Reg MB",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9996a2a4272c53be645c75/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 4,
+    "placingTag": "🥉 四强 (Top 4)",
+    "record": "1-2-0",
+    "player": "celestial1803",
+    "showdown": "Staraptor @ Staraptite\nAbility: Intimidate\nJolly Nature Nature\n- Close Combat\n- Brave Bird\n- Dual Wingbeat\n- Protect\n\nDelphox @ Delphoxite\nAbility: Blaze\nSerious Nature Nature\n- Heat Wave\n- Psychic\n- Encore\n- Protect\n\nGlimmora @ Focus Sash\nAbility: Toxic Debris\nTimid Nature Nature\n- Power Gem\n- Sludge Bomb\n- Ancient Power\n- Spiky Shield\n\nKingambit @ Black Glasses\nAbility: Defiant\nAdamant Nature Nature\n- Sucker Punch\n- Kowtow Cleave\n- Low Kick\n- Iron Head\n\nGarchomp @ Choice Scarf\nAbility: Rough Skin\nAdamant Nature Nature\n- Dragon Claw\n- Earthquake\n- Rock Slide\n- Stomping Tantrum\n\nWhimsicott @ Occa Berry\nAbility: Prankster\nTimid Nature Nature\n- Moonblast\n- Tailwind\n- Protect\n- Encore",
+    "pokemon": [
+      {
+        "species": "姆克鹰",
+        "enSpecies": "Staraptor",
+        "slug": "staraptor",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/398.png",
+        "types": [
+          "Normal",
+          "Flying"
+        ],
+        "item": "Starapt进化石",
+        "enItem": "Staraptite",
+        "ability": "Intimidate",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 近身战",
+            "enName": "Close Combat",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": " 勇鸟猛攻",
+            "enName": "Brave Bird",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "雙翼",
+            "enName": "Dual Wingbeat",
+            "type": "Flying",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妖火红狐",
+        "enSpecies": "Delphox",
+        "slug": "delphox",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/655.png",
+        "types": [
+          "Fire",
+          "Psychic"
+        ],
+        "item": "妖火红狐进化石",
+        "enItem": "Delphoxite",
+        "ability": "Blaze",
+        "nature": "Serious Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 精神强念",
+            "enName": "Psychic",
+            "type": "Psychic",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "晶光花",
+        "enSpecies": "Glimmora",
+        "slug": "glimmora",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/970.png",
+        "types": [
+          "Rock",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Toxic Debris",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "力量宝石",
+            "enName": "Power Gem",
+            "type": "Rock",
+            "category": "Special",
+            "power": "80*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "尖刺防守",
+            "enName": "Spiky Shield",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": "踢倒",
+            "enName": "Low Kick",
+            "type": "Fighting",
+            "category": "Physical",
+            "power": "—*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "风妖精",
+        "enSpecies": "Whimsicott",
+        "slug": "whimsicott",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/547.png",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "item": "巧可果",
+        "enItem": "Occa Berry",
+        "ability": "Prankster",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 再来一次",
+            "enName": "Encore",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:29"
+  },
+  {
+    "id": "limitless-6a9996a2-gabrielg3",
+    "source": "Limitless VGC",
+    "tournamentName": "Ratorneo #7 Champions 2026 | Reg MB",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9996a2a4272c53be645c75/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 5,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "2-2-0",
+    "player": "gabrielg3",
+    "showdown": "Eternal Flower Floette @ Floettite\nAbility: Flower Veil\nTimid Nature Nature\n- Moonblast\n- Draining Kiss\n- Light of Ruin\n- Protect\n\nCharizard @ Charizardite Y\nAbility: Solar Power\nTimid Nature Nature\n- Heat Wave\n- Weather Ball\n- Ancient Power\n- Protect\n\nVenusaur @ Focus Sash\nAbility: Chlorophyll\nModest Nature Nature\n- Leaf Storm\n- Sludge Bomb\n- Sleep Powder\n- Protect\n\nGarchomp @ Choice Scarf\nAbility: Rough Skin\nAdamant Nature Nature\n- Earthquake\n- Dragon Claw\n- Stomping Tantrum\n- Rock Slide\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Flare Blitz\n- Darkest Lariat\n- Fake Out\n- Parting Shot\n\nGrimmsnarl @ Light Clay\nAbility: Prankster\nSassy Nature Nature\n- Spirit Break\n- Reflect\n- Light Screen\n- Parting Shot",
+    "pokemon": [
+      {
+        "species": "Eternal Flower Floette",
+        "enSpecies": "Eternal Flower Floette",
+        "slug": "eternal-flower-floette",
+        "avatar": "https://r2.limitlesstcg.net/pokemon/gen9/eternal-flower-floette.png",
+        "types": [
+          "Normal"
+        ],
+        "item": "Floett进化石",
+        "enItem": "Floettite",
+        "ability": "Flower Veil",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": "月亮之力",
+            "enName": "Moonblast",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "95"
+          },
+          {
+            "name": "吸取之吻",
+            "enName": "Draining Kiss",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "破灭之光",
+            "enName": "Light of Ruin",
+            "type": "Fairy",
+            "category": "Special",
+            "power": "140"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Solar Power",
+        "nature": "Timid Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "原始之力",
+            "enName": "Ancient Power",
+            "type": "Rock",
+            "category": "Special",
+            "power": "60"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "妙蛙花",
+        "enSpecies": "Venusaur",
+        "slug": "venusaur",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/3.png",
+        "types": [
+          "Grass",
+          "Poison"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Chlorophyll",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 飞叶风暴",
+            "enName": "Leaf Storm",
+            "type": "Grass",
+            "category": "Special",
+            "power": "130*"
+          },
+          {
+            "name": " 污泥炸弹",
+            "enName": "Sludge Bomb",
+            "type": "Poison",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": "催眠粉",
+            "enName": "Sleep Powder",
+            "type": "Grass",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "讲究围巾",
+        "enItem": "Choice Scarf",
+        "ability": "Rough Skin",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "跺脚",
+            "enName": "Stomping Tantrum",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "ＤＤ金勾臂",
+            "enName": "Darkest Lariat",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "85"
+          },
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "长毛巨魔",
+        "enSpecies": "Grimmsnarl",
+        "slug": "grimmsnarl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/861.png",
+        "types": [
+          "Dark",
+          "Fairy"
+        ],
+        "item": "光之黏土",
+        "enItem": "Light Clay",
+        "ability": "Prankster",
+        "nature": "Sassy Nature",
+        "moves": [
+          {
+            "name": "灵魂冲击",
+            "enName": "Spirit Break",
+            "type": "Fairy",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": "反射壁",
+            "enName": "Reflect",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 光墙",
+            "enName": "Light Screen",
+            "type": "Psychic",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:30"
+  },
+  {
+    "id": "limitless-6a9996a2-138mysx",
+    "source": "Limitless VGC",
+    "tournamentName": "Ratorneo #7 Champions 2026 | Reg MB",
+    "tournamentUrl": "https://play.limitlesstcg.com/tournament/6a9996a2a4272c53be645c75/standings",
+    "format": "double",
+    "formatCn": "双打 (Doubles)",
+    "placing": 6,
+    "placingTag": "🏅 八强 (Top 8)",
+    "record": "0-3-0",
+    "player": "138mysx",
+    "showdown": "Aerodactyl @ Focus Sash\nAbility: Unnerve\nJolly Nature Nature\n- Rock Slide\n- Tailwind\n- Wide Guard\n- Protect\n\nGarchomp @ Life Orb\nAbility: Rough Skin\nJolly Nature Nature\n- Dragon Claw\n- Earthquake\n- Rock Tomb\n- Protect\n\nSylveon @ Fairy Feather\nAbility: Pixilate\nModest Nature Nature\n- Hyper Beam\n- Hyper Voice\n- Quick Attack\n- Detect\n\nKingambit @ Black Glasses\nAbility: Defiant\nAdamant Nature Nature\n- Kowtow Cleave\n- Sucker Punch\n- Iron Head\n- Protect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nImpish Nature Nature\n- Fake Out\n- Flare Blitz\n- Throat Chop\n- Parting Shot\n\nCharizard @ Charizardite Y\nAbility: Blaze\nModest Nature Nature\n- Heat Wave\n- Weather Ball\n- Solar Beam\n- Protect",
+    "pokemon": [
+      {
+        "species": "化石翼龙",
+        "enSpecies": "Aerodactyl",
+        "slug": "aerodactyl",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/142.png",
+        "types": [
+          "Rock",
+          "Flying"
+        ],
+        "item": "气势披带",
+        "enItem": "Focus Sash",
+        "ability": "Unnerve",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": "岩崩",
+            "enName": "Rock Slide",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "75"
+          },
+          {
+            "name": " 顺风",
+            "enName": "Tailwind",
+            "type": "Flying",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": " 广域防守",
+            "enName": "Wide Guard",
+            "type": "Rock",
+            "category": "Status",
+            "power": "—"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "烈咬陆鲨",
+        "enSpecies": "Garchomp",
+        "slug": "garchomp",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/445.png",
+        "types": [
+          "Dragon",
+          "Ground"
+        ],
+        "item": "生命宝珠",
+        "enItem": "Life Orb",
+        "ability": "Rough Skin",
+        "nature": "Jolly Nature",
+        "moves": [
+          {
+            "name": " 龙爪",
+            "enName": "Dragon Claw",
+            "type": "Dragon",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "地震",
+            "enName": "Earthquake",
+            "type": "Ground",
+            "category": "Physical",
+            "power": "100"
+          },
+          {
+            "name": " 岩石封锁",
+            "enName": "Rock Tomb",
+            "type": "Rock",
+            "category": "Physical",
+            "power": "60*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仙子伊布",
+        "enSpecies": "Sylveon",
+        "slug": "sylveon",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/700.png",
+        "types": [
+          "Fairy"
+        ],
+        "item": "Fairy Feather",
+        "enItem": "Fairy Feather",
+        "ability": "Pixilate",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 破坏光线",
+            "enName": "Hyper Beam",
+            "type": "Normal",
+            "category": "Special",
+            "power": "150"
+          },
+          {
+            "name": " 巨声",
+            "enName": "Hyper Voice",
+            "type": "Normal",
+            "category": "Special",
+            "power": "90"
+          },
+          {
+            "name": " 电光一闪",
+            "enName": "Quick Attack",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": "看穿",
+            "enName": "Detect",
+            "type": "Fighting",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "仆斩将军",
+        "enSpecies": "Kingambit",
+        "slug": "kingambit",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/983.png",
+        "types": [
+          "Dark",
+          "Steel"
+        ],
+        "item": "黑色眼镜",
+        "enItem": "Black Glasses",
+        "ability": "Defiant",
+        "nature": "Adamant Nature",
+        "moves": [
+          {
+            "name": "Kowtow Cleave",
+            "enName": "Kowtow Cleave",
+            "type": "Normal",
+            "category": "Physical",
+            "power": ""
+          },
+          {
+            "name": " 突袭",
+            "enName": "Sucker Punch",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "70*"
+          },
+          {
+            "name": " 铁头",
+            "enName": "Iron Head",
+            "type": "Steel",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "炽焰咆哮虎",
+        "enSpecies": "Incineroar",
+        "slug": "incineroar",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/727.png",
+        "types": [
+          "Fire",
+          "Dark"
+        ],
+        "item": "文柚果",
+        "enItem": "Sitrus Berry",
+        "ability": "Intimidate",
+        "nature": "Impish Nature",
+        "moves": [
+          {
+            "name": " 击掌奇袭",
+            "enName": "Fake Out",
+            "type": "Normal",
+            "category": "Physical",
+            "power": "40"
+          },
+          {
+            "name": " 闪焰冲锋",
+            "enName": "Flare Blitz",
+            "type": "Fire",
+            "category": "Physical",
+            "power": "120"
+          },
+          {
+            "name": "深渊突刺",
+            "enName": "Throat Chop",
+            "type": "Dark",
+            "category": "Physical",
+            "power": "80"
+          },
+          {
+            "name": "抛下狠话",
+            "enName": "Parting Shot",
+            "type": "Dark",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      },
+      {
+        "species": "喷火龙",
+        "enSpecies": "Charizard",
+        "slug": "charizard",
+        "avatar": "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork/6.png",
+        "types": [
+          "Fire",
+          "Flying"
+        ],
+        "item": "喷火龙进化石 Y",
+        "enItem": "Charizardite Y",
+        "ability": "Blaze",
+        "nature": "Modest Nature",
+        "moves": [
+          {
+            "name": " 热风",
+            "enName": "Heat Wave",
+            "type": "Fire",
+            "category": "Special",
+            "power": "95*"
+          },
+          {
+            "name": " 气象球",
+            "enName": "Weather Ball",
+            "type": "Normal",
+            "category": "Special",
+            "power": "50"
+          },
+          {
+            "name": "日光束",
+            "enName": "Solar Beam",
+            "type": "Grass",
+            "category": "Special",
+            "power": "120*"
+          },
+          {
+            "name": "守住",
+            "enName": "Protect",
+            "type": "Normal",
+            "category": "Status",
+            "power": "—"
+          }
+        ]
+      }
+    ],
+    "fetchedAt": "2026-09-08 22:19:30"
   }
 ];
