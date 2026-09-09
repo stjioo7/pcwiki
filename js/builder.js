@@ -150,18 +150,61 @@ function getMoveInfo(moveName) {
   return null;
 }
 
+function cleanPokemonSearchName(raw) {
+  if (!raw) return '';
+  let s = String(raw).trim();
+  // Strip Markdown bold/italic/code: **name**, *name*, `name`
+  s = s.replace(/^[\*`_~]+|[\*`_~]+$/g, '');
+  // Strip Chinese/English brackets: 【name】, [name], (name), "name", 'name'
+  s = s.replace(/^[【\[\("']+|[】\]\)"']+$/g, '');
+  // If in format "中文名 (English Name)", extract Chinese or English
+  const parenMatch = s.match(/^([^\(\[（【]+)[\(\[（【]/);
+  if (parenMatch && parenMatch[1].trim()) {
+    s = parenMatch[1].trim();
+  }
+  // Strip common prefixes: "Mega ", "超级", "特化", "首发"
+  s = s.replace(/^(?:mega\s+|超级|特化|首发|极巨)/i, '').trim();
+  return s.trim();
+}
+
 function findPokemonByName(name) {
   if (!name) return null;
-  const q = String(name).trim().toLowerCase();
+  const rawQ = String(name).trim().toLowerCase();
+  const cleanQ = cleanPokemonSearchName(name).toLowerCase();
   const list = (typeof window !== 'undefined' && window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.pokemon)
     || (typeof allPokemonList !== 'undefined' ? allPokemonList : []);
-  return list.find(p => 
-    (p.name && p.name.toLowerCase() === q) ||
-    (p.enName && p.enName.toLowerCase() === q) ||
-    (p.nameEn && p.nameEn.toLowerCase() === q) ||
-    (p.slug && p.slug.toLowerCase() === q)
-  ) || null;
+
+  // 1. Exact match on raw string
+  let found = list.find(p => 
+    (p.name && p.name.toLowerCase() === rawQ) ||
+    (p.enName && p.enName.toLowerCase() === rawQ) ||
+    (p.nameEn && p.nameEn.toLowerCase() === rawQ) ||
+    (p.slug && p.slug.toLowerCase() === rawQ)
+  );
+  if (found) return found;
+
+  // 2. Match on cleaned string
+  if (cleanQ) {
+    found = list.find(p => 
+      (p.name && p.name.toLowerCase() === cleanQ) ||
+      (p.enName && p.enName.toLowerCase() === cleanQ) ||
+      (p.nameEn && p.nameEn.toLowerCase() === cleanQ) ||
+      (p.slug && p.slug.toLowerCase() === cleanQ)
+    );
+    if (found) return found;
+
+    // 3. Substring / partial match fallback
+    found = list.find(p => 
+      (p.name && (p.name.toLowerCase().includes(cleanQ) || cleanQ.includes(p.name.toLowerCase()))) ||
+      (p.enName && (p.enName.toLowerCase().includes(cleanQ) || cleanQ.includes(p.enName.toLowerCase()))) ||
+      (p.nameEn && (p.nameEn.toLowerCase().includes(cleanQ) || cleanQ.includes(p.nameEn.toLowerCase())))
+    );
+    if (found) return found;
+  }
+
+  return null;
 }
+
 
 function formatVariantZh(variantStr) {
   if (!variantStr) return '';
@@ -1628,6 +1671,7 @@ function renderBuilderSlots() {
 
   builderState.slots.forEach((slot, idx) => {
     const card = document.createElement('div');
+    card.id = `builderSlotCard_${idx}`;
     card.className = `builder-slot-card ${slot ? 'filled' : 'empty'}`;
 
     if (!slot || !slot.pokemon) {
@@ -2562,6 +2606,16 @@ const teamQaAdjustments = {};
 const appliedTeamAdjustments = new Set();
 let lastTeamSlotBackup = null;
 
+function getDeterministicAdjustId(prefix, str) {
+  let hash = 0;
+  const s = String(str || '');
+  for (let i = 0; i < s.length; i++) {
+    hash = ((hash << 5) - hash) + s.charCodeAt(i);
+    hash |= 0;
+  }
+  return `${prefix}_${Math.abs(hash).toString(36)}`;
+}
+
 function showBuilderToast(msg) {
   if (typeof document === 'undefined') return;
   let toast = document.getElementById('builderFloatingToast');
@@ -2704,21 +2758,29 @@ function parseShowdownTeam(text) {
 }
 
 function renderTeamAdjustCard(adjustData, adjustId) {
-  const action = adjustData.action || 'modify';
-  const desc = adjustData.description || '战术顾问推荐的阵容调整方案';
-  const isReplaceTeam = action === 'replace_team';
+  const hasTeamArray = Array.isArray(adjustData.team) && adjustData.team.length > 0;
+  let rawChanges = adjustData.changes;
+  if (!rawChanges && adjustData.change) {
+    rawChanges = [adjustData.change];
+  } else if (!rawChanges && adjustData.pokemon && !hasTeamArray) {
+    rawChanges = [adjustData];
+  }
+  const hasChangesArray = Array.isArray(rawChanges) && rawChanges.length > 0;
+
+  const isReplaceTeam = adjustData.action === 'replace_team' || (hasTeamArray && adjustData.action !== 'modify');
+  const desc = adjustData.description || (isReplaceTeam ? '完整 6 宝可梦阵容重构推荐' : '针对当前卡位的战术微调方案');
   const isApplied = appliedTeamAdjustments.has(adjustId);
 
   let itemsHtml = '';
-  if (isReplaceTeam && Array.isArray(adjustData.team)) {
+  if (isReplaceTeam && hasTeamArray) {
     itemsHtml = adjustData.team.map((m, idx) => {
-      const monName = m.pokemon || m.species || `宝可梦 #${idx + 1}`;
+      const monName = cleanPokemonSearchName(m.pokemon || m.species || m.name || `宝可梦 #${idx + 1}`);
       const foundMon = findPokemonByName(monName);
       const sprite = foundMon ? getPokemonSpriteUrl(foundMon) : '';
-      const item = m.item || '无道具';
-      const ability = m.ability || '默认特性';
-      const nature = m.nature || '通常';
-      const movesStr = (m.moves || []).join(' / ') || '自适应配招';
+      const item = m.item ? cleanPokemonSearchName(m.item) : '无道具';
+      const ability = m.ability ? cleanPokemonSearchName(m.ability) : '默认特性';
+      const nature = m.nature ? cleanPokemonSearchName(m.nature) : '通常';
+      const movesStr = (m.moves || []).map(cleanPokemonSearchName).join(' / ') || '自适应配招';
       return `
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,229,255,0.2); border-radius:8px; padding:0.55rem 0.75rem; display:flex; flex-direction:column; gap:0.25rem;">
           <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -2737,17 +2799,19 @@ function renderTeamAdjustCard(adjustData, adjustId) {
         </div>
       `;
     }).join('');
-  } else if (Array.isArray(adjustData.changes)) {
-    itemsHtml = adjustData.changes.map(ch => {
-      const orig = ch.replace ? `<span style="text-decoration:line-through; color:#90a4ae; margin-right:0.35rem;">${ch.replace}</span>➔ ` : '';
-      const monName = ch.pokemon || ch.replace || '当前卡位';
+  } else if (hasChangesArray) {
+    itemsHtml = rawChanges.map(ch => {
+      const origName = ch.replace ? cleanPokemonSearchName(ch.replace) : '';
+      const orig = origName ? `<span style="text-decoration:line-through; color:#90a4ae; margin-right:0.35rem;">${origName}</span>➔ ` : '';
+      const monName = cleanPokemonSearchName(ch.pokemon || ch.species || ch.name || ch.replace || '当前卡位');
       const foundMon = findPokemonByName(monName);
       const sprite = foundMon ? getPokemonSpriteUrl(foundMon) : '';
       const slotTag = ch.slot ? ` [卡位 #${ch.slot}]` : '';
-      const item = ch.item ? `🎒 ${ch.item}` : '';
-      const ability = ch.ability ? `⚡ ${ch.ability}` : '';
-      const nature = ch.nature ? `🎭 ${ch.nature}` : '';
-      const movesStr = (ch.moves && ch.moves.length > 0) ? `⚔️ ${ch.moves.join(' / ')}` : '';
+      const item = ch.item ? `🎒 ${cleanPokemonSearchName(ch.item)}` : '';
+      const ability = ch.ability ? `⚡ ${cleanPokemonSearchName(ch.ability)}` : '';
+      const nature = ch.nature ? `🎭 ${cleanPokemonSearchName(ch.nature)}` : '';
+      const moves = ch.moves || [];
+      const movesStr = moves.length > 0 ? `⚔️ ${moves.map(cleanPokemonSearchName).join(' / ')}` : '';
       return `
         <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,229,255,0.25); border-radius:8px; padding:0.6rem 0.8rem; margin-bottom:0.4rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
@@ -2810,43 +2874,73 @@ function applyTeamAdjustment(adjustId) {
   // Deep clone backup for Undo
   lastTeamSlotBackup = JSON.parse(JSON.stringify(builderState.slots));
 
-  if (adjustData.action === 'replace_team' && Array.isArray(adjustData.team)) {
+  const hasTeamArray = Array.isArray(adjustData.team) && adjustData.team.length > 0;
+  let rawChanges = adjustData.changes;
+  if (!rawChanges && adjustData.change) {
+    rawChanges = [adjustData.change];
+  } else if (!rawChanges && adjustData.pokemon && !hasTeamArray) {
+    rawChanges = [adjustData];
+  }
+  const hasChangesArray = Array.isArray(rawChanges) && rawChanges.length > 0;
+
+  const isReplaceTeam = adjustData.action === 'replace_team' || (hasTeamArray && adjustData.action !== 'modify');
+  const affectedSlotIndices = [];
+
+  if (isReplaceTeam && hasTeamArray) {
     for (let i = 0; i < 6; i++) {
       if (i < adjustData.team.length) {
         const member = adjustData.team[i];
-        const mon = findPokemonByName(member.pokemon || member.species || member.name);
+        const rawName = member.pokemon || member.species || member.name;
+        const cleanName = cleanPokemonSearchName(rawName);
+        const mon = findPokemonByName(cleanName);
         if (mon) {
           const slot = fillSlotWithMetaRank1(mon, builderState.format);
-          if (member.item) slot.item = typeof translateItemToZh === 'function' ? translateItemToZh(member.item) : member.item;
-          if (member.ability) slot.ability = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(member.ability) : member.ability;
-          if (member.nature) slot.nature = member.nature;
+          if (member.item) {
+            const cItem = cleanPokemonSearchName(member.item);
+            slot.item = typeof translateItemToZh === 'function' ? translateItemToZh(cItem) : cItem;
+          }
+          if (member.ability) {
+            const cAb = cleanPokemonSearchName(member.ability);
+            slot.ability = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(cAb) : cAb;
+          }
+          if (member.nature) slot.nature = cleanPokemonSearchName(member.nature);
           if (member.moves && member.moves.length > 0) {
-            slot.moves = member.moves.map(m => typeof translateMoveToZh === 'function' ? translateMoveToZh(m) : m);
+            slot.moves = member.moves.map(m => {
+              const cm = cleanPokemonSearchName(m);
+              return typeof translateMoveToZh === 'function' ? translateMoveToZh(cm) : cm;
+            });
           }
           if (member.isMega !== undefined) slot.isMega = !!member.isMega;
           if (member.evs) slot.evs = member.evs;
           builderState.slots[i] = slot;
+          affectedSlotIndices.push(i);
         }
       } else {
         builderState.slots[i] = null;
       }
     }
-  } else if (adjustData.action === 'modify' && Array.isArray(adjustData.changes)) {
-    adjustData.changes.forEach(change => {
+  } else if (hasChangesArray) {
+    rawChanges.forEach(change => {
       let targetIdx = -1;
-      if (typeof change.slot === 'number' && change.slot >= 1 && change.slot <= 6) {
-        targetIdx = change.slot - 1;
+      const parsedSlotNum = parseInt(change.slot, 10);
+      if (!isNaN(parsedSlotNum) && parsedSlotNum >= 1 && parsedSlotNum <= 6) {
+        targetIdx = parsedSlotNum - 1;
       } else if (change.replace) {
-        targetIdx = builderState.slots.findIndex(s => s && s.pokemon && (
-          s.pokemon.name === change.replace ||
-          s.pokemon.nameEn === change.replace ||
-          (s.pokemon.slug && s.pokemon.slug.toLowerCase() === change.replace.toLowerCase())
-        ));
-      } else if (change.pokemon) {
-        targetIdx = builderState.slots.findIndex(s => s && s.pokemon && (
-          s.pokemon.name === change.pokemon ||
-          s.pokemon.nameEn === change.pokemon
-        ));
+        const cleanReplace = cleanPokemonSearchName(change.replace).toLowerCase();
+        targetIdx = builderState.slots.findIndex(s => {
+          if (!s || !s.pokemon) return false;
+          const sName = (s.pokemon.name || '').toLowerCase();
+          const sEn = (s.pokemon.enName || s.pokemon.nameEn || '').toLowerCase();
+          return sName === cleanReplace || sEn === cleanReplace || sName.includes(cleanReplace) || cleanReplace.includes(sName);
+        });
+      } else if (change.pokemon || change.species || change.name) {
+        const checkMon = cleanPokemonSearchName(change.pokemon || change.species || change.name).toLowerCase();
+        targetIdx = builderState.slots.findIndex(s => {
+          if (!s || !s.pokemon) return false;
+          const sName = (s.pokemon.name || '').toLowerCase();
+          const sEn = (s.pokemon.enName || s.pokemon.nameEn || '').toLowerCase();
+          return sName === checkMon || sEn === checkMon;
+        });
         if (targetIdx === -1) {
           targetIdx = builderState.slots.findIndex(s => !s || !s.pokemon);
         }
@@ -2856,22 +2950,33 @@ function applyTeamAdjustment(adjustId) {
         targetIdx = 0;
       }
 
-      const newMonName = change.pokemon || change.replace;
-      const mon = findPokemonByName(newMonName);
+      const rawMonName = change.pokemon || change.species || change.name || change.replace;
+      const cleanMonName = cleanPokemonSearchName(rawMonName);
+      const mon = findPokemonByName(cleanMonName);
       if (mon) {
         let slot = (builderState.slots[targetIdx] && builderState.slots[targetIdx].pokemon && builderState.slots[targetIdx].pokemon.name === mon.name)
           ? builderState.slots[targetIdx]
           : fillSlotWithMetaRank1(mon, builderState.format);
 
-        if (change.item) slot.item = typeof translateItemToZh === 'function' ? translateItemToZh(change.item) : change.item;
-        if (change.ability) slot.ability = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(change.ability) : change.ability;
-        if (change.nature) slot.nature = change.nature;
+        if (change.item) {
+          const cItem = cleanPokemonSearchName(change.item);
+          slot.item = typeof translateItemToZh === 'function' ? translateItemToZh(cItem) : cItem;
+        }
+        if (change.ability) {
+          const cAb = cleanPokemonSearchName(change.ability);
+          slot.ability = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(cAb) : cAb;
+        }
+        if (change.nature) slot.nature = cleanPokemonSearchName(change.nature);
         if (change.moves && change.moves.length > 0) {
-          slot.moves = change.moves.map(m => typeof translateMoveToZh === 'function' ? translateMoveToZh(m) : m);
+          slot.moves = change.moves.map(m => {
+            const cm = cleanPokemonSearchName(m);
+            return typeof translateMoveToZh === 'function' ? translateMoveToZh(cm) : cm;
+          });
         }
         if (change.isMega !== undefined) slot.isMega = !!change.isMega;
         if (change.evs) slot.evs = change.evs;
         builderState.slots[targetIdx] = slot;
+        affectedSlotIndices.push(targetIdx);
       }
     });
   }
@@ -2883,6 +2988,21 @@ function applyTeamAdjustment(adjustId) {
 
   // Re-render UI
   renderBuilderView();
+
+  // Trigger pulse highlight animation on affected slots
+  if (typeof document !== 'undefined') {
+    affectedSlotIndices.forEach(idx => {
+      const cardEl = document.getElementById(`builderSlotCard_${idx}`);
+      if (cardEl) {
+        cardEl.classList.remove('slot-highlight-pulse');
+        void cardEl.offsetWidth; // Trigger DOM reflow to restart animation
+        cardEl.classList.add('slot-highlight-pulse');
+        setTimeout(() => {
+          if (cardEl) cardEl.classList.remove('slot-highlight-pulse');
+        }, 3000);
+      }
+    });
+  }
 
   // Smooth scroll to slots
   const slotsSection = document.getElementById('builderSlotsGrid');
@@ -2916,7 +3036,7 @@ function importQaShowdownTeam(showdownId) {
     alert('未能识别到有效的 Showdown 宝可梦数据');
     return;
   }
-  const adjustId = 'adj_' + Math.random().toString(36).substr(2, 9);
+  const adjustId = getDeterministicAdjustId('sh', data.text);
   teamQaAdjustments[adjustId] = {
     action: 'replace_team',
     description: '导入自 Showdown 文本的完整阵容',
@@ -2935,7 +3055,7 @@ function formatQaMarkdown(text) {
   working = working.replace(/```(?:team-adjust|json:team-adjust)\s*([\s\S]*?)```/gi, function(match, jsonContent) {
     try {
       const data = JSON.parse(jsonContent.trim());
-      const adjustId = 'adj_' + Math.random().toString(36).substr(2, 9);
+      const adjustId = getDeterministicAdjustId('adj', jsonContent.trim());
       teamQaAdjustments[adjustId] = data;
       const cardHtml = renderTeamAdjustCard(data, adjustId);
       const idx = protectedBlocks.length;
@@ -2961,7 +3081,7 @@ function formatQaMarkdown(text) {
 
   // 2. Process showdown code blocks
   working = working.replace(/```showdown\s*([\s\S]*?)```/gi, function(match, showdownContent) {
-    const showdownId = 'sh_' + Math.random().toString(36).substr(2, 9);
+    const showdownId = getDeterministicAdjustId('sh', showdownContent.trim());
     teamQaAdjustments[showdownId] = { action: 'showdown', text: showdownContent.trim() };
     const html = `
       <div class="qa-showdown-block" style="margin:0.75rem 0;">

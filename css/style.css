@@ -6302,4 +6302,29 @@ body {
   color: #ffd54f;
 }
 
+/* 卡位一键应用脉冲高亮动画 */
+@keyframes slotPulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.75);
+    border-color: #00e5ff;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 28px 6px rgba(0, 229, 255, 0.5);
+    border-color: #7df9ff;
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: scale(1);
+  }
+}
+
+.slot-highlight-pulse {
+  animation: slotPulseGlow 1.2s ease-in-out 2 !important;
+  border-color: #00e5ff !important;
+}
+
+
 
