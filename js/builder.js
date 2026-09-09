@@ -2542,7 +2542,9 @@ function escapeHtml(text) {
 function getTeamSignature() {
   const members = builderState.slots.filter(s => s && s.pokemon);
   return members.map(m => {
-    const mon = getActiveCombatant(m.pokemon, m.isMega, m.megaBranch);
+    const mon = (typeof getActiveCombatant === 'function')
+      ? getActiveCombatant(m.pokemon, m.isMega, m.megaBranch)
+      : m.pokemon;
     return `${mon.name}_${m.item || ''}_${m.ability || ''}_${m.nature || ''}_${(m.moves || []).join(',')}`;
   }).join('|');
 }
@@ -2556,14 +2558,438 @@ function checkTeamQaSignature() {
   teamQaState.teamSignature = currentSig;
 }
 
+const teamQaAdjustments = {};
+const appliedTeamAdjustments = new Set();
+let lastTeamSlotBackup = null;
+
+function showBuilderToast(msg) {
+  if (typeof document === 'undefined') return;
+  let toast = document.getElementById('builderFloatingToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'builderFloatingToast';
+    toast.style.cssText = 'position:fixed; bottom:30px; right:30px; background:linear-gradient(135deg, rgba(0, 180, 216, 0.95) 0%, rgba(10, 24, 48, 0.98) 100%); border:1px solid #00e5ff; color:#fff; padding:0.85rem 1.25rem; border-radius:10px; font-size:0.9rem; z-index:99999; box-shadow:0 8px 25px rgba(0,0,0,0.5); display:flex; align-items:center; gap:0.6rem; transform:translateY(100px); opacity:0; transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1); pointer-events:none;';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = msg;
+  toast.style.transform = 'translateY(0)';
+  toast.style.opacity = '1';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => {
+    toast.style.transform = 'translateY(100px)';
+    toast.style.opacity = '0';
+  }, 3500);
+}
+
+function formatInlineMarkdown(text) {
+  if (!text) return '';
+  let s = text;
+  s = s.replace(/`([^`]+)`/g, '<code style="background:rgba(0,229,255,0.15); color:#00e5ff; padding:0.12rem 0.38rem; border-radius:4px; font-size:0.88em;">$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong style="color:#ffb703; font-weight:700;">$1</strong>');
+  s = s.replace(/\*([^*]+)\*/g, '<em style="color:#90caf9;">$1</em>');
+  s = s.replace(/【(.*?)】/g, '<strong style="color:#00e5ff; font-weight:700;">【$1】</strong>');
+  return s;
+}
+
+function parseMarkdownTables(text) {
+  const lines = text.split('\n');
+  const output = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    const nextLine = lines[i + 1];
+    
+    // Check if line contains '|' and next line is a markdown table delimiter like |:---|:---:|---:|
+    if (
+      nextLine &&
+      line.includes('|') &&
+      /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)+\|?\s*$/.test(nextLine)
+    ) {
+      const headerLine = line.trim();
+      const delimiterLine = nextLine.trim();
+
+      const rawDelims = delimiterLine.replace(/^\|/, '').replace(/\|$/, '').split('|');
+      const aligns = rawDelims.map(d => {
+        const s = d.trim();
+        if (s.startsWith(':') && s.endsWith(':')) return 'center';
+        if (s.endsWith(':')) return 'right';
+        return 'left';
+      });
+
+      const rawHeaders = headerLine.replace(/^\|/, '').replace(/\|$/, '').split('|');
+      const headers = rawHeaders.map((h, colIdx) => {
+        const align = aligns[colIdx] || 'left';
+        return `<th style="text-align:${align}; padding:0.6rem 0.85rem; border-bottom:1px solid rgba(0,229,255,0.35); font-weight:700; color:#00e5ff; font-size:0.84rem; white-space:nowrap;">${formatInlineMarkdown(h.trim())}</th>`;
+      });
+
+      i += 2;
+      const bodyRows = [];
+      while (i < lines.length) {
+        const rowLine = lines[i];
+        if (!rowLine.trim() || !rowLine.includes('|')) break;
+        const rawCells = rowLine.trim().replace(/^\|/, '').replace(/\|$/, '').split('|');
+        const cells = rawCells.map((c, colIdx) => {
+          const align = aligns[colIdx] || 'left';
+          return `<td style="text-align:${align}; padding:0.5rem 0.85rem; border-bottom:1px solid rgba(255,255,255,0.06); color:#cfd8dc; font-size:0.84rem;">${formatInlineMarkdown(c.trim())}</td>`;
+        });
+        bodyRows.push(`<tr style="transition:background 0.2s;" onmouseover="this.style.background='rgba(0,229,255,0.06)'" onmouseout="this.style.background='transparent'">${cells.join('')}</tr>`);
+        i++;
+      }
+
+      output.push(`\n<div class="qa-table-responsive" style="overflow-x:auto; margin:0.85rem 0; border-radius:8px; border:1px solid rgba(0,229,255,0.25); background:rgba(10,14,26,0.7); box-shadow:0 3px 12px rgba(0,0,0,0.35);"><table style="width:100%; border-collapse:collapse; line-height:1.5;"><thead><tr style="background:rgba(0,229,255,0.12);">${headers.join('')}</tr></thead><tbody>${bodyRows.join('')}</tbody></table></div>\n`);
+    } else {
+      output.push(line);
+      i++;
+    }
+  }
+  return output.join('\n');
+}
+
+function parseShowdownTeam(text) {
+  if (!text) return [];
+  const blocks = text.split(/\n\s*\n/);
+  const team = [];
+  blocks.forEach(block => {
+    const lines = block.trim().split('\n').map(l => l.trim()).filter(Boolean);
+    if (lines.length === 0) return;
+    
+    let line1 = lines[0];
+    let item = '';
+    if (line1.includes('@')) {
+      const parts = line1.split('@');
+      line1 = parts[0].trim();
+      item = parts[1].trim();
+    }
+    let species = line1;
+    const nickMatch = line1.match(/\((.+?)\)/);
+    if (nickMatch) species = nickMatch[1].trim();
+
+    let ability = '';
+    let nature = '';
+    const moves = [];
+    const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+
+    lines.slice(1).forEach(line => {
+      if (line.startsWith('Ability:')) ability = line.replace('Ability:', '').trim();
+      else if (line.endsWith('Nature')) nature = line.replace('Nature', '').trim();
+      else if (line.startsWith('-')) moves.push(line.replace(/^-+\s*/, '').trim());
+      else if (line.startsWith('EVs:')) {
+        const evParts = line.replace('EVs:', '').split('/');
+        evParts.forEach(part => {
+          const m = part.trim().match(/(\d+)\s*(HP|Atk|Def|SpA|SpD|Spe)/i);
+          if (m) {
+            const val = parseInt(m[1], 10);
+            const key = m[2].toLowerCase();
+            if (key === 'hp') evs.hp = val;
+            else if (key === 'atk') evs.atk = val;
+            else if (key === 'def') evs.def = val;
+            else if (key === 'spa') evs.spa = val;
+            else if (key === 'spd') evs.spd = val;
+            else if (key === 'spe') evs.spe = val;
+          }
+        });
+      }
+    });
+
+    team.push({
+      pokemon: species,
+      item: item,
+      ability: ability,
+      nature: nature,
+      moves: moves,
+      evs: evs
+    });
+  });
+  return team;
+}
+
+function renderTeamAdjustCard(adjustData, adjustId) {
+  const action = adjustData.action || 'modify';
+  const desc = adjustData.description || '战术顾问推荐的阵容调整方案';
+  const isReplaceTeam = action === 'replace_team';
+  const isApplied = appliedTeamAdjustments.has(adjustId);
+
+  let itemsHtml = '';
+  if (isReplaceTeam && Array.isArray(adjustData.team)) {
+    itemsHtml = adjustData.team.map((m, idx) => {
+      const monName = m.pokemon || m.species || `宝可梦 #${idx + 1}`;
+      const foundMon = findPokemonByName(monName);
+      const sprite = foundMon ? getPokemonSpriteUrl(foundMon) : '';
+      const item = m.item || '无道具';
+      const ability = m.ability || '默认特性';
+      const nature = m.nature || '通常';
+      const movesStr = (m.moves || []).join(' / ') || '自适应配招';
+      return `
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,229,255,0.2); border-radius:8px; padding:0.55rem 0.75rem; display:flex; flex-direction:column; gap:0.25rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; align-items:center; gap:0.35rem;">
+              ${sprite ? `<img src="${sprite}" style="width:24px; height:24px; object-fit:contain;" alt="${monName}">` : ''}
+              <strong style="color:#00e5ff; font-size:0.86rem;">#${idx + 1} ${monName}</strong>
+            </div>
+            <span style="font-size:0.75rem; color:#ffd54f;">🎒 ${item}</span>
+          </div>
+          <div style="font-size:0.75rem; color:#b0bec5;">
+            <span>⚡ ${ability}</span> · <span>🎭 ${nature}</span>
+          </div>
+          <div style="font-size:0.74rem; color:#90caf9; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+            ⚔️ ${movesStr}
+          </div>
+        </div>
+      `;
+    }).join('');
+  } else if (Array.isArray(adjustData.changes)) {
+    itemsHtml = adjustData.changes.map(ch => {
+      const orig = ch.replace ? `<span style="text-decoration:line-through; color:#90a4ae; margin-right:0.35rem;">${ch.replace}</span>➔ ` : '';
+      const monName = ch.pokemon || ch.replace || '当前卡位';
+      const foundMon = findPokemonByName(monName);
+      const sprite = foundMon ? getPokemonSpriteUrl(foundMon) : '';
+      const slotTag = ch.slot ? ` [卡位 #${ch.slot}]` : '';
+      const item = ch.item ? `🎒 ${ch.item}` : '';
+      const ability = ch.ability ? `⚡ ${ch.ability}` : '';
+      const nature = ch.nature ? `🎭 ${ch.nature}` : '';
+      const movesStr = (ch.moves && ch.moves.length > 0) ? `⚔️ ${ch.moves.join(' / ')}` : '';
+      return `
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,229,255,0.25); border-radius:8px; padding:0.6rem 0.8rem; margin-bottom:0.4rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
+            <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.9rem;">
+              ${sprite ? `<img src="${sprite}" style="width:26px; height:26px; object-fit:contain;" alt="${monName}">` : ''}
+              <div>${orig}<strong style="color:#00e5ff;">${monName}</strong><span style="font-size:0.75rem; color:#80deea;">${slotTag}</span></div>
+            </div>
+            ${item ? `<span style="font-size:0.78rem; color:#ffd54f;">${item}</span>` : ''}
+          </div>
+          <div style="display:flex; gap:0.6rem; font-size:0.76rem; color:#b0bec5; flex-wrap:wrap; margin-bottom:0.25rem;">
+            ${ability ? `<span>${ability}</span>` : ''}
+            ${nature ? `<span>${nature}</span>` : ''}
+          </div>
+          ${movesStr ? `<div style="font-size:0.75rem; color:#90caf9;">${movesStr}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  return `
+    <div class="qa-team-adjust-card" id="adjust_card_${adjustId}" style="background:linear-gradient(145deg, rgba(0, 180, 216, 0.08) 0%, rgba(10, 20, 42, 0.95) 100%); border:1px solid rgba(0, 229, 255, 0.4); border-left:4px solid #00e5ff; border-radius:10px; padding:1rem 1.15rem; margin:0.9rem 0; box-shadow:0 6px 20px rgba(0,0,0,0.35);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
+        <div>
+          <div style="font-weight:700; color:#00e5ff; font-size:0.95rem; display:flex; align-items:center; gap:0.45rem;">
+            <span>⚡</span> <span>智能阵容调整推荐 (Smart Team Adjustment)</span>
+          </div>
+          <div style="font-size:0.83rem; color:#e0f7fa; margin-top:0.25rem; line-height:1.5;">${escapeHtml(desc)}</div>
+        </div>
+        <span style="background:rgba(0,229,255,0.15); color:#00e5ff; font-size:0.72rem; padding:0.18rem 0.5rem; border-radius:4px; font-weight:600; white-space:nowrap;">
+          ${isReplaceTeam ? '整队替换' : '卡位微调'}
+        </span>
+      </div>
+
+      <div style="margin:0.7rem 0 0.8rem 0; ${isReplaceTeam ? 'display:grid; grid-template-columns:repeat(auto-fill, minmax(140px, 1fr)); gap:0.45rem;' : ''}">
+        ${itemsHtml}
+      </div>
+
+      <div id="adjust_actions_${adjustId}" style="display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; border-top:1px solid rgba(255,255,255,0.08); padding-top:0.65rem;">
+        <button type="button" class="btn-team-adjust-apply" id="btn_apply_${adjustId}" onclick="applyTeamAdjustment('${adjustId}')" style="${isApplied ? 'display:none;' : 'display:inline-flex;'} background:linear-gradient(135deg, #00e5ff 0%, #0077b6 100%); color:#0a0c16; font-weight:700; border:none; padding:0.5rem 1.1rem; border-radius:7px; cursor:pointer; font-size:0.84rem; align-items:center; gap:0.4rem; box-shadow:0 2px 10px rgba(0,229,255,0.3); transition:all 0.2s;">
+          <span>⚡</span> <span>一键应用此阵容调整至卡位</span>
+        </button>
+        <button type="button" class="btn-team-adjust-undo" id="btn_undo_${adjustId}" onclick="undoTeamAdjustment('${adjustId}')" style="${isApplied ? 'display:inline-flex;' : 'display:none;'} background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#cfd8dc; padding:0.45rem 0.85rem; border-radius:7px; cursor:pointer; font-size:0.8rem; align-items:center; gap:0.35rem;">
+          <span>↩</span> <span>撤销调整</span>
+        </button>
+        <span class="adjust-status-text" id="status_${adjustId}" style="${isApplied ? 'display:inline-flex;' : 'display:none;'} color:#00e676; font-size:0.82rem; font-weight:600; align-items:center; gap:0.35rem;">
+          ✓ 已成功应用到卡位
+        </span>
+      </div>
+    </div>
+  `;
+}
+
+function applyTeamAdjustment(adjustId) {
+  const adjustData = teamQaAdjustments[adjustId];
+  if (!adjustData) {
+    alert('未找到该阵容调整方案数据');
+    return;
+  }
+
+  // Deep clone backup for Undo
+  lastTeamSlotBackup = JSON.parse(JSON.stringify(builderState.slots));
+
+  if (adjustData.action === 'replace_team' && Array.isArray(adjustData.team)) {
+    for (let i = 0; i < 6; i++) {
+      if (i < adjustData.team.length) {
+        const member = adjustData.team[i];
+        const mon = findPokemonByName(member.pokemon || member.species || member.name);
+        if (mon) {
+          const slot = fillSlotWithMetaRank1(mon, builderState.format);
+          if (member.item) slot.item = typeof translateItemToZh === 'function' ? translateItemToZh(member.item) : member.item;
+          if (member.ability) slot.ability = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(member.ability) : member.ability;
+          if (member.nature) slot.nature = member.nature;
+          if (member.moves && member.moves.length > 0) {
+            slot.moves = member.moves.map(m => typeof translateMoveToZh === 'function' ? translateMoveToZh(m) : m);
+          }
+          if (member.isMega !== undefined) slot.isMega = !!member.isMega;
+          if (member.evs) slot.evs = member.evs;
+          builderState.slots[i] = slot;
+        }
+      } else {
+        builderState.slots[i] = null;
+      }
+    }
+  } else if (adjustData.action === 'modify' && Array.isArray(adjustData.changes)) {
+    adjustData.changes.forEach(change => {
+      let targetIdx = -1;
+      if (typeof change.slot === 'number' && change.slot >= 1 && change.slot <= 6) {
+        targetIdx = change.slot - 1;
+      } else if (change.replace) {
+        targetIdx = builderState.slots.findIndex(s => s && s.pokemon && (
+          s.pokemon.name === change.replace ||
+          s.pokemon.nameEn === change.replace ||
+          (s.pokemon.slug && s.pokemon.slug.toLowerCase() === change.replace.toLowerCase())
+        ));
+      } else if (change.pokemon) {
+        targetIdx = builderState.slots.findIndex(s => s && s.pokemon && (
+          s.pokemon.name === change.pokemon ||
+          s.pokemon.nameEn === change.pokemon
+        ));
+        if (targetIdx === -1) {
+          targetIdx = builderState.slots.findIndex(s => !s || !s.pokemon);
+        }
+      }
+
+      if (targetIdx === -1) {
+        targetIdx = 0;
+      }
+
+      const newMonName = change.pokemon || change.replace;
+      const mon = findPokemonByName(newMonName);
+      if (mon) {
+        let slot = (builderState.slots[targetIdx] && builderState.slots[targetIdx].pokemon && builderState.slots[targetIdx].pokemon.name === mon.name)
+          ? builderState.slots[targetIdx]
+          : fillSlotWithMetaRank1(mon, builderState.format);
+
+        if (change.item) slot.item = typeof translateItemToZh === 'function' ? translateItemToZh(change.item) : change.item;
+        if (change.ability) slot.ability = typeof translateAbilityToZh === 'function' ? translateAbilityToZh(change.ability) : change.ability;
+        if (change.nature) slot.nature = change.nature;
+        if (change.moves && change.moves.length > 0) {
+          slot.moves = change.moves.map(m => typeof translateMoveToZh === 'function' ? translateMoveToZh(m) : m);
+        }
+        if (change.isMega !== undefined) slot.isMega = !!change.isMega;
+        if (change.evs) slot.evs = change.evs;
+        builderState.slots[targetIdx] = slot;
+      }
+    });
+  }
+
+  appliedTeamAdjustments.add(adjustId);
+
+  // Synchronize signature to preserve QA history
+  teamQaState.teamSignature = getTeamSignature();
+
+  // Re-render UI
+  renderBuilderView();
+
+  // Smooth scroll to slots
+  const slotsSection = document.getElementById('builderSlotsGrid');
+  if (slotsSection) {
+    slotsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  showBuilderToast('✅ 阵容调整已智能应用到卡位！实战审计与对抗推演已自动联动更新。');
+}
+
+function undoTeamAdjustment(adjustId) {
+  if (!lastTeamSlotBackup) {
+    alert('无可撤销的备份阵容');
+    return;
+  }
+  builderState.slots = lastTeamSlotBackup;
+  lastTeamSlotBackup = null;
+  appliedTeamAdjustments.delete(adjustId);
+
+  teamQaState.teamSignature = getTeamSignature();
+  renderBuilderView();
+
+  showBuilderToast('↩ 已撤销阵容修改，恢复为原有队伍配置。');
+}
+
+function importQaShowdownTeam(showdownId) {
+  const data = teamQaAdjustments[showdownId];
+  if (!data || !data.text) return;
+  const parsed = parseShowdownTeam(data.text);
+  if (parsed.length === 0) {
+    alert('未能识别到有效的 Showdown 宝可梦数据');
+    return;
+  }
+  const adjustId = 'adj_' + Math.random().toString(36).substr(2, 9);
+  teamQaAdjustments[adjustId] = {
+    action: 'replace_team',
+    description: '导入自 Showdown 文本的完整阵容',
+    team: parsed
+  };
+  applyTeamAdjustment(adjustId);
+}
+
 function formatQaMarkdown(text) {
   if (!text) return '';
-  let safe = String(text)
+
+  const protectedBlocks = [];
+  let working = String(text);
+
+  // 1. Process team-adjust blocks
+  working = working.replace(/```(?:team-adjust|json:team-adjust)\s*([\s\S]*?)```/gi, function(match, jsonContent) {
+    try {
+      const data = JSON.parse(jsonContent.trim());
+      const adjustId = 'adj_' + Math.random().toString(36).substr(2, 9);
+      teamQaAdjustments[adjustId] = data;
+      const cardHtml = renderTeamAdjustCard(data, adjustId);
+      const idx = protectedBlocks.length;
+      protectedBlocks.push(cardHtml);
+      return `\n@@@BLOCK_${idx}@@@\n`;
+    } catch (e) {
+      const idx = protectedBlocks.length;
+      protectedBlocks.push(`<pre class="qa-code-block" style="background:rgba(10,14,26,0.85); padding:0.65rem 0.85rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.84rem; border:1px solid rgba(0,229,255,0.2); margin:0.6rem 0; color:#00e5ff;"><code>${escapeHtml(jsonContent)}</code></pre>`);
+      return `\n@@@BLOCK_${idx}@@@\n`;
+    }
+  });
+
+  // Streaming unfinished team-adjust block
+  working = working.replace(/```(?:team-adjust|json:team-adjust)\s*([\s\S]*)$/gi, function() {
+    const idx = protectedBlocks.length;
+    protectedBlocks.push(`
+      <div class="qa-team-adjust-card streaming" style="background:rgba(0,229,255,0.06); border:1px dashed rgba(0,229,255,0.4); border-radius:8px; padding:0.75rem 1rem; margin:0.75rem 0; color:#80deea; display:flex; align-items:center; gap:0.5rem; font-size:0.85rem;">
+        <span class="spinner-inline">⏳</span> <span>正在推演生成智能阵容调整动作方案...</span>
+      </div>
+    `);
+    return `\n@@@BLOCK_${idx}@@@\n`;
+  });
+
+  // 2. Process showdown code blocks
+  working = working.replace(/```showdown\s*([\s\S]*?)```/gi, function(match, showdownContent) {
+    const showdownId = 'sh_' + Math.random().toString(36).substr(2, 9);
+    teamQaAdjustments[showdownId] = { action: 'showdown', text: showdownContent.trim() };
+    const html = `
+      <div class="qa-showdown-block" style="margin:0.75rem 0;">
+        <pre class="qa-code-block" style="background:rgba(10,14,26,0.85); padding:0.65rem 0.85rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.84rem; border:1px solid rgba(0,229,255,0.2); margin:0 0 0.4rem 0; color:#00e5ff;"><code>${escapeHtml(showdownContent.trim())}</code></pre>
+        <button type="button" class="btn-import-showdown-qa" onclick="importQaShowdownTeam('${showdownId}')" style="background:rgba(0,229,255,0.15); border:1px solid rgba(0,229,255,0.35); color:#00e5ff; padding:0.35rem 0.85rem; border-radius:6px; cursor:pointer; font-size:0.8rem; font-weight:600; display:inline-flex; align-items:center; gap:0.35rem;">
+          <span>📋</span> <span>一键导入此 Showdown 阵容至卡位</span>
+        </button>
+      </div>
+    `;
+    const idx = protectedBlocks.length;
+    protectedBlocks.push(html);
+    return `\n@@@BLOCK_${idx}@@@\n`;
+  });
+
+  // 3. Process normal code blocks
+  working = working.replace(/```([\s\S]*?)```/g, function(match, codeContent) {
+    const idx = protectedBlocks.length;
+    protectedBlocks.push(`<pre class="qa-code-block" style="background:rgba(10,14,26,0.85); padding:0.65rem 0.85rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.84rem; border:1px solid rgba(0,229,255,0.2); margin:0.6rem 0; color:#00e5ff;"><code>${codeContent}</code></pre>`);
+    return `\n@@@BLOCK_${idx}@@@\n`;
+  });
+
+  // 4. HTML Escape on remaining text
+  let safe = working
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
-  // Special block: 【⚡ 版本规则与数据冲突提示】
+  // 5. Special block: 【⚡ 版本规则与数据冲突提示】
   safe = safe.replace(/【⚡\s*版本规则与数据冲突提示】([\s\S]*?)(?=\n\s*【|\n\s*###|\n\s*##|$)/gi, function(match, body) {
     let cleanBody = body.trim()
       .replace(/^\s*[-*]\s+(.*$)/gim, '<li style="margin-left:1.2rem; margin-bottom:0.35rem; line-height:1.6; color:#fff8e1;">$1</li>')
@@ -2578,33 +3004,42 @@ function formatQaMarkdown(text) {
     `;
   });
 
-  // Code blocks ```...```
-  safe = safe.replace(/```([\s\S]*?)```/g, '<pre class="qa-code-block" style="background:rgba(10,14,26,0.85); padding:0.65rem 0.85rem; border-radius:8px; overflow-x:auto; font-family:monospace; font-size:0.84rem; border:1px solid rgba(0,229,255,0.2); margin:0.6rem 0; color:#00e5ff;"><code>$1</code></pre>');
+  // 6. Markdown Tables
+  safe = parseMarkdownTables(safe);
 
-  // Inline code `...`
+  // 7. Inline code `...`
   safe = safe.replace(/`([^`]+)`/g, '<code style="background:rgba(0,229,255,0.15); color:#00e5ff; padding:0.12rem 0.38rem; border-radius:4px; font-size:0.88em;">$1</code>');
 
-  // Bold **...**
+  // 8. Bold **...**
   safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong style="color:#ffb703; font-weight:700;">$1</strong>');
 
-  // Italic *...*
+  // 9. Italic *...*
   safe = safe.replace(/\*([^*]+)\*/g, '<em style="color:#90caf9;">$1</em>');
 
-  // Headings ### ...
+  // 10. Headings ### ...
   safe = safe.replace(/^### (.*$)/gim, '<h4 style="font-size:0.96rem; color:#00e5ff; font-weight:700; margin:0.85rem 0 0.35rem 0; border-bottom:1px solid rgba(0,229,255,0.2); padding-bottom:0.25rem;">$1</h4>');
   safe = safe.replace(/^## (.*$)/gim, '<h3 style="font-size:1.05rem; color:#fff; font-weight:700; margin:0.95rem 0 0.45rem 0;">$1</h3>');
 
-  // Unordered list items - ...
+  // 11. Unordered list items - ...
   safe = safe.replace(/^\s*[-*]\s+(.*$)/gim, '<li style="margin-left:1.3rem; margin-bottom:0.3rem; line-height:1.6;">$1</li>');
 
-  // Ordered list items 1. ...
+  // 12. Ordered list items 1. ...
   safe = safe.replace(/^\s*(\d+)\.\s+(.*$)/gim, '<li style="margin-left:1.3rem; margin-bottom:0.3rem; line-height:1.6;" value="$1">$2</li>');
 
-  // Brackets 【...】
+  // 13. Brackets 【...】
   safe = safe.replace(/【(.*?)】/g, '<strong style="color:#00e5ff; font-weight:700;">【$1】</strong>');
 
-  // Line breaks
+  // 14. Line breaks
   safe = safe.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+
+  // 15. Restore protected blocks
+  for (let idx = 0; idx < protectedBlocks.length; idx++) {
+    safe = safe.replace(`@@@BLOCK_${idx}@@@`, protectedBlocks[idx]);
+    safe = safe.replace(`&lt;br&gt;@@@BLOCK_${idx}@@@&lt;br&gt;`, protectedBlocks[idx]);
+    safe = safe.replace(`<br>@@@BLOCK_${idx}@@@<br>`, protectedBlocks[idx]);
+    safe = safe.replace(`@@@BLOCK_${idx}@@@<br>`, protectedBlocks[idx]);
+    safe = safe.replace(`<br>@@@BLOCK_${idx}@@@`, protectedBlocks[idx]);
+  }
 
   return safe;
 }
@@ -3048,6 +3483,11 @@ if (typeof window !== 'undefined') {
   window.updateSlotMove = updateSlotMove;
   window.addSuggestedPokemon = addSuggestedPokemon;
   window.getPokemonSpriteUrl = getPokemonSpriteUrl;
+  window.applyTeamAdjustment = applyTeamAdjustment;
+  window.undoTeamAdjustment = undoTeamAdjustment;
+  window.importQaShowdownTeam = importQaShowdownTeam;
+  window.showBuilderToast = showBuilderToast;
+  window.parseMarkdownTables = parseMarkdownTables;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -3065,7 +3505,12 @@ if (typeof module !== 'undefined' && module.exports) {
     startBuilderWizardJob,
     renderTeamQaPanel,
     sendTeamQaMessage,
-    formatQaMarkdown
+    formatQaMarkdown,
+    applyTeamAdjustment,
+    undoTeamAdjustment,
+    importQaShowdownTeam,
+    showBuilderToast,
+    parseMarkdownTables
   };
 }
 
