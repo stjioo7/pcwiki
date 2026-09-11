@@ -1,11 +1,11 @@
 {
-  "season": "M-5",
+  "season": "M-6",
   "formats": [
     "double",
     "single"
   ],
-  "remote_timestamp": "2026/09/07 05:39",
-  "last_sync_time": "2026-09-08",
-  "total_pokemon": 235,
-  "total_forms": 314
+  "remote_timestamp": "2026/09/10 15:32",
+  "last_sync_time": "2026/09/10 15:32",
+  "total_pokemon": 0,
+  "total_forms": 0
 }
