@@ -239,19 +239,22 @@ def format_meta_usage(record, waza_map, default_type, abilities_desc):
     }
 
 
-def run_export(base_dir=None):
+def run_export(season=None, base_dir=None, remote_ts=None):
+    if not season:
+        raise ValueError("run_export 必须指定 season 参数")
+
     if base_dir is None:
         base_dir = Path(__file__).resolve().parent.parent
     else:
         base_dir = Path(base_dir)
-    meta_src = base_dir / "data" / "meta" / "pokechamdb_M-5_double_forms.json"
-    single_src = base_dir / "data" / "meta" / "pokechamdb_M-5_single_forms.json"
+
+    meta_src = base_dir / "data" / "meta" / f"pokechamdb_{season}_double_forms.json"
+    single_src = base_dir / "data" / "meta" / f"pokechamdb_{season}_single_forms.json"
     old_json = base_dir / "data" / "champions_data.json"
     old_js = base_dir / "data" / "champions_data.js"
 
     if not meta_src.exists():
-        print(f"错误: 未找到 M-5 源数据文件: {meta_src}")
-        return False
+        raise FileNotFoundError(f"未找到目标赛季 {season} 的双打源数据文件: {meta_src}")
 
     print("=== 正在准备备份原文件 ===")
     if old_json.exists():
@@ -270,9 +273,9 @@ def run_export(base_dir=None):
         except Exception:
             pass
 
-    # 读取 M-5 新数据 (双打为主基底，单打深度聚合)
-    m5_records = json.loads(meta_src.read_text(encoding="utf-8"))
-    print(f"成功读取 M-5 双打原始记录: {len(m5_records)} 条")
+    # 读取当前目标赛季新数据 (双打为主基底，单打深度聚合)
+    double_records = json.loads(meta_src.read_text(encoding="utf-8"))
+    print(f"成功读取 {season} 双打原始记录: {len(double_records)} 条")
 
     single_by_slug = {}
     if single_src.exists():
@@ -281,9 +284,11 @@ def run_export(base_dir=None):
             for sr in s_recs:
                 if sr.get("form") == "通常":
                     single_by_slug[sr["slug"]] = sr
-            print(f"成功读取 M-5 单打原始记录: {len(single_by_slug)} 只")
+            print(f"成功读取 {season} 单打原始记录: {len(single_by_slug)} 只")
         except Exception as e:
-            print(f"Warning loading single meta data: {e}")
+            print(f"解析 {season} 单打源数据出现警告: {e}")
+    else:
+        print(f"提示: 未找到 {season} 单打文件 ({single_src})，将仅导出双打排位数据")
 
     waza_map = load_waza_catalog()
     print(f"已装载官方招式数值字典: {len(waza_map)} 个")
@@ -299,7 +304,7 @@ def run_export(base_dir=None):
 
     # 按物种分组
     by_slug = {}
-    for r in m5_records:
+    for r in double_records:
         slug = r["slug"]
         if slug not in by_slug:
             by_slug[slug] = []
@@ -466,15 +471,19 @@ def run_export(base_dir=None):
     pokemon_list.sort(key=lambda x: (x.get("metaUsage", {}).get("rank") or 9999, x.get("id", 0)))
 
     # 组装输出
+    from datetime import datetime
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+
     final_output = {
         "meta": {
-            "version": "2.0.0-M5-Live",
-            "season": "M-5",
+            "version": f"2.0.0-{season}-Live",
+            "season": season,
             "formats": ["double", "single"],
             "total": len(pokemon_list),
-            "totalForms": len(m5_records),
+            "totalForms": len(double_records),
             "totalSingles": len(single_by_slug),
-            "generatedAt": "2026-09-05"
+            "generatedAt": now_str,
+            "remoteTimestamp": remote_ts or ""
         },
         "typeChart": type_chart,
         "pokemon": pokemon_list
@@ -482,17 +491,21 @@ def run_export(base_dir=None):
 
     # 写入 JSON
     old_json.write_text(json.dumps(final_output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"成功更新后端 JSON: {old_json} (包含 {len(pokemon_list)} 只宝可梦)")
+    print(f"成功更新后端 JSON: {old_json} (包含 {len(pokemon_list)} 只宝可梦 · {season})")
 
     # 写入 JS (前端 window.CHAMPIONS_DATA)
     js_content = "window.CHAMPIONS_DATA = " + json.dumps(final_output, ensure_ascii=False, indent=2) + ";\n"
     old_js.write_text(js_content, encoding="utf-8")
-    print(f"成功更新前端 JS: {old_js} (可供 index.html 即开即用)")
+    print(f"成功更新前端 JS: {old_js} (包含 {len(pokemon_list)} 只宝可梦 · {season})")
     return True
 
 
 def main():
-    return run_export()
+    import sys
+    season_arg = sys.argv[1] if len(sys.argv) > 1 else None
+    if not season_arg:
+        raise ValueError("使用方法: python export_to_wiki.py <SEASON>")
+    return run_export(season=season_arg)
 
 
 if __name__ == "__main__":

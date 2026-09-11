@@ -22,18 +22,17 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from scripts.sync_engine import check_for_updates, SYNC_META_FILE, ensure_meta_dir
-from scripts.sync_pokechamdb import sync_season
 from scripts.export_to_wiki import run_export
 from scripts.fetch_meta_teams import fetch_latest_teams
 import subprocess
 
 
 def detect_active_season():
-    """动态嗅探官方当前生效的主流排位赛季"""
+    """动态嗅探官方当前生效的主流排位赛季 (Fail-Fast 严格无兜底)"""
     url = "https://pokechamdb.com/zh-Hans?format=double&view=pokemon"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=12) as resp:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
             html = resp.read().decode("utf-8", errors="ignore")
 
         m = re.findall(r'season=([A-Za-z0-9_\-]+)', html)
@@ -43,9 +42,9 @@ def detect_active_season():
             top_season = counts.most_common(1)[0][0]
             print(f"[CI] 嗅探到官方当前活跃赛季: {top_season}")
             return top_season
+        raise RuntimeError("官方页面中未能匹配到有效的 season= 赛季参数")
     except Exception as e:
-        print(f"[CI] 嗅探赛季异常: {e}，回退使用默认 M-5")
-    return "M-5"
+        raise RuntimeError(f"无法从官方 PokéCham DB 嗅探当前生效赛季，中断退出: {e}") from e
 
 
 def set_github_output(name: str, value: str):
@@ -59,8 +58,8 @@ def set_github_output(name: str, value: str):
 
 def main():
     force = "--force" in sys.argv or os.getenv("FORCE_SYNC") == "true"
+    probe_only = "--probe-only" in sys.argv
     active_season = detect_active_season()
-    fmt = "double"
 
     print("==================================================")
     print(f" 🚀 POKÉMON CHAMPIONS 云端自动化同步启动")
@@ -75,10 +74,15 @@ def main():
     print(f"[CI 探针] 单打文件状态: {probe.get('single_status')}")
     print(f"[CI 探针] 检测判定: {'需要更新/补全' if probe.get('has_update') or force else '已是最新'} ({probe.get('reason')})")
 
+    if probe_only:
+        print("[CI] --probe-only 模式已指定，探针探测完成，正常退出。")
+        return 0
+
     has_rank_update = probe.get("has_update") or force
 
     # 如果有新数据或强制更新
     if has_rank_update:
+        from scripts.sync_pokechamdb import sync_season
         if probe.get("needs_double_sync") or force:
             print("[CI] 正在执行双打排位抓取管线 (PokéCham DB)...")
             sync_season(
@@ -101,17 +105,33 @@ def main():
                 resume=not force,
                 base_dir=str(BASE_DIR)
             )
-        run_export(base_dir=BASE_DIR)
+
+        # 执行编译产物导出，传入当前活跃赛季与远端时间戳
+        run_export(season=active_season, base_dir=BASE_DIR, remote_ts=probe.get("remote_timestamp"))
+
+        # 事务性写入 sync_meta.json：仅在爬取与编译全部成功后写入真实统计
         ensure_meta_dir()
+        wiki_data_file = BASE_DIR / "data" / "champions_data.json"
+        total_pokemon = 0
+        total_forms = 0
+        if wiki_data_file.exists():
+            try:
+                wiki_json = json.loads(wiki_data_file.read_text(encoding="utf-8"))
+                total_pokemon = wiki_json.get("meta", {}).get("total_pokemon", 0)
+                total_forms = wiki_json.get("meta", {}).get("total_forms", 0)
+            except Exception:
+                pass
+
         meta = {
             "season": active_season,
             "formats": ["double", "single"],
-            "remote_timestamp": probe.get("remote_timestamp", "2026/09/01 02:57"),
-            "last_sync_time": probe.get("last_sync_time") or "2026-09-05",
-            "total_pokemon": 235,
-            "total_forms": 314
+            "remote_timestamp": probe.get("remote_timestamp"),
+            "last_sync_time": probe.get("remote_timestamp") or probe.get("last_sync_time"),
+            "total_pokemon": total_pokemon,
+            "total_forms": total_forms
         }
         SYNC_META_FILE.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"[CI] ✅ 元数据已原子写入 {SYNC_META_FILE}: 赛季={active_season}, 时间戳={meta['remote_timestamp']}")
 
     # 2. 抓取 Limitless 官方最新完赛真实队伍 (单打 + 双打)
     print("\n[CI] 正在执行热门比赛队伍抓取管线 (Limitless VGC/X1)...")
