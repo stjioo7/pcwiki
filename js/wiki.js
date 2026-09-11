@@ -179,6 +179,11 @@ function updateHeaderDataBadge() {
   if (badge && allPokemonList && allPokemonList.length > 0) {
     badge.innerText = `${allPokemonList.length} 只宝可梦`;
   }
+  const seasonIndicator = document.getElementById('seasonStatusIndicator') || document.querySelector('.sync-status-indicator');
+  const season = window.CHAMPIONS_DATA && window.CHAMPIONS_DATA.meta && window.CHAMPIONS_DATA.meta.season;
+  if (seasonIndicator && season) {
+    seasonIndicator.innerText = `⚡ 官方排位 ${season}`;
+  }
 }
 
 // 建立触底无限加载监听器

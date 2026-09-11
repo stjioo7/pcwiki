@@ -12,6 +12,7 @@ export_to_wiki.py - 将 M-5 全量数据热替换接入现有 Wiki 前后端
 
 import json
 import shutil
+import re
 from pathlib import Path
 
 TYPE_CN_TO_EN = {
@@ -245,8 +246,17 @@ def run_export(season=None, base_dir=None, remote_ts=None):
 
     if base_dir is None:
         base_dir = Path(__file__).resolve().parent.parent
-    else:
-        base_dir = Path(base_dir)
+    if not base_dir:
+        base_dir = Path(__file__).resolve().parent.parent
+
+    if not remote_ts:
+        sync_meta_path = base_dir / "data" / "meta" / "sync_meta.json"
+        if sync_meta_path.exists():
+            try:
+                sm = json.loads(sync_meta_path.read_text(encoding="utf-8"))
+                remote_ts = sm.get("remote_timestamp", "")
+            except Exception:
+                pass
 
     meta_src = base_dir / "data" / "meta" / f"pokechamdb_{season}_double_forms.json"
     single_src = base_dir / "data" / "meta" / f"pokechamdb_{season}_single_forms.json"
@@ -497,6 +507,27 @@ def run_export(season=None, base_dir=None, remote_ts=None):
     js_content = "window.CHAMPIONS_DATA = " + json.dumps(final_output, ensure_ascii=False, indent=2) + ";\n"
     old_js.write_text(js_content, encoding="utf-8")
     print(f"成功更新前端 JS: {old_js} (包含 {len(pokemon_list)} 只宝可梦 · {season})")
+
+    # 同步更新 index.html 顶栏胶囊静态占位，保证静态文件与动态数据 100% 绝对一致
+    index_html_path = base_dir / "index.html"
+    if index_html_path.exists():
+        try:
+            html_content = index_html_path.read_text(encoding="utf-8")
+            html_content = re.sub(
+                r'<span class="sync-count-badge" id="totalCountBadge">[^<]*</span>',
+                f'<span class="sync-count-badge" id="totalCountBadge">{len(pokemon_list)} 只宝可梦</span>',
+                html_content
+            )
+            html_content = re.sub(
+                r'<span class="sync-status-indicator" id="seasonStatusIndicator">[^<]*</span>',
+                f'<span class="sync-status-indicator" id="seasonStatusIndicator">⚡ 官方排位 {season}</span>',
+                html_content
+            )
+            index_html_path.write_text(html_content, encoding="utf-8")
+            print(f"成功同步更新 index.html 顶栏: {len(pokemon_list)} 只宝可梦 · 官方排位 {season}")
+        except Exception as e:
+            print(f"同步 index.html 状态出现异常: {e}")
+
     return True
 
 

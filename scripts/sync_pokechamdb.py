@@ -301,7 +301,9 @@ def write_checkpoint(path: Path, records_by_id, ordered_ids):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def sync_season(season="M-5", fmt="double", lang="zh-Hans", limit=0, headless=True, channel="msedge", resume=True, only_missing=False, base_dir="."):
+def sync_season(season: str, fmt="double", lang="zh-Hans", limit=0, headless=True, channel="msedge", resume=True, only_missing=False, base_dir="."):
+    if not season:
+        raise ValueError("sync_season 必须显式指定目标赛季 season 参数，严禁硬编码或空值兜底！")
     root = Path(base_dir)
     out_dir = root / "data" / "meta"
     raw_dir = root / "cache" / "raw_text" / f"{season}_{fmt}"
@@ -384,7 +386,7 @@ def sync_season(season="M-5", fmt="double", lang="zh-Hans", limit=0, headless=Tr
 
 def main():
     parser = argparse.ArgumentParser(description="PokéCham DB 实时数据同步器")
-    parser.add_argument("--season", default="M-5", help="赛季名称 (例如 M-5, M-4)")
+    parser.add_argument("--season", required=True, help="赛季名称 (例如 M-6, M-5)")
     parser.add_argument("--format", default="double", choices=["single", "double"], help="单打或双打赛制")
     parser.add_argument("--lang", default="zh-Hans", help="多语言路由 (默认 zh-Hans 简体中文)")
     parser.add_argument("--limit", type=int, default=0, help="限制抓取数量 (0 为抓取当前环境全量)")
